@@ -291,7 +291,7 @@ class IPTVSetupImpl:
     def getOpensslVersionFinished(self, stsTab, dataTab):
         printDBG("IPTVSetupImpl.getOpensslVersionFinished")
         if len(stsTab) > 0 and True == stsTab[-1]:
-            for ver in ['0.9.8', '1.0.0', '1.0.2']:
+            for ver in ['0.9.8', '1.0.0', '1.0.2', '.1.1']:
                 if ver in dataTab[-1]:
                     self.openSSLVersion = '.' + ver
                     break
@@ -307,7 +307,7 @@ class IPTVSetupImpl:
     def setOpenSSLVersion(self, ret=None):
         printDBG('Check opennSSL version')
         self.setInfo(_("Detection of the OpenSSL version."), _("OpenSSL lib is needed by wget and rtmpdump utilities."))
-        for ver in ['.0.9.8', '.1.0.0', '.1.0.2']:
+        for ver in ['.0.9.8', '.1.0.0', '.1.0.2', '.1.1']:
             libsslExist = False
             libcryptoExist = False
             libSSLPath = ''
@@ -332,7 +332,7 @@ class IPTVSetupImpl:
             self.libSSLPath = libSSLPath
             if '.1.0.2' == ver:
                 self.getOpenssl2Finished()
-            elif '.0.9.8' == ver:
+            elif '.0.9.8' == ver or '.1.1' == ver:
                 # old ssl version 0.9.8
                 self.getGstreamerVer()
             else:
@@ -375,7 +375,7 @@ class IPTVSetupImpl:
         
         # check if link for libssl.so.1.0.0 and libcrypto.so.1.0.0 are needed
         openSSlVerMap = {}
-        for ver in ['.1.0.0', '.1.0.2']:
+        for ver in ['.1.0.0', '.1.0.2', '.1.1']:
             for path in ['/usr/lib/', '/lib/', '/usr/local/lib/', '/local/lib/']:
                 for library in ['libssl.so', 'libcrypto.so']:
                     library += ver
@@ -1057,16 +1057,16 @@ class IPTVSetupImpl:
         if len(self.ffmpegVersion) >= 5:
             shortFFmpegVersion = self.ffmpegVersion[:-2]
             
-        if self.platform in ['sh4'] and shortFFmpegVersion in ['1.0', '1.1', '1.2', '2.0', '2.2', '2.5', '2.6', '2.7', '2.8', '3.0', '3.1', '3.2', '3.3', '3.4']: 
+        if self.platform in ['sh4'] and shortFFmpegVersion in ['1.0', '1.1', '1.2', '2.0', '2.2', '2.5', '2.6', '2.7', '2.8', '3.0', '3.1', '3.2', '3.3', '3.4', '4.0', 4.1']: 
             self.ffmpegVersion = shortFFmpegVersion
             self.exteplayer3Step()
-        elif self.platform in ['mipsel'] and shortFFmpegVersion in ['2.8', '3.0', '3.1', '3.2', '3.3', '3.4']:
+        elif self.platform in ['mipsel'] and shortFFmpegVersion in ['2.8', '3.0', '3.1', '3.2', '3.3', '3.4', '4.0', 4.1']:
             self.ffmpegVersion = shortFFmpegVersion
             self.exteplayer3Step()
-        elif self.platform in ['armv7'] and shortFFmpegVersion in ['2.8', '3.0', '3.1', '3.2', '3.3', '3.4']:
+        elif self.platform in ['armv7'] and shortFFmpegVersion in ['2.8', '3.0', '3.1', '3.2', '3.3', '3.4', '4.0', 4.1']:
             self.ffmpegVersion = shortFFmpegVersion
             self.exteplayer3Step()
-        elif self.platform in ['armv5t'] and shortFFmpegVersion in ['2.8', '3.0', '3.1', '3.2', '3.3', '3.4']:
+        elif self.platform in ['armv5t'] and shortFFmpegVersion in ['2.8', '3.0', '3.1', '3.2', '3.3', '3.4', '4.0', 4.1']:
             self.ffmpegVersion = shortFFmpegVersion
             self.exteplayer3Step()
         elif "" != self.gstreamerVersion: self.gstplayerStep()
