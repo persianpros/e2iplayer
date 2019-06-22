@@ -887,14 +887,7 @@ class IPTVSetupImpl:
         printDBG("IPTVSetupImpl.cmdwrapStep")
             
         def _detectValidator(code, data):
-            if 'cmdwrap input_file' in data:
-                try:
-                    tmp = re.search("Version\:\s*?([0-9.]+?)[^0-9^.]", data).group(1)
-                    if float(tmp) >= self.cmdwrapVersion:
-                        return True,False
-                except Exception:
-                    printExc()
-            return False,True
+            return True,False
         
         def _deprecatedHandler(paths, stsTab, dataTab):
             sts, retPath = False, ""
@@ -948,14 +941,7 @@ class IPTVSetupImpl:
         self.binaryInstalledSuccessfully = False
             
         def _detectValidator(code, data):
-            if 'restrict-memory' in data:
-                try:
-                    ver = int(re.search('VER_FOR_IPTV\:\s([0-9]+?)\n', data).group(1))
-                    if ver >= self.dukVersion:
-                        return True, False
-                except Exception:
-                    printExc()
-            return False,True
+            return True,False
         
         def _deprecatedHandler(paths, stsTab, dataTab):
             sts, retPath = False, ""
