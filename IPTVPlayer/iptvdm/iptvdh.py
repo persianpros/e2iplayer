@@ -9,7 +9,7 @@
 # LOCAL import
 ###################################################
 from Plugins.Extensions.IPTVPlayer.tools.iptvtypes import strwithmeta
-from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, GetPluginDir, IsExecutable
+from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, GetPluginDir, IsExecutable
 from Plugins.Extensions.IPTVPlayer.tools.iptvtypes import enum
 from Plugins.Extensions.IPTVPlayer.libs.pCommon import common
 ###################################################
@@ -18,9 +18,7 @@ from Plugins.Extensions.IPTVPlayer.libs.pCommon import common
 # FOREIGN import
 ###################################################
 from Components.config import config
-from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 from Tools.Directories import fileExists
-import datetime
 import os
 import re
 ###################################################

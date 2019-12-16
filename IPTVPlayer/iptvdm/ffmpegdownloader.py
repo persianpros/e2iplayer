@@ -8,8 +8,8 @@
 ###################################################
 # LOCAL import
 ###################################################
-from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, iptv_system, eConnectCallback, E2PrioFix, rm, GetCmdwrapPath, WriteTextFile, GetNice, getDebugMode
-from Plugins.Extensions.IPTVPlayer.tools.iptvtypes import enum, strwithmeta
+from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, iptv_system, eConnectCallback, rm, GetCmdwrapPath, WriteTextFile, GetNice, getDebugMode
+from Plugins.Extensions.IPTVPlayer.tools.iptvtypes import strwithmeta
 from Plugins.Extensions.IPTVPlayer.iptvdm.basedownloader import BaseDownloader
 from Plugins.Extensions.IPTVPlayer.iptvdm.iptvdh import DMHelper
 ###################################################
@@ -19,7 +19,6 @@ from Plugins.Extensions.IPTVPlayer.iptvdm.iptvdh import DMHelper
 ###################################################
 from Tools.BoundFunction import boundFunction
 from enigma import eConsoleAppContainer
-from time import sleep
 import re
 import datetime
 ###################################################

@@ -12,7 +12,7 @@
 from Plugins.Extensions.IPTVPlayer.iptvdm.iptvdh import DMHelper
 from Plugins.Extensions.IPTVPlayer.tools.iptvtypes import strwithmeta
 from Plugins.Extensions.IPTVPlayer.components.cover import Cover3
-from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, GetIPTVDMImgDir, GetBinDir, GetSubtitlesDir, eConnectCallback, \
+from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, GetIPTVDMImgDir, GetSubtitlesDir, eConnectCallback, \
                                                           GetE2VideoAspectChoices, GetE2VideoAspect, SetE2VideoAspect, GetE2VideoPolicyChoices, \
                                                           GetE2VideoPolicy, SetE2VideoPolicy, GetDefaultLang, GetPolishSubEncoding, E2PrioFix, iptv_system, \
                                                           GetE2AudioCodecMixOption, SetE2AudioCodecMixOption, CreateTmpFile, GetTmpDir, IsExecutable, MapUcharEncoding, \
@@ -32,12 +32,10 @@ from Plugins.Extensions.IPTVPlayer.libs.urlparser import urlparser
 ###################################################
 # FOREIGN import
 ###################################################
-from enigma import eServiceReference, eConsoleAppContainer, getDesktop, eTimer, eLabel, gFont, ePoint, eSize, gRGB
+from enigma import eConsoleAppContainer, getDesktop, eTimer, eLabel, gFont, ePoint, eSize, gRGB
 from Screens.Screen import Screen
 from Screens.ChoiceBox import ChoiceBox
-from Components.AVSwitch import AVSwitch
 from Components.ActionMap import ActionMap
-from Components.config import config
 from Components.Label import Label
 from Components.ProgressBar import ProgressBar
 
@@ -46,7 +44,7 @@ from Screens.MessageBox import MessageBox
 from Tools.LoadPixmap import LoadPixmap
 from Tools.BoundFunction import boundFunction
 from Tools.Directories import fileExists
-from skin import parseColor, parseFont
+from skin import parseColor
 
 from datetime import timedelta
 try:
@@ -55,7 +53,7 @@ try:
     except Exception: import simplejson as json
 except Exception:
     printExc()
-from os import chmod as os_chmod, path as os_path
+from os import path as os_path
 import re
 import time
 import socket

@@ -8,7 +8,7 @@
 ###################################################
 # LOCAL import
 ###################################################
-from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, iptv_system, eConnectCallback, E2PrioFix
+from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, iptv_system, eConnectCallback, E2PrioFix
 from Plugins.Extensions.IPTVPlayer.iptvdm.basedownloader import BaseDownloader
 from Plugins.Extensions.IPTVPlayer.iptvdm.wgetdownloader import WgetDownloader
 from Plugins.Extensions.IPTVPlayer.iptvdm.iptvdh import DMHelper

@@ -22,7 +22,6 @@ from Tools.BoundFunction import boundFunction
 from enigma import eConsoleAppContainer
 from time import sleep, time
 import re
-import datetime
 ###################################################
 
 ###################################################

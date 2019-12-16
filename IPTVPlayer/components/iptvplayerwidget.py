@@ -6,8 +6,7 @@
 #
 # 
 
-from time import sleep as time_sleep
-from os import remove as os_remove, path as os_path
+from os import path as os_path
 from urllib import quote as urllib_quote
 from random import shuffle as random_shuffle
 import traceback
@@ -22,7 +21,6 @@ from Screens.ChoiceBox import ChoiceBox
 from Components.ActionMap import ActionMap
 from Components.Label import Label
 from Components.Pixmap import Pixmap
-from Components.ScrollLabel import ScrollLabel
 from Components.config import config, configfile
 from Components.Sources.StaticText import StaticText
 from Tools.BoundFunction import boundFunction
@@ -42,14 +40,13 @@ from Plugins.Extensions.IPTVPlayer.components.iptvfavouriteswidgets import IPTVF
 from Plugins.Extensions.IPTVPlayer.iptvdm.iptvdownloadercreator import IsUrlDownloadable
 from Plugins.Extensions.IPTVPlayer.libs.pCommon import CParsingHelper
 from Plugins.Extensions.IPTVPlayer.libs.urlparser import urlparser
-from Plugins.Extensions.IPTVPlayer.tools.iptvtypes import strwithmeta
 from Plugins.Extensions.IPTVPlayer.tools.iptvtools import FreeSpace as iptvtools_FreeSpace, \
                                                           mkdirs as iptvtools_mkdirs, GetIPTVPlayerVerstion, GetVersionNum, \
                                                           printDBG, printExc, iptv_system, GetHostsList, IsHostEnabled, \
                                                           eConnectCallback, GetSkinsDir, GetIconDir, GetPluginDir, GetExtensionsDir, \
                                                           SortHostsList, GetHostsOrderList, CSearchHistoryHelper, IsExecutable, \
-                                                          CMoviePlayerPerHost, GetFavouritesDir, CFakeMoviePlayerOption, GetAvailableIconSize, \
-                                                          GetE2VideoModeChoices, GetE2VideoMode, SetE2VideoMode, TestTmpCookieDir, TestTmpJSCacheDir,\
+                                                          CMoviePlayerPerHost, CFakeMoviePlayerOption, GetAvailableIconSize, \
+                                                          GetE2VideoMode, SetE2VideoMode, TestTmpCookieDir, TestTmpJSCacheDir,\
                                                           ClearTmpCookieDir, ClearTmpJSCacheDir, SetTmpCookieDir, SetTmpJSCacheDir,\
                                                           GetEnabledHostsList, SaveHostsOrderList, GetUpdateServerUri, GetHostsAliases, formatBytes
 from Plugins.Extensions.IPTVPlayer.tools.iptvhostgroups import IPTVHostsGroups

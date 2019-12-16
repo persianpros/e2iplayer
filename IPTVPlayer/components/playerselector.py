@@ -6,12 +6,11 @@
 #
 # 
 from Screens.Screen import Screen
-from Components.ActionMap import ActionMap, HelpableActionMap
+from Components.ActionMap import ActionMap
 from enigma import ePoint, getDesktop
 from Tools.LoadPixmap import LoadPixmap
 from Components.Label import Label
 from Components.config import config
-from Screens.MessageBox import MessageBox
 from Screens.ChoiceBox import ChoiceBox
 
 from Plugins.Extensions.IPTVPlayer.components.cover import Cover3

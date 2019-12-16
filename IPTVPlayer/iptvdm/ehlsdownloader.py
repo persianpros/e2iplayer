@@ -8,22 +8,19 @@
 ###################################################
 # LOCAL import
 ###################################################
-from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, iptv_system, eConnectCallback, E2PrioFix
-from Plugins.Extensions.IPTVPlayer.tools.iptvtypes import enum, strwithmeta
+from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, eConnectCallback
+from Plugins.Extensions.IPTVPlayer.tools.iptvtypes import strwithmeta
 from Plugins.Extensions.IPTVPlayer.libs import m3u8
 from Plugins.Extensions.IPTVPlayer.iptvdm.basedownloader import BaseDownloader
 from Plugins.Extensions.IPTVPlayer.iptvdm.iptvdh import DMHelper
-from Plugins.Extensions.IPTVPlayer.iptvdm.hlsdownloader    import HLSDownloader
+from Plugins.Extensions.IPTVPlayer.iptvdm.hlsdownloader import HLSDownloader
 ###################################################
 
 ###################################################
 # FOREIGN import
 ###################################################
-from Tools.BoundFunction import boundFunction
 from enigma import eConsoleAppContainer
-from time import sleep, time
 import re
-import datetime
 ###################################################
 
 ###################################################

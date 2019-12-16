@@ -18,7 +18,6 @@ from Plugins.Extensions.IPTVPlayer.components.iptvlist import IPTVListComponentB
 from skin import parseColor
 from enigma import eListboxPythonMultiContent, getDesktop, ePicLoad
 from Tools.LoadPixmap import LoadPixmap
-from Tools.BoundFunction import boundFunction
 from Screens.Screen import Screen
 from Components.ActionMap import ActionMap
 from Components.Label import Label

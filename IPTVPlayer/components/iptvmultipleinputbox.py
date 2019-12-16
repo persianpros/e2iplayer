@@ -24,9 +24,7 @@ from Screens.MessageBox import MessageBox
 from Components.ActionMap import NumberActionMap
 from Components.Label import Label
 from Components.Input import Input
-from Tools.BoundFunction import boundFunction
 from Tools.LoadPixmap import LoadPixmap
-from enigma import gRGB
 from skin import parseColor
 ###################################################
 

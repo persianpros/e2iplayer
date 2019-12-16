@@ -8,7 +8,7 @@
 ###################################################
 # LOCAL import
 ###################################################
-from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, iptv_system, eConnectCallback, E2PrioFix, rm
+from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, iptv_system, eConnectCallback, E2PrioFix, rm
 from Plugins.Extensions.IPTVPlayer.tools.iptvtypes import enum
 from Plugins.Extensions.IPTVPlayer.iptvdm.basedownloader import BaseDownloader
 from Plugins.Extensions.IPTVPlayer.iptvdm.iptvdh import DMHelper
@@ -20,9 +20,7 @@ from Plugins.Extensions.IPTVPlayer.iptvdm.iptvdh import DMHelper
 from Tools.Directories import fileExists
 from Tools.BoundFunction import boundFunction
 from enigma import eConsoleAppContainer
-from time import sleep
 import re
-import datetime
 ###################################################
 
 ###################################################

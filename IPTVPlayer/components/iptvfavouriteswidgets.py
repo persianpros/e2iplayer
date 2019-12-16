@@ -7,7 +7,7 @@
 from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, IsValidFileName, GetFavouritesDir, GetIconDir
 from Plugins.Extensions.IPTVPlayer.tools.iptvfavourites import IPTVFavourites
 from Plugins.Extensions.IPTVPlayer.components.iptvplayerinit import TranslateTXT as _
-from Plugins.Extensions.IPTVPlayer.components.ihost import CFavItem, CDisplayListItem
+from Plugins.Extensions.IPTVPlayer.components.ihost import CDisplayListItem
 from Plugins.Extensions.IPTVPlayer.components.iptvmultipleinputbox import IPTVMultipleInputBox
 from Plugins.Extensions.IPTVPlayer.components.iptvlist import IPTVMainNavigatorList
 ###################################################

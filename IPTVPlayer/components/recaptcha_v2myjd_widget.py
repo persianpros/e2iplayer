@@ -6,7 +6,6 @@
 ###################################################
 from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, GetIconDir, eConnectCallback, byteify, E2PrioFix, GetPyScriptCmd, getDebugMode, GetPluginDir
 from Plugins.Extensions.IPTVPlayer.components.iptvplayerinit import TranslateTXT as _
-from Plugins.Extensions.IPTVPlayer.components.cover import Cover3
 ###################################################
 
 ###################################################
@@ -16,8 +15,6 @@ from enigma import eConsoleAppContainer, getDesktop, eTimer
 from Screens.Screen import Screen
 from Components.Label import Label
 from Components.ActionMap import ActionMap
-from Tools.LoadPixmap import LoadPixmap
-from Tools.BoundFunction import boundFunction
 from Components.config import config
 
 import codecs

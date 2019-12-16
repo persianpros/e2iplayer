@@ -22,7 +22,6 @@ from Screens.Screen import Screen
 from Components.Label import Label
 from Components.ActionMap import ActionMap
 from Tools.LoadPixmap import LoadPixmap
-from Tools.BoundFunction import boundFunction
 from Components.config import config
 
 import codecs

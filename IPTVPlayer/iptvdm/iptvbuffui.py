@@ -10,7 +10,7 @@
 ###################################################
 from Plugins.Extensions.IPTVPlayer.components.cover import SimpleAnimatedCover
 from Plugins.Extensions.IPTVPlayer.tools.iptvtypes import strwithmeta, enum
-from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, formatBytes, touch, eConnectCallback, ReadUint32, GetIPTVDMImgDir
+from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, formatBytes, eConnectCallback, ReadUint32, GetIPTVDMImgDir
 from Plugins.Extensions.IPTVPlayer.components.iptvplayer import IPTVStandardMoviePlayer, IPTVMiniMoviePlayer
 from Plugins.Extensions.IPTVPlayer.components.iptvextmovieplayer import IPTVExtMoviePlayer
 from Plugins.Extensions.IPTVPlayer.iptvdm.iptvdh import DMHelper
@@ -26,7 +26,6 @@ from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
 from enigma import getDesktop
 from enigma import eTimer
-from Components.config import config
 from Components.ActionMap import ActionMap
 from Components.Label import Label
 #from Components.Sources.StaticText import StaticText

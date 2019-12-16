@@ -21,11 +21,11 @@ from Plugins.Extensions.IPTVPlayer.iptvdm.iptvdownloadercreator import Downloade
 ###################################################
 from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
-from enigma import getDesktop, eTimer, eServiceReference, eConsoleAppContainer
+from enigma import getDesktop, eTimer, eConsoleAppContainer
 from Components.config import config
-from Components.ActionMap import ActionMap, HelpableActionMap
+from Components.ActionMap import ActionMap
 from Components.Label import Label
-from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS
+from Tools.Directories import fileExists
 import os
 import time
 

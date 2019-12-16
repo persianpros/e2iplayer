@@ -8,28 +8,23 @@
 # LOCAL import
 ###################################################
 from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, GetSkinsList, GetHostsList, GetEnabledHostsList, \
-                                                          IsHostEnabled, IsExecutable, CFakeMoviePlayerOption, GetAvailableIconSize, \
+                                                          IsExecutable, CFakeMoviePlayerOption, GetAvailableIconSize, \
                                                           IsWebInterfaceModuleAvailable, SetIconsHash, SetGraphicsHash
 from Plugins.Extensions.IPTVPlayer.iptvupdate.updatemainwindow import IPTVUpdateWindow, UpdateMainAppImpl
 from Plugins.Extensions.IPTVPlayer.components.iptvplayerinit import TranslateTXT as _, IPTVPlayerNeedInit
 from Plugins.Extensions.IPTVPlayer.components.configbase import ConfigBaseWidget, COLORS_DEFINITONS
 from Plugins.Extensions.IPTVPlayer.components.confighost import ConfigHostsMenu
 from Plugins.Extensions.IPTVPlayer.components.iptvdirbrowser import IPTVDirectorySelectorWidget
-from Plugins.Extensions.IPTVPlayer.setup.iptvsetupwidget import IPTVSetupMainWidget
 ###################################################
 
 ###################################################
 # FOREIGN import
 ###################################################
 from Screens.MessageBox import MessageBox
-from Screens.Screen import Screen
 
-from Components.ActionMap import ActionMap, HelpableActionMap
 from Components.Label import Label
-from Components.config import config, ConfigSubsection, ConfigSelection, ConfigDirectory, ConfigYesNo, ConfigOnOff, Config, ConfigInteger, ConfigSubList, ConfigText, getConfigListEntry, configfile
-from Components.ConfigList import ConfigListScreen
+from Components.config import config, ConfigSubsection, ConfigSelection, ConfigDirectory, ConfigYesNo, ConfigOnOff, Config, ConfigInteger, ConfigText, getConfigListEntry, configfile
 from Tools.BoundFunction import boundFunction
-from Tools.Directories import resolveFilename, fileExists, SCOPE_PLUGINS
 ###################################################
 
 

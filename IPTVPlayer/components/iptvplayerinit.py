@@ -3,14 +3,11 @@
 ###################################################
 # LOCAL import
 ###################################################
-from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, DownloadFile, eConnectCallback
+from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG
 ###################################################
 # FOREIGN import
 ###################################################
-from Tools.BoundFunction import boundFunction
-from enigma import eConsoleAppContainer
-from Tools.Directories import resolveFilename, fileExists, SCOPE_PLUGINS
-from Components.config import config, configfile
+from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 from Components.Language import language
 import gettext
 import os

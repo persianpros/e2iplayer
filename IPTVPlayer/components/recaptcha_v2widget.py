@@ -6,7 +6,7 @@
 #
 # 
 from Screens.Screen import Screen
-from Components.ActionMap import ActionMap, HelpableActionMap
+from Components.ActionMap import ActionMap
 from enigma import ePoint
 from Tools.LoadPixmap import LoadPixmap
 from Components.Label import Label
