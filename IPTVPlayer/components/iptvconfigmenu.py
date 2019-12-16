@@ -546,10 +546,7 @@ class ConfigMenu(ConfigBaseWidget):
         if not needPluginUpdate and config.plugins.iptvplayer.IPTVWebIterface.value != IsWebInterfaceModuleAvailable(True):
             needPluginUpdate = True
             
-        if needPluginUpdate:
-            return _('Some changes will be applied only after plugin update.\nDo you want to perform update now?')
-        else:
-            return ''
+        return ''
             
     def performCloseWithMessage(self, afterSave=True):
         message = self.getMessageBeforeClose(afterSave)
@@ -558,11 +555,8 @@ class ConfigMenu(ConfigBaseWidget):
         else:
             self.session.openWithCallback(self.closeAfterMessage, MessageBox, text = message, type = MessageBox.TYPE_YESNO)
             
-    def closeAfterMessage(self, arg=None):
-        if arg:
-            self.doUpdate(True)
-        else:
-            self.close()
+    def closeAfterMessage(self):
+        self.close()
 
     def keyOK(self):
         curIndex = self["config"].getCurrentIndex()
