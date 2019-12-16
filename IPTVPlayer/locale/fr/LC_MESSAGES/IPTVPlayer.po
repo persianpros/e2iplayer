@@ -192,8 +192,7 @@ msgstr ""
 #: ../libs/wagasworld.py:124
 #, python-format
 msgid "\"%s\" login failed! Please check your login and password."
-msgstr ""
-"échec de la connexion «%s»! Veuillez vérifier votre login et mot de passe."
+msgstr "échec de la connexion «%s»! Veuillez vérifier votre login et mot de passe."
 
 #: ../hosts/hostwebstream.py:137
 msgid "\"Web\" streams player"
@@ -239,12 +238,8 @@ msgstr "Le fichier %s fait %d MB en taille. Les dernières %d lignes sont:"
 
 #: ../subproviders/subprov_opensubtitlesorg2.py:73
 #, python-format
-msgid ""
-"%s has been protected with google recaptcha v2. You can try to use API "
-"version."
-msgstr ""
-"%s a été protégé avec google recaptcha v2. Vous pouvez essayer d’utiliser la "
-"version API."
+msgid "%s has been protected with google recaptcha v2. You can try to use API version."
+msgstr "%s a été protégé avec google recaptcha v2. Vous pouvez essayer d’utiliser la version API."
 
 #: ../hosts/hostserialeco.py:195 ../hosts/hostserialeco.py:229
 #, python-format
@@ -268,12 +263,8 @@ msgstr "%s a expiré."
 
 #: ../components/ihost.py:640
 #, python-format
-msgid ""
-"%s uses \"geo-blocking\" measures to prevent you from accessing the services "
-"from outside the %s Territory."
-msgstr ""
-"%s utilise des mesures de « géoblocage » pour vous empêcher d’accéder à des "
-"services d’en dehors du territoire de %s."
+msgid "%s uses \"geo-blocking\" measures to prevent you from accessing the services from outside the %s Territory."
+msgstr "%s utilise des mesures de « géoblocage » pour vous empêcher d’accéder à des services d’en dehors du territoire de %s."
 
 #: ../hosts/hosttwitchtv.py:163
 #, python-format
@@ -387,25 +378,16 @@ msgid "4:3 PanScan"
 msgstr "4:3 PanScan"
 
 #: ../Web/webParts.py:97
-msgid ""
-"<font color=\"#FE642E\">REMEMBER:</font></b> IPTVPlayer <b>IS ONLY</b> "
-"specialized Web browser. It does <b>NOT</b> host any materials!!!</font>"
-msgstr ""
-"<font color=« #FE642E »>ATTENTUION:</font></b> IPTVPlayer <b>EST SEULEMENT</"
-"b> un Web browser spécialisé. Il ne <b>CONTIENT</b> aucun contenu!!!</font>"
+msgid "<font color=\"#FE642E\">REMEMBER:</font></b> IPTVPlayer <b>IS ONLY</b> specialized Web browser. It does <b>NOT</b> host any materials!!!</font>"
+msgstr "<font color=« #FE642E »>ATTENTUION:</font></b> IPTVPlayer <b>EST SEULEMENT</b> un Web browser spécialisé. Il ne <b>CONTIENT</b> aucun contenu!!!</font>"
 
 #: ../iptvupdate/updatemainwindow.py:67
 msgid "> Press OK to start <"
 msgstr "> Appuyez sur OK pour commencer <"
 
 #: ../hosts/hostbbcsport.py:490
-msgid ""
-"A TV License is required to watch BBC iPlayer streams, see the BBC website "
-"for more information: https://www.bbc.co.uk/iplayer/help/tvlicence"
-msgstr ""
-"Une licence TV est requise pour regarder les flux BBC iPlayer, voir le site "
-"Web de la BBC pour plus d'informations: https://www.bbc.co.uk/iplayer/help/"
-"tvlicence"
+msgid "A TV License is required to watch BBC iPlayer streams, see the BBC website for more information: https://www.bbc.co.uk/iplayer/help/tvlicence"
+msgstr "Une licence TV est requise pour regarder les flux BBC iPlayer, voir le site Web de la BBC pour plus d'informations: https://www.bbc.co.uk/iplayer/help/tvlicence"
 
 #: ../hosts/host3player.py:76 ../hosts/hostbbciplayer.py:71
 #: ../hosts/hostbbciplayer.py:193 ../hosts/hostgledalica.py:265
@@ -607,8 +589,7 @@ msgid ""
 "An error occurred when try to sign in the user \"%s.\n"
 "Please check your login credentials and try again later...\""
 msgstr ""
-"Une erreur s’est produite en essayant de vous connecter à l’utilisateur "
-"«%s.\n"
+"Une erreur s’est produite en essayant de vous connecter à l’utilisateur «%s.\n"
 "Veuillez vérifier vos identifiants et réessayez... »"
 
 #: ../components/iptvextmovieplayer.py:936
@@ -1141,11 +1122,8 @@ msgid "Debug option set to console - nothing to display"
 msgstr "Option de déboggage défini vers la console - rien à afficher"
 
 #: ../Web/webParts.py:117
-msgid ""
-"Debug option set to debugfile, but file does not exist - nothing to display"
-msgstr ""
-"Option de déboggage définie sur debugfile, mais le fichier n’existe pas - "
-"rien à afficher"
+msgid "Debug option set to debugfile, but file does not exist - nothing to display"
+msgstr "Option de déboggage définie sur debugfile, mais le fichier n’existe pas - rien à afficher"
 
 #: ../components/iptvpictureplayer.py:332
 #, python-format
@@ -1469,12 +1447,8 @@ msgid "Dramas"
 msgstr "Drames"
 
 #: ../setup/iptvsetupimpl.py:871
-msgid ""
-"Duktape is an embeddable Javascript engine, with a focus on portability and "
-"compact footprint.\n"
-msgstr ""
-"Duktape est un moteur Javascript embarquable, qui met l'accent sur la "
-"portabilité et est compact.\n"
+msgid "Duktape is an embeddable Javascript engine, with a focus on portability and compact footprint.\n"
+msgstr "Duktape est un moteur Javascript embarquable, qui met l'accent sur la portabilité et est compact.\n"
 
 #: ../hosts/hostted.py:381
 msgid "Duration"
@@ -1503,8 +1477,7 @@ msgid ""
 "E2 GUI restart after IPTVPlayer update to version[%s].\n"
 "\n"
 msgstr ""
-"Redémarrage de l’IGU de E2 après la mise à jour d'IPTVPlayer vers la "
-"version[%s].\n"
+"Redémarrage de l’IGU de E2 après la mise à jour d'IPTVPlayer vers la version[%s].\n"
 "\n"
 
 #: ../Web/webParts.py:461 ../Web/webParts.py:502
@@ -1516,10 +1489,8 @@ msgid ""
 "ERROR: pipeline could not be constructed: no element \"playbin2\" \n"
 "Please check if gstreamer plugins are available in your system."
 msgstr ""
-"ERREUR : le pipeline n'a pas pu être construit : pas d'élément "
-"\"playbin2\".\n"
-"Veuillez vérifier si des plugins gstreamer sont disponibles dans votre "
-"système."
+"ERREUR : le pipeline n'a pas pu être construit : pas d'élément \"playbin2\".\n"
+"Veuillez vérifier si des plugins gstreamer sont disponibles dans votre système."
 
 #: ../components/iptvplayerwidget.py:555 ../components/iptvplayerwidget.py:556
 msgid "Edit favourites"
@@ -1770,9 +1741,7 @@ msgstr "Échec de gzip."
 #: ../subproviders/subprov_opensubtitlesorg2.py:158
 #, python-format
 msgid "Failed to log in user \"%s\". Please check your login and password."
-msgstr ""
-"Échec de la connexion de l'utilisateur \"%s\". Veuillez vérifier votre login "
-"et votre mot de passe."
+msgstr "Échec de la connexion de l'utilisateur \"%s\". Veuillez vérifier votre login et votre mot de passe."
 
 #: ../components/isubprovider.py:604 ../subproviders/subprov_napisy24pl.py:369
 #: ../subproviders/subprov_popcornsubtitles.py:153
@@ -1866,9 +1835,7 @@ msgstr "Fichier[%s] a été ajouté à la file d'attente de téléchargement."
 #: ../components/iptvplayerwidget.py:1625
 #, python-format
 msgid "File can not be downloaded. Protocol [%s] is unsupported"
-msgstr ""
-"Le fichier ne peut pas être téléchargé. Protocole[%s] n'est pas pris en "
-"charge"
+msgstr "Le fichier ne peut pas être téléchargé. Protocole[%s] n'est pas pris en charge"
 
 #: ../hosts/hostkinomanco.py:618
 msgid "Fill captcha"
@@ -1911,9 +1878,7 @@ msgstr "Dossier pour les données temporaires"
 #: ../components/iptvplayerwidget.py:1159
 #: ../components/iptvplayerwidget.py:1224
 msgid "Following host are broken or additional python modules are needed."
-msgstr ""
-"Les hôtes suivants sont cassés ou des modules python supplémentaires sont "
-"nécessaires."
+msgstr "Les hôtes suivants sont cassés ou des modules python supplémentaires sont nécessaires."
 
 #: ../components/iptvplayerwidget.py:1532
 msgid "Format 'wmv' blocked in configuration."
@@ -2257,17 +2222,12 @@ msgstr "Il améliore l'analyse des sous-titres.\n"
 
 #: ../libs/pCommon.py:609 ../libs/pCommon.py:1261
 msgid "It is not allowed to call getURLRequestData from main thread."
-msgstr ""
-"Il n'est pas permis d'appeler getURLRequestData à partir du thread principal."
+msgstr "Il n'est pas permis d'appeler getURLRequestData à partir du thread principal."
 
 #: ../libs/pCommon.py:496
 #, python-format
-msgid ""
-"It looks like your current configuration do not allow to connect to the "
-"https://%s/.\n"
-msgstr ""
-"Il semble que votre configuration actuelle ne permet pas de se connecter à "
-"https://%s/.\n"
+msgid "It looks like your current configuration do not allow to connect to the https://%s/.\n"
+msgstr "Il semble que votre configuration actuelle ne permet pas de se connecter à https://%s/.\n"
 
 #: ../components/iptvplayerwidget.py:433
 #, python-format
@@ -2276,20 +2236,13 @@ msgstr "Il semble que l'hôte \"%s\" s'est planté."
 
 #: ../components/iptvplayerwidget.py:439
 #, python-format
-msgid ""
-"It seems that the host \"%s\" has crashed. Do you want to report this "
-"problem?"
-msgstr ""
-"Il semble que l'hôte \"%s\" s'est planté. Voulez-vous signaler ce problème ?"
+msgid "It seems that the host \"%s\" has crashed. Do you want to report this problem?"
+msgstr "Il semble que l'hôte \"%s\" s'est planté. Voulez-vous signaler ce problème ?"
 
 #: ../components/iptvsubdownloader.py:371
 #, python-format
-msgid ""
-"It seems that the subtitle's provider \"%s\" has crashed. Do you want to "
-"report this problem?"
-msgstr ""
-"Il semble que le fournisseur de sous-titres \"%s\" est planté. Voulez-vous "
-"signaler ce problème ?"
+msgid "It seems that the subtitle's provider \"%s\" has crashed. Do you want to report this problem?"
+msgstr "Il semble que le fournisseur de sous-titres \"%s\" est planté. Voulez-vous signaler ce problème ?"
 
 #: ../components/iptvextmovieplayer.py:1373
 #, python-format
@@ -2476,12 +2429,8 @@ msgid "Line Spacing"
 msgstr "Espacement entre lignes"
 
 #: ../components/iptvextmovieplayer.py:1800
-msgid ""
-"Link is not supported by the gstplayer. Please use the extelayer3 if "
-"available."
-msgstr ""
-"Le lien n'est pas supporté par le gstplayer. Veuillez utiliser l'extelayer3 "
-"si disponible."
+msgid "Link is not supported by the gstplayer. Please use the extelayer3 if available."
+msgstr "Le lien n'est pas supporté par le gstplayer. Veuillez utiliser l'extelayer3 si disponible."
 
 #: ../hosts/hostbsto.py:298 ../hosts/hostcineto.py:367
 #: ../hosts/hostekinotv.py:398 ../hosts/hostekinotv.py:416
@@ -2566,9 +2515,7 @@ msgstr "Charger"
 
 #: ../components/configextmovieplayer.py:321
 msgid "Load automatically the subtitle from file with the same name"
-msgstr ""
-"Charger automatiquement le sous-titre à partir d'un fichier portant le même "
-"nom"
+msgstr "Charger automatiquement le sous-titre à partir d'un fichier portant le même nom"
 
 #: ../components/iptvplayerwidget.py:1736
 #: ../components/iptvsubdownloader.py:468
@@ -3158,8 +3105,7 @@ msgid ""
 "Please set login data in the host configuration under blue button."
 msgstr ""
 "Seuls les utilisateurs connectés ont accès.\n"
-"Veuillez définir les données de connexion dans la configuration de l'hôte "
-"sous le bouton bleu."
+"Veuillez définir les données de connexion dans la configuration de l'hôte sous le bouton bleu."
 
 #: ../Web/webParts.py:484
 msgid "Only music"
@@ -3172,25 +3118,21 @@ msgstr "Seulement les vidéos"
 #: ../setup/iptvsetupimpl.py:391
 #, python-format
 msgid ""
-"OpenSSL in your image has different library names then these used by "
-"IPTVPlayer.\n"
+"OpenSSL in your image has different library names then these used by IPTVPlayer.\n"
 "There is need to create following symlinks:\n"
 "%s\n"
 "to be able to install binary components from IPTVPlayer server.\n"
 "Do you want to proceed?"
 msgstr ""
-"OpenSSL dans votre image a des noms de bibliothèque différents de ceux "
-"utilisés par IPTVPlayer.\n"
+"OpenSSL dans votre image a des noms de bibliothèque différents de ceux utilisés par IPTVPlayer.\n"
 "Il est nécessaire de créer les liens symboliques suivants :\n"
 "%s\n"
-"pour pouvoir installer des composants binaires à partir du serveur "
-"IPTVPlayer.\n"
+"pour pouvoir installer des composants binaires à partir du serveur IPTVPlayer.\n"
 "Voulez-vous continuer ?"
 
 #: ../setup/iptvsetupimpl.py:274 ../setup/iptvsetupimpl.py:304
 msgid "OpenSSL lib is needed by wget and rtmpdump utilities."
-msgstr ""
-"La librairie OpenSSL est nécessaire pour les utilitaires wget et rtmpdump."
+msgstr "La librairie OpenSSL est nécessaire pour les utilitaires wget et rtmpdump."
 
 #: ../components/iptvextmovieplayer.py:379
 msgid "Opening. Please wait..."
@@ -3324,28 +3266,16 @@ msgid "Playlists"
 msgstr "Listes de lecture"
 
 #: ../hosts/hostfilmezz.py:307 ../hosts/hostserienstreamto.py:322
-msgid ""
-"Please fill your login and password in the host configuration (available "
-"under blue button) and try again."
-msgstr ""
-"Veuillez remplir votre login et mot de passe dans la configuration de l'hôte "
-"(disponible sous le bouton bleu) et réessayer."
+msgid "Please fill your login and password in the host configuration (available under blue button) and try again."
+msgstr "Veuillez remplir votre login et mot de passe dans la configuration de l'hôte (disponible sous le bouton bleu) et réessayer."
 
 #: ../libs/pCommon.py:1439
-msgid ""
-"Please make sure that the folder for cache data (set in the configuration) "
-"is writable."
-msgstr ""
-"Veuillez vous assurer que le dossier des données de cache (défini dans la "
-"configuration) est inscriptible."
+msgid "Please make sure that the folder for cache data (set in the configuration) is writable."
+msgstr "Veuillez vous assurer que le dossier des données de cache (défini dans la configuration) est inscriptible."
 
 #: ../hosts/hostfreediscpl.py:80
-msgid ""
-"Please register and set login and password in the host configuration, to "
-"solve this problems permanently."
-msgstr ""
-"Veuillez vous enregistrer et définir le login et le mot de passe dans la "
-"configuration de l'hôte, afin de résoudre ce problème de façon permanente."
+msgid "Please register and set login and password in the host configuration, to solve this problems permanently."
+msgstr "Veuillez vous enregistrer et définir le login et le mot de passe dans la configuration de l'hôte, afin de résoudre ce problème de façon permanente."
 
 #: ../iptvupdate/updatemainwindow.py:315
 msgid "Please remember that you use this plugin at your own risk."
@@ -3353,12 +3283,10 @@ msgstr "Rappelez-vous que vous utilisez ce plugin à vos propres risques."
 
 #: ../libs/sport365live.py:114
 msgid ""
-"Please remember to visit http://www.sport365.live/ and watch a few "
-"advertisements.\n"
+"Please remember to visit http://www.sport365.live/ and watch a few advertisements.\n"
 "This will fix problem, if your playback is constantly interrupted."
 msgstr ""
-"N'oubliez pas de visiter http://www.sport365.live/ et de regarder quelques "
-"publicités.\n"
+"N'oubliez pas de visiter http://www.sport365.live/ et de regarder quelques publicités.\n"
 "Cela résoudra le problème si votre lecture est constamment interrompue."
 
 #: ../hosts/hostserienstreamto.py:325
@@ -3379,12 +3307,8 @@ msgid "Please wait for initialization data."
 msgstr "Veuillez attendre les données d'initialisation."
 
 #: ../setup/iptvsetupimpl.py:184
-msgid ""
-"Plugin can be run on one of the following platforms: sh4, mipsel, i686, "
-"armv7, armv5t."
-msgstr ""
-"Le plugin peut être exécuté sur l'une des plates-formes suivantes : sh4, "
-"mipsel, i686, armv7, armv7, armv5t."
+msgid "Plugin can be run on one of the following platforms: sh4, mipsel, i686, armv7, armv5t."
+msgstr "Le plugin peut être exécuté sur l'une des plates-formes suivantes : sh4, mipsel, i686, armv7, armv7, armv5t."
 
 #: ../Web/webParts.py:199
 msgid "Plugin global settings"
@@ -3553,21 +3477,13 @@ msgstr "Problème avec l'exécution du script utilisateur.\n"
 
 #: ../libs/wizjatv.py:112
 #, python-format
-msgid ""
-"Problem z zalogowanie użytkownika \"%s\". Sprawdź dane do logowania w "
-"konfiguracji hosta."
-msgstr ""
-"Problème avec la connexion à l'utilisateur \"%s\". Vérifiez les informations "
-"de connexion dans la configuration de l'hôte."
+msgid "Problem z zalogowanie użytkownika \"%s\". Sprawdź dane do logowania w konfiguracji hosta."
+msgstr "Problème avec la connexion à l'utilisateur \"%s\". Vérifiez les informations de connexion dans la configuration de l'hôte."
 
 #: ../libs/goldvodtv.py:87 ../libs/pierwszatv.py:161
 #, python-format
-msgid ""
-"Problem z zalogowanie użytkownika \"%s. Sprawdź dane do logowania w "
-"konfiguracji hosta.\""
-msgstr ""
-"Problème avec la connexion à l'utilisateur \"%s\". Vérifiez les informations "
-"de connexion dans la configuration de l'hôte."
+msgid "Problem z zalogowanie użytkownika \"%s. Sprawdź dane do logowania w konfiguracji hosta.\""
+msgstr "Problème avec la connexion à l'utilisateur \"%s\". Vérifiez les informations de connexion dans la configuration de l'hôte."
 
 #: ../hosts/hostardmediathek.py:75 ../hosts/hostzdfmediathek.py:93
 #: ../hosts/hostzdfmediathek.py:108
@@ -4260,8 +4176,7 @@ msgid ""
 "Please fill your login and password in the IPTVPlayer configuration."
 msgstr ""
 "Le service http://napisy24.pl/ nécessite une inscription.\n"
-"Veuillez remplir votre login et votre mot de passe dans la configuration "
-"IPTVPlayer."
+"Veuillez remplir votre login et votre mot de passe dans la configuration IPTVPlayer."
 
 #: ../components/confighost.py:67 ../components/iptvconfigmenu.py:320
 msgid "Services configuration"
@@ -4313,8 +4228,7 @@ msgstr "Afficher toutes les versions dans le menu de mise à jour"
 
 #: ../components/iptvconfigmenu.py:367
 msgid "Show download manager after adding new item"
-msgstr ""
-"Afficher le gestionnaire de téléchargement après l'ajout d'un nouvel élément"
+msgstr "Afficher le gestionnaire de téléchargement après l'ajout d'un nouvel élément"
 
 #: ../hosts/hostlocalmedia.py:53
 msgid "Show file size"
@@ -4383,9 +4297,7 @@ msgstr "Virgule flottante logicielle"
 
 #: ../components/configextmovieplayer.py:260
 msgid "Some changes will be applied only after movie player restart."
-msgstr ""
-"Certaines modifications ne seront appliquées qu'après le redémarrage du "
-"lecteur vidéo."
+msgstr "Certaines modifications ne seront appliquées qu'après le redémarrage du lecteur vidéo."
 
 #: ../components/iptvconfigmenu.py:533 ../components/iptvplayerwidget.py:1339
 msgid ""
@@ -4668,38 +4580,24 @@ msgstr "L'utilitaire \"%s\" est utilisé par IPTVPlayer."
 
 #: ../setup/iptvsetupimpl.py:983
 #, python-format
-msgid ""
-"The \"%s\" utility is used by the IPTVPlayer as external movie player based "
-"on the ffmpeg and libeplayer."
-msgstr ""
-"L'utilitaire \"%s\" est utilisé par IPTVPlayer comme lecteur de film externe "
-"basé sur ffmpeg et libeplayer."
+msgid "The \"%s\" utility is used by the IPTVPlayer as external movie player based on the ffmpeg and libeplayer."
+msgstr "L'utilitaire \"%s\" est utilisé par IPTVPlayer comme lecteur de film externe basé sur ffmpeg et libeplayer."
 
 #: ../setup/iptvsetupimpl.py:1030
 #, python-format
 msgid "The \"%s\" utility is used by the IPTVPlayer as external movie player."
-msgstr ""
-"L'utilitaire \"%s\" est utilisé par l'IPTVPlayer comme lecteur de film "
-"externe."
+msgstr "L'utilitaire \"%s\" est utilisé par l'IPTVPlayer comme lecteur de film externe."
 
 #: ../setup/iptvsetupimpl.py:514 ../setup/iptvsetupimpl.py:576
 #: ../setup/iptvsetupimpl.py:927
 #, python-format
-msgid ""
-"The \"%s\" utility is used by the IPTVPlayer to buffering and downloading "
-"[%s] links."
-msgstr ""
-"L'utilitaire \"%s\" est utilisé par IPTVPlayer pour mettre en mémoire tampon "
-"et télécharger les liens[%s]."
+msgid "The \"%s\" utility is used by the IPTVPlayer to buffering and downloading [%s] links."
+msgstr "L'utilitaire \"%s\" est utilisé par IPTVPlayer pour mettre en mémoire tampon et télécharger les liens[%s]."
 
 #: ../setup/iptvsetupimpl.py:632
 #, python-format
-msgid ""
-"The \"%s\" utility is used by the IPTVPlayer to determine the encoding of "
-"the text."
-msgstr ""
-"L'utilitaire \"%s\" est utilisé par IPTVPlayer pour déterminer l'encodage du "
-"texte."
+msgid "The \"%s\" utility is used by the IPTVPlayer to determine the encoding of the text."
+msgstr "L'utilitaire \"%s\" est utilisé par IPTVPlayer pour déterminer l'encodage du texte."
 
 #: ../subproviders/subprov_youtubecom.py:54
 msgid "The YouTube video ID is invalid."
@@ -4722,23 +4620,19 @@ msgstr "La couleur de l'article visualisé"
 #, python-format
 msgid ""
 "The host %s requires registration. \n"
-"Please fill your login and password in the host configuration. Available "
-"under blue button."
+"Please fill your login and password in the host configuration. Available under blue button."
 msgstr ""
 "L'hôte %s nécessite une inscription.\n"
-"Veuillez remplir votre login et votre mot de passe dans la configuration de "
-"l'hôte. Disponible sous le bouton bleu."
+"Veuillez remplir votre login et votre mot de passe dans la configuration de l'hôte. Disponible sous le bouton bleu."
 
 #: ../hosts/hosteurosportplayer.py:594
 #, python-format
 msgid ""
 "The host %s requires subscription.\n"
-"Please fill your login and password in the host configuration - available "
-"under blue button."
+"Please fill your login and password in the host configuration - available under blue button."
 msgstr ""
 "L'hôte %s nécessite une inscription.\n"
-"Veuillez remplir votre login et votre mot de passe dans la configuration de "
-"l'hôte. Disponible sous le bouton bleu."
+"Veuillez remplir votre login et votre mot de passe dans la configuration de l'hôte. Disponible sous le bouton bleu."
 
 #: ../components/iptvconfigmenu.py:450
 msgid "The number of items in the search history"
@@ -4804,12 +4698,10 @@ msgstr "Cet hôte a déjà été ajouté à ce groupe."
 #: ../libs/edemtv.py:98
 msgid ""
 "This host requires registration. \n"
-"Please fill your login and password in the host configuration. Available "
-"under blue button."
+"Please fill your login and password in the host configuration. Available under blue button."
 msgstr ""
 "Cet hôte doit être enregistré.\n"
-"Veuillez remplir votre login et votre mot de passe dans la configuration de "
-"l'hôte. Disponible sous le bouton bleu."
+"Veuillez remplir votre login et votre mot de passe dans la configuration de l'hôte. Disponible sous le bouton bleu."
 
 #: ../hosts/hostseriesonline.py:109
 msgid "This site is protected with google recaptcha v2."
@@ -4817,9 +4709,7 @@ msgstr "Ce site est protégé par google recaptcha v2."
 
 #: ../setup/iptvsetupimpl.py:235
 msgid "This step is required to proper select binaries for installation."
-msgstr ""
-"Cette étape est nécessaire pour sélectionner les binaires appropriés pour "
-"l'installation."
+msgstr "Cette étape est nécessaire pour sélectionner les binaires appropriés pour l'installation."
 
 #: ../Web/webParts.py:434
 msgid "Title:"
@@ -4831,8 +4721,7 @@ msgid ""
 "Please fill your login and password in the IPTVPlayer configuration."
 msgstr ""
 "Pour visionner les vidéos de http://vk.com/, vous devez vous connecter.\n"
-"Veuillez remplir votre login et votre mot de passe dans la configuration "
-"IPTVPlayer."
+"Veuillez remplir votre login et votre mot de passe dans la configuration IPTVPlayer."
 
 #: ../hosts/hosttvnowde.py:161
 msgid "Today"
@@ -5090,9 +4979,7 @@ msgstr "Mise à jour"
 
 #: ../iptvupdate/updatemainwindow.py:344
 msgid "Update completed successfully. For the moment, the system will reboot."
-msgstr ""
-"La mise à jour s'est achevée avec succès. Pour le moment, le système va "
-"redémarrer."
+msgstr "La mise à jour s'est achevée avec succès. Pour le moment, le système va redémarrer."
 
 #: ../iptvupdate/updatemainwindow.py:349
 msgid ""
@@ -5289,12 +5176,10 @@ msgstr "Vérifier"
 #: ../iptvupdate/updatemainwindow.py:587
 #, python-format
 msgid ""
-"Version [%s] is ready for installation. After installation, restart of the "
-"system will be done.\n"
+"Version [%s] is ready for installation. After installation, restart of the system will be done.\n"
 "Do you want to continue?"
 msgstr ""
-"La version [%s] est prête pour l'installation. Après l'installation, le "
-"redémarrage du système sera effectué.\n"
+"La version [%s] est prête pour l'installation. Après l'installation, le redémarrage du système sera effectué.\n"
 "Voulez-vous continuer ?"
 
 #: ../hosts/hostdancetrippin.py:247 ../hosts/hostrtbfbe.py:693
@@ -5403,24 +5288,16 @@ msgid "Watch video materials from IPTV services"
 msgstr "Regarder le matériel vidéo des services IPTV"
 
 #: ../libs/urlparser.py:7792
-msgid ""
-"We can't find the file you are looking for. It maybe got deleted by the "
-"owner or was removed due a copyright violation."
-msgstr ""
-"Nous ne trouvons pas le fichier que vous cherchez. Il a peut-être été "
-"supprimé par le propriétaire ou a été supprimé en raison d'une violation du "
-"droit d'auteur."
+msgid "We can't find the file you are looking for. It maybe got deleted by the owner or was removed due a copyright violation."
+msgstr "Nous ne trouvons pas le fichier que vous cherchez. Il a peut-être été supprimé par le propriétaire ou a été supprimé en raison d'une violation du droit d'auteur."
 
 #: ../Web/webSite.py:106
 msgid "Web component has been reset and all threads are stopped. :)"
-msgstr ""
-"Le composant Web a été réinitialisé et tous les threads sont arrêtés. : :)"
+msgstr "Le composant Web a été réinitialisé et tous les threads sont arrêtés. : :)"
 
 #: ../Web/webSite.py:108
 msgid "Web component has been reset, the following threads are still working:"
-msgstr ""
-"Le composant Web a été réinitialisé, les threads suivants fonctionnent "
-"toujours:"
+msgstr "Le composant Web a été réinitialisé, les threads suivants fonctionnent toujours:"
 
 #: ../Web/webParts.py:63 ../Web/webParts.py:80
 msgid "Web interface version"
@@ -5509,46 +5386,29 @@ msgid "Yesterday"
 msgstr "Hier"
 
 #: ../Web/webSite.py:68
-msgid ""
-"You are using old version of OpenWebif.<br> To go to IPTVPlayer web Select "
-"the following link<br>"
-msgstr ""
-"Vous utilisez l'ancienne version d'OpenWebif.<br> Pour accéder à IPTVPlayer "
-"web Sélectionnez le lien suivant <br>"
+msgid "You are using old version of OpenWebif.<br> To go to IPTVPlayer web Select the following link<br>"
+msgstr "Vous utilisez l'ancienne version d'OpenWebif.<br> Pour accéder à IPTVPlayer web Sélectionnez le lien suivant <br>"
 
 #: ../libs/pCommon.py:499
-msgid ""
-"You can disable HTTPS certificates validation in the IPTVPlayer "
-"configuration to suppress this problem."
-msgstr ""
-"Vous pouvez désactiver la validation des certificats HTTPS dans la "
-"configuration IPTVPlayer pour supprimer ce problème."
+msgid "You can disable HTTPS certificates validation in the IPTVPlayer configuration to suppress this problem."
+msgstr "Vous pouvez désactiver la validation des certificats HTTPS dans la configuration IPTVPlayer pour supprimer ce problème."
 
 #: ../libs/pCommon.py:501
-msgid ""
-"You can install PyCurl package from http://www.iptvplayer.gitlab.io/ to fix "
-"this problem."
-msgstr ""
-"Vous pouvez installer le paquet PyCurl à partir de http://www.iptvplayer."
-"gitlab.io/ pour résoudre ce problème."
+msgid "You can install PyCurl package from http://www.iptvplayer.gitlab.io/ to fix this problem."
+msgstr "Vous pouvez installer le paquet PyCurl à partir de http://www.iptvplayer.gitlab.io/ pour résoudre ce problème."
 
 #: ../hosts/hostmrpiracy.py:458
 #, python-format
 msgid "You can use \"%s\" or \"%s\" services to workaround this protection."
-msgstr ""
-"Vous pouvez utiliser les services \"%s\" ou \"%s\" pour contourner cette "
-"protection."
+msgstr "Vous pouvez utiliser les services \"%s\" ou \"%s\" pour contourner cette protection."
 
 #: ../iptvdm/iptvbuffui.py:456
 msgid "You can use external eplayer to start playback faster."
-msgstr ""
-"Vous pouvez utiliser eplayer externe pour démarrer la lecture plus "
-"rapidement."
+msgstr "Vous pouvez utiliser eplayer externe pour démarrer la lecture plus rapidement."
 
 #: ../libs/weebtv.py:183
 msgid "You do not have a premium account. Starting a sponsored broadcast."
-msgstr ""
-"Vous n'avez pas de compte premium. Lancement d'une émission sponsorisée."
+msgstr "Vous n'avez pas de compte premium. Lancement d'une émission sponsorisée."
 
 #: ../libs/ustvnow.py:130
 msgid "You need to enter email and password in configuration."
@@ -5556,8 +5416,7 @@ msgstr "Vous devez entrer l'email et le mot de passe dans la configuration."
 
 #: ../libs/pCommon.py:610 ../libs/pCommon.py:1262
 msgid "You should never perform block I/O operations in the __init__."
-msgstr ""
-"Vous ne devez jamais effectuer d'opérations d'E/S de bloc dans le __init__."
+msgstr "Vous ne devez jamais effectuer d'opérations d'E/S de bloc dans le __init__."
 
 #: ../hosts/hostserienstreamto.py:50
 msgid "Your language preference:"
@@ -5761,12 +5620,8 @@ msgid "external gstplayer"
 msgstr "gstplayer externe"
 
 #: ../Web/webParts.py:355
-msgid ""
-"first check if host works properly in GUI and web <b>BEFORE</b> reporting "
-"error in it !!!"
-msgstr ""
-"vérifiez d'abord si l'hôte fonctionne correctement dans l'interface "
-"graphique et web <b>AVANT</b> de le signaler comme une erreur !!!"
+msgid "first check if host works properly in GUI and web <b>BEFORE</b> reporting error in it !!!"
+msgstr "vérifiez d'abord si l'hôte fonctionne correctement dans l'interface graphique et web <b>AVANT</b> de le signaler comme une erreur !!!"
 
 #: ../hosts/hostardmediathek.py:43 ../hosts/hostzdfmediathek.py:42
 msgid "format"

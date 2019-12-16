@@ -11,8 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.1.1\n"
 "X-Poedit-Basepath: ../../..\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: Web\n"
 
@@ -236,8 +235,7 @@ msgstr "Konfiguracja zewnętrznego odtwarzacza filmów"
 
 #: components/configextmovieplayer.py:268
 msgid "Some changes will be applied only after movie player restart."
-msgstr ""
-"Niektóre zmiany zostaną zastosowane po ponownym uruchomieniu odtwarzacza."
+msgstr "Niektóre zmiany zostaną zastosowane po ponownym uruchomieniu odtwarzacza."
 
 #: components/configextmovieplayer.py:296
 msgid "Remember last watched position"
@@ -510,12 +508,8 @@ msgstr "Niezgodność identyfikatorów regionu! %s <> %s"
 
 #: components/e2ivk.py:619 components/e2ivk.py:622
 #, python-format
-msgid ""
-"Load of the Virtual Keyboard layout \"%s\" failed due to the following "
-"error: \"%s\""
-msgstr ""
-"Załadowanie pliku konfiguracyjnego \"%s\" klawiatury wirtualnej nie powiodło "
-"się z powodu następującego błędu \"%s\"."
+msgid "Load of the Virtual Keyboard layout \"%s\" failed due to the following error: \"%s\""
+msgstr "Załadowanie pliku konfiguracyjnego \"%s\" klawiatury wirtualnej nie powiodło się z powodu następującego błędu \"%s\"."
 
 #: components/e2ivk.py:625
 #, python-format
@@ -530,9 +524,7 @@ msgstr "Załadować plik konfiguracyjny \"%s\" klawiatury wirtualnej?"
 #: components/e2ivk.py:633
 #, python-format
 msgid "Do you want to try to re-download \"%s\" Virtual Keyboard layout?"
-msgstr ""
-"Czy chcesz ponowić próbę pobrania pliku konfiguracyjnego \"%s\" klawiatury "
-"wirtualnej?"
+msgstr "Czy chcesz ponowić próbę pobrania pliku konfiguracyjnego \"%s\" klawiatury wirtualnej?"
 
 #: components/e2ivk.py:713 hosts/host123movieshd.py:125 hosts/host3player.py:60
 #: hosts/host9anime.py:52 hosts/hostakoam.py:112 hosts/hostallboxtv.py:73
@@ -623,12 +615,8 @@ msgstr "Wystąpił błąd"
 
 #: components/ihost.py:649
 #, python-format
-msgid ""
-"%s uses \"geo-blocking\" measures to prevent you from accessing the services "
-"from outside the %s Territory."
-msgstr ""
-"%s używa \"geo-lokalizacji\", aby nie pozwolić na dostęp do usługi z poza "
-"terytorium %s."
+msgid "%s uses \"geo-blocking\" measures to prevent you from accessing the services from outside the %s Territory."
+msgstr "%s używa \"geo-lokalizacji\", aby nie pozwolić na dostęp do usługi z poza terytorium %s."
 
 #: components/ihost.py:764 hosts/host123movieshd.py:380
 #: hosts/host3player.py:408 hosts/host9anime.py:565 hosts/hostakoam.py:437
@@ -1414,17 +1402,12 @@ msgid ""
 "ERROR: pipeline could not be constructed: no element \"playbin2\" \n"
 "Please check if gstreamer plugins are available in your system."
 msgstr ""
-"BŁĄD: gstreamer nie może rozpocząć przetwarzania danych. Brak elementu "
-"\"playbin2\" \n"
+"BŁĄD: gstreamer nie może rozpocząć przetwarzania danych. Brak elementu \"playbin2\" \n"
 "Sprawdź, czy element \"playbin2\" jest dostępny w systemie."
 
 #: components/iptvextmovieplayer.py:1857
-msgid ""
-"Link is not supported by the gstplayer. Please use the extelayer3 if "
-"available."
-msgstr ""
-"Link nie jest wspierany przez gstplayer . Proszę użyć exteplayer3 jeśli jest "
-"dostępny."
+msgid "Link is not supported by the gstplayer. Please use the extelayer3 if available."
+msgstr "Link nie jest wspierany przez gstplayer . Proszę użyć exteplayer3 jeśli jest dostępny."
 
 #: components/iptvextmovieplayer.py:1907
 #, python-format
@@ -1576,12 +1559,8 @@ msgstr ""
 "%s"
 
 #: components/iptvplayerwidget.py:336
-msgid ""
-"Please make sure that the folder for cache data (set in the configuration) "
-"is writable."
-msgstr ""
-"Proszę się upewnić, że można zapisywać do folderu cache wskazanego w "
-"konfiguracji."
+msgid "Please make sure that the folder for cache data (set in the configuration) is writable."
+msgstr "Proszę się upewnić, że można zapisywać do folderu cache wskazanego w konfiguracji."
 
 #: components/iptvplayerwidget.py:458
 #, python-format
@@ -1610,11 +1589,8 @@ msgstr ""
 
 #: components/iptvplayerwidget.py:480
 #, python-format
-msgid ""
-"It seems that the host \"%s\" has crashed. Do you want to report this "
-"problem?"
-msgstr ""
-"Wygląda na to , że host \"%s\" uległ awarii . Czy chcesz zgłosić ten problem?"
+msgid "It seems that the host \"%s\" has crashed. Do you want to report this problem?"
+msgstr "Wygląda na to , że host \"%s\" uległ awarii . Czy chcesz zgłosić ten problem?"
 
 #: components/iptvplayerwidget.py:482 components/iptvsubdownloader.py:371
 msgid ""
@@ -1844,12 +1820,8 @@ msgstr "Potwierdź tytuł filmu"
 
 #: components/iptvsubdownloader.py:369
 #, python-format
-msgid ""
-"It seems that the subtitle's provider \"%s\" has crashed. Do you want to "
-"report this problem?"
-msgstr ""
-"Wygląda na to, że dostawca napisów \"%s\" uldegł awarii. Czy chcesz zgłosić "
-"ten problem?"
+msgid "It seems that the subtitle's provider \"%s\" has crashed. Do you want to report this problem?"
+msgstr "Wygląda na to, że dostawca napisów \"%s\" uldegł awarii. Czy chcesz zgłosić ten problem?"
 
 #: components/iptvsubdownloader.py:418
 msgid "Select subtitles provider:"
@@ -2034,11 +2006,8 @@ msgstr "Link zabezpieczony przez Google ReCaptcha v2"
 
 #: components/recaptcha_v2helper.py:51
 #, python-format
-msgid ""
-"Please visit %s to learn how to redirect this task to the external device."
-msgstr ""
-"Proszę odwiedź stronę %s, aby dowiedzieć się jak rozwiązać to zadanie na "
-"innym urządzeniu."
+msgid "Please visit %s to learn how to redirect this task to the external device."
+msgstr "Proszę odwiedź stronę %s, aby dowiedzieć się jak rozwiązać to zadanie na innym urządzeniu."
 
 #: components/recaptcha_v2helper.py:55
 msgid " or "
@@ -2047,14 +2016,11 @@ msgstr " albo "
 #: components/recaptcha_v2helper.py:56
 #, python-format
 msgid "You can use \"%s\" or \"%s\" services for automatic solution."
-msgstr ""
-"Możesz użyć serwisu \"%s\" lub \"%s\" albo automatycznie rozwiązać takie "
-"zadania."
+msgstr "Możesz użyć serwisu \"%s\" lub \"%s\" albo automatycznie rozwiązać takie zadania."
 
 #: components/recaptcha_v2helper.py:56
 msgid "Go to the host configuration available under blue button."
-msgstr ""
-"Sprzwdź konfigurację serwisu dostępną po naciśnięciu niebieskiego przycisku."
+msgstr "Sprzwdź konfigurację serwisu dostępną po naciśnięciu niebieskiego przycisku."
 
 #: components/recaptcha_v2myjd_widget.py:98
 msgid "JDownloader script finished."
@@ -2410,12 +2376,10 @@ msgstr "Sezon %s"
 #, python-format
 msgid ""
 "The host %s requires registration. \n"
-"Please fill your login and password in the host configuration. Available "
-"under blue button."
+"Please fill your login and password in the host configuration. Available under blue button."
 msgstr ""
 "Host %s wymaga rejestracji. \n"
-"Wprowasź login i hasło w konfiguracji hosta dostępnej po naciśnięciu "
-"niebieskiego przycisku."
+"Wprowasź login i hasło w konfiguracji hosta dostępnej po naciśnięciu niebieskiego przycisku."
 
 #: hosts/hostallboxtv.py:512 hosts/hostnaszekinotv.py:661
 msgid "Connection error."
@@ -2748,9 +2712,7 @@ msgstr ""
 "Błąd [3]."
 
 #: hosts/hostbbcsport.py:478
-msgid ""
-"A TV License is required to watch BBC iPlayer streams, see the BBC website "
-"for more information: https://www.bbc.co.uk/iplayer/help/tvlicence"
+msgid "A TV License is required to watch BBC iPlayer streams, see the BBC website for more information: https://www.bbc.co.uk/iplayer/help/tvlicence"
 msgstr ""
 
 #: hosts/hostbbcsport.py:482
@@ -3158,12 +3120,10 @@ msgstr "Olimpiada"
 #, python-format
 msgid ""
 "The host %s requires subscription.\n"
-"Please fill your login and password in the host configuration - available "
-"under blue button."
+"Please fill your login and password in the host configuration - available under blue button."
 msgstr ""
 "Host %s wymaga subskrypcji.\n"
-"Wpisz login i hasło w konfiguracji hosta dostępnej po naciśnięciu przycisku "
-"niebieskigo."
+"Wpisz login i hasło w konfiguracji hosta dostępnej po naciśnięciu przycisku niebieskigo."
 
 #: hosts/hosteurosportplayer.py:608
 msgid "Login failed. Invalid email or password."
@@ -3236,12 +3196,8 @@ msgid "Latest added"
 msgstr "Ostatnio dodane"
 
 #: hosts/hostfilmezz.py:298 hosts/hostserienstreamto.py:388
-msgid ""
-"Please fill your login and password in the host configuration (available "
-"under blue button) and try again."
-msgstr ""
-"Wprowadź login i hasło w konfiguracji hosta dostępnej po naciśnięciu "
-"niebieskiego przycisku i spróbuj ponownie."
+msgid "Please fill your login and password in the host configuration (available under blue button) and try again."
+msgstr "Wprowadź login i hasło w konfiguracji hosta dostępnej po naciśnięciu niebieskiego przycisku i spróbuj ponownie."
 
 #: hosts/hostfilmovizijastudio.py:46
 msgid "New Movies"
@@ -3308,12 +3264,8 @@ msgid "Please visit \"%s\" and confirm that you are human."
 msgstr "Proszę odtworzyć \"%s\" i potwierdzić, że jesteś człowiekiem."
 
 #: hosts/hostfreediscpl.py:85
-msgid ""
-"Please register and set login and password in the host configuration, to "
-"solve this problems permanently."
-msgstr ""
-"Proszę się zarejestrować i wprowadzić login i hasło w konfiguracji hosta, "
-"aby rozwiązać ten problem."
+msgid "Please register and set login and password in the host configuration, to solve this problems permanently."
+msgstr "Proszę się zarejestrować i wprowadzić login i hasło w konfiguracji hosta, aby rozwiązać ten problem."
 
 #: hosts/hostfreediscpl.py:246
 #, python-format
@@ -3404,11 +3356,8 @@ msgid "Page accessible to logged in members only."
 msgstr "Strona dostępna tylko dla zalogowanych użytkowników."
 
 #: hosts/hosthdsto.py:65
-msgid ""
-"You can try to use proxy as workaround, check options under blue button."
-msgstr ""
-"Możesz spróbować użyć proxy, aby obejść ten problem. Sprawdź opcje "
-"konfiguracji dostępne po naciśnięciu niebieskiego przycisku."
+msgid "You can try to use proxy as workaround, check options under blue button."
+msgstr "Możesz spróbować użyć proxy, aby obejść ten problem. Sprawdź opcje konfiguracji dostępne po naciśnięciu niebieskiego przycisku."
 
 #: hosts/hosthdstreams.py:71 hosts/hostmythewatchseries.py:63
 msgid "MOVIES"
@@ -4385,9 +4334,7 @@ msgstr "Brak źródeł możliwych do odtworzenia."
 
 #: hosts/hosttvplayercom.py:257
 msgid "Sorry. TVPlayer is currently only available in the United Kingdom"
-msgstr ""
-"Przepraszamy. Program TVPlayer jest obecnie dostępny tylko w Wielkiej "
-"Brytanii"
+msgstr "Przepraszamy. Program TVPlayer jest obecnie dostępny tylko w Wielkiej Brytanii"
 
 #: hosts/hosttwitchtv.py:51
 msgid "All Platforms"
@@ -4848,12 +4795,8 @@ msgstr ""
 
 #: iptvdm/iptvbuffui.py:291
 #, python-format
-msgid ""
-"Moving playback buffer to the download manager failed with the following "
-"error \"%s\""
-msgstr ""
-"Przeniesienie odtwarzanego bufora do menadżera pobieranie nie powiodło się z "
-"powodu następującego błędu: \"%s\""
+msgid "Moving playback buffer to the download manager failed with the following error \"%s\""
+msgstr "Przeniesienie odtwarzanego bufora do menadżera pobieranie nie powiodło się z powodu następującego błędu: \"%s\""
 
 #: iptvdm/iptvbuffui.py:488
 msgid "Please wait for initialization data."
@@ -5161,8 +5104,7 @@ msgstr "Problem z wykonaniem skryptu użytkownika.\n"
 #: iptvupdate/updatemainwindow.py:590
 #, python-format
 msgid ""
-"Version [%s] is ready for installation. After installation, restart of the "
-"system will be done.\n"
+"Version [%s] is ready for installation. After installation, restart of the system will be done.\n"
 "Do you want to continue?"
 msgstr ""
 "Wersja [%s] jest gotowa do instalacji.\n"
@@ -5289,8 +5231,7 @@ msgstr "Email"
 #: libs/edemtv.py:93
 msgid ""
 "This host requires registration. \n"
-"Please fill your login and password in the host configuration. Available "
-"under blue button."
+"Please fill your login and password in the host configuration. Available under blue button."
 msgstr ""
 "Ten host wymaga rejestracji. \n"
 "Użyj login i hasło w konfiguracji hosta.użyj niebieskiego guzika."
@@ -5322,27 +5263,16 @@ msgstr "Błąd połączenia HTTPS: \"%s\"\n"
 
 #: libs/pCommon.py:340
 #, python-format
-msgid ""
-"It looks like your current configuration do not allow to connect to the "
-"https://%s/.\n"
-msgstr ""
-"Wygląda na to, że Twoja obecna konfiguracja nie pozwala na połączenie do "
-"https://%s/.\n"
+msgid "It looks like your current configuration do not allow to connect to the https://%s/.\n"
+msgstr "Wygląda na to, że Twoja obecna konfiguracja nie pozwala na połączenie do https://%s/.\n"
 
 #: libs/pCommon.py:343
-msgid ""
-"You can disable HTTPS certificates validation in the E2iPlayer configuration "
-"to suppress this problem."
-msgstr ""
-"Proszę rozważyć wyłączenie walidacji certyfikatów HTTPS w konfiguracji "
-"E2iPlayera, aby obejść ten problem."
+msgid "You can disable HTTPS certificates validation in the E2iPlayer configuration to suppress this problem."
+msgstr "Proszę rozważyć wyłączenie walidacji certyfikatów HTTPS w konfiguracji E2iPlayera, aby obejść ten problem."
 
 #: libs/pCommon.py:355
-msgid ""
-"You can enable PyCurl in the E2iPlayer configuration to fix this problem."
-msgstr ""
-"Proszę rozważyć włączenie PyCurl w konfiguracji E2iPlayera, aby rozwiązać "
-"ten problem."
+msgid "You can enable PyCurl in the E2iPlayer configuration to fix this problem."
+msgstr "Proszę rozważyć włączenie PyCurl w konfiguracji E2iPlayera, aby rozwiązać ten problem."
 
 #: libs/pCommon.py:357
 #, python-format
@@ -5408,8 +5338,7 @@ msgstr ""
 
 #: libs/sport365live.py:108
 msgid ""
-"Please remember to visit http://www.sport365.live/ and watch a few "
-"advertisements.\n"
+"Please remember to visit http://www.sport365.live/ and watch a few advertisements.\n"
 "This will fix problem, if your playback is constantly interrupted."
 msgstr ""
 "Pamiętaj, aby odwiedzić stronę /www.sport365.live i obejrzeć kilka reklam.\n"
@@ -5478,16 +5407,11 @@ msgid ""
 "Please set login data in the host configuration under blue button."
 msgstr ""
 "Dostęp tylko dla zalogowanych użytkowników. \n"
-"Wprowadź login i hasło w konfiguracji hosta dostępnej po naciśnięciu "
-"niebieskiego przycisku."
+"Wprowadź login i hasło w konfiguracji hosta dostępnej po naciśnięciu niebieskiego przycisku."
 
 #: libs/urlparser.py:7974
-msgid ""
-"We can't find the file you are looking for. It maybe got deleted by the "
-"owner or was removed due a copyright violation."
-msgstr ""
-"Nie możemy znaleźć pliku, którego szukasz. Być może został usunięty przez "
-"właściciela lub został usunięty z powodu naruszenia praw autorskich."
+msgid "We can't find the file you are looking for. It maybe got deleted by the owner or was removed due a copyright violation."
+msgstr "Nie możemy znaleźć pliku, którego szukasz. Być może został usunięty przez właściciela lub został usunięty z powodu naruszenia praw autorskich."
 
 #: libs/urlparser.py:8020
 #, python-format
@@ -5557,9 +5481,7 @@ msgstr "Na żywo"
 #: libs/wagasworld.py:120
 #, python-format
 msgid "\"%s\" login failed! Please check your login and password."
-msgstr ""
-"Zalogowanie użytkownika \"%s\" nie powiodło się. Proszę sprawdzić login i "
-"hasło."
+msgstr "Zalogowanie użytkownika \"%s\" nie powiodło się. Proszę sprawdzić login i hasło."
 
 #: libs/webcamera.py:66
 msgid "main"
@@ -5738,12 +5660,8 @@ msgid "Detection of the platform."
 msgstr "Wykrywanie platformy."
 
 #: setup/iptvsetupimpl.py:189
-msgid ""
-"Plugin can be run on one of the following platforms: sh4, mipsel, i686, "
-"armv7, armv5t."
-msgstr ""
-"Plugin może być uruchomiony na jednej z następujących platform: sh4, mipsel, "
-"i686, armv7, armv5t."
+msgid "Plugin can be run on one of the following platforms: sh4, mipsel, i686, armv7, armv5t."
+msgstr "Plugin może być uruchomiony na jednej z następujących platform: sh4, mipsel, i686, armv7, armv5t."
 
 #: setup/iptvsetupimpl.py:217
 msgid ""
@@ -5759,8 +5677,7 @@ msgstr "Wykrywanie MIPSEL FPU ABI."
 
 #: setup/iptvsetupimpl.py:240
 msgid "This step is required to proper select binaries for installation."
-msgstr ""
-"Ten krok jest niezbędny, aby poprawnie wybrać pliki wykonywane do instalacji."
+msgstr "Ten krok jest niezbędny, aby poprawnie wybrać pliki wykonywane do instalacji."
 
 #: setup/iptvsetupimpl.py:279 setup/iptvsetupimpl.py:309
 msgid "Detection of the OpenSSL version."
@@ -5768,9 +5685,7 @@ msgstr "Wykrywanie wersji biblioteki OpenSSL."
 
 #: setup/iptvsetupimpl.py:279 setup/iptvsetupimpl.py:309
 msgid "OpenSSL lib is needed by wget and rtmpdump utilities."
-msgstr ""
-"Biblioteka OpenSSL jest wymagana do poprawnego działania narzędzi wget i "
-"rtmpdump."
+msgstr "Biblioteka OpenSSL jest wymagana do poprawnego działania narzędzi wget i rtmpdump."
 
 #: setup/iptvsetupimpl.py:344
 msgid ""
@@ -5778,8 +5693,7 @@ msgid ""
 "Openssl could not be found. Please install it and retry."
 msgstr ""
 "Błąd krytyczny.\n"
-"Biblioteka Openssl nie została odnaleziona.Proszę zainstalować bibliotekę "
-"OpenSSL i spróbować ponownie."
+"Biblioteka Openssl nie została odnaleziona.Proszę zainstalować bibliotekę OpenSSL i spróbować ponownie."
 
 #: setup/iptvsetupimpl.py:351
 msgid "Detection of the OpenSSL 1.0.0 version."
@@ -5820,18 +5734,13 @@ msgstr "Wykrywanie wersji ffmpeg."
 #: setup/iptvsetupimpl.py:519 setup/iptvsetupimpl.py:581
 #: setup/iptvsetupimpl.py:1036
 #, python-format
-msgid ""
-"The \"%s\" utility is used by the %s to buffering and downloading [%s] links."
-msgstr ""
-"Narzędzie \"%s\" wykorzystywane jest przez %s do buforowania i pobierania "
-"materiałów z linków [%s]."
+msgid "The \"%s\" utility is used by the %s to buffering and downloading [%s] links."
+msgstr "Narzędzie \"%s\" wykorzystywane jest przez %s do buforowania i pobierania materiałów z linków [%s]."
 
 #: setup/iptvsetupimpl.py:637
 #, python-format
-msgid ""
-"The \"%s\" utility is used by the %s to determine the encoding of the text."
-msgstr ""
-"Narzędzie \"%s\" używane jest przez %s w celu określenia kodowania tekstu."
+msgid "The \"%s\" utility is used by the %s to determine the encoding of the text."
+msgstr "Narzędzie \"%s\" używane jest przez %s w celu określenia kodowania tekstu."
 
 #: setup/iptvsetupimpl.py:688
 msgid "C subtitle parser"
@@ -5925,27 +5834,18 @@ msgstr ""
 "Aby uzyskać więcej informacji prosimy odwiedzić http://duktape.org/"
 
 #: setup/iptvsetupimpl.py:980
-msgid ""
-"Duktape is an embeddable Javascript engine, with a focus on portability and "
-"compact footprint.\n"
-msgstr ""
-"Duktape to silniki JavaScript zoptymalizowany pod kątem zastosowań w "
-"urządzeniach wbudowanych.\n"
+msgid "Duktape is an embeddable Javascript engine, with a focus on portability and compact footprint.\n"
+msgstr "Duktape to silniki JavaScript zoptymalizowany pod kątem zastosowań w urządzeniach wbudowanych.\n"
 
 #: setup/iptvsetupimpl.py:1092
 #, python-format
-msgid ""
-"The \"%s\" utility is used by the %s as external movie player based on the "
-"ffmpeg and libeplayer."
-msgstr ""
-"Narzędzie \"%s\" jest używane przez %s jako zewnętrzny odtwarzacz oparty na "
-"ffmpeg i libeplayer."
+msgid "The \"%s\" utility is used by the %s as external movie player based on the ffmpeg and libeplayer."
+msgstr "Narzędzie \"%s\" jest używane przez %s jako zewnętrzny odtwarzacz oparty na ffmpeg i libeplayer."
 
 #: setup/iptvsetupimpl.py:1139
 #, python-format
 msgid "The \"%s\" utility is used by the %s as external movie player."
-msgstr ""
-"Narzędzie \"%s\" jest używane przez %s jako zewnętrzny odtwarzacz filmów."
+msgstr "Narzędzie \"%s\" jest używane przez %s jako zewnętrzny odtwarzacz filmów."
 
 #: setup/iptvsetupimpl.py:1180
 msgid "Fluendo mpegdemux for GSTREAMER 0.10"
@@ -5990,8 +5890,7 @@ msgid ""
 "Such as downloading and installation additional binaries.\n"
 "Press OK to start."
 msgstr ""
-"E2iPlayer wymaga dodatkowych działań takich jak pobranie i instalacja "
-"dodatkowych modułów binarnych.\n"
+"E2iPlayer wymaga dodatkowych działań takich jak pobranie i instalacja dodatkowych modułów binarnych.\n"
 "Naciśnij OK,aby rozpocząć."
 
 #: setup/iptvsetupwidget.py:94
@@ -6017,9 +5916,7 @@ msgstr "Nie można nawiązać połaczenia z \"%s\"."
 #: subproviders/subprov_opensubtitlesorg2.py:158
 #, python-format
 msgid "Failed to log in user \"%s\". Please check your login and password."
-msgstr ""
-"Zalogowanie użytkownika \"%s\" nie powiodło się. Proszę sprawdzić login i "
-"hasło."
+msgstr "Zalogowanie użytkownika \"%s\" nie powiodło się. Proszę sprawdzić login i hasło."
 
 #: subproviders/subprov_napisy24pl.py:99
 #, python-format
@@ -6094,12 +5991,8 @@ msgstr "Szukaj tylko seriali"
 
 #: subproviders/subprov_opensubtitlesorg2.py:73
 #, python-format
-msgid ""
-"%s has been protected with google recaptcha v2. You can try to use API "
-"version."
-msgstr ""
-"%s jest zabezpieczony przez Google ReCaptcha v2. Proszę spróbować użyć "
-"wersji API."
+msgid "%s has been protected with google recaptcha v2. You can try to use API version."
+msgstr "%s jest zabezpieczony przez Google ReCaptcha v2. Proszę spróbować użyć wersji API."
 
 #: subproviders/subprov_popcornsubtitles.py:53
 msgid "Wrong uri."
@@ -6153,12 +6046,8 @@ msgstr "Program %s jest tutaj niezbędny ale nie został on wykryty."
 
 #: tools/e2ijs.py:33
 #, python-format
-msgid ""
-"Please consider restart your Engima2 and agree to install the %s utlity when "
-"the %s will propose this."
-msgstr ""
-"Prószę rozważyć restart systemy i zgodę na instalacje programu %s kiedy %s "
-"zaproponuje to."
+msgid "Please consider restart your Engima2 and agree to install the %s utlity when the %s will propose this."
+msgstr "Prószę rozważyć restart systemy i zgodę na instalacje programu %s kiedy %s zaproponuje to."
 
 #: tools/iptvfavourites.py:112 tools/iptvfavourites.py:168
 msgid "Wrong indexes."
@@ -6197,79 +6086,3 @@ msgstr "Bład zapisu pliku \"%s\".\n"
 #: tools/iptvhostgroups.py:126
 msgid "This host has been added already to this group."
 msgstr "Ten host został już dodany do tej grupy."
-
-#, fuzzy
-#~| msgid " (planned %s)"
-#~ msgid " (planowany)"
-#~ msgstr " (planowany %s)"
-
-#, fuzzy
-#~| msgid "Menu"
-#~ msgid "en"
-#~ msgstr "Menu"
-
-#~ msgid "Records path"
-#~ msgstr "Ścieżka do pobierania"
-
-#~ msgid "External movie player default aspect ratio:"
-#~ msgstr "Domyślny \"aspect ratio\" zewnętrznego odtwarzacza:"
-
-#~ msgid "Load automatically the subtitle from file with the same name"
-#~ msgstr "Wczytać autom. napisy z pliku o takiej samej nazwie"
-
-#~ msgid "Default video policy"
-#~ msgstr "Domyślny sposób konwersji wideo"
-
-#~ msgid "[dash] "
-#~ msgstr "[dash] "
-
-#~ msgid "Device ID"
-#~ msgstr "ID urządzenia"
-
-#~ msgid "Promoted games"
-#~ msgstr "Promowane gry"
-
-#~ msgid "Promoted channels"
-#~ msgstr "Promowane kanały"
-
-#~ msgid "Week"
-#~ msgstr "Tydzień"
-
-#~ msgid "Month"
-#~ msgstr "Miesiąc"
-
-#~ msgid "%s viewers, %s channels"
-#~ msgstr "%s widzów, %s kanałów"
-
-#~ msgid "Could not find JS function %r"
-#~ msgstr "Nie można odnależć funkcji JS %r"
-
-#~ msgid "Default second video policy"
-#~ msgstr "Domyślny sposób konwersji wideo dla drugiego wyjścia"
-
-#~ msgid "Policy"
-#~ msgstr "Sposób konwersji wideo"
-
-#~ msgid "Policy2"
-#~ msgstr "Sposób konwersji wideo dla drugiego wyjścia"
-
-#~ msgid "Iframe file"
-#~ msgstr "Plik ramki iframe"
-
-#~ msgid "External player use software decoder for the AC3"
-#~ msgstr "Programowe dekodowanie dla AC3"
-
-#~ msgid "External player use software decoder for the EAC3"
-#~ msgstr "Programowe dekodowanie dla EAC3"
-
-#~ msgid "External player use software decoder for the DTS"
-#~ msgstr "Programowe dekodowanie dla DTS"
-
-#~ msgid "External player use software decoder for the WMA"
-#~ msgstr "Programowe dekodowanie dla WMA"
-
-#~ msgid "External player use software decoder for the MP3"
-#~ msgstr "Programowe dekodowanie dla MP3"
-
-#~ msgid "External player infobar timeout"
-#~ msgstr "Czas wyswietlania paska informacyjnego"
