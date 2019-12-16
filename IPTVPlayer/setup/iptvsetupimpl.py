@@ -732,7 +732,7 @@ class IPTVSetupImpl:
         if remoteBinaryName:
             self.stepHelper = CBinaryStepHelper(remoteBinaryName, self.platform, self.openSSLVersion, None)
             msg1 = _("C subtitle parser")
-            msg2 = _("\nFor more info please ask the author samsamsam@o2.pl")
+            msg2 = _("\nFor more info please ask the author.")
             msg3 = _('It improves subtitles parsing.\n')
             self.stepHelper.updateMessage('detection', msg1, 0)
             self.stepHelper.updateMessage('detection', msg2, 1)
@@ -795,7 +795,7 @@ class IPTVSetupImpl:
         if remoteBinaryName:
             self.stepHelper = CBinaryStepHelper(remoteBinaryName, self.platform, self.openSSLVersion, None)
             msg1 = _("python-cjson")
-            msg2 = _("\nFor more info please ask %s ") % 'samsamsam@o2.pl'
+            msg2 = _("\nFor more info please ask the author.")
             msg3 = _('It improves json data parsing.\n')
             self.stepHelper.updateMessage('detection', msg1, 0)
             self.stepHelper.updateMessage('detection', msg2, 1)
@@ -860,7 +860,7 @@ class IPTVSetupImpl:
         
         self.stepHelper = CBinaryStepHelper("hlsdl", self.platform, self.openSSLVersion, config.plugins.iptvplayer.hlsdlpath)
         msg1 = _("hlsdl downloader")
-        msg2 = _("\nFor more info please ask samsamsam@o2.pl")
+        msg2 = _("\nFor more info please ask the author.")
         msg3 = _('It improves HLS/M3U8 stream download.\n')
         self.stepHelper.updateMessage('detection', msg1, 0)
         self.stepHelper.updateMessage('detection', msg2, 1)
@@ -887,7 +887,14 @@ class IPTVSetupImpl:
         printDBG("IPTVSetupImpl.cmdwrapStep")
             
         def _detectValidator(code, data):
-            return True,False
+            if 'cmdwrapper input_file' in data:
+                try:
+                    tmp = re.search("Version\:\s*?([0-9.]+?)[^0-9^.]", data).group(1)
+                    if float(tmp) >= self.cmdwrapVersion:
+                        return True,False
+                except Exception:
+                    printExc()
+            return False,True
         
         def _deprecatedHandler(paths, stsTab, dataTab):
             sts, retPath = False, ""
@@ -913,7 +920,7 @@ class IPTVSetupImpl:
         
         self.stepHelper = CBinaryStepHelper("cmdwrapper", self.platform, self.openSSLVersion, config.plugins.iptvplayer.cmdwrappath)
         msg1 = _("cmdwrapper tool")
-        msg2 = _("\nFor more info please ask samsamsam@o2.pl")
+        msg2 = _("\nFor more info please ask the author.")
         msg3 = _('It improves commands execution with very long arguments.\n')
         self.stepHelper.updateMessage('detection', msg1, 0)
         self.stepHelper.updateMessage('detection', msg2, 1)
@@ -941,7 +948,14 @@ class IPTVSetupImpl:
         self.binaryInstalledSuccessfully = False
             
         def _detectValidator(code, data):
-            return True,False
+            if 'restrict-memory' in data:
+                try:
+                    ver = int(re.search('VER_FOR_IPTV\:\s([0-9]+?)\n', data).group(1))
+                    if ver >= self.dukVersion:
+                        return True, False
+                except Exception:
+                    printExc()
+            return False,True
         
         def _deprecatedHandler(paths, stsTab, dataTab):
             sts, retPath = False, ""
@@ -1217,7 +1231,7 @@ class IPTVSetupImpl:
             return cmd
         self.stepHelper = CBinaryStepHelper("libgstifdsrc.so", self.platform, self.openSSLVersion, None)
         msg1 = _("GST-IFDSRC for GSTREAMER 1.X")
-        msg2 = _("\nFor more info please ask the author samsamsam@o2.pl")
+        msg2 = _("\nFor more info please ask the author.")
         msg3 = _('It improves buffering mode with the gstplayer.\n')
         self.stepHelper.updateMessage('detection', msg1, 0)
         self.stepHelper.updateMessage('detection', msg2, 1)
