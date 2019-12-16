@@ -50,7 +50,7 @@ class BeinmatchApi(CBaseHostClass):
                 break
 
         if not self.getLinkJS:
-            self.sessionEx.waitForFinishOpen(MessageBox, _('Data for link generation could not be found.\nPlease report this problem to %s') % 'iptvplayere2@gmail.com', type = MessageBox.TYPE_ERROR, timeout = 10)
+            self.sessionEx.waitForFinishOpen(MessageBox, _('Data for link generation could not be found.\nPlease report this problem to %s') % 'https://github.com/persianpros/e2iplayer/issues', type = MessageBox.TYPE_ERROR, timeout = 10)
 
         data = ph.find(data, ('<table', '>', 'tabIndex'), ('<div', '>', 'Side'))[1]
         data = ph.rfindall(data, '</tr>', ('<table', '>', 'tabIndex'))

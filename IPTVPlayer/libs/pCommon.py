@@ -355,9 +355,9 @@ class common:
                 if not UsePyCurl():
                     messages.append(_('You can enable PyCurl in the E2iPlayer configuration to fix this problem.'))
                 else:
-                    messages.append(_('Please report this problem to the developer %s.') % 'iptvplayere2@gmail.com')
+                    messages.append(_('Please report this problem to the developer.'))
             else:
-                messages.append(_('You can install PyCurl package from %s to fix this problem.') % 'http://www.iptvplayer.gitlab.io/')
+                messages.append(_('You can install PyCurl package from online feeds to fix this problem.'))
         GetIPTVNotify().push('\n'.join(messages), 'error', 40, type + domain, 40)
     
     def usePyCurl(self):
@@ -1143,7 +1143,7 @@ class common:
         
     def getUrllibSSLProtocolVersion(self, protocolName):
         if not isinstance(protocolName, basestring):
-            GetIPTVNotify().push('getUrllibSSLProtocolVersion error. Please report this problem to iptvplayere2@gmail.com', 'error', 40)
+            GetIPTVNotify().push('getUrllibSSLProtocolVersion error. Please report this problem to https://github.com/persianpros/e2iplayer/issues', 'error', 40)
             return protocolName
         if protocolName == 'TLSv1_2':
             return ssl.PROTOCOL_TLSv1_2
@@ -1153,7 +1153,7 @@ class common:
         
     def getPyCurlSSLProtocolVersion(self, protocolName):
         if not isinstance(protocolName, basestring):
-            GetIPTVNotify().push('getPyCurlSSLProtocolVersion error. Please report this problem to iptvplayere2@gmail.com', 'error', 40)
+            GetIPTVNotify().push('getPyCurlSSLProtocolVersion error. Please report this problem to https://github.com/persianpros/e2iplayer/issues', 'error', 40)
             return protocolName
         if protocolName == 'TLSv1_2':
             return pycurl.SSLVERSION_TLSv1_2

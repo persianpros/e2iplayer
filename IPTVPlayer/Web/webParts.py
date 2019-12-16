@@ -57,7 +57,7 @@ def IncludeMENU( MenuStatusMSG = '', ShowCancelButton = False):
     <a href="/iptvplayer/?resetState=1" >%s</a>
   </div>
   <div class="bottombar">
-    <a href="https://gitlab.com/iptvplayer-for-e2/iptvplayer-for-e2/commits/master" target="_blank" >IPTVPlayer %s: <b><font color="#A9F5F2">%s</font></b></a>
+    <a href="https://github.com/persianpros/e2iplayer/commits/master" target="_blank" >IPTVPlayer %s: <b><font color="#A9F5F2">%s</font></b></a>
     <a>, %s: <b>%s</b></a/>
   </div>
 """ % ( _('Active host'), _('Download manager'), _('Logs'), _('Reset State'), _('version'), IPTV_VERSION, _('Web interface version'), settings.WebInterfaceVersion )
@@ -74,7 +74,7 @@ def IncludeMENU( MenuStatusMSG = '', ShowCancelButton = False):
     <a href="/iptvplayer/?resetState=1" >%s</a>
   </div>
   <div class="bottombar">
-    <a href="https://gitlab.com/iptvplayer-for-e2/iptvplayer-for-e2/commits/master" target="_blank" >E2iPlayer %s: <b><font color="#A9F5F2">%s</font></b></a>
+    <a href="https://github.com/persianpros/e2iplayer/commits/master" target="_blank" >E2iPlayer %s: <b><font color="#A9F5F2">%s</font></b></a>
     <a>, %s: <b>%s</b></a/>
   </div>
 """ % ( _('Information'), _('Selected hosts'), _('Search'), _('Download manager'), _('Settings'), _('Logs'), _('Reset State'), _('version'), IPTV_VERSION, _('Web interface version'), settings.WebInterfaceVersion )
