@@ -109,7 +109,7 @@ class IPTVSetupImpl:
         
         # cmdwrap
         self.cmdwrapVersion = 2
-        self.cmdwrapPaths = [resolveFilename(SCOPE_PLUGINS, 'Extensions/IPTVPlayer/bin/cmdwrap'), "/usr/bin/cmdwrap"]
+        self.cmdwrapPaths = [resolveFilename(SCOPE_PLUGINS, 'Extensions/IPTVPlayer/bin/cmdwrapper'), "/usr/bin/cmdwrapper"]
         
         # duk
         self.dukVersion = 6 # "2.1.99 [experimental]" # real version
@@ -892,7 +892,7 @@ class IPTVSetupImpl:
         def _deprecatedHandler(paths, stsTab, dataTab):
             sts, retPath = False, ""
             for idx in range(len(dataTab)):
-                if 'cmdwrap input_file' in dataTab[idx]: sts, retPath = True, paths[idx]
+                if 'cmdwrapper input_file' in dataTab[idx]: sts, retPath = True, paths[idx]
             return sts, retPath
         
         def _downloadCmdBuilder(binName, platform, openSSLVersion, server, tmpPath):
@@ -911,8 +911,8 @@ class IPTVSetupImpl:
             cmd = SetupDownloaderCmdCreator(url, tmpFile) + ' > /dev/null 2>&1'
             return cmd
         
-        self.stepHelper = CBinaryStepHelper("cmdwrap", self.platform, self.openSSLVersion, config.plugins.iptvplayer.cmdwrappath)
-        msg1 = _("cmdwrap tool")
+        self.stepHelper = CBinaryStepHelper("cmdwrapper", self.platform, self.openSSLVersion, config.plugins.iptvplayer.cmdwrappath)
+        msg1 = _("cmdwrapper tool")
         msg2 = _("\nFor more info please ask samsamsam@o2.pl")
         msg3 = _('It improves commands execution with very long arguments.\n')
         self.stepHelper.updateMessage('detection', msg1, 0)
@@ -920,7 +920,7 @@ class IPTVSetupImpl:
         self.stepHelper.updateMessage('not_detected_2', msg1 + _(' has not been detected. \nDo you want to install it? ') + msg3 + msg2, 1)
         self.stepHelper.updateMessage('deprecated_2', msg1 + _(' is deprecated. \nDo you want to install new one? ') + msg3 + msg2, 1)
         
-        self.stepHelper.setInstallChoiseList( [('cmdwrap', self.cmdwrapPaths[0])] )
+        self.stepHelper.setInstallChoiseList( [('cmdwrapper', self.cmdwrapPaths[0])] )
         self.stepHelper.setPaths( self.cmdwrapPaths )
         self.stepHelper.setDetectCmdBuilder( lambda path: path + " 2>&1 " )
         self.stepHelper.setDetectValidator( _detectValidator )
