@@ -514,38 +514,6 @@ class ConfigMenu(ConfigBaseWidget):
             IPTVPlayerNeedInit(True)
             
     def getMessageBeforeClose(self, afterSave):
-        needPluginUpdate = False
-        if afterSave and config.plugins.iptvplayer.ListaGraficzna.value and 0 == GetAvailableIconSize(False):
-            needPluginUpdate = True
-        else:
-            enabledHostsList = GetEnabledHostsList()
-            hostsFromFolder  = GetHostsList(fromList=False, fromHostFolder=True)
-            if self.remove_diabled_hostsOld != config.plugins.iptvplayer.remove_diabled_hosts.value:
-                if config.plugins.iptvplayer.remove_diabled_hosts.value:
-                    for folderItem in hostsFromFolder:
-                        if folderItem in enabledHostsList:
-                            continue
-                        else:
-                            # there is host file which is not enabled, 
-                            # so we need perform update to remove it
-                            needPluginUpdate = True
-                            break
-                else:
-                    hostsFromList = GetHostsList(fromList=True, fromHostFolder=False)
-                    if not set(hostsFromList).issubset(set(hostsFromFolder)):
-                        # there is missing hosts files, we need updated does not matter 
-                        # if these hosts are enabled or disabled
-                        needPluginUpdate = True
-            elif IsUpdateNeededForHostsChangesCommit(self.enabledHostsListOld, enabledHostsList, hostsFromFolder):
-                needPluginUpdate = True
-        
-        if needPluginUpdate:
-            SetGraphicsHash("")
-            SetIconsHash("")
-        
-        if not needPluginUpdate and config.plugins.iptvplayer.IPTVWebIterface.value != IsWebInterfaceModuleAvailable(True):
-            needPluginUpdate = True
-            
         return ''
             
     def performCloseWithMessage(self, afterSave=True):
