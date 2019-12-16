@@ -75,7 +75,7 @@ config.plugins.iptvplayer.IPTVWebIterface = ConfigYesNo(default = False)
 config.plugins.iptvplayer.plugin_autostart = ConfigYesNo(default = False)
 config.plugins.iptvplayer.plugin_autostart_method = ConfigSelection(default = "wizard", choices = [("wizard", "wizard"),("infobar", "infobar")])
 
-config.plugins.iptvplayer.preferredupdateserver = ConfigSelection(default = "", choices = [("", _("Default")),("1", "http://iptvplayer.vline.pl/"), ("2", _("http://zadmario.gitlab.io/")), ("3", _("private"))])
+config.plugins.iptvplayer.preferredupdateserver = ConfigSelection(default = "", choices = [("", _("Default")),("1", "http://iptvplayer.vline.pl/"), ("2", _("http://zadmario.gitlab.io/"))])
 config.plugins.iptvplayer.osk_type = ConfigSelection(default = "", choices = [("", _("Auto")),("system", _("System")), ("own", _("Own model"))])
 config.plugins.iptvplayer.osk_layout = ConfigText(default = "", fixed_size = False)
 config.plugins.iptvplayer.osk_allow_suggestions = ConfigYesNo(default = True)
@@ -192,11 +192,11 @@ config.plugins.iptvplayer.myjd_password = ConfigText(default = "", fixed_size = 
 config.plugins.iptvplayer.myjd_jdname = ConfigText(default = "", fixed_size = False)
 
 # Update
-config.plugins.iptvplayer.autoCheckForUpdate = ConfigYesNo(default = True)
+config.plugins.iptvplayer.autoCheckForUpdate = ConfigYesNo(default = False)
 config.plugins.iptvplayer.updateLastCheckedVersion = ConfigText(default = "00.00.00.00", fixed_size = False)
 config.plugins.iptvplayer.fakeUpdate               = ConfigSelection(default = "fake", choices = [("fake", "  ")])
 config.plugins.iptvplayer.downgradePossible        = ConfigYesNo(default = False)
-config.plugins.iptvplayer.possibleUpdateType       = ConfigSelection(default = "all", choices = [("sourcecode", _("with source code")),("precompiled", _("precompiled")), ("all", _("all types"))]) 
+config.plugins.iptvplayer.possibleUpdateType       = ConfigSelection(default = "precompiled", choices = [("sourcecode", _("with source code")),("precompiled", _("precompiled")), ("all", _("all types"))]) 
 
 # Hosts lists
 config.plugins.iptvplayer.fakeHostsList = ConfigSelection(default = "fake", choices = [("fake", "  ")])
@@ -323,9 +323,6 @@ class ConfigMenu(ConfigBaseWidget):
         list.append( getConfigListEntry(_("The preferred update server"), config.plugins.iptvplayer.preferredupdateserver) )
         if config.plugins.iptvplayer.preferredupdateserver.value == '2':
             list.append(getConfigListEntry(_("Add update from GitLab repository"), config.plugins.iptvplayer.gitlab_repo))
-        if config.plugins.iptvplayer.preferredupdateserver.value == '3':
-            list.append(getConfigListEntry(_("%s login") % 'E2iPlayer', config.plugins.iptvplayer.iptvplayer_login))
-            list.append(getConfigListEntry(_("%s password") % 'E2iPlayer', config.plugins.iptvplayer.iptvplayer_password))
         list.append( getConfigListEntry(_("Update"), config.plugins.iptvplayer.fakeUpdate) )
         list.append( getConfigListEntry(_("Virtual Keyboard type"), config.plugins.iptvplayer.osk_type) )
         if config.plugins.iptvplayer.osk_type.value == 'own':
