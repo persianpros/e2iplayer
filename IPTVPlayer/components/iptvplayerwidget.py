@@ -696,6 +696,8 @@ class E2iPlayerWidget(Screen):
                                  {'nick':'tomashj291',},
                                  {'nick':'a4tech',    },
                                  {'nick':'zadmario',    },
+                                 {'nick':'mosz_nowy',    },
+                                 {'nick':'maxbambi',    },
                                  {'nick':'Open Vision Developers',    },
                                 ]
                 # present alphabetically, the order does not mean validity
