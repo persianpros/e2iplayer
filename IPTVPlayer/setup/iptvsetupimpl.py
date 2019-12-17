@@ -482,14 +482,7 @@ class IPTVSetupImpl:
     def wgetStep(self, ret=None):
         printDBG("IPTVSetupImpl.wgetStep")
         def _detectValidator(code, data):
-            if 'BusyBox' not in data and '+https' in data: 
-                try: 
-                    obj = re.search("GNU Wget 1\.([0-9]+?)\.([0-9]+?)[^0-9]", data)
-                    if obj != None: ver = int(obj.group(1)) * 100 + int(obj.group(2))
-                    else: ver = int(re.search("GNU Wget 1\.([0-9]+?)[^0-9]", data).group(1)) * 100
-                except Exception: ver = 0
-                if ver >= self.wgetVersion: return True,False
-            return False,True
+            return True,False
         
         def _deprecatedHandler(paths, stsTab, dataTab):
             sts, retPath = False, ""
@@ -538,14 +531,7 @@ class IPTVSetupImpl:
         self.binaryInstalledSuccessfully = False
         
         def _detectValidator(code, data):
-            try:
-                rawVer = re.search("([0-9]{4})\-([0-9]{2})\-([0-9]{2})", data)
-                ver = int(rawVer.group(1)+rawVer.group(2)+rawVer.group(3))
-                if self.rtmpdumpVersion <= ver:
-                    return True,False
-            except Exception:
-                printExc()
-            return False,True
+            return True,False
         def _deprecatedHandler(paths, stsTab, dataTab):
             sts, retPath = False, ""
             for idx in range(len(dataTab)):
@@ -600,20 +586,7 @@ class IPTVSetupImpl:
         printDBG("IPTVSetupImpl.uchardetStep")
         self.binaryInstalledSuccessfully = False
         def _detectValidator(code, data):
-            if self.binaryInstalledSuccessfully: self.stepHelper.setInstallChoiseList( self._uchardetInstallChoiseList2 )
-            else: self.stepHelper.setInstallChoiseList( self._uchardetInstallChoiseList )
-            try: 
-                rawVer = re.search("Version\s([0-9])\.([0-9])\.([0-9])", data)
-                UCHARDET_VERSION_MAJOR     = int(rawVer.group(1))
-                UCHARDET_VERSION_MINOR     = int(rawVer.group(2))
-                UCHARDET_VERSION_REVISION  = int(rawVer.group(3))
-                if (UCHARDET_VERSION_MAJOR > self.uchardetVersion[0]) or \
-                   (UCHARDET_VERSION_MAJOR == self.uchardetVersion[0] and UCHARDET_VERSION_MINOR > self.uchardetVersion[1]) or \
-                   (UCHARDET_VERSION_MAJOR == self.uchardetVersion[0] and UCHARDET_VERSION_MINOR == self.uchardetVersion[1] and UCHARDET_VERSION_REVISION >= self.uchardetVersion[2]):
-                    return True,False
-            except Exception:
-                printExc()
-            return False,True
+            return True,False
         def _deprecatedHandler(paths, stsTab, dataTab):
             sts, retPath = False, ""
             for idx in range(len(dataTab)):
@@ -705,14 +678,7 @@ class IPTVSetupImpl:
             return cmd
 
         def _detectValidator(code, data):
-            printDBG("subparserStep_detectValidator code[%d], data[%s]" % (code, data))
-            if 0 == code:
-                try: 
-                    if float(data.strip()) >= self.subparserVersion:
-                        return True,False
-                except Exception: 
-                    pass
-            return False,True
+            return True,False
 
         def _deprecatedHandler(paths, stsTab, dataTab):
             try: 
@@ -765,16 +731,7 @@ class IPTVSetupImpl:
             return cmd
             
         def _detectValidator(code, data):
-            printDBG("e2icjsonStep_detectValidator code[%d], data[%s]" % (code, data))
-            if 0 == code:
-                try: 
-                    ver = data.strip().split('.')
-                    ver = int(ver[0]) * 10000 + int(ver[1]) * 100 + int(ver[2])
-                    if ver >= self.e2icjsonVersion:
-                        return True,False
-                except Exception: 
-                    pass
-            return False,True
+            return True,False
 
         def _deprecatedHandler(paths, stsTab, dataTab):
             try: 
@@ -825,14 +782,7 @@ class IPTVSetupImpl:
         self.binaryInstalledSuccessfully = False
             
         def _detectValidator(code, data):
-            if 'hlsdl v' in data:
-                try:
-                    tmp = re.search("hlsdl v([0-9.]+?)[^0-9^.]", data).group(1)
-                    if float(tmp) >= self.hlsdlVersion:
-                        return True,False
-                except Exception:
-                    printExc()
-            return False,True
+            return True,False
         
         def _deprecatedHandler(paths, stsTab, dataTab):
             sts, retPath = False, ""
@@ -887,14 +837,7 @@ class IPTVSetupImpl:
         printDBG("IPTVSetupImpl.cmdwrapStep")
             
         def _detectValidator(code, data):
-            if 'cmdwrapper input_file' in data:
-                try:
-                    tmp = re.search("Version\:\s*?([0-9.]+?)[^0-9^.]", data).group(1)
-                    if float(tmp) >= self.cmdwrapVersion:
-                        return True,False
-                except Exception:
-                    printExc()
-            return False,True
+            return True,False
         
         def _deprecatedHandler(paths, stsTab, dataTab):
             sts, retPath = False, ""
@@ -948,14 +891,7 @@ class IPTVSetupImpl:
         self.binaryInstalledSuccessfully = False
             
         def _detectValidator(code, data):
-            if 'restrict-memory' in data:
-                try:
-                    ver = int(re.search('VER_FOR_IPTV\:\s([0-9]+?)\n', data).group(1))
-                    if ver >= self.dukVersion:
-                        return True, False
-                except Exception:
-                    printExc()
-            return False,True
+            return True,False
         
         def _deprecatedHandler(paths, stsTab, dataTab):
             sts, retPath = False, ""
@@ -1011,16 +947,7 @@ class IPTVSetupImpl:
         printDBG("IPTVSetupImpl.f4mdumpStep")
         self.binaryInstalledSuccessfully = False
         def _detectValidator(code, data):
-            if self.binaryInstalledSuccessfully: self.stepHelper.setInstallChoiseList( self._f4mdumpInstallChoiseList2 )
-            else: self.stepHelper.setInstallChoiseList( self._f4mdumpInstallChoiseList )
-            if 'F4MDump v' in data:
-                try:
-                    tmp = re.search("F4MDump v([0-9.]+?)[^0-9^.]", data).group(1)
-                    if float(tmp) >= self.f4mdumpVersion:
-                        return True,False
-                except Exception:
-                    printExc()
-            return False,True
+            return True,False
         def _deprecatedHandler(paths, stsTab, dataTab):
             sts, retPath = False, ""
             for idx in range(len(dataTab)):
@@ -1078,11 +1005,7 @@ class IPTVSetupImpl:
     def exteplayer3Step(self, ret=None):
         printDBG("IPTVSetupImpl.exteplayer3Step")
         def _detectValidator(code, data):
-            if '{"EPLAYER3_EXTENDED":{"version":' in data: 
-                try: ver = int(re.search('"version":([0-9]+?)[^0-9]', data).group(1))
-                except Exception: ver = 0
-                if ver >= self.exteplayer3Version.get(self.platform, 0): return True,False
-            return False,True
+            return True,False
         def _deprecatedHandler(paths, stsTab, dataTab):
             sts, retPath = False, ""
             for idx in range(len(dataTab)):
@@ -1122,13 +1045,7 @@ class IPTVSetupImpl:
             self.gstplayerStepFinished(False)
         else:
             def _detectValidator(code, data):
-                if '{"GSTPLAYER_EXTENDED":{"version":' in data: 
-                    try: ver = int(re.search('"version":([0-9]+?)[^0-9]', data).group(1))
-                    except Exception: ver = 0
-                    if '0.10' != self.gstreamerVersion or ver < 10000:
-                        if ver >= self.gstplayerVersion.get(self.gstreamerVersion, 0): 
-                            return True,False
-                return False,True
+                return True,False
             def _deprecatedHandler(paths, stsTab, dataTab):
                 sts, retPath = False, ""
                 for idx in range(len(dataTab)):
@@ -1170,9 +1087,7 @@ class IPTVSetupImpl:
     def flumpegdemuxStep(self, ret=None):
         printDBG("IPTVSetupImpl.flumpegdemuxStep")
         def _detectValidator(code, data):
-            # some grep return code 1 even if the pattern has been found  and printed
-            if 0 == code or self.flumpegdemuxVersion in data: return True,False
-            return False,True
+            return True,False
         def _deprecatedHandler(paths, stsTab, dataTab):
             sts, retPath = False, ""
             try: currentSize = os_path.getsize(self.flumpegdemuxpaths[0])
@@ -1212,9 +1127,7 @@ class IPTVSetupImpl:
     def gstifdsrcStep(self, ret=None):
         printDBG("IPTVSetupImpl.gstifdsrcStep")
         def _detectValidator(code, data):
-            # some grep return code 1 even if the pattern has been found  and printed
-            if 0 == code or self.gstifdsrcVersion in data: return True,False
-            return False,True
+            return True,False
         def _deprecatedHandler(paths, stsTab, dataTab):
             sts, retPath = False, ""
             try: currentSize = os_path.getsize(self.gstifdsrcPaths[0])
