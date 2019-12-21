@@ -394,36 +394,14 @@ class IPTVSetupImpl:
             return True,False
         
         def _deprecatedHandler(paths, stsTab, dataTab):
-            sts, retPath = False, ""
-            for idx in range(len(dataTab)):
-                if 'BusyBox' not in dataTab[idx] and '+https' in dataTab[idx]: sts, retPath = True, paths[idx]
-            return sts, retPath
-        
-        def _downloadCmdBuilder(binName, platform, openSSLVersion, server, tmpPath):
-            old = ''
-            versions = {'sh4':2190, 'mipsel':2200}
-            
-            if platform in ['sh4', 'mipsel'] and (self.binaryInstalledSuccessfully or self.glibcVersion < versions[platform] ):
-                old = '_old'
-            
-            if old == '' and platform == 'mipsel' and not IsFPUAvailable():
-                old = '_softfpu'
-            
-            url = server + 'bin/' + platform + ('/%s%s' % (binName, old)) + '_openssl' + openSSLVersion
-            if self.binaryInstalledSuccessfully:
-                self.binaryInstalledSuccessfully = False
-                
-            tmpFile = tmpPath + binName
-            cmd = SetupDownloaderCmdCreator(url, tmpFile) + ' > /dev/null 2>&1'
-            return cmd
-        
+            return True, True
+
         self.stepHelper = CBinaryStepHelper("wget", self.platform, self.openSSLVersion, config.plugins.iptvplayer.wgetpath)
         self.stepHelper.updateMessage('detection', (_('The "%s" utility is used by the %s to buffering and downloading [%s] links.') % ('wget', 'E2iPlayer', 'http, https, f4m, uds, hls')), 1)
         self.stepHelper.setInstallChoiseList( self._wgetInstallChoiseList )
         self.stepHelper.setPaths( self.wgetpaths )
         self.stepHelper.setDetectCmdBuilder( lambda path: path + " -V 2>&1 " )
         self.stepHelper.setDetectValidator( _detectValidator )
-        self.stepHelper.setDownloadCmdBuilder( _downloadCmdBuilder )
         self.stepHelper.setDeprecatedHandler( _deprecatedHandler )
         self.stepHelper.setFinishHandler( self.wgetStepFinished )
         self.binaryDetect()
