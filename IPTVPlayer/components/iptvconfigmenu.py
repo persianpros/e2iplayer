@@ -91,51 +91,6 @@ def ConfigPlayer(player):
 
 config.plugins.iptvplayer.NaszPlayer = ConfigSelection(default = "auto", choices = [ConfigPlayer("auto"), ConfigPlayer("mini"), ConfigPlayer('extgstplayer'), ConfigPlayer("standard")])
 
-# without buffering mode
-#sh4
-config.plugins.iptvplayer.defaultSH4MoviePlayer0         = ConfigSelection(default = "auto", choices = [ConfigPlayer("auto"),ConfigPlayer("mini"),ConfigPlayer("standard"),ConfigPlayer('exteplayer'),ConfigPlayer('extgstplayer')]) 
-config.plugins.iptvplayer.alternativeSH4MoviePlayer0     = ConfigSelection(default = "auto", choices = [ConfigPlayer("auto"),ConfigPlayer("mini"),ConfigPlayer("standard"),ConfigPlayer('exteplayer'),ConfigPlayer('extgstplayer')]) 
-
-#mipsel
-config.plugins.iptvplayer.defaultMIPSELMoviePlayer0      = ConfigSelection(default = "auto", choices = [ConfigPlayer("auto"),ConfigPlayer("mini"),ConfigPlayer("standard"),ConfigPlayer('extgstplayer'),ConfigPlayer('exteplayer')])
-config.plugins.iptvplayer.alternativeMIPSELMoviePlayer0  = ConfigSelection(default = "auto", choices = [ConfigPlayer("auto"),ConfigPlayer("mini"),ConfigPlayer("standard"),ConfigPlayer('extgstplayer'),ConfigPlayer('exteplayer')])
-
-#i686
-config.plugins.iptvplayer.defaultI686MoviePlayer0        = ConfigSelection(default = "auto", choices = [ConfigPlayer("auto"),ConfigPlayer("mini"),ConfigPlayer("standard"),ConfigPlayer('extgstplayer')])
-config.plugins.iptvplayer.alternativeI686MoviePlayer0    = ConfigSelection(default = "auto", choices = [ConfigPlayer("auto"),ConfigPlayer("mini"),ConfigPlayer("standard"),ConfigPlayer('extgstplayer')])
-# end without buffering mode players
-
-#armv7
-config.plugins.iptvplayer.defaultARMV7MoviePlayer0      = ConfigSelection(default = "auto", choices = [ConfigPlayer("auto"),ConfigPlayer("mini"),ConfigPlayer("standard"),ConfigPlayer('extgstplayer'),ConfigPlayer('exteplayer')])
-config.plugins.iptvplayer.alternativeARMV7MoviePlayer0  = ConfigSelection(default = "auto", choices = [ConfigPlayer("auto"),ConfigPlayer("mini"),ConfigPlayer("standard"),ConfigPlayer('extgstplayer'),ConfigPlayer('exteplayer')])
-
-#armv5t
-config.plugins.iptvplayer.defaultARMV5TMoviePlayer0      = ConfigSelection(default = "auto", choices = [ConfigPlayer("auto"),ConfigPlayer("mini"),ConfigPlayer("standard"),ConfigPlayer('extgstplayer'),ConfigPlayer('exteplayer')])
-config.plugins.iptvplayer.alternativeARMV5TMoviePlayer0  = ConfigSelection(default = "auto", choices = [ConfigPlayer("auto"),ConfigPlayer("mini"),ConfigPlayer("standard"),ConfigPlayer('extgstplayer'),ConfigPlayer('exteplayer')])
-
-# with buffering mode
-#sh4
-config.plugins.iptvplayer.defaultSH4MoviePlayer         = ConfigSelection(default = "auto", choices = [ConfigPlayer("auto"),ConfigPlayer("mini"),ConfigPlayer("standard"),ConfigPlayer('exteplayer'),ConfigPlayer('extgstplayer')]) 
-config.plugins.iptvplayer.alternativeSH4MoviePlayer     = ConfigSelection(default = "auto", choices = [ConfigPlayer("auto"),ConfigPlayer("mini"),ConfigPlayer("standard"),ConfigPlayer('exteplayer'),ConfigPlayer('extgstplayer')]) 
-
-#mipsel
-config.plugins.iptvplayer.defaultMIPSELMoviePlayer      = ConfigSelection(default = "auto", choices = [ConfigPlayer("auto"),ConfigPlayer("mini"),ConfigPlayer("standard"),ConfigPlayer('extgstplayer'),ConfigPlayer('exteplayer')])
-config.plugins.iptvplayer.alternativeMIPSELMoviePlayer  = ConfigSelection(default = "auto", choices = [ConfigPlayer("auto"),ConfigPlayer("mini"),ConfigPlayer("standard"),ConfigPlayer('extgstplayer'),ConfigPlayer('exteplayer')])
-
-#i686
-config.plugins.iptvplayer.defaultI686MoviePlayer        = ConfigSelection(default = "auto", choices = [ConfigPlayer("auto"),ConfigPlayer("mini"),ConfigPlayer("standard"),ConfigPlayer('extgstplayer')])
-config.plugins.iptvplayer.alternativeI686MoviePlayer    = ConfigSelection(default = "auto", choices = [ConfigPlayer("auto"),ConfigPlayer("mini"),ConfigPlayer("standard"),ConfigPlayer('extgstplayer')])
-
-#armv7
-config.plugins.iptvplayer.defaultARMV7MoviePlayer      = ConfigSelection(default = "auto", choices = [ConfigPlayer("auto"),ConfigPlayer("mini"),ConfigPlayer("standard"),ConfigPlayer('extgstplayer'),ConfigPlayer('exteplayer')])
-config.plugins.iptvplayer.alternativeARMV7MoviePlayer  = ConfigSelection(default = "auto", choices = [ConfigPlayer("auto"),ConfigPlayer("mini"),ConfigPlayer("standard"),ConfigPlayer('extgstplayer'),ConfigPlayer('exteplayer')])
-
-#armv5t
-config.plugins.iptvplayer.defaultARMV5TMoviePlayer      = ConfigSelection(default = "auto", choices = [ConfigPlayer("auto"),ConfigPlayer("mini"),ConfigPlayer("standard"),ConfigPlayer('extgstplayer'),ConfigPlayer('exteplayer')])
-config.plugins.iptvplayer.alternativeARMV5TMoviePlayer  = ConfigSelection(default = "auto", choices = [ConfigPlayer("auto"),ConfigPlayer("mini"),ConfigPlayer("standard"),ConfigPlayer('extgstplayer'),ConfigPlayer('exteplayer')])
-
-# end with buffering mode players
-
 config.plugins.iptvplayer.SciezkaCache = ConfigDirectory(default = "/hdd/IPTVCache/") #, fixed_size = False)
 config.plugins.iptvplayer.NaszaTMP = ConfigDirectory(default = "/tmp/") #, fixed_size = False)
 config.plugins.iptvplayer.ZablokujWMV = ConfigYesNo(default = True)
@@ -400,63 +355,9 @@ class ConfigMenu(ConfigBaseWidget):
         
         players = []
         bufferingMode = config.plugins.iptvplayer.buforowanie.value or config.plugins.iptvplayer.buforowanie_m3u8.value or config.plugins.iptvplayer.buforowanie_rtmp.value
-        if 'sh4' == config.plugins.iptvplayer.plarform.value:
-            list.append(getConfigListEntry(_("First movie player without buffering mode"), config.plugins.iptvplayer.defaultSH4MoviePlayer0))
-            players.append(config.plugins.iptvplayer.defaultSH4MoviePlayer0)
-            list.append(getConfigListEntry(_("Second movie player without buffering mode"), config.plugins.iptvplayer.alternativeSH4MoviePlayer0))
-            players.append(config.plugins.iptvplayer.alternativeSH4MoviePlayer0)
-        
-            list.append(getConfigListEntry(_("First movie player in buffering mode"), config.plugins.iptvplayer.defaultSH4MoviePlayer))
-            players.append(config.plugins.iptvplayer.defaultSH4MoviePlayer)
-            list.append(getConfigListEntry(_("Second movie player in buffering mode"), config.plugins.iptvplayer.alternativeSH4MoviePlayer))
-            players.append(config.plugins.iptvplayer.alternativeSH4MoviePlayer)
-            
-        elif 'mipsel' == config.plugins.iptvplayer.plarform.value:
-            list.append(getConfigListEntry(_("First movie player without buffering mode"), config.plugins.iptvplayer.defaultMIPSELMoviePlayer0))
-            players.append(config.plugins.iptvplayer.defaultMIPSELMoviePlayer0)
-            list.append(getConfigListEntry(_("Second movie player without buffering mode"), config.plugins.iptvplayer.alternativeMIPSELMoviePlayer0))
-            players.append(config.plugins.iptvplayer.alternativeMIPSELMoviePlayer0)
-            
-            list.append(getConfigListEntry(_("First movie player in buffering mode"), config.plugins.iptvplayer.defaultMIPSELMoviePlayer))
-            players.append(config.plugins.iptvplayer.defaultMIPSELMoviePlayer)
-            list.append(getConfigListEntry(_("Second movie player in buffering mode"), config.plugins.iptvplayer.alternativeMIPSELMoviePlayer))
-            players.append(config.plugins.iptvplayer.alternativeMIPSELMoviePlayer)
-            
-        elif 'i686' == config.plugins.iptvplayer.plarform.value:
-            list.append(getConfigListEntry(_("First movie player without buffering mode"), config.plugins.iptvplayer.defaultI686MoviePlayer0))
-            players.append(config.plugins.iptvplayer.defaultI686MoviePlayer0)
-            list.append(getConfigListEntry(_("Second movie player without buffering mode"), config.plugins.iptvplayer.alternativeI686MoviePlayer0))
-            players.append(config.plugins.iptvplayer.alternativeI686MoviePlayer0)
-            
-            list.append(getConfigListEntry(_("First movie player in buffering mode"), config.plugins.iptvplayer.defaultI686MoviePlayer))
-            players.append(config.plugins.iptvplayer.defaultI686MoviePlayer)
-            list.append(getConfigListEntry(_("Second movie player in buffering mode"), config.plugins.iptvplayer.alternativeI686MoviePlayer))
-            players.append(config.plugins.iptvplayer.alternativeI686MoviePlayer)
 
-        elif 'armv7' == config.plugins.iptvplayer.plarform.value:
-            list.append(getConfigListEntry(_("First movie player without buffering mode"), config.plugins.iptvplayer.defaultARMV7MoviePlayer0))
-            players.append(config.plugins.iptvplayer.defaultARMV7MoviePlayer0)
-            list.append(getConfigListEntry(_("Second movie player without buffering mode"), config.plugins.iptvplayer.alternativeARMV7MoviePlayer0))
-            players.append(config.plugins.iptvplayer.alternativeARMV7MoviePlayer0)
-            
-            list.append(getConfigListEntry(_("First movie player in buffering mode"), config.plugins.iptvplayer.defaultARMV7MoviePlayer))
-            players.append(config.plugins.iptvplayer.defaultARMV7MoviePlayer)
-            list.append(getConfigListEntry(_("Second movie player in buffering mode"), config.plugins.iptvplayer.alternativeARMV7MoviePlayer))
-            players.append(config.plugins.iptvplayer.alternativeARMV7MoviePlayer)
-        elif 'armv5t' == config.plugins.iptvplayer.plarform.value:
-            list.append(getConfigListEntry(_("First movie player without buffering mode"), config.plugins.iptvplayer.defaultARMV5TMoviePlayer0))
-            players.append(config.plugins.iptvplayer.defaultARMV5TMoviePlayer0)
-            list.append(getConfigListEntry(_("Second movie player without buffering mode"), config.plugins.iptvplayer.alternativeARMV5TMoviePlayer0))
-            players.append(config.plugins.iptvplayer.alternativeARMV5TMoviePlayer0)
-            
-            list.append(getConfigListEntry(_("First movie player in buffering mode"), config.plugins.iptvplayer.defaultARMV5TMoviePlayer))
-            players.append(config.plugins.iptvplayer.defaultARMV5TMoviePlayer)
-            list.append(getConfigListEntry(_("Second movie player in buffering mode"), config.plugins.iptvplayer.alternativeARMV5TMoviePlayer))
-            players.append(config.plugins.iptvplayer.alternativeARMV5TMoviePlayer)
-        
-        else: 
-            list.append(getConfigListEntry(_("Movie player"), config.plugins.iptvplayer.NaszPlayer))
-        
+        list.append(getConfigListEntry(_("Movie player"), config.plugins.iptvplayer.NaszPlayer))
+
         playersValues = [player.value for player in players]
         if 'exteplayer' in playersValues or 'extgstplayer' in playersValues or 'auto' in playersValues:
             list.append(getConfigListEntry(_("External movie player config"), config.plugins.iptvplayer.fakExtMoviePlayerList))
@@ -552,37 +453,9 @@ class ConfigMenu(ConfigBaseWidget):
               config.plugins.iptvplayer.preferredupdateserver,
               ]
         players = []
-        if 'sh4' == config.plugins.iptvplayer.plarform.value:
-            players.append(config.plugins.iptvplayer.defaultSH4MoviePlayer0)
-            players.append(config.plugins.iptvplayer.alternativeSH4MoviePlayer0)
-            players.append(config.plugins.iptvplayer.defaultSH4MoviePlayer)
-            players.append(config.plugins.iptvplayer.alternativeSH4MoviePlayer)
-        elif 'mipsel' == config.plugins.iptvplayer.plarform.value:
-            players.append(config.plugins.iptvplayer.defaultMIPSELMoviePlayer0)
-            players.append(config.plugins.iptvplayer.alternativeMIPSELMoviePlayer0)
-            players.append(config.plugins.iptvplayer.defaultMIPSELMoviePlayer)
-            players.append(config.plugins.iptvplayer.alternativeMIPSELMoviePlayer)
-        elif 'armv7' == config.plugins.iptvplayer.plarform.value:
-            players.append(config.plugins.iptvplayer.defaultARMV7MoviePlayer0)
-            players.append(config.plugins.iptvplayer.alternativeARMV7MoviePlayer0)
-            players.append(config.plugins.iptvplayer.defaultARMV7MoviePlayer)
-            players.append(config.plugins.iptvplayer.alternativeARMV7MoviePlayer)
-        elif 'armv5t' == config.plugins.iptvplayer.plarform.value:
-            players.append(config.plugins.iptvplayer.defaultARMV5TMoviePlayer0)
-            players.append(config.plugins.iptvplayer.alternativeARMV5TMoviePlayer0)
-            players.append(config.plugins.iptvplayer.defaultARMV5TMoviePlayer)
-            players.append(config.plugins.iptvplayer.alternativeARMV5TMoviePlayer)
-        elif 'i686' == config.plugins.iptvplayer.plarform.value:
-            players.append(config.plugins.iptvplayer.defaultI686MoviePlayer0)
-            players.append(config.plugins.iptvplayer.alternativeI686MoviePlayer0)
-            players.append(config.plugins.iptvplayer.defaultI686MoviePlayer)
-            players.append(config.plugins.iptvplayer.alternativeI686MoviePlayer)
-        else:
-            players.append(config.plugins.iptvplayer.NaszPlayer)
+        players.append(config.plugins.iptvplayer.NaszPlayer)
         tab.extend(players)
         return tab
-        
-
 
     def changePin(self, pin = None, start = False):
         # 'PUT_OLD_PIN', 'PUT_NEW_PIN', 'CONFIRM_NEW_PIN'
@@ -625,62 +498,8 @@ def GetMoviePlayer(buffering=False, useAlternativePlayer=False):
     availablePlayers.append('extgstplayer')
     availablePlayers.append('mini')
     availablePlayers.append('standard')
-        
-    player = None
-    alternativePlayer = None
+ 
+    player = config.plugins.iptvplayer.NaszPlayer
+    alternativePlayer = config.plugins.iptvplayer.NaszPlayer
 
-    if 'sh4' == config.plugins.iptvplayer.plarform.value:
-        if buffering:
-            player = config.plugins.iptvplayer.defaultSH4MoviePlayer
-            alternativePlayer = config.plugins.iptvplayer.alternativeSH4MoviePlayer
-        else:
-            player = config.plugins.iptvplayer.defaultSH4MoviePlayer0
-            alternativePlayer = config.plugins.iptvplayer.alternativeSH4MoviePlayer0
-            
-    elif 'mipsel' == config.plugins.iptvplayer.plarform.value:
-        if buffering:
-            player = config.plugins.iptvplayer.defaultMIPSELMoviePlayer
-            alternativePlayer = config.plugins.iptvplayer.alternativeMIPSELMoviePlayer
-        else:
-            player = config.plugins.iptvplayer.defaultMIPSELMoviePlayer0
-            alternativePlayer = config.plugins.iptvplayer.alternativeMIPSELMoviePlayer0
-
-    elif 'armv7' == config.plugins.iptvplayer.plarform.value:
-        if buffering:
-            player = config.plugins.iptvplayer.defaultARMV7MoviePlayer
-            alternativePlayer = config.plugins.iptvplayer.alternativeARMV7MoviePlayer
-        else:
-            player = config.plugins.iptvplayer.defaultARMV7MoviePlayer0
-            alternativePlayer = config.plugins.iptvplayer.alternativeARMV7MoviePlayer0
-            
-    elif 'armv5t' == config.plugins.iptvplayer.plarform.value:
-        if buffering:
-            player = config.plugins.iptvplayer.defaultARMV5TMoviePlayer
-            alternativePlayer = config.plugins.iptvplayer.alternativeARMV5TMoviePlayer
-        else:
-            player = config.plugins.iptvplayer.defaultARMV5TMoviePlayer0
-            alternativePlayer = config.plugins.iptvplayer.alternativeARMV5TMoviePlayer0
-
-    elif 'i686' == config.plugins.iptvplayer.plarform.value:
-        if buffering:
-            player = config.plugins.iptvplayer.defaultI686MoviePlayer
-            alternativePlayer = config.plugins.iptvplayer.alternativeI686MoviePlayer
-        else:
-            player = config.plugins.iptvplayer.defaultI686MoviePlayer0
-            alternativePlayer = config.plugins.iptvplayer.alternativeI686MoviePlayer0
-    else:
-        player = config.plugins.iptvplayer.NaszPlayer
-        alternativePlayer = config.plugins.iptvplayer.NaszPlayer
-        
-    if player.value == 'auto': player = CFakeMoviePlayerOption(availablePlayers[0], GetMoviePlayerName(availablePlayers[0]))
-    try: availablePlayers.remove(player.value)
-    except Exception: printExc()
-    
-    if alternativePlayer.value == 'auto': alternativePlayer = CFakeMoviePlayerOption(availablePlayers[0], GetMoviePlayerName(availablePlayers[0]))
-    try: availablePlayers.remove(alternativePlayer.value)
-    except Exception: printExc()
-    
-    if useAlternativePlayer:
-        return alternativePlayer
-    
     return player
