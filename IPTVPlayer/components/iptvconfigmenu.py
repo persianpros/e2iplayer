@@ -281,7 +281,6 @@ class ConfigMenu(ConfigBaseWidget):
         # remember old
         self.showcoverOld = config.plugins.iptvplayer.showcover.value
         self.SciezkaCacheOld = config.plugins.iptvplayer.SciezkaCache.value
-        self.platformOld = config.plugins.iptvplayer.plarform.value
         self.remove_diabled_hostsOld = config.plugins.iptvplayer.remove_diabled_hosts.value
         self.enabledHostsListOld = GetEnabledHostsList()
 
@@ -330,7 +329,6 @@ class ConfigMenu(ConfigBaseWidget):
             list.append( getConfigListEntry(_("    Show suggestions"), config.plugins.iptvplayer.osk_allow_suggestions) )
             list.append( getConfigListEntry(_("    Default suggestions provider"), config.plugins.iptvplayer.osk_default_suggestions) )
 
-        list.append( getConfigListEntry(_("Platform"), config.plugins.iptvplayer.plarform) )
         list.append( getConfigListEntry(_("Services configuration"), config.plugins.iptvplayer.fakeHostsList) )
         list.append( getConfigListEntry(_("Remove disabled services"), config.plugins.iptvplayer.remove_diabled_hosts) )
         list.append( getConfigListEntry(_("Initialize web interface (experimental)"), config.plugins.iptvplayer.IPTVWebIterface) )
@@ -509,9 +507,6 @@ class ConfigMenu(ConfigBaseWidget):
         if self.showcoverOld != config.plugins.iptvplayer.showcover.value or \
            self.SciezkaCacheOld != config.plugins.iptvplayer.SciezkaCache.value:
            pass
-           # plugin must be restarted if we wont to this options take effect
-        if self.platformOld != config.plugins.iptvplayer.plarform.value:
-            IPTVPlayerNeedInit(True)
             
     def getMessageBeforeClose(self, afterSave):
         return ''

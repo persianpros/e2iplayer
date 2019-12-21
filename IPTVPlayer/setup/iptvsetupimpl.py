@@ -40,7 +40,6 @@ class IPTVSetupImpl:
         self.gstreamerVersion = ""
         self.openSSLVersion = ""
         self.libSSLPath = ""
-        self.supportedPlatforms = ["sh4", "mipsel", "i686", "armv7", "armv5t"]
         self.platform = "unknown"
         self.glibcVersion = -1
         
@@ -179,98 +178,8 @@ class IPTVSetupImpl:
         except Exception: 
             self.glibcVersion = -1
             
-        self.platformDetect()
-
-    ###################################################
-    # STEP: PLATFORM DETECTION
-    ###################################################
-    def platformDetect(self):
-        printDBG("IPTVSetupImpl.platformDetect")
-        self.setInfo(_("Detection of the platform."), _("Plugin can be run on one of the following platforms: sh4, mipsel, i686, armv7, armv5t."))
-        cmdTabs = []
-        for platform in self.supportedPlatforms:
-            platformtesterPath = resolveFilename(SCOPE_PLUGINS, "Extensions/IPTVPlayer/bin/%s/platformtester" % platform)
-            try: os_chmod(platformtesterPath, 0777)
-            except Exception: printExc()
-            cmdTabs.append(platformtesterPath + "  2>&1 ")
-        def _platformValidator(code, data):
-            printDBG("IPTVSetupImpl._platformValidator")
-            if "Test platform OK" in data: return True,False
-            else: return False,True
-        self.workingObj = CCmdValidator(self.platformDetectFinished, _platformValidator, cmdTabs)
-        self.workingObj.start()
-        
-    def platformDetectFinished(self, stsTab, dataTab):
-        printDBG("IPTVSetupImpl.platformDetectFinished")
-        def _saveConfig(platform):
-            self.platform = platform
-            config.plugins.iptvplayer.plarform.value = self.platform
-            printDBG("IPTVSetupImpl.platformDetectFinished platform[%s]" % self.platform)
-            config.plugins.iptvplayer.plarform.save()
-            configfile.save()
-        
-        if len(stsTab) > 0 and True == stsTab[-1]:
-            _saveConfig( self.supportedPlatforms[len(stsTab)-1] )
-            self.detectFPU()
-        else:
-            _saveConfig( "unknown" )
-            self.showMessage(_("Fatal Error!\nPlugin is not supported with your platform."), MessageBox.TYPE_ERROR, boundFunction(self.finish, False) )
-            
-    ###################################################
-    # STEP: FPU DETECTION
-    ###################################################
-    def detectFPU(self):
-        printDBG("IPTVSetupImpl.detectFPU")
-        if config.plugins.iptvplayer.plarform.value == 'mipsel':
-            hasAbiFlags, abiFP = ReadGnuMIPSABIFP('/lib/libc.so.6')
-            if abiFP not in [-1, 0]:
-                if abiFP == 3: val = "soft_float"
-                else: val = "hard_float"
-                if config.plugins.iptvplayer.plarformfpuabi.value != val:
-                    config.plugins.iptvplayer.plarformfpuabi.value = val
-                    config.plugins.iptvplayer.plarformfpuabi.save()
-                    configfile.save()
-                self.hasAbiFlags = hasAbiFlags
-                self.abiFP = val
-            printDBG(">> detectFPU hasAbiFlags[%s] abiFP[%s] -> [%s]" % (self.hasAbiFlags, self.abiFP, IsFPUAvailable()))
-        
-        if config.plugins.iptvplayer.plarform.value != 'mipsel' or IsFPUAvailable() or config.plugins.iptvplayer.plarformfpuabi.value != '':
-            self.getOpensslVersion()
-        else:
-            self.setInfo(_("Detection of MIPSEL FPU ABI."), _("This step is required to proper select binaries for installation."))
-            
-            def _cmdValidator(code, data):
-                if 'IPTVPLAYER FPU TEST' in data: 
-                    return True,False
-                else: 
-                    return False,True
-            outCmdTab = []
-            for resourceServer in self.resourceServers:
-                outCmdTab.append('wget -q "%sbin/mipsel/fputest" -O "%s/fputest" ; chmod 777 "%s/fputest" ; "%s/fputest" ; rm "%s/fputest" 2>/dev/null' % (resourceServer, self.tmpDir, self.tmpDir, self.tmpDir, self.tmpDir))
-            self.workingObj = CCmdValidator(self.detectFPUFinished, _cmdValidator, outCmdTab)
-            self.workingObj.start()
-        
-    def detectFPUFinished(self, stsTab, dataTab):
-        printDBG("IPTVSetupImpl.detectFPUFinished")
-        def _saveConfig(isHardFloat):
-            if isHardFloat:
-                config.plugins.iptvplayer.plarformfpuabi.value = "hard_float"
-            else:
-                config.plugins.iptvplayer.plarformfpuabi.value = "soft_float"
-            printDBG("IPTVSetupImpl.detectFPUFinished isHardFloat[%r]" % isHardFloat)
-            config.plugins.iptvplayer.plarformfpuabi.save()
-            configfile.save()
-        
-        if len(stsTab) > 0:
-            if 'IPTVPLAYER FPU TEST OK' in dataTab[-1]:
-                _saveConfig(True)
-            elif 'IPTVPLAYER FPU TEST NOT OK' in dataTab[-1]:
-                _saveConfig(False)
-            else:
-                printDBG("IPTVSetupImpl.detectFPUFinished detection failed")
-        
         self.getOpensslVersion()
-    
+   
     ###################################################
     # STEP: OpenSSL DETECTION
     ###################################################
