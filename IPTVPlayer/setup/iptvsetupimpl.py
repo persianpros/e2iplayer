@@ -105,7 +105,7 @@ class IPTVSetupImpl:
 
         # hlsdl
         self.hlsdlVersion = 0.21
-        self.hlsdlPaths = [resolveFilename(SCOPE_PLUGINS, 'Extensions/IPTVPlayer/bin/hlsdl'), "/usr/bin/hlsdl"]
+        self.hlsdlPaths = ["/usr/bin/hlsdl"]
         
         # cmdwrap
         self.cmdwrapVersion = 2
@@ -113,7 +113,7 @@ class IPTVSetupImpl:
         
         # duk
         self.dukVersion = 6 # "2.1.99 [experimental]" # real version
-        self.dukPaths = [resolveFilename(SCOPE_PLUGINS, 'Extensions/IPTVPlayer/bin/duk'), "/usr/bin/duk"]
+        self.dukPaths = ["/usr/bin/duk"]
         
         self.binaryInstalledSuccessfully = False
         self.tries = 0
