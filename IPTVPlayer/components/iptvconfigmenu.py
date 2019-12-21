@@ -502,4 +502,15 @@ def GetMoviePlayer(buffering=False, useAlternativePlayer=False):
     player = config.plugins.iptvplayer.NaszPlayer
     alternativePlayer = config.plugins.iptvplayer.NaszPlayer
 
+    if player.value == 'auto': player = CFakeMoviePlayerOption(availablePlayers[0], GetMoviePlayerName(availablePlayers[0]))
+    try: availablePlayers.remove(player.value)
+    except Exception: printExc()
+
+    if alternativePlayer.value == 'auto': alternativePlayer = CFakeMoviePlayerOption(availablePlayers[0], GetMoviePlayerName(availablePlayers[0]))
+    try: availablePlayers.remove(alternativePlayer.value)
+    except Exception: printExc()
+
+    if useAlternativePlayer:
+        return alternativePlayer
+
     return player
