@@ -23,7 +23,8 @@ import sys
 class IPTVSetupImpl:
     def __init__(self, finished, chooseQuestion, showMessage, setInfo):
         printDBG("IPTVSetupImpl.__init__ -------------------------------")
-        
+        Screen.__init__(self, session)
+
         # callbacks
         self._finished    = finished
         self._chooseQuestion = chooseQuestion
