@@ -40,7 +40,6 @@ class IPTVSetupMainWidget(Screen):
         self.started            = True
 
         self.setupImpl = IPTVSetupImpl(self.finished, self.chooseQuestion, self.showMessage, self.setInfo)
-        self.setupImpl.start()
 
     def showMessage(self, message, type, callback):
         printDBG("IPTVSetupMainWidget.showMessage")

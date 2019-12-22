@@ -119,6 +119,8 @@ class IPTVSetupImpl:
         self.hasAbiFlags = None
         self.abiFP = None
         
+        self.finish()
+
     def __del__(self):
         printDBG("IPTVSetupImpl.__del__ -------------------------------")
         
@@ -150,7 +152,3 @@ class IPTVSetupImpl:
     def setInfoFromStepHelper(self, key):
         if None != self.stepHelper:
             self.setInfo(_(self.stepHelper.getMessage(key,0)), _(self.stepHelper.getMessage(key,1)))
-       
-    def start(self):
-        printDBG("IPTVSetupImpl.start")
-        self.finish()
