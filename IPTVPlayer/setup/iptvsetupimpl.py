@@ -4,7 +4,6 @@
 # LOCAL import
 ###################################################
 from Plugins.Extensions.IPTVPlayer.tools.iptvtools           import printDBG, printExc, GetBinDir, GetTmpDir, GetPyScriptCmd, IsFPUAvailable, ReadGnuMIPSABIFP, GetResourcesServerUri
-from Plugins.Extensions.IPTVPlayer.setup.iptvsetuphelper     import CBinaryStepHelper, CCmdValidator, SetupDownloaderCmdCreator
 from Plugins.Extensions.IPTVPlayer.components.iptvplayerinit import TranslateTXT as _
 ###################################################
 
@@ -21,21 +20,11 @@ import sys
 ###################################################
 
 class IPTVSetupImpl:
-    def __init__(self, finished, chooseQuestion, showMessage, setInfo):
+    def __init__():
         printDBG("IPTVSetupImpl.__init__ -------------------------------")
         Screen.__init__(self, session)
 
-        # callbacks
-        self._finished    = finished
-        self._chooseQuestion = chooseQuestion
-        self._showMessage = showMessage
-        self._setInfo     = setInfo
-        self.workingObj   = None
-        self.stepHelper   = None
-        self.termination  = False
-        
         self.tmpDir = GetTmpDir()
-        self.resourceServers = [GetResourcesServerUri()]
         
         self.ffmpegVersion = ""
         self.gstreamerVersion = ""
@@ -96,41 +85,9 @@ class IPTVSetupImpl:
         self.dukVersion = 6 # "2.1.99 [experimental]" # real version
         self.dukPaths = ["/usr/bin/duk"]
         
-        self.binaryInstalledSuccessfully = False
         self.tries = 0
         self.hasAbiFlags = None
         self.abiFP = None
         
         self.finish()
-
-    def __del__(self):
-        printDBG("IPTVSetupImpl.__del__ -------------------------------")
-        
-    def terminate(self):
-        printDBG("IPTVSetupImpl.terminate -------------------------------")
-        self.termination  = True
-        self._finished    = None
-        self._chooseQuestion = None
-        self._showMessage = None
-        self._setInfo     = None 
-        if self.workingObj: self.workingObj.terminate()
-        
-    def finish(self, sts=None, ret=None):
-        printDBG("IPTVSetupImpl.finish")
-        if self._finished: self._finished()
-        
-    def chooseQuestion(self, title, list, callback):
-        printDBG("IPTVSetupImpl.chooseQuestion")
-        if self._chooseQuestion: self._chooseQuestion(title, list, callback)
-        
-    def showMessage(self, message, type, callback):
-        printDBG("IPTVSetupImpl.showMessage")
-        if self._showMessage: self._showMessage(message, type, callback)
-        
-    def setInfo(self, title, message):
-        printDBG("IPTVSetupImpl.setInfo")
-        if self._setInfo: self._setInfo(title, message)
-        
-    def setInfoFromStepHelper(self, key):
-        if None != self.stepHelper:
-            self.setInfo(_(self.stepHelper.getMessage(key,0)), _(self.stepHelper.getMessage(key,1)))
+ 
