@@ -31,10 +31,7 @@ class IPTVSetupMainWidget(Screen):
     def __init__(self, session, autoStart=False):
         printDBG("IPTVUpdateMainWindow.__init__ -------------------------------")
         Screen.__init__(self, session)
-        
-        #self.onLayoutFinish.append(self.onStart)
-        self.onShow.append(self.startPressed)
-        
+
         #flags
         self.autoStart          = autoStart
         self.underCloseMessage  = False
@@ -43,32 +40,8 @@ class IPTVSetupMainWidget(Screen):
         self.started            = True
 
         self.setupImpl = IPTVSetupImpl(self.finished, self.chooseQuestion, self.showMessage, self.setInfo)
-
-    def __del__(self):
-        printDBG("IPTVSetupMainWidget.__del__ -------------------------------")
-
-    def __onClose(self):
-        printDBG("IPTVSetupMainWidget.__onClose -----------------------------")
-        self.setupImpl.terminate()
-        IPTVPlayerNeedInit(False)
-
-    def startPressed(self):
-        printDBG("IPTVSetupMainWidget.startPressed")
-        self.started = True
         self.setupImpl.start()
-        
-    def cancelAnswer(self, ret):
-        printDBG("IPTVSetupMainWidget.cancelAnswer")
-        if self.underClosing: return
-        if ret: 
-            self.underClosing = True
-            self.close()
-        else:
-            if None != self.deferredAction:
-                deferredAction = self.deferredAction
-                self.deferredAction = None
-                deferredAction()
-            
+
     def showMessage(self, message, type, callback):
         printDBG("IPTVSetupMainWidget.showMessage")
         if self.underClosing: return
