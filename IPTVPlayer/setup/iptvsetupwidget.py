@@ -28,47 +28,19 @@ from Tools.LoadPixmap import LoadPixmap
 
 class IPTVSetupMainWidget(Screen):
     IPTV_VERSION = GetIPTVPlayerVerstion()
-    skin = """
-    <screen position="center,center" size="600,300" title="E2iPlayer setup version %s">
-            <widget name="sub_title"    position="10,10" zPosition="2" size="580,90"   valign="center" halign="center" font="Regular;24" transparent="1" foregroundColor="white" />
-            <widget name="info_field"   position="10,100" zPosition="2" size="580,200" valign="top" halign="center"   font="Regular;22" transparent="1" foregroundColor="white" />
-            
-            <widget name="spinner"   zPosition="2" position="463,200" size="16,16" transparent="1" alphatest="blend" />
-            <widget name="spinner_1" zPosition="1" position="463,200" size="16,16" transparent="1" alphatest="blend" />
-            <widget name="spinner_2" zPosition="1" position="479,200" size="16,16" transparent="1" alphatest="blend" />
-            <widget name="spinner_3" zPosition="1" position="495,200" size="16,16" transparent="1" alphatest="blend" />
-            <widget name="spinner_4" zPosition="1" position="511,200" size="16,16" transparent="1" alphatest="blend" />
-    </screen>""" %( IPTV_VERSION)
-
     def __init__(self, session, autoStart=False):
         printDBG("IPTVUpdateMainWindow.__init__ -------------------------------")
         Screen.__init__(self, session)
-        self["sub_title"]  = Label(_(" "))
-        self["info_field"] = Label(_(" "))
         
-        self["actions"] = ActionMap(["SetupActions", "ColorActions"],
-            {
-                "cancel"  :  self.cancelPressed,
-                "ok"      :  self.startPressed,
-            }, -1)
-        try:
-            for idx in range(5):
-                spinnerName = "spinner"
-                if idx: spinnerName += '_%d' % idx 
-                self[spinnerName] = Cover3()
-        except Exception: printExc()
-        self.spinnerPixmap = [LoadPixmap(GetIconDir('radio_button_on.png')), LoadPixmap(GetIconDir('radio_button_off.png'))]
-        
-        self.onClose.append(self.__onClose)
         #self.onLayoutFinish.append(self.onStart)
-        self.onShow.append(self.onStart)
+        self.onShow.append(self.startPressed)
         
         #flags
         self.autoStart          = autoStart
         self.underCloseMessage  = False
         self.underClosing       = False
         self.deferredAction     = None
-        self.started            = False
+        self.started            = True
 
         self.setupImpl = IPTVSetupImpl(self.finished, self.chooseQuestion, self.showMessage, self.setInfo)
 
@@ -80,24 +52,8 @@ class IPTVSetupMainWidget(Screen):
         self.setupImpl.terminate()
         IPTVPlayerNeedInit(False)
 
-    def onStart(self):
-        self.onShow.remove(self.onStart)
-        printDBG("IPTVSetupMainWidget.onStart")
-        self["sub_title"].setText(_("Information"))
-        self["info_field"].setText(_("IPTVPlayer need some additional setup.\nSuch as downloading and installation additional binaries.\nPress OK to start."))
-        if self.autoStart: self.startPressed()
-        
-    def cancelPressed(self):
-        printDBG("IPTVSetupMainWidget.cancelPressed")
-        if self.underClosing: return
-        self.underCloseMessage = True
-        message = _("Skipping IPTVPlayer setup may cause problems.\nAre you sure to skip IPTVPlayer setup?")
-        self.session.openWithCallback(self.cancelAnswer, MessageBox, text=message, type=MessageBox.TYPE_YESNO)
-
     def startPressed(self):
         printDBG("IPTVSetupMainWidget.startPressed")
-        if self.underClosing: return
-        if self.started: return
         self.started = True
         self.setupImpl.start()
         
