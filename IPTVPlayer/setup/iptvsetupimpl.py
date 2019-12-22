@@ -22,7 +22,7 @@ class IPTVSetupImpl:
 
         # exteplayer3
         self.exteplayer3paths = ["/usr/bin/exteplayer3"]
-                               
+
         # flumpegdemux
         self.flumpegdemuxpaths = ["/usr/lib/gstreamer-0.10/libgstflumpegdemux.so"]
 
