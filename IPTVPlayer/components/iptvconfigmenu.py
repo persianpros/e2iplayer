@@ -46,7 +46,6 @@ config.plugins.iptvplayer.f4mdumppath     = ConfigText(default = "", fixed_size 
 config.plugins.iptvplayer.uchardetpath    = ConfigText(default = "", fixed_size = False)
 config.plugins.iptvplayer.set_curr_title  = ConfigYesNo(default = False)
 config.plugins.iptvplayer.curr_title_file = ConfigText(default = "", fixed_size = False) 
-config.plugins.iptvplayer.sh4platform     = ConfigYesNo(default = False)
 config.plugins.iptvplayer.platformfpuabi  = ConfigSelection(default = "", choices = [("", ""),("hard_float", _("Hardware floating point")),("soft_float", _("Software floating point"))])
 
 config.plugins.iptvplayer.showcover          = ConfigYesNo(default = True)
@@ -284,7 +283,6 @@ class ConfigMenu(ConfigBaseWidget):
             list.append( getConfigListEntry(_("    Show suggestions"), config.plugins.iptvplayer.osk_allow_suggestions) )
             list.append( getConfigListEntry(_("    Default suggestions provider"), config.plugins.iptvplayer.osk_default_suggestions) )
 
-        list.append( getConfigListEntry(_("SH4 platform"), config.plugins.iptvplayer.sh4platform) )
         list.append( getConfigListEntry(_("FPU"), config.plugins.iptvplayer.platformfpuabi) )
         list.append( getConfigListEntry(_("Services configuration"), config.plugins.iptvplayer.fakeHostsList) )
         list.append( getConfigListEntry(_("Remove disabled services"), config.plugins.iptvplayer.remove_diabled_hosts) )
@@ -450,7 +448,6 @@ class ConfigMenu(ConfigBaseWidget):
               config.plugins.iptvplayer.ListaGraficzna,
               config.plugins.iptvplayer.pluginProtectedByPin,
               config.plugins.iptvplayer.configProtectedByPin,
-              config.plugins.iptvplayer.sh4platform,
               config.plugins.iptvplayer.osk_type,
               config.plugins.iptvplayer.preferredupdateserver,
               ]

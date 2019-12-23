@@ -17,9 +17,8 @@ from Components.config import config
 from Tools.Directories import resolveFilename, fileExists, SCOPE_PLUGINS, SCOPE_CONFIG
 from enigma import eConsoleAppContainer
 from Components.Language import language
-from time import sleep as time_sleep, time
-from urllib2 import Request, urlopen, URLError, HTTPError
-import urllib
+from time import time
+from urllib2 import urlopen
 import urllib2
 import traceback
 import re
@@ -28,6 +27,7 @@ import os
 import stat
 import codecs
 import datetime
+from boxbranding import getImageArch
 
 SERVER_DOMAINS = {'vline':'http://iptvplayer.vline.pl/', 'gitlab':'http://zadmario.gitlab.io/'}
 SERVER_UPDATE_PATH = {'vline':'download/update2/', 'gitlab':'update2/'}
@@ -110,7 +110,7 @@ def GetNice(pid=None):
     return nice
     
 def E2PrioFix(cmd, factor=2):
-    if not config.plugins.iptvplayer.sh4platform.value:
+    if getImageArch() != "sh4":
         return 'nice -n %d %s' % (GetNice() + factor, cmd)
     else:
         return cmd

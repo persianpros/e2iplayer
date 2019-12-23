@@ -19,6 +19,7 @@ import skin
 from enigma import eLabel, getDesktop
 from Screens.MessageBox import MessageBox
 from Components.config import config, ConfigSelection, ConfigYesNo, Config, ConfigInteger, getConfigListEntry, configfile
+from boxbranding import getImageArch
 ###################################################
 config.plugins.iptvplayer.extplayer_summary = ConfigSelection(default = "yes", choices = [('auto', _('Auto')), ('yes', _('Yes')), ('no', _('No'))])
 config.plugins.iptvplayer.use_clear_iframe = ConfigYesNo(default = False)
@@ -307,7 +308,7 @@ class ConfigExtMoviePlayer(ConfigBaseWidget, ConfigExtMoviePlayerBase):
             list.append(getConfigListEntry("    " + _("Use software decoder for the %s") % 'DTS', config.plugins.iptvplayer.dts_software_decode))
             list.append(getConfigListEntry("    " + _("Use software decoder for the %s") % 'WMA', config.plugins.iptvplayer.wma_software_decode))
             list.append(getConfigListEntry("    " + _("Use software decoder for the %s") % 'MP3', config.plugins.iptvplayer.mp3_software_decode))
-            if not config.plugins.iptvplayer.sh4platform.value:
+            if getImageArch() != "sh4":
                list.append(getConfigListEntry("    " + _("Software decoding as"), config.plugins.iptvplayer.software_decode_as))
             list.append(getConfigListEntry("    " + _("Stereo downmix mode for software decoder"), config.plugins.iptvplayer.stereo_software_decode))
         if self.ac3_mix_avaliable:
@@ -359,7 +360,7 @@ class ConfigExtMoviePlayer(ConfigBaseWidget, ConfigExtMoviePlayerBase):
         list.append(getConfigListEntry(_("Show iframe during audio playback"), config.plugins.iptvplayer.show_iframe))
         if config.plugins.iptvplayer.show_iframe.value:
             list.append(getConfigListEntry("    " + _("Radio iframe file"), config.plugins.iptvplayer.iframe_file))
-        if not config.plugins.iptvplayer.sh4platform.value and (config.plugins.iptvplayer.show_iframe.value or config.plugins.iptvplayer.use_clear_iframe.value):
+        if getImageArch() != "sh4" and (config.plugins.iptvplayer.show_iframe.value or config.plugins.iptvplayer.use_clear_iframe.value):
             list.append(getConfigListEntry("    " + _("Black iframe file"), config.plugins.iptvplayer.clear_iframe_file))
         self.list = list
         ConfigBaseWidget.runSetup(self)
