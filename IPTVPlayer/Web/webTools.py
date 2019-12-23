@@ -6,7 +6,6 @@ import time
 import threading
 
 from Plugins.Extensions.IPTVPlayer.tools.iptvtools import GetLogoDir
-from Plugins.Extensions.IPTVPlayer.components.ihost import IHost, CDisplayListItem, RetHost, CUrlItem, ArticleContent, CFavItem
 
 ########################################################
 def formSUBMITvalue( inputHiddenObjects, caption, input_style = '', input_text = '' ):

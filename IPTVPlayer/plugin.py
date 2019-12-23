@@ -5,7 +5,7 @@
 from Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget import E2iPlayerWidget
 from Plugins.Extensions.IPTVPlayer.components.iptvconfigmenu import ConfigMenu
 from Plugins.Extensions.IPTVPlayer.components.iptvpin import IPTVPinWidget
-from Plugins.Extensions.IPTVPlayer.components.iptvplayerinit import TranslateTXT as _, IPTVPlayerNeedInit
+from Plugins.Extensions.IPTVPlayer.components.iptvplayerinit import TranslateTXT as _
 from Plugins.Extensions.IPTVPlayer.tools.iptvtools import IsExecutable, IsWebInterfaceModuleAvailable
 ###################################################
 
@@ -135,4 +135,3 @@ def sessionstart(reason, **kwargs):
             import Plugins.Extensions.IPTVPlayer.Web.initiator
         except Exception, e:
             print "EXCEPTION initiating IPTVplayer WebComponent:", str(e)
-        

@@ -6,7 +6,7 @@ import settings
 from webTools import *
 from Plugins.Extensions.IPTVPlayer.iptvdm.iptvdh import DMHelper
 from Plugins.Extensions.IPTVPlayer.version import IPTV_VERSION
-from Plugins.Extensions.IPTVPlayer.tools.iptvtools import GetHostsList, IsHostEnabled, SaveHostsOrderList, SortHostsList, GetLogoDir, GetHostsOrderList, getDebugMode, formatBytes
+from Plugins.Extensions.IPTVPlayer.tools.iptvtools import GetHostsList, SortHostsList, GetHostsOrderList, getDebugMode, formatBytes
 #### e2 imports
 from Components.config import config
 
