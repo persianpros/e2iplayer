@@ -268,8 +268,7 @@ def IsWebInterfaceModuleAvailable(chekInit=False):
     else:
         file = 'initiator'
     if (fileExists(resolveFilename(SCOPE_PLUGINS, 'Extensions/IPTVPlayer/Web/%s.py'  % file)) or
-        fileExists(resolveFilename(SCOPE_PLUGINS, 'Extensions/IPTVPlayer/Web/%s.pyo' % file)) or
-        fileExists(resolveFilename(SCOPE_PLUGINS, 'Extensions/IPTVPlayer/Web/%s.pyc' % file))):
+        fileExists(resolveFilename(SCOPE_PLUGINS, 'Extensions/IPTVPlayer/Web/%s.pyo' % file))):
         return True
     else:
         return False
@@ -643,7 +642,7 @@ def GetHostsFromFolder(useCache=True):
             # separate file name and file extension
             fileName, fileExt = os.path.splitext(wholeFileName)
             nameLen = len( fileName )
-            if fileExt in ['.pyo', '.pyc', '.py'] and nameLen >  4 and __isHostNameValid(fileName):
+            if fileExt in ['.pyo', '.py'] and nameLen >  4 and __isHostNameValid(fileName):
                 if fileName[4:] not in lhosts:
                     lhosts.append( fileName[4:] )
                     printDBG('getHostsList add host with fileName: "%s"' % fileName[4:])

@@ -22,8 +22,6 @@ def checkForFC():
 	ret = False
 	if os.path.exists(resolveFilename(SCOPE_PLUGINS,'Extensions/OpenWebif/controllers/base.pyo')):
 		myfileName = resolveFilename(SCOPE_PLUGINS,'Extensions/OpenWebif/controllers/base.pyo')
-	elif os.path.exists(resolveFilename(SCOPE_PLUGINS,'Extensions/OpenWebif/controllers/base.pyc')):
-		myfileName = resolveFilename(SCOPE_PLUGINS,'Extensions/OpenWebif/controllers/base.pyc')
 	else:
 		return False
 	

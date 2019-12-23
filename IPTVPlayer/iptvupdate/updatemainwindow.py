@@ -1004,7 +1004,7 @@ class UpdateMainAppImpl(IUpdateObjectInterface):
                 fileName, fileExt = os_path.splitext(wholeFileName)
                 filePath = os_path.join(pathWithUserScripts, wholeFileName) 
                 if os_path.isfile(filePath):
-                    if fileExt in ['.pyo', '.pyc', '.py']:
+                    if fileExt in ['.pyo', '.py']:
                         interpreterBinName = 'python'
                     elif '.sh' == fileExt:
                         interpreterBinName = 'sh'
