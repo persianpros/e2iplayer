@@ -110,7 +110,7 @@ def GetNice(pid=None):
     return nice
     
 def E2PrioFix(cmd, factor=2):
-    if '/duk' not in cmd and config.plugins.iptvplayer.plarform.value in ('mipsel', 'armv7', 'armv5t'):
+    if '/duk' not in cmd and not config.plugins.iptvplayer.sh4platform.value:
         return 'nice -n %d %s' % (GetNice() + factor, cmd)
     else:
         return cmd
@@ -1316,7 +1316,7 @@ def IsFPUAvailable():
                 IsFPUAvailable.available = True
             else:
                 IsFPUAvailable.available = False
-        if IsFPUAvailable.available == False and config.plugins.iptvplayer.plarformfpuabi.value == 'hard_float':
+        if IsFPUAvailable.available == False and config.plugins.iptvplayer.platformfpuabi.value == 'hard_float':
             return True
     except Exception:
         printExc()

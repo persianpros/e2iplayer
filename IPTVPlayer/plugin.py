@@ -120,7 +120,6 @@ def runMain(session, nextFunction=doRunMain):
     wgetpath     = IsExecutable(config.plugins.iptvplayer.wgetpath.value)
     rtmpdumppath = IsExecutable(config.plugins.iptvplayer.rtmpdumppath.value)
     f4mdumppath  = IsExecutable(config.plugins.iptvplayer.f4mdumppath.value)
-    platform     = config.plugins.iptvplayer.plarform.value
     nextFunction(session)
         
 def pinCallback(session, callbackFun, pin=None):

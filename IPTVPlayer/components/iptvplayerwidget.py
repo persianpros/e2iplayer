@@ -1717,7 +1717,7 @@ class E2iPlayerWidget(Screen):
                     gstAdditionalParams['show_iframe'] = config.plugins.iptvplayer.show_iframe.value
                     gstAdditionalParams['iframe_file_start'] = config.plugins.iptvplayer.iframe_file.value
                     gstAdditionalParams['iframe_file_end'] = config.plugins.iptvplayer.clear_iframe_file.value
-                    if 'sh4' == config.plugins.iptvplayer.plarform.value:
+                    if config.plugins.iptvplayer.sh4platform.value:
                         gstAdditionalParams['iframe_continue'] = True
                     else:
                         gstAdditionalParams['iframe_continue'] = False
@@ -1739,7 +1739,7 @@ class E2iPlayerWidget(Screen):
                             playerVal = 'gstplayer'
                             gstAdditionalParams['download-buffer-path'] = ''
                             gstAdditionalParams['ring-buffer-max-size'] = 0
-                            if 'sh4' == config.plugins.iptvplayer.plarform.value: # use default value, due to small amount of RAM
+                            if config.plugins.iptvplayer.sh4platform.value: # use default value, due to small amount of RAM
                                 #use the default value, due to small amount of RAM
                                 #in the future it will be configurable
                                 gstAdditionalParams['buffer-duration'] = -1

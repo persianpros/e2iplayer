@@ -307,7 +307,7 @@ class ConfigExtMoviePlayer(ConfigBaseWidget, ConfigExtMoviePlayerBase):
             list.append(getConfigListEntry("    " + _("Use software decoder for the %s") % 'DTS', config.plugins.iptvplayer.dts_software_decode))
             list.append(getConfigListEntry("    " + _("Use software decoder for the %s") % 'WMA', config.plugins.iptvplayer.wma_software_decode))
             list.append(getConfigListEntry("    " + _("Use software decoder for the %s") % 'MP3', config.plugins.iptvplayer.mp3_software_decode))
-            if config.plugins.iptvplayer.plarform.value != 'sh4':
+            if not config.plugins.iptvplayer.sh4platform.value:
                list.append(getConfigListEntry("    " + _("Software decoding as"), config.plugins.iptvplayer.software_decode_as))
             list.append(getConfigListEntry("    " + _("Stereo downmix mode for software decoder"), config.plugins.iptvplayer.stereo_software_decode))
         if self.ac3_mix_avaliable:
@@ -359,7 +359,7 @@ class ConfigExtMoviePlayer(ConfigBaseWidget, ConfigExtMoviePlayerBase):
         list.append(getConfigListEntry(_("Show iframe during audio playback"), config.plugins.iptvplayer.show_iframe))
         if config.plugins.iptvplayer.show_iframe.value:
             list.append(getConfigListEntry("    " + _("Radio iframe file"), config.plugins.iptvplayer.iframe_file))
-        if 'sh4' != config.plugins.iptvplayer.plarform.value and (config.plugins.iptvplayer.show_iframe.value or config.plugins.iptvplayer.use_clear_iframe.value):
+        if not config.plugins.iptvplayer.sh4platform.value and (config.plugins.iptvplayer.show_iframe.value or config.plugins.iptvplayer.use_clear_iframe.value):
             list.append(getConfigListEntry("    " + _("Black iframe file"), config.plugins.iptvplayer.clear_iframe_file))
         self.list = list
         ConfigBaseWidget.runSetup(self)

@@ -46,8 +46,8 @@ config.plugins.iptvplayer.f4mdumppath     = ConfigText(default = "", fixed_size 
 config.plugins.iptvplayer.uchardetpath    = ConfigText(default = "", fixed_size = False)
 config.plugins.iptvplayer.set_curr_title  = ConfigYesNo(default = False)
 config.plugins.iptvplayer.curr_title_file = ConfigText(default = "", fixed_size = False) 
-config.plugins.iptvplayer.plarform        = ConfigSelection(default = "auto", choices = [("auto", "auto"),("mipsel", _("mipsel")),("sh4", _("sh4")),("i686", _("i686")), ("armv7", _("armv7")), ("armv5t", _("armv5t")), ("unknown", _("unknown"))])
-config.plugins.iptvplayer.plarformfpuabi  = ConfigSelection(default = "", choices = [("", ""),("hard_float", _("Hardware floating point")),("soft_float", _("Software floating point"))])
+config.plugins.iptvplayer.sh4platform     = ConfigYesNo(default = False)
+config.plugins.iptvplayer.platformfpuabi  = ConfigSelection(default = "", choices = [("", ""),("hard_float", _("Hardware floating point")),("soft_float", _("Software floating point"))])
 
 config.plugins.iptvplayer.showcover          = ConfigYesNo(default = True)
 config.plugins.iptvplayer.deleteIcons        = ConfigSelection(default = "3", choices = [("0", _("after closing")),("1", _("after day")),("3", _("after three days")),("7", _("after a week"))]) 
@@ -268,7 +268,7 @@ class ConfigMenu(ConfigBaseWidget):
             list.append(getConfigListEntry("dukpath", config.plugins.iptvplayer.dukpath))
             list.append(getConfigListEntry("f4mdumppath", config.plugins.iptvplayer.f4mdumppath))
             list.append(getConfigListEntry("uchardetpath", config.plugins.iptvplayer.uchardetpath))
-            list.append(getConfigListEntry("MIPS Floating Point Architecture", config.plugins.iptvplayer.plarformfpuabi))
+            list.append(getConfigListEntry("MIPS Floating Point Architecture", config.plugins.iptvplayer.platformfpuabi))
             list.append(getConfigListEntry("E2iPlayer auto start at Enigma2 start", config.plugins.iptvplayer.plugin_autostart))
             list.append(getConfigListEntry("Auto start method", config.plugins.iptvplayer.plugin_autostart_method))
             list.append(getConfigListEntry("Prefer hlsld for playlist with alt. media", config.plugins.iptvplayer.prefer_hlsdl_for_pls_with_alt_media))
@@ -284,6 +284,8 @@ class ConfigMenu(ConfigBaseWidget):
             list.append( getConfigListEntry(_("    Show suggestions"), config.plugins.iptvplayer.osk_allow_suggestions) )
             list.append( getConfigListEntry(_("    Default suggestions provider"), config.plugins.iptvplayer.osk_default_suggestions) )
 
+        list.append( getConfigListEntry(_("SH4 platform"), config.plugins.iptvplayer.sh4platform) )
+        list.append( getConfigListEntry(_("FPU"), config.plugins.iptvplayer.platformfpuabi) )
         list.append( getConfigListEntry(_("Services configuration"), config.plugins.iptvplayer.fakeHostsList) )
         list.append( getConfigListEntry(_("Remove disabled services"), config.plugins.iptvplayer.remove_diabled_hosts) )
         list.append( getConfigListEntry(_("Initialize web interface (experimental)"), config.plugins.iptvplayer.IPTVWebIterface) )
@@ -448,7 +450,7 @@ class ConfigMenu(ConfigBaseWidget):
               config.plugins.iptvplayer.ListaGraficzna,
               config.plugins.iptvplayer.pluginProtectedByPin,
               config.plugins.iptvplayer.configProtectedByPin,
-              config.plugins.iptvplayer.plarform,
+              config.plugins.iptvplayer.sh4platform,
               config.plugins.iptvplayer.osk_type,
               config.plugins.iptvplayer.preferredupdateserver,
               ]
