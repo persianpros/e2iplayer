@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from __future__ import print_function
-import urllib
 import urllib2
 import sys
 import traceback
@@ -212,4 +210,3 @@ if __name__ == "__main__":
         httpd.socket.close()
         httpd.server_close()
     sys.exit(0)
-

@@ -1,12 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from __future__ import print_function
-import urllib
 import urllib2
 import sys
 import traceback
 import time
-
 import signal
 import os
 def signal_handler(sig, frame):
@@ -64,4 +61,3 @@ if __name__ == "__main__":
     except Exception:
         printExc()
     sys.exit(0)
-

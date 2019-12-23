@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from __future__ import print_function
 import urllib
 import urllib2
 import sys
@@ -106,4 +105,3 @@ if __name__ == "__main__":
     except Exception:
         printExc()
     sys.exit(0)
-

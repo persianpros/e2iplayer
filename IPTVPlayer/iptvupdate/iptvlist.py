@@ -8,15 +8,14 @@
 ###################################################
 # LOCAL import
 ###################################################
-from Plugins.Extensions.IPTVPlayer.iptvdm.iptvdh import DMHelper
-from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, formatBytes
+from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printExc
 from Plugins.Extensions.IPTVPlayer.components.iptvlist import IPTVListComponentBase
 ###################################################
 
 ###################################################
 # FOREIGN import
 ###################################################
-from enigma import eListboxPythonMultiContent, eListbox, gFont, RT_HALIGN_LEFT, RT_HALIGN_RIGHT, RT_VALIGN_CENTER
+from enigma import eListboxPythonMultiContent, eListbox, gFont, RT_HALIGN_LEFT, RT_VALIGN_CENTER
 from Tools.LoadPixmap import LoadPixmap
 import skin
 ###################################################

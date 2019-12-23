@@ -7,19 +7,18 @@
 ###################################################
 # LOCAL import
 ###################################################
-from Plugins.Extensions.IPTVPlayer.tools.iptvtools          import printDBG, printExc, mkdirs, rmtree, FreeSpace, formatBytes, iptv_system, \
+from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, mkdirs, rmtree, FreeSpace, formatBytes, iptv_system, \
                                                                    GetIPTVDMImgDir, GetIPTVPlayerVerstion, GetShortPythonVersion, GetTmpDir, \
-                                                                   GetHostsList, GetEnabledHostsList, WriteTextFile, IsExecutable, GetUpdateServerUri, \
+                                                                   GetHostsList, GetEnabledHostsList, WriteTextFile, GetUpdateServerUri, \
                                                                    GetIconsHash, SetIconsHash, GetGraphicsHash, SetGraphicsHash, rm, GetPyScriptCmd
-from Plugins.Extensions.IPTVPlayer.tools.iptvtypes          import enum
-from Plugins.Extensions.IPTVPlayer.iptvupdate.iptvlist      import IPTVUpdateList
+from Plugins.Extensions.IPTVPlayer.tools.iptvtypes import enum
+from Plugins.Extensions.IPTVPlayer.iptvupdate.iptvlist import IPTVUpdateList
 from Plugins.Extensions.IPTVPlayer.iptvdm.iptvdownloadercreator import UpdateDownloaderCreator
-from Plugins.Extensions.IPTVPlayer.iptvdm.iptvdh            import DMHelper
-from Plugins.Extensions.IPTVPlayer.libs.pCommon             import CParsingHelper
-
-from Plugins.Extensions.IPTVPlayer.components.articleview   import ArticleView
-from Plugins.Extensions.IPTVPlayer.components.ihost         import ArticleContent
-from Plugins.Extensions.IPTVPlayer.libs.pCommon             import common
+from Plugins.Extensions.IPTVPlayer.iptvdm.iptvdh import DMHelper
+from Plugins.Extensions.IPTVPlayer.libs.pCommon import CParsingHelper
+from Plugins.Extensions.IPTVPlayer.components.articleview import ArticleView
+from Plugins.Extensions.IPTVPlayer.components.ihost import ArticleContent
+from Plugins.Extensions.IPTVPlayer.libs.pCommon import common
 from Plugins.Extensions.IPTVPlayer.components.iptvplayerinit import TranslateTXT as _
 ###################################################
 

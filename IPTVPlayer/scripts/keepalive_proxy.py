@@ -1,15 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from __future__ import print_function
-import urllib
 import urllib2
 import sys
-import time
 import traceback
-import urlparse
 import SocketServer
 import SimpleHTTPServer
-
 import signal
 import os
 def signal_handler(sig, frame):
@@ -100,4 +95,3 @@ if __name__ == "__main__":
         httpd.socket.close()
         httpd.server_close()
     sys.exit(0)
-
