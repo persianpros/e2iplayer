@@ -2,9 +2,9 @@
 ###################################################
 # LOCAL import
 ###################################################
-from Plugins.Extensions.IPTVPlayer.components.iptvplayerinit import TranslateTXT as _, SetIPTVPlayerLastHostError
+from Plugins.Extensions.IPTVPlayer.components.iptvplayerinit import TranslateTXT as _
 from Plugins.Extensions.IPTVPlayer.components.isubprovider import CSubProviderBase, CBaseSubProviderClass
-from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, GetDefaultLang, RemoveDisallowedFilenameChars, GetSubtitlesDir, rm
+from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, RemoveDisallowedFilenameChars, GetSubtitlesDir, rm
 ###################################################
 
 ###################################################
@@ -12,14 +12,6 @@ from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, Ge
 ###################################################
 import re
 import urllib
-from Components.config import config, ConfigSelection, ConfigYesNo, ConfigText, getConfigListEntry
-###################################################
-
-###################################################
-# E2 GUI COMMPONENTS 
-###################################################
-from Plugins.Extensions.IPTVPlayer.components.asynccall import MainSessionWrapper
-from Screens.MessageBox import MessageBox
 ###################################################
 
 ###################################################
@@ -408,4 +400,3 @@ class IPTVSubProvider(CSubProviderBase):
 
     def __init__(self, params={}):
         CSubProviderBase.__init__(self, PrijevodiOnline(params))
-    

@@ -3,42 +3,20 @@
 # LOCAL import
 ###################################################
 from Plugins.Extensions.IPTVPlayer.components.iptvplayerinit import TranslateTXT as _, SetIPTVPlayerLastHostError
-from Plugins.Extensions.IPTVPlayer.components.ihost import CDisplayListItem, RetHost
 from Plugins.Extensions.IPTVPlayer.components.isubprovider import CSubProviderBase, CBaseSubProviderClass
-
-from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, GetDefaultLang, GetCookieDir, byteify, \
-                                                          RemoveDisallowedFilenameChars, GetSubtitlesDir, GetTmpDir, rm, \
-                                                          MapUcharEncoding, GetPolishSubEncoding, IsSubtitlesParserExtensionCanBeUsed, \
-                                                          ReadTextFile
-from Plugins.Extensions.IPTVPlayer.tools.iptvtypes import strwithmeta
-from Plugins.Extensions.IPTVPlayer.libs.urlparserhelper import hex_md5
+from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, RemoveDisallowedFilenameChars, GetSubtitlesDir, GetTmpDir, rm, IsSubtitlesParserExtensionCanBeUsed
 ###################################################
 
 ###################################################
 # FOREIGN import
 ###################################################
-from datetime import timedelta
-import time
 import re
 import urllib
-import unicodedata
 import base64
-try:    import json
-except Exception: import simplejson as json
+
 try:
-    try: from cStringIO import StringIO
-    except Exception: from StringIO import StringIO 
     import gzip
 except Exception: pass
-from Components.config import config, ConfigSelection, ConfigYesNo, ConfigText, getConfigListEntry
-###################################################
-
-
-###################################################
-# E2 GUI COMMPONENTS 
-###################################################
-from Plugins.Extensions.IPTVPlayer.components.asynccall import MainSessionWrapper
-from Screens.MessageBox import MessageBox
 ###################################################
 
 ###################################################
@@ -344,4 +322,3 @@ class IPTVSubProvider(CSubProviderBase):
 
     def __init__(self, params={}):
         CSubProviderBase.__init__(self, NapiProjektProvider(params))
-    

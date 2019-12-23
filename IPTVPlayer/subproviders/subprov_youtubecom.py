@@ -12,15 +12,6 @@ from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, Ge
 # FOREIGN import
 ###################################################
 import re
-from Components.config import config, ConfigSelection, ConfigYesNo, ConfigText, getConfigListEntry
-###################################################
-
-
-###################################################
-# E2 GUI COMMPONENTS 
-###################################################
-from Plugins.Extensions.IPTVPlayer.components.asynccall import MainSessionWrapper
-from Screens.MessageBox import MessageBox
 ###################################################
 
 ###################################################
@@ -134,4 +125,3 @@ class IPTVSubProvider(CSubProviderBase):
 
     def __init__(self, params={}):
         CSubProviderBase.__init__(self, YoutubeComProvider(params))
-    

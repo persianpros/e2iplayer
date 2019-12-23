@@ -15,15 +15,7 @@ from Plugins.Extensions.IPTVPlayer.libs.urlparserhelper import hex_md5
 # FOREIGN import
 ###################################################
 import re
-from Components.config import config, ConfigSelection, ConfigYesNo, ConfigText, getConfigListEntry
-###################################################
-
-
-###################################################
-# E2 GUI COMMPONENTS 
-###################################################
-from Plugins.Extensions.IPTVPlayer.components.asynccall import MainSessionWrapper
-from Screens.MessageBox import MessageBox
+from Components.config import config
 ###################################################
 
 ###################################################
@@ -420,4 +412,3 @@ class IPTVSubProvider(CSubProviderBase):
 
     def __init__(self, params={}):
         CSubProviderBase.__init__(self, OpenSubOrgProvider(params))
-    
