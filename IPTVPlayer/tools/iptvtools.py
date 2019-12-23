@@ -303,7 +303,7 @@ def GetPyScriptCmd(name):
     elif fileExists(baseName + '.pyo'):
         baseName += '.pyo'
     if baseName != '':
-        for item in ['python', 'python2.7', 'python2.6']:
+        for item in ['python', 'python2.7']:
             pyPath = Which(item)
             if '' != pyPath:
                 cmd = '%s %s' % (pyPath, baseName)
