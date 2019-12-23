@@ -110,7 +110,7 @@ def GetNice(pid=None):
     return nice
     
 def E2PrioFix(cmd, factor=2):
-    if '/duk' not in cmd and not config.plugins.iptvplayer.sh4platform.value:
+    if not config.plugins.iptvplayer.sh4platform.value:
         return 'nice -n %d %s' % (GetNice() + factor, cmd)
     else:
         return cmd
