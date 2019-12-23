@@ -292,5 +292,3 @@ class IPTVMovieMetaDataHandler():
             printExc()
         if sts: self.isModified = True
         return sts
-        
-            

@@ -5,7 +5,7 @@
 # LOCAL import
 ###################################################
 from Plugins.Extensions.IPTVPlayer.components.iptvplayerinit import TranslateTXT as _
-from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, byteify
+from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc
 from Plugins.Extensions.IPTVPlayer.components.ihost import CFavItem
 from Plugins.Extensions.IPTVPlayer.libs.e2ijson import loads as json_loads, dumps as json_dumps
 ###################################################
@@ -15,7 +15,6 @@ from Plugins.Extensions.IPTVPlayer.libs.e2ijson import loads as json_loads, dump
 ###################################################
 import codecs
 from os import path as os_path, remove as os_remove
-from Plugins.Extensions.IPTVPlayer.components.ihost import CFavItem
 ###################################################
 
 
@@ -261,5 +260,3 @@ class IPTVFavourites:
     def _loadFromFile(self, filePath, encoding='utf-8'):
         with codecs.open(filePath, 'r', encoding, 'replace') as fp:
             return fp.read()
-        
-        
