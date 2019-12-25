@@ -85,7 +85,12 @@ def GetMoviePlayerName(player):
 def ConfigPlayer(player):
     return (player, GetMoviePlayerName(player))
 
-config.plugins.iptvplayer.NaszPlayer = ConfigSelection(default = "mini", choices = [ConfigPlayer("auto"), ConfigPlayer("mini"), ConfigPlayer('extgstplayer'), ConfigPlayer('exteplayer'), ConfigPlayer("standard")])
+# without buffering mode
+config.plugins.iptvplayer.defaultNaszMoviePlayer0 = ConfigSelection(default = "auto", choices = [ConfigPlayer("auto"), ConfigPlayer("mini"), ConfigPlayer('extgstplayer'), ConfigPlayer('exteplayer'), ConfigPlayer("standard")])
+config.plugins.iptvplayer.alternativeNaszMoviePlayer0 = ConfigSelection(default = "auto", choices = [ConfigPlayer("auto"), ConfigPlayer("mini"), ConfigPlayer('extgstplayer'), ConfigPlayer('exteplayer'), ConfigPlayer("standard")])
+# with buffering mode
+config.plugins.iptvplayer.defaultNaszMoviePlayer = ConfigSelection(default = "auto", choices = [ConfigPlayer("auto"), ConfigPlayer("mini"), ConfigPlayer('extgstplayer'), ConfigPlayer('exteplayer'), ConfigPlayer("standard")])
+config.plugins.iptvplayer.alternativeNaszMoviePlayer = ConfigSelection(default = "auto", choices = [ConfigPlayer("auto"), ConfigPlayer("mini"), ConfigPlayer('extgstplayer'), ConfigPlayer('exteplayer'), ConfigPlayer("standard")])
 
 config.plugins.iptvplayer.SciezkaCache = ConfigDirectory(default = "/hdd/IPTVCache/") #, fixed_size = False)
 config.plugins.iptvplayer.NaszaTMP = ConfigDirectory(default = "/tmp/") #, fixed_size = False)
@@ -351,7 +356,14 @@ class ConfigMenu(ConfigBaseWidget):
         players = []
         bufferingMode = config.plugins.iptvplayer.buforowanie.value or config.plugins.iptvplayer.buforowanie_m3u8.value or config.plugins.iptvplayer.buforowanie_rtmp.value
 
-        list.append(getConfigListEntry(_("Movie player"), config.plugins.iptvplayer.NaszPlayer))
+        list.append(getConfigListEntry(_("First movie player without buffering mode"), config.plugins.iptvplayer.defaultNaszMoviePlayer0))
+        players.append(config.plugins.iptvplayer.defaultNaszMoviePlayer0)
+        list.append(getConfigListEntry(_("Second movie player without buffering mode"), config.plugins.iptvplayer.alternativeNaszMoviePlayer0))
+        players.append(config.plugins.iptvplayer.alternativeNaszMoviePlayer0)
+        list.append(getConfigListEntry(_("First movie player in buffering mode"), config.plugins.iptvplayer.defaultNaszMoviePlayer))
+        players.append(config.plugins.iptvplayer.defaultNaszMoviePlayer)
+        list.append(getConfigListEntry(_("Second movie player in buffering mode"), config.plugins.iptvplayer.alternativeNaszMoviePlayer))
+        players.append(config.plugins.iptvplayer.alternativeNaszMoviePlayer)
 
         playersValues = [player.value for player in players]
         if 'exteplayer' in playersValues or 'extgstplayer' in playersValues or 'auto' in playersValues:
@@ -447,7 +459,10 @@ class ConfigMenu(ConfigBaseWidget):
               config.plugins.iptvplayer.preferredupdateserver,
               ]
         players = []
-        players.append(config.plugins.iptvplayer.NaszPlayer)
+        players.append(config.plugins.iptvplayer.defaultNaszMoviePlayer0)
+        players.append(config.plugins.iptvplayer.AlternativeNaszMoviePlayer0)
+        players.append(config.plugins.iptvplayer.defaultNaszMoviePlayer)
+        players.append(config.plugins.iptvplayer.AlternativeNaszMoviePlayer)
         tab.extend(players)
         return tab
 
@@ -492,9 +507,16 @@ def GetMoviePlayer(buffering=False, useAlternativePlayer=False):
     availablePlayers.append('extgstplayer')
     availablePlayers.append('mini')
     availablePlayers.append('standard')
- 
-    player = config.plugins.iptvplayer.NaszPlayer
-    alternativePlayer = config.plugins.iptvplayer.NaszPlayer
+
+    player = None
+    alternativePlayer = None
+
+    if buffering:
+        player = config.plugins.iptvplayer.defaultNaszMoviePlayer
+        alternativePlayer = config.plugins.iptvplayer.alternativeNaszMoviePlayer
+    else:
+        player = config.plugins.iptvplayer.defaultNaszMoviePlayer0
+        alternativePlayer = config.plugins.iptvplayer.alternativeNaszMoviePlayer0
 
     if player.value == 'auto': player = CFakeMoviePlayerOption(availablePlayers[0], GetMoviePlayerName(availablePlayers[0]))
     try: availablePlayers.remove(player.value)
