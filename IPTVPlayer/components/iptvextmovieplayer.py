@@ -1855,9 +1855,8 @@ class IPTVExtMoviePlayer(Screen):
                 msg = _("Link is not supported by the gstplayer. Please use the extelayer3 if available.")
                 self.showMessage(msg, MessageBox.TYPE_ERROR)
             
-            gstplayerPath = config.plugins.iptvplayer.gstplayerpath.value
             #'export GST_DEBUG="*:6" &&' + 
-            cmd = gstplayerPath  + ' "%s"' % self.fileSRC
+            cmd = '/usr/bin/gstplayer'  + ' "%s"' % self.fileSRC
             
             # active audio track 
             audioTrackIdx = self.metaHandler.getAudioTrackIdx()
