@@ -866,7 +866,7 @@ class IPTVExtMoviePlayer(Screen):
         printDBG("openSubtitlesFromFileCallback filePath[%s]" % filePath)
         if None != filePath:
             self.subHandler['handler'].removeCacheFile(filePath)
-            cmd = '%s "%s"' % (config.plugins.iptvplayer.uchardetpath.value, filePath) 
+            cmd = '/usr/bin/uchardet "%s"' % (filePath)
             self.workconsole = iptv_system(cmd, boundFunction(self.enableSubtitlesFromFile, filePath))
         
     def enableSubtitlesFromFile(self, filePath, code=127, encoding=""):

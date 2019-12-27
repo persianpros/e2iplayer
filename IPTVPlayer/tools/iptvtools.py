@@ -314,13 +314,13 @@ def GetJSScriptFile(file):
     return resolveFilename(SCOPE_PLUGINS, 'Extensions/IPTVPlayer/jsscripts/') + file
 
 def GetUchardetPath():
-    return config.plugins.iptvplayer.uchardetpath.value
+    return '/usr/bin/uchardet'
 
 def GetCmdwrapPath():
-    return config.plugins.iptvplayer.cmdwrappath.value
+    return '/usr/cmdwrapper'
     
 def GetDukPath():
-    return config.plugins.iptvplayer.dukpath.value
+    return '/usr/bin/duk'
 
 gE2iPlayerTempCookieDir = None
 def SetTmpCookieDir():
