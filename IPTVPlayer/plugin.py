@@ -65,7 +65,7 @@ def pluginAutostartSetup(reason, **kwargs):
 def doPluginAutostart():
     from Screens.InfoBar import InfoBar
     InfoBar.instance.onShow.remove(doPluginAutostart)
-    runMain(InfoBar.instance.session)
+    doRunMain(InfoBar.instance.session)
 ######################################################
 
 ####################################################
@@ -93,10 +93,10 @@ def runSetup(session):
 
 def main(session, **kwargs):
     if config.plugins.iptvplayer.pluginProtectedByPin.value:
-        session.openWithCallback(boundFunction(pinCallback, session, runMain), IPTVPinWidget, title =_("Enter pin")) 
+        session.openWithCallback(boundFunction(pinCallback, session, runMain), IPTVPinWidget, title =_("Enter pin"))
     else:
-        runMain(session)
-    
+        doRunMain(session)
+
 class pluginAutostart(Screen):
     def __init__(self, session):
         self.session = session
@@ -105,7 +105,7 @@ class pluginAutostart(Screen):
     
     def onStart(self):
         self.onShow.remove(self.onStart)
-        runMain(self.session, self.iptvDoRunMain)
+        iptvDoRunMain(self.session)
         
     def iptvDoRunMain(self, session):
         session.openWithCallback(self.iptvDoClose, E2iPlayerWidget)
@@ -115,9 +115,6 @@ class pluginAutostart(Screen):
     
 def doRunMain(session):
     session.open(E2iPlayerWidget)
-
-def runMain(session, nextFunction=doRunMain):
-    nextFunction(session)
 
 def pinCallback(session, callbackFun, pin=None):
     if None == pin: return
