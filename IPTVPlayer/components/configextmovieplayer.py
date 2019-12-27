@@ -298,19 +298,18 @@ class ConfigExtMoviePlayer(ConfigBaseWidget, ConfigExtMoviePlayerBase):
         if getDesktop(0).size().width() >= 800:
             list.append(getConfigListEntry(_("Info bar clock format"), config.plugins.iptvplayer.extplayer_infobanner_clockformat))
         list.append(getConfigListEntry(_("Create LCD/VFD summary screen"), config.plugins.iptvplayer.extplayer_summary))
-        if 1:#IsExecutable(config.plugins.iptvplayer.exteplayer3path.value):
-            list.append(getConfigListEntry(_("----------------- External exteplayer3 options -----------------"), config.plugins.iptvplayer.fakeExtePlayer3))
-            list.append(getConfigListEntry("    " + _("RAM buffer size [MB] for network protocols"), config.plugins.iptvplayer.rambuffer_sizemb_network_proto))
-            list.append(getConfigListEntry("    " + _("RAM buffer size [MB] for local files"), config.plugins.iptvplayer.rambuffer_sizemb_files))
-            list.append(getConfigListEntry("    " + _("Use software decoder for the %s") % 'AAC', config.plugins.iptvplayer.aac_software_decode))
-            list.append(getConfigListEntry("    " + _("Use software decoder for the %s") % 'AC3', config.plugins.iptvplayer.ac3_software_decode))
-            list.append(getConfigListEntry("    " + _("Use software decoder for the %s") % 'EAC3', config.plugins.iptvplayer.eac3_software_decode))
-            list.append(getConfigListEntry("    " + _("Use software decoder for the %s") % 'DTS', config.plugins.iptvplayer.dts_software_decode))
-            list.append(getConfigListEntry("    " + _("Use software decoder for the %s") % 'WMA', config.plugins.iptvplayer.wma_software_decode))
-            list.append(getConfigListEntry("    " + _("Use software decoder for the %s") % 'MP3', config.plugins.iptvplayer.mp3_software_decode))
-            if getImageArch() != "sh4":
-               list.append(getConfigListEntry("    " + _("Software decoding as"), config.plugins.iptvplayer.software_decode_as))
-            list.append(getConfigListEntry("    " + _("Stereo downmix mode for software decoder"), config.plugins.iptvplayer.stereo_software_decode))
+        list.append(getConfigListEntry(_("----------------- External exteplayer3 options -----------------"), config.plugins.iptvplayer.fakeExtePlayer3))
+        list.append(getConfigListEntry("    " + _("RAM buffer size [MB] for network protocols"), config.plugins.iptvplayer.rambuffer_sizemb_network_proto))
+        list.append(getConfigListEntry("    " + _("RAM buffer size [MB] for local files"), config.plugins.iptvplayer.rambuffer_sizemb_files))
+        list.append(getConfigListEntry("    " + _("Use software decoder for the %s") % 'AAC', config.plugins.iptvplayer.aac_software_decode))
+        list.append(getConfigListEntry("    " + _("Use software decoder for the %s") % 'AC3', config.plugins.iptvplayer.ac3_software_decode))
+        list.append(getConfigListEntry("    " + _("Use software decoder for the %s") % 'EAC3', config.plugins.iptvplayer.eac3_software_decode))
+        list.append(getConfigListEntry("    " + _("Use software decoder for the %s") % 'DTS', config.plugins.iptvplayer.dts_software_decode))
+        list.append(getConfigListEntry("    " + _("Use software decoder for the %s") % 'WMA', config.plugins.iptvplayer.wma_software_decode))
+        list.append(getConfigListEntry("    " + _("Use software decoder for the %s") % 'MP3', config.plugins.iptvplayer.mp3_software_decode))
+        if getImageArch() != "sh4":
+            list.append(getConfigListEntry("    " + _("Software decoding as"), config.plugins.iptvplayer.software_decode_as))
+        list.append(getConfigListEntry("    " + _("Stereo downmix mode for software decoder"), config.plugins.iptvplayer.stereo_software_decode))
         if self.ac3_mix_avaliable:
             list.append(getConfigListEntry(_("AC3 downmix mode"), config.plugins.iptvplayer.ac3_mix))
         if self.aac_mix_avaliable:
