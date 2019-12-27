@@ -117,11 +117,8 @@ def doRunMain(session):
     session.open(E2iPlayerWidget)
 
 def runMain(session, nextFunction=doRunMain):
-    wgetpath     = IsExecutable(config.plugins.iptvplayer.wgetpath.value)
-    rtmpdumppath = IsExecutable(config.plugins.iptvplayer.rtmpdumppath.value)
-    f4mdumppath  = IsExecutable(config.plugins.iptvplayer.f4mdumppath.value)
     nextFunction(session)
-        
+
 def pinCallback(session, callbackFun, pin=None):
     if None == pin: return
     if pin != config.plugins.iptvplayer.pin.value:

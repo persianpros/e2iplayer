@@ -84,15 +84,15 @@ class DMHelper:
     @staticmethod
     def GET_PWGET_PATH():
         return GetPluginDir('iptvdm/pwget.py')
-    
+
     @staticmethod
     def GET_WGET_PATH():
-        return config.plugins.iptvplayer.wgetpath.value
-    
+        return '/usr/bin/wget'
+
     @staticmethod
     def GET_F4M_PATH():
-        return config.plugins.iptvplayer.f4mdumppath.value
-        
+        return '/usr/bin/f4mdump'
+
     @staticmethod
     def GET_HLSDL_PATH():
         return config.plugins.iptvplayer.hlsdlpath.value
@@ -103,10 +103,10 @@ class DMHelper:
         if IsExecutable(altFFMPEGPath):
             return altFFMPEGPath
         return "ffmpeg"
-    
+
     @staticmethod
     def GET_RTMPDUMP_PATH():
-        return config.plugins.iptvplayer.rtmpdumppath.value
+        return '/usr/bin/rtmpdump'
 
     @staticmethod
     def getDownloaderType(url):

@@ -615,7 +615,7 @@ class UpdateMainAppImpl(IUpdateObjectInterface):
         cmd = ''
         try: 
             url = "http://iptvplayer.vline.pl/check.php?ver=%s&type=%s" % (self.serversList[self.currServIdx]['version'], self.serversList[self.currServIdx]['pyver'])
-            cmd = '%s "%s" -t 1 -T 10 -O - > /dev/null 2>&1; ' % (config.plugins.iptvplayer.wgetpath.value, url)
+            cmd = '/usr/bin/wget "%s" -t 1 -T 10 -O - > /dev/null 2>&1; ' % (url)
         except Exception: 
             printExc()
         
