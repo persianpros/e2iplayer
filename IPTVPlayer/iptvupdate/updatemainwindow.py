@@ -591,8 +591,7 @@ class UpdateMainAppImpl(IUpdateObjectInterface):
                 self.copyBinariesCmdList.append( 'cp -f "%s/libs/e2icjson/e2icjson.so" "%s/libs/e2icjson/e2icjson.so"  2>&1 ' % (os_path.join(self.ExtensionPath, 'IPTVPlayer'), os_path.join(self.ExtensionTmpPath, 'IPTVPlayer')) )
 
             binPath = "%s/bin/" % (os_path.join(self.ExtensionPath, 'IPTVPlayer'))
-            binariesTab = [('exteplayer3', config.plugins.iptvplayer.exteplayer3path.value), \
-                           ('gstplayer', config.plugins.iptvplayer.gstplayerpath.value), \
+            binariesTab = [('gstplayer', config.plugins.iptvplayer.gstplayerpath.value), \
                            ('wget', config.plugins.iptvplayer.wgetpath.value), \
                            ('hlsdl', config.plugins.iptvplayer.hlsdlpath.value), \
                            ('cmdwrapper', config.plugins.iptvplayer.cmdwrappath.value), \

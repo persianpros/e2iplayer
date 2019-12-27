@@ -1888,8 +1888,7 @@ class IPTVExtMoviePlayer(Screen):
                         else: cmd += (' "proxy=%s" ' % tmp)
             cmd += " > /dev/null"
         else:
-            exteplayer3path = config.plugins.iptvplayer.exteplayer3path.value
-            cmd = exteplayer3path
+            cmd = '/usr/bin/exteplayer3'
             tmpUri = strwithmeta(self.fileSRC)
             
             audioUri = ''

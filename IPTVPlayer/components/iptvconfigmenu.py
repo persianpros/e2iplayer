@@ -33,7 +33,6 @@ config.plugins.iptvplayer = ConfigSubsection()
 
 from Plugins.Extensions.IPTVPlayer.components.configextmovieplayer import ConfigExtMoviePlayer
 
-config.plugins.iptvplayer.exteplayer3path = ConfigText(default = "", fixed_size = False)
 config.plugins.iptvplayer.gstplayerpath   = ConfigText(default = "", fixed_size = False)
 config.plugins.iptvplayer.wgetpath        = ConfigText(default = "", fixed_size = False)
 config.plugins.iptvplayer.hlsdlpath       = ConfigText(default = "", fixed_size = False)
@@ -260,7 +259,6 @@ class ConfigMenu(ConfigBaseWidget):
             list.append(getConfigListEntry(_("Write current title to file:"), config.plugins.iptvplayer.curr_title_file))
             list.append(getConfigListEntry(_("The default aspect ratio for the external player"), config.plugins.iptvplayer.hidden_ext_player_def_aspect_ratio))
             
-            list.append(getConfigListEntry("exteplayer3path", config.plugins.iptvplayer.exteplayer3path))
             list.append(getConfigListEntry("gstplayerpath", config.plugins.iptvplayer.gstplayerpath))
             list.append(getConfigListEntry("wgetpath", config.plugins.iptvplayer.wgetpath))
             list.append(getConfigListEntry("rtmpdumppath", config.plugins.iptvplayer.rtmpdumppath))

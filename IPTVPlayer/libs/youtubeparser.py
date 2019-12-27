@@ -45,7 +45,7 @@ class YouTubeParser():
         printDBG("ALLOW DASH: >> %s" % value)
         if value == "true" and IsExecutable('ffmpeg'):
             return True
-        elif value == "auto" and IsExecutable('ffmpeg') and IsExecutable(config.plugins.iptvplayer.exteplayer3path.value):
+        elif value == "auto" and IsExecutable('ffmpeg'):
             return True
         else:
             return False
