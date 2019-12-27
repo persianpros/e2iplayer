@@ -78,7 +78,7 @@ config.plugins.iptvplayer.osk_default_suggestions = ConfigSelection(default = ""
 config.plugins.iptvplayer.osk_background_color = ConfigSelection(default = "", choices = [('', _('Default')), ('transparent', _('Transparent')), ('#000000', _('Black')), ('#80000000', _('Darkgray')), ('#cc000000', _('Lightgray'))])
 
 def GetMoviePlayerName(player):
-    map = {"auto":_("auto"), "mini": _("internal"), "standard":_("standard"), 'exteplayer': _("external exteplayer3"), 'extgstplayer': _("external gstplayer")}
+    map = {"auto":_("auto"), "mini": _("internal"), "standard":_("standard"), 'exteplayer': _("exteplayer3"), 'extgstplayer': _("gstplayer")}
     return map.get(player, _('unknown'))
     
 def ConfigPlayer(player):
