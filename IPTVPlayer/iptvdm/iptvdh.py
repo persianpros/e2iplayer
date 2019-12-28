@@ -94,10 +94,6 @@ class DMHelper:
         return '/usr/bin/f4mdump'
 
     @staticmethod
-    def GET_HLSDL_PATH():
-        return config.plugins.iptvplayer.hlsdlpath.value
-        
-    @staticmethod
     def GET_FFMPEG_PATH():
         altFFMPEGPath = '/iptvplayer_rootfs/usr/bin/ffmpeg'
         if IsExecutable(altFFMPEGPath):
@@ -294,6 +290,6 @@ class DMHelper:
                 elif key == 'http_proxy':
                     proxyOptions += ' -e use_proxy=yes -e http_proxy="%s" -e https_proxy="%s" ' % (value, value)
         
-        cmd = DMHelper.GET_HLSDL_PATH() + ' -q -f -b ' + userAgent + headerOptions + proxyOptions
+        cmd = '/usr/bin/hsldl -q -f -b ' + userAgent + headerOptions + proxyOptions
         printDBG("getBaseHLSDLCmd return cmd[%s]" % cmd)
         return cmd
