@@ -290,6 +290,6 @@ class DMHelper:
                 elif key == 'http_proxy':
                     proxyOptions += ' -e use_proxy=yes -e http_proxy="%s" -e https_proxy="%s" ' % (value, value)
         
-        cmd = '/usr/bin/hsldl -q -f -b ' + userAgent + headerOptions + proxyOptions
+        cmd = '/usr/bin/hlsdl -q -f -b ' + userAgent + headerOptions + proxyOptions
         printDBG("getBaseHLSDLCmd return cmd[%s]" % cmd)
         return cmd
