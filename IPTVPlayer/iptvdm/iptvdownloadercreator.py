@@ -43,12 +43,12 @@ def DownloaderCreator(url):
     url = urlparser.decorateUrl(url)
     iptv_proto = url.meta.get('iptv_proto', '')
     if 'm3u8' == iptv_proto:
-        if config.plugins.iptvplayer.hlsdlpath.value != '':
+        if config.plugins.iptvplayer.hlsdl_download.value:
             downloader = HLSDownloader()
         else:
             downloader = M3U8Downloader()
     elif 'em3u8' == iptv_proto:
-        if config.plugins.iptvplayer.hlsdlpath.value != '':
+        if config.plugins.iptvplayer.hlsdl_download.value:
             downloader = EHLSDownloader()
         else:
             downloader = EM3U8Downloader()
@@ -59,7 +59,7 @@ def DownloaderCreator(url):
     elif iptv_proto in ['https', 'http']:
         downloader = WgetDownloader()
     elif 'merge' == iptv_proto:
-        if url.meta.get('prefered_merger') == 'hlsdl' and config.plugins.iptvplayer.hlsdlpath.value != '' and config.plugins.iptvplayer.prefer_hlsdl_for_pls_with_alt_media.value:
+        if url.meta.get('prefered_merger') == 'hlsdl' and config.plugins.iptvplayer.hlsdl_download.value and config.plugins.iptvplayer.prefer_hlsdl_for_pls_with_alt_media.value:
             downloader = HLSDownloader()
         elif IsExecutable('ffmpeg'):
             downloader = FFMPEGDownloader()

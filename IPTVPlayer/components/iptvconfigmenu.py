@@ -33,7 +33,7 @@ config.plugins.iptvplayer = ConfigSubsection()
 
 from Plugins.Extensions.IPTVPlayer.components.configextmovieplayer import ConfigExtMoviePlayer
 
-config.plugins.iptvplayer.hlsdlpath       = ConfigText(default = "", fixed_size = False)
+config.plugins.iptvplayer.hlsdl_download  = ConfigYesNo(default = True)
 config.plugins.iptvplayer.set_curr_title  = ConfigYesNo(default = False)
 config.plugins.iptvplayer.curr_title_file = ConfigText(default = "", fixed_size = False) 
 
@@ -251,8 +251,6 @@ class ConfigMenu(ConfigBaseWidget):
             list.append(getConfigListEntry(_("VFD set current title:"), config.plugins.iptvplayer.set_curr_title))
             list.append(getConfigListEntry(_("Write current title to file:"), config.plugins.iptvplayer.curr_title_file))
             list.append(getConfigListEntry(_("The default aspect ratio for the external player"), config.plugins.iptvplayer.hidden_ext_player_def_aspect_ratio))
-            
-            list.append(getConfigListEntry("hlsdlpath", config.plugins.iptvplayer.hlsdlpath))
             list.append(getConfigListEntry("E2iPlayer auto start at Enigma2 start", config.plugins.iptvplayer.plugin_autostart))
             list.append(getConfigListEntry("Auto start method", config.plugins.iptvplayer.plugin_autostart_method))
             list.append(getConfigListEntry("Prefer hlsld for playlist with alt. media", config.plugins.iptvplayer.prefer_hlsdl_for_pls_with_alt_media))
@@ -302,7 +300,8 @@ class ConfigMenu(ConfigBaseWidget):
         
         list.append(getConfigListEntry(_("Folder for cache data"), config.plugins.iptvplayer.SciezkaCache))
         list.append(getConfigListEntry(_("Folder for temporary data"), config.plugins.iptvplayer.NaszaTMP))
-        
+        list.append(getConfigListEntry("Use hlsdl downloader", config.plugins.iptvplayer.hlsdl_download))
+
         # BUFFERING
         list.append(getConfigListEntry(_("[HTTP] buffering"), config.plugins.iptvplayer.buforowanie))
         list.append(getConfigListEntry(_("[HLS/M3U8] buffering"), config.plugins.iptvplayer.buforowanie_m3u8))
