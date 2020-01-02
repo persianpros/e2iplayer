@@ -1021,6 +1021,16 @@ class common:
                         get_data['jschl_answer'] = decoded['answer']
                         post_data = 'r=%s&jschl_vc=%s&pass=%s&jschl_answer=%s' % (urllib.quote(get_data['r'],safe=''), urllib.quote(get_data['jschl_vc'],safe=''), urllib.quote(get_data['pass'],safe=''), get_data['jschl_answer'])
                         verUrl = _getFullUrl2( verUrl, domain)
+                        verUrl =  _getFullUrl( ph.getattr(verData, 'action'), domain)
+                        
+                        postDataCF = {}
+                        for key in get_data:
+                            postDataCF[key] = get_data[key]
+                        
+                        
+                        printDBG("CF verification url: %s" % verUrl)
+                        printDBG("CF post data: %s" % str(postDataCF))
+                        
                         params2 = dict(params)
                         params2['load_cookie'] = True
                         params2['save_cookie'] = True
@@ -1035,8 +1045,8 @@ class common:
                         else:
                             GetIPTVSleep().Sleep((decoded['timeout'] / 1000.0))
                         printDBG("Time spent: [%s]" % (time.time() - start_time))
-                        printDBG("Timeout: [%s]" % decoded['timeout'])
-                        sts, data = self.getPage(verUrl, params2, post_data)
+                        printDBG("Timeout: [%s]" % 4000)
+                        sts, data = self.getPage(verUrl, params2, postDataCF)
                 except Exception:
                     printExc()
                     break
