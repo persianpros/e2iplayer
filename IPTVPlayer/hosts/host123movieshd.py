@@ -275,41 +275,16 @@ class GoMovies(CBaseHostClass):
                 title = ph.clean_html(item)
                 id = ph.getattr(item, 'sid')
                 playerData = ph.search(item, '''data\-([^=]+?)=['"]([^'^"]+?)['"]''')
+                if 'https://mystream.streamango.to/' in playerData[1]:
+                    playerData[1] = playerData[1].replace('https://mystream.streamango.to/', '')
                 if playerData[0] == 'strgo':
                     url = 'https://vidload.co/player/' + playerData[1]
                 elif playerData[0] == 'openload':
                     url = 'https://openload.co/embed/' + playerData[1]
                 elif playerData[0] == 'onlystream':
-                    url = 'https://onlystream.tv/e/' + playerData[1]
-                    #url = 'https://very.streamango.to/e/' + playerData[1]
+                    url = 'https://vidoo.tv/e/' + playerData[1]
                 elif playerData[0] == 'svbackup':
-                    url = self.getFullUrl(playerData[1])
-                elif playerData[0] == 'vs':
-                    # javascript : annoying("videospider")
-                    #function annoying(s){
-                    #    $.ajax({
-                    #            url: ajax_var.url,
-                    #            method: "POST",
-                    #            data: { action: "fkingyrfather", id: 94579, annoying: s },
-                    #            dataType: "json",
-                    #            success:function(data){
-                    #                if(data.status == 1)
-                    #                    $("#iframe-embed").attr("src",  data.url);
-                    #            }
-                    #        });
-                    #}
-                    # https://videospider.stream/getvideo?key=IfntUpFt05WyyQAJ&video_id=tt8890058&ticket=gf08gdk436duua0914ohsocay5o0qn
-                    # temporary because not working
-                    if ajaxJson:
-                        sts, ajaxData = self.getPage(ajaxJson['url'], post_data = postData)
-                    
-                        if sts:
-                            try:
-                                printDBG("ajax data: %s" % ajaxData)
-                                ajaxData = json_loads(ajaxData)
-                                url = ajaxData['url']
-                            except:
-                                url = "https://videospider.stream/getvideo?video_id=%s" % playerData[1]
+                    url = 'https://mstream.xyz/' + playerData[1]
                 else:
                     printDBG("123MovieHd.exploreItem - Not handled server with code: data-%s" % playerData[0])
                     url = self.getFullUrl(playerData[1])
