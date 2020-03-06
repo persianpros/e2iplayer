@@ -7,7 +7,6 @@ from Plugins.Extensions.IPTVPlayer.components.ihost import CHostBase, CBaseHostC
 from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, rm
 from Plugins.Extensions.IPTVPlayer.tools.iptvtypes import strwithmeta
 from Plugins.Extensions.IPTVPlayer.libs import ph
-from Plugins.Extensions.IPTVPlayer.libs.e2ijson import loads as json_loads, dumps as json_dumps
 ###################################################
 
 ###################################################
@@ -230,42 +229,11 @@ class GoMovies(CBaseHostClass):
         params['header'] = dict(params['header'])
         params['header']['Referer'] = self.cm.meta['url']
         sts, data = self.getPage(playerUrl, params)
-        if not sts: 
-            return
+        if not sts: return
         
         titlesTab = []
         self.cacheLinks  = {}
         
-        # var ajax_var = {"url":"https:\/\/123movieshd.cloud\/wp-admin\/admin-ajax.php","nonce":"deefd6cf42"};
-        ajaxJson = ph.search(data, "var ajax_var = ({[^}]+?});")[0]
-        
-        if ajaxJson:
-            ajaxJson = json_loads(ajaxJson)
-            printDBG("ajax json : %s" % str(ajaxJson))
-        
-        functionAnnoying = self.cm.ph.getDataBeetwenMarkers(data, 'function annoying(s){', '});', False)[1]
-
-        if functionAnnoying:
-            printDBG("----------------- function annoying --------------")
-            printDBG(functionAnnoying)
-        
-            post_data_raw = ph.search(functionAnnoying,"data: ({[^}]+?})")[0]
-            # example{ action: "fkingyrfather", id: 94579, annoying: s }
-            printDBG("Post data: % s" % post_data_raw)
-            
-            postData={}
-            if 'action' in post_data_raw:
-                postData["action"] = ph.search(functionAnnoying,"action ?: ?\"([^\"]+?)\"")[0]
-            if 'id' in post_data_raw:
-                postData["id"] = ph.search(functionAnnoying,"id ?: ?([0-9]{1,5})")[0]
-            if 'annoying' in post_data_raw:
-                postData["annoying"] = "videospider"
-            
-            printDBG(json_dumps(postData))
-            
-        else:
-            printDBG(" javascript function annoying not found! ")
-            
         data = ph.findall(data, ('<div', '>', 'server-'), ('<div', '>', 'clearfix'))
         for tmp in data:
             serverName = ph.clean_html(ph.find(tmp, '<strong', '</strong>')[1])
@@ -279,14 +247,11 @@ class GoMovies(CBaseHostClass):
                     playerData[1] = playerData[1].replace('https://mystream.streamango.to/', '')
                 if playerData[0] == 'strgo':
                     url = 'https://vidload.co/player/' + playerData[1]
-                elif playerData[0] == 'openload':
-                    url = 'https://openload.co/embed/' + playerData[1]
                 elif playerData[0] == 'onlystream':
                     url = 'https://vidoo.tv/e/' + playerData[1]
                 elif playerData[0] == 'svbackup':
                     url = 'https://embed.mystream.to/' + playerData[1]
                 else:
-                    printDBG("123MovieHd.exploreItem - Not handled server with code: data-%s" % playerData[0])
                     url = self.getFullUrl(playerData[1])
                 
                 if title not in titlesTab:
