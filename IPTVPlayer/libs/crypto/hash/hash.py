@@ -1,4 +1,5 @@
-# -*- coding: iso-8859-1 -*-
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 """   crypto.cipher.hash
       Base class for cryptographic hash algorithms
       An alternate interface (no 'new').

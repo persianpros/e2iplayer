@@ -1,5 +1,6 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
+#!/usr/bin/env python
 
 try:
     from urllib.parse import urlsplit, urlparse, parse_qs, urljoin

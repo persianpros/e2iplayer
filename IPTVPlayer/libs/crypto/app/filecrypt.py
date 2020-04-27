@@ -1,5 +1,7 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+from __future__ import print_function
 #!/usr/bin/env python
-# -*- coding: iso-8859-1 -*-
 """ cipher.app.filecrypt
 
     File encryption script.
@@ -24,7 +26,7 @@ def main():
         optlist, args = getopt.getopt( sys.argv[1:], 'edk:i:o:' )
     except getopt.GetoptError, err :
         sys.exit( "Error: %s\n%s" % (err,usage) )
-    print optlist,'\n------\n',args
+    print(optlist,'\n------\n',args)
     # make a dictionary and check for one occurance of each option
     optdict = {}
     for option in optlist:
@@ -52,7 +54,7 @@ def main():
     else:
         input = sys.stdin.read()
 
-    print "input (%d bytes): %s" % (len(input),b2a_pt(input))
+    print("input (%d bytes): %s" % (len(input),b2a_pt(input)))
     alg=Trolldoll(ivSize=160)
     alg.setPassphrase( passPhrase )
 
@@ -68,7 +70,7 @@ def main():
     else:
         sys.exit( "Error: Must select encrypt or decrypt, pick either '-e' or '-d'\n%s" % usage )
 
-    print "output (%d bytes): %s" % (len(output),b2a_pt(output))
+    print("output (%d bytes): %s" % (len(output),b2a_pt(output)))
     # put output to file or stdout
     if optdict.has_key('-o'):
         outfile = open(optdict['-o'],'wb')

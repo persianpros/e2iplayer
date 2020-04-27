@@ -1,4 +1,6 @@
-# -*- coding: iso-8859-1 -*-
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+from __future__ import print_function
 """ crypto.cipher.tkip_encr
 
     TKIP encryption from IEEE 802.11 TGi
@@ -61,9 +63,9 @@ class TKIP_encr:
         """ Make an ARC4 key from TKIP Sequence Counter Octets (little-endian) """
         if keyID!=0 :
             raise 'TKIP expects keyID of zero'
-        print "tscOctets in tkmixer=",b2a_p(tscOctets)
+        print("tscOctets in tkmixer=",b2a_p(tscOctets))
         newKey = self.keyMixer.newKey(tscOctets)
-        print "newKey=", b2a_p(newKey)
+        print("newKey=", b2a_p(newKey))
         return newKey
 
     def encrypt(self, plainText, iv):

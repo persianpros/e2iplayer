@@ -1,5 +1,6 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
+#!/usr/bin/env python
 
 __author__ = 'Jeff Kehler'
 __email__ = 'jeffrey.kehler@gmail.com'

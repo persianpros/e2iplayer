@@ -1,3 +1,4 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 # Taken from https://github.com/rg3/youtube-dl/blob/master/youtube_dl/jsinterp.py
 # Please by informed that first code for auto extraction sign decrypt algo for yt_downloader

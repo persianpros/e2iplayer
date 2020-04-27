@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+from __future__ import print_function
 import os
 from Plugins.Extensions.WebInterface.WebChilds.Toplevel import addExternalChild
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS
@@ -50,12 +53,12 @@ if os.path.exists(resolveFilename(SCOPE_PLUGINS,'Extensions/OpenWebif/pluginshoo
 			addExternalChild( ("fancontrol", fcRoot, "E2iPlayer", settings.WebInterfaceVersion) )
 			addExternalChild( ("iptvplayer", IPTVwebRoot, None, None) )
 		except Exception:
-			print "[E2iPlayer] exception registering Web interface in FC mode"
+			print("[E2iPlayer] exception registering Web interface in FC mode")
 	else: #user still can use IPTV web interface, but would need to mark URL manually depending on the openWebIf version
 		try:
 			addExternalChild( ("iptvplayer", IPTVwebRoot, "E2iPlayer", settings.WebInterfaceVersion) )
                         addExternalChild( ("e2iplayer", IPTVwebRoot, "E2iPlayer", settings.WebInterfaceVersion) )
 		except Exception:
-			print "[E2iPlayer] exception registering Web interface in NATIVE mode"
+			print("[E2iPlayer] exception registering Web interface in NATIVE mode")
 else:
-	print "No known webinterface available"
+	print("No known webinterface available")

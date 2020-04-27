@@ -1,4 +1,6 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 ###################################################
 # LOCAL import
 ###################################################
@@ -52,7 +54,7 @@ def Plugins(**kwargs):
 		try:
 			list.append(PluginDescriptor(where=PluginDescriptor.WHERE_SESSIONSTART, fnc=sessionstart, needsRestart=False)) # activating IPTV web interface
 		except Exception:
-			print "IPTVplayer Exception appending PluginDescriptor.WHERE_SESSIONSTART descriptor."
+			print("IPTVplayer Exception appending PluginDescriptor.WHERE_SESSIONSTART descriptor.")
 	return list
 
 ######################################################
@@ -137,4 +139,4 @@ def sessionstart(reason, **kwargs):
         try:
             import Plugins.Extensions.IPTVPlayer.Web.initiator
         except Exception, e:
-            print "EXCEPTION initiating IPTVplayer WebComponent:", str(e)
+            print("EXCEPTION initiating IPTVplayer WebComponent:", str(e))

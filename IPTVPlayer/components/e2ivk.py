@@ -1,3 +1,4 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 #
 #  E2iPlayer On Screen Keyboard based on Windows keyboard layouts

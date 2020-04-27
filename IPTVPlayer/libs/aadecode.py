@@ -1,4 +1,6 @@
-#-*- coding: utf-8 -*-
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+from __future__ import print_function
 #
 # author : Djeman
 # Updated by Shani-08 (https://github.com/Shani-08/ShaniXBMCWork2)
@@ -173,7 +175,7 @@ class AADecoder(object):
         pattern = (r"\(ﾟДﾟ\)\[ﾟoﾟ\]\+ (.+?)\(ﾟДﾟ\)\[ﾟoﾟ\]\)")
         result = re.search(pattern, self.encoded_str, re.DOTALL)
         if result is None:
-            print "AADecoder: data not found"
+            print("AADecoder: data not found")
             return False
 
         data = result.group(1)
@@ -187,7 +189,7 @@ class AADecoder(object):
         while data != '':
             # Check new char
             if data.find(begin_char) != 0:
-                print "AADecoder: data not found"
+                print("AADecoder: data not found")
                 return False
 
             data = data[len(begin_char):]
@@ -211,14 +213,14 @@ class AADecoder(object):
             str_char = self.decode_char(enc_char, radix)
             
             if str_char == "":
-                print "no match :  "
-                print  data + "\nout = " + out + "\n"
+                print("no match :  ")
+                print( data + "\nout = " + out + "\n")
                 return False
             
             out += chr(int(str_char, radix))
 
         if out == "":
-            print "no match : " + data
+            print("no match : " + data)
             return False
 
         return out

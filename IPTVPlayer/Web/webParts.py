@@ -1,4 +1,6 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 #### Local imports
 from __init__ import _
 import settings
@@ -165,7 +167,7 @@ class Body():
 						ConfName = itemL2[0]
 						ConfDesc = itemL1[0]
 					CFGtype = getCFGType(itemL1[1])
-					#print ConfName, '=' , CFGtype
+					#print(ConfName, '=' , CFGtype)
 					if CFGtype in ['ConfigYesNo','ConfigOnOff', 'ConfigEnableDisable', 'ConfigBoolean']:
 						if int(confKey[1].getValue()) == 0 :
 							CFGElements =  '<input type="radio" name="cmd" value="ON:%s">%s</input>' % (ConfName, _('Yes'))
@@ -215,7 +217,7 @@ class Body():
 		displayHostsList = SortHostsList(GetHostsList())
 		if 0 == len(GetHostsOrderList()):
 			try: displayHostsList.sort(key=lambda t : tuple('.'.join(str(t[0]).replace('://','.').replace('www.','').split('.')[1:-1]).lower()))
-			except Exception, e: print "Exception during sorting displayHostsList", str(e)
+			except Exception, e: print("Exception during sorting displayHostsList", str(e))
 		for hostName in displayHostsList:
 			if hostName in settings.activeHostsHTML.keys():
 				hostHTML = settings.activeHostsHTML[hostName]
@@ -456,7 +458,7 @@ class Body():
 							tempText += self.buildItemsListTable(item, index)
 						index += 1
 			except Exception, e:
-				print 'EXCEPTION in webParts:useHostPageContent - ', str(e)
+				print('EXCEPTION in webParts:useHostPageContent - ', str(e))
 				tempText += tableHorizontalRedLine( colspan = 3 )
 				tempText += '<td colspan="3" align="center">%s %s</td></tr>' % ( _('ERROR:'), str(e) )
 				tempText += tableHorizontalRedLine( colspan = 3 )
@@ -497,7 +499,7 @@ class Body():
 											destinationURL = '/iptvplayer/usehost?activeHostSearchHistory=%s' % key )
 						index += 1
 				except Exception, e:
-					print 'EXCEPTION in webParts:useHostPageContent - ', str(e)
+					print('EXCEPTION in webParts:useHostPageContent - ', str(e))
 					tempText += tableHorizontalRedLine( colspan = 3 )
 					tempText += '<td colspan="2" align="left">%s %s</td></tr>' % ( _('ERROR:'), str(e) )
 					tempText += tableHorizontalRedLine( colspan = 3 )

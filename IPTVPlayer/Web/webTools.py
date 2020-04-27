@@ -1,4 +1,6 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 
 import os
 import settings
@@ -106,7 +108,7 @@ def isActiveHostInitiated():
 		if len(settings.activeHost.keys()) > 0:
 			status = True
 	except Exception, e:
-		print 'EXCEPTION in webTools:isActiveHostInitiated - ', str(e)
+		print('EXCEPTION in webTools:isActiveHostInitiated - ', str(e))
 	return status
 ########################################################
 def isCurrentItemSelected():
@@ -115,7 +117,7 @@ def isCurrentItemSelected():
 		if len(settings.currItem.keys()) > 0:
 			status = True
 	except Exception, e:
-		print 'EXCEPTION in webTools:isCurrentItemSelected - ', str(e)
+		print('EXCEPTION in webTools:isCurrentItemSelected - ', str(e))
 	return status
 ########################################################
 def iSactiveHostsHTMLempty():
@@ -140,7 +142,7 @@ def setNewHostListShown(status):
 def isThreadRunning(name):
 	status = False
 	for i in threading.enumerate():
-		#print 'isThreadRunning>running threads:' , i.name
+		#print('isThreadRunning>running threads:' , i.name)
 		if name == i.name:
 			status = True
 	return status
@@ -148,7 +150,7 @@ def isThreadRunning(name):
 def stopRunningThread(name):
 	settings.StopThreads = True
 	for myThread in threading.enumerate():
-		#print 'isThreadRunning>running threads:' , i.name
+		#print('isThreadRunning>running threads:' , i.name)
 		if name == myThread.name:
 			if (myThread.isAlive()):
 				myThread.terminate()

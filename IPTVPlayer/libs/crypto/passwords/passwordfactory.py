@@ -1,4 +1,5 @@
-# -*- coding: iso-8859-1 -*-
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 """ crypto.passwords.passwordfactory
 
     Python classes to create and recover passwords.  Currently contains

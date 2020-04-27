@@ -1,4 +1,6 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 
 ###################################################
 # LOCAL import
@@ -446,12 +448,12 @@ class IPTVHost(IHost):
     def getLinksForVideo(self, Index = 0, selItem = None):
         listLen = len(self.host.currList)
         if listLen < Index and listLen > 0:
-            print "ERROR getLinksForVideo - current list is to short len: %d, Index: %d" % (listLen, Index)
+            print("ERROR getLinksForVideo - current list is to short len: %d, Index: %d" % (listLen, Index))
             return RetHost(RetHost.ERROR, value = [])
         
         selItem = self.host.currList[Index]
         if selItem['type'] != 'video':
-            print "ERROR getLinksForVideo - current item has wrong type"
+            print("ERROR getLinksForVideo - current item has wrong type")
             return RetHost(RetHost.ERROR, value = [])
             
         retlist = []

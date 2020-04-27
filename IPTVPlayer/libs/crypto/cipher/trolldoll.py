@@ -1,4 +1,5 @@
-# -*- coding: iso-8859-1 -*-
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 """ crypto.cipher.trolldoll
 
     Modification to Icedoll to take advantage of the better error extension

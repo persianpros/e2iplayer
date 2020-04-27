@@ -1,4 +1,5 @@
-﻿# -*- coding: utf-8 -*-
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 import re
 from Plugins.Extensions.IPTVPlayer.libs.youtube_dl.utils import clean_html as yt_clean_html

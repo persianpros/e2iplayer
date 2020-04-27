@@ -1,4 +1,6 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 #### Local imports
 from __init__ import _
 import settings
@@ -138,7 +140,7 @@ class searchPage(resource.Resource):
                     else:
                         settings.GlobalSearchTypes = ["VIDEO"]
                 arg = req.args.get(key,None)[0]
-            #print 'searchPage received: ', key, '=' , arg
+            #print('searchPage received: ', key, '=' , arg)
         else:
             key = None
             arg = None
@@ -307,7 +309,7 @@ class settingsPage(resource.Resource):
         if len(req.args.keys()) > 0:
             key = req.args.keys()[0]
             arg = req.args.get(key,None)[0]
-            print 'Received: ', key, '=' , arg
+            print('Received: ', key, '=' , arg)
         
             try:
                 if key is None or arg is None:
@@ -379,7 +381,7 @@ class downloaderPage(resource.Resource):
             except Exception: pass
             try: arg3 = req.args.get(key,None)[2]
             except Exception: pass
-            print 'Received: "%s"="%s","%s","%s"' % ( key,arg,arg2,arg3)
+            print('Received: "%s"="%s","%s","%s"' % ( key,arg,arg2,arg3))
 
         if key is None or arg is None:
             if None != Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget.gDownloadManager:
@@ -482,9 +484,9 @@ class useHostPage(resource.Resource):
             self.arg = req.args.get(self.key,None)[0]
             if len(req.args.keys()) > 1:
                 self.searchType = req.args.keys()[1]
-                print "useHostPage received: '%s'='%s' searchType='%s'" % (self.key, str(self.arg), self.searchType)
+                print("useHostPage received: '%s'='%s' searchType='%s'" % (self.key, str(self.arg), self.searchType))
             else:
-                print "useHostPage received: '%s'='%s'" % (self.key, str(self.arg))
+                print("useHostPage received: '%s'='%s'" % (self.key, str(self.arg)))
         
         if self.key is None and isActiveHostInitiated() == False:
             return util.redirectTo("/iptvplayer/hosts", req)

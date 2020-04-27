@@ -1,4 +1,6 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 import os
 import settings
 import threading
@@ -23,10 +25,10 @@ def _async_raise(tid, exctype):
 		raise TypeError("Only types can be raised (not instances)")
 	res = ctypes.pythonapi.PyThreadState_SetAsyncExc(tid, ctypes.py_object(exctype))
 	if res == 0:
-		print 'res=%d' % res
+		print('res=%d' % res)
 		raise ValueError("invalid thread id")
 	elif res != 1:
-		print 'res=%d' % res
+		print('res=%d' % res)
 		# """if it returns a number greater than one, you're in trouble, 
 		# and you should call it again with exc=NULL to revert the effect"""
 		ctypes.pythonapi.PyThreadState_SetAsyncExc(tid, 0)
@@ -74,7 +76,7 @@ class buildActiveHostsHTML(threading.Thread):
 				try:
 					hostNameWithURLandLOGO = '<a href="./usehost?activeHost=%s">%s</a><br><a href="%s" target="_blank"><font size="2" color="#58D3F7">%s</font></a>' % (hostName, logo, title, '.'.join(title.replace('://','.').replace('www.','').split('.')[1:-1]))
 				except Exception, e:
-					print str(e)
+					print(str(e))
 					hostNameWithURLandLOGO = '<a href="%s" target="_blank">%s</a><br><a href="%s" target="_blank"><font size="2" color="#58D3F7">%s</font></a>' % (title, logo, title, _('visit site'))
 			elif title[:4] != 'http' and logo != "":
 				hostNameWithURLandLOGO = '<a href="./usehost?activeHost=%s">%s</a><br><a href="%s" target="_blank"><font size="2" color="#58D3F7">%s</font></a>' % (hostName, logo, title, title )
@@ -154,7 +156,7 @@ class buildConfigsHTML(threading.Thread):
 						ConfName = itemL2[0]
 						ConfDesc = itemL1[0]
 					CFGtype = getCFGType(itemL1[1])
-					#print ConfName, '=' , CFGtype
+					#print(ConfName, '=' , CFGtype)
 					if CFGtype in ['ConfigYesNo','ConfigOnOff', 'ConfigEnableDisable', 'ConfigBoolean']:
 						if int(confKey[1].getValue()) == 0 :
 							CFGElements =  '<input type="radio" name="cmd" value="ON:%s">%s</input>' % (ConfName, _('Yes'))
@@ -216,7 +218,7 @@ class buildConfigsHTML(threading.Thread):
 				hostsCFG += '<td><table border="1" style="width:100%">'
 				for item in self.buildSettingsTable(List2 = OptionsList, List1 = config.plugins.iptvplayer.dict().items(), exclList = usedCFG, direction = '2>1'):
 					usedCFG.append(item[0])
-					#print 'hostsCFG:',item[0], item[1],item[2]
+					#print('hostsCFG:',item[0], item[1],item[2])
 					if item[0] == 'fake_separator':
 						hostsCFG += '<tr><td colspan="2" align="center"><tt>%s</tt></td></tr>\n' % (item[1])
 					else:
@@ -249,7 +251,7 @@ class doUseHostAction(threading.Thread):
 		self.raise_exc(SystemExit)
 
 	def run(self):
-		print "doUseHostAction received: '%s'='%s'" % (self.key, str(self.arg))
+		print("doUseHostAction received: '%s'='%s'" % (self.key, str(self.arg)))
 		if self.key == 'activeHost' and isActiveHostInitiated() == False:
 			initActiveHost(self.arg)
 		elif self.key == 'activeHost' and self.arg != settings.activeHost['Name']:
@@ -268,7 +270,7 @@ class doUseHostAction(threading.Thread):
 					printDBG('============webThreads.py Initialize Download Manager============')
 					Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget.gDownloadManager = IPTVDMApi(2, int(config.plugins.iptvplayer.IPTVDMMaxDownloadItem.value))
 				ret = Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget.gDownloadManager.addToDQueue( DMItem(url, fullFilePath))
-				#print ret
+				#print(ret)
 		elif self.key == 'ResolveURL' and self.arg.isdigit():
 			myID = int(self.arg)
 			url = "NOVALIDURLS"
@@ -280,10 +282,10 @@ class doUseHostAction(threading.Thread):
 						item.urlNeedsResolve = 0 # protection from recursion 
 						linkList.append(item)
 					elif isinstance(item, basestring): linkList.append(CUrlItem(item, item, 0))
-					else: print "selectResolvedVideoLinks: wrong resolved url type!"
+					else: print("selectResolvedVideoLinks: wrong resolved url type!")
 				settings.retObj = RetHost(RetHost.OK, value = linkList)
 			else:
-				print "selectResolvedVideoLinks: wrong status or value"
+				print("selectResolvedVideoLinks: wrong status or value")
 				
 		elif self.key == 'ListForItem' and self.arg.isdigit():
 			myID = int(self.arg)
@@ -298,16 +300,16 @@ class doUseHostAction(threading.Thread):
 				try:
 					links = settings.retObj.value[myID].urlItems
 				except Exception, e:
-					print "ListForItem>urlItems exception:", str(e)
+					print("ListForItem>urlItems exception:", str(e))
 					links='NOVALIDURLS'
 				try:
 					settings.retObj = settings.activeHost['Obj'].getLinksForVideo(myID,settings.retObj.value[myID]) #returns "NOT_IMPLEMENTED" when host is using curlitem
 				except Exception, e:
-					print "ListForItem>getLinksForVideo exception:", str(e)
+					print("ListForItem>getLinksForVideo exception:", str(e))
 					settings.retObj = RetHost(RetHost.NOT_IMPLEMENTED, value = [])
 				
 				if settings.retObj.status == RetHost.NOT_IMPLEMENTED and links != 'NOVALIDURLS':
-					print "getLinksForVideo not implemented, using CUrlItem"
+					print("getLinksForVideo not implemented, using CUrlItem")
 					tempUrls=[]
 					iindex=1
 					for link in links:
@@ -334,7 +336,7 @@ class doGlobalSearch(threading.Thread):
 		self.host = None
 		settings.GlobalSearchResults = {}
 		settings.StopThreads = False
-		print 'doGlobalSearch:init'
+		print('doGlobalSearch:init')
 
 	def raise_exc(self, exctype):
 		"""raises the given exception type in the context of this thread"""
@@ -351,7 +353,7 @@ class doGlobalSearch(threading.Thread):
 
 	def run(self):
 		if settings.GlobalSearchQuery == '':
-			print "End settings.GlobalSearchQuery is empty"
+			print("End settings.GlobalSearchQuery is empty")
 			return
 		for hostName in SortHostsList(GetHostsList()):
 			self.stopIfRequested()
@@ -363,18 +365,18 @@ class doGlobalSearch(threading.Thread):
 				continue
 			elif not IsHostEnabled(hostName):
 				continue
-			#print "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ---------------- %s ---------------- !!!!!!!!!!!!!!!!!!!!!!!!!" % hostName
+			#print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ---------------- %s ---------------- !!!!!!!!!!!!!!!!!!!!!!!!!" % hostName)
 			try:
 				_temp = __import__('Plugins.Extensions.IPTVPlayer.hosts.host' + hostName, globals(), locals(), ['IPTVHost'], -1)
 			except Exception:
-				print "doGlobalSearch: Exception importing %s" % hostName
+				print("doGlobalSearch: Exception importing %s" % hostName)
 				continue
 			try:
 				self.host = _temp.IPTVHost()
 			except Exception, e:
-				print "doGlobalSearch: Exception initializing iptvhost for %s: %s" % (hostName, str(e))
+				print("doGlobalSearch: Exception initializing iptvhost for %s: %s" % (hostName, str(e)))
 				continue
-			#print "settings.GlobalSearchQuery=",settings.GlobalSearchQuery, 'hostName=', hostName
+			#print("settings.GlobalSearchQuery=",settings.GlobalSearchQuery, 'hostName=', hostName)
 			settings.searchingInHost = hostName
 			time.sleep(0.2) #
 			try:
@@ -382,7 +384,7 @@ class doGlobalSearch(threading.Thread):
 				ret = self.host.getInitList()
 				searchTypes = self.host.getSearchTypes()
 			except Exception, e:
-				print "doGlobalSearch: Exception in getInitList for %s: %s" % (hostName, str(e))
+				print("doGlobalSearch: Exception in getInitList for %s: %s" % (hostName, str(e)))
 				settings.hostsWithNoSearchOption.append(hostName)
 				continue
 			if len(searchTypes) == 0:
@@ -394,6 +396,6 @@ class doGlobalSearch(threading.Thread):
 				for SearchType in searchTypes:
 					ret = self.host.getSearchResults(settings.GlobalSearchQuery, SearchType[1])
 					self.stopIfRequested()
-					print SearchType[1] ,' searched ' , ret.value
+					print(SearchType[1] ,' searched ' , ret.value)
 					
 		settings.searchingInHost = None

@@ -1,5 +1,7 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+from __future__ import print_function
 #! /usr/bin/env python
-# -*- coding: iso-8859-1 -*-
 """ crypto.cipher.aes_sbox_analysis
 
     AES Sbox Analysis - a simple analysis of the AES Sbox that determines
@@ -85,11 +87,11 @@ def sgv(subbytes):
 
 def main():
     cycles = grpv(sbbytes)
-    print 'The AES sbox contains ',
-    print len(cycles),
-    print 'permutation subgroups'
-    print 'The AES sbox subgroups (start, length) are:'
-    print cycles
+    print('The AES sbox contains ',)
+    print(len(cycles),)
+    print('permutation subgroups')
+    print('The AES sbox subgroups (start, length) are:')
+    print(cycles)
 
 # Make this test module runnable from the command prompt
 if __name__ == "__main__":

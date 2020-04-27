@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+from __future__ import print_function
 ﻿###################################################
 # LOCAL import
 ###################################################
@@ -8,7 +11,7 @@ from Plugins.Extensions.IPTVPlayer.libs.pCommon import CParsingHelper
 # https://wiki.videolan.org/Subtitles#Subtitles_support_in_VLC
 
 #def printDBG(data):
-#    print "%s" % data
+#    print("%s" % data)
 
 ###################################################
 

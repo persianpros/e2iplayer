@@ -1,4 +1,6 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 # Based on techdealer-xbmc.googlecode.com/svn/trunk/plugin.audio.musicbox/
 
 ###################################################
@@ -283,13 +285,13 @@ class MusicBox(CBaseHostClass):
     def Lastfmlist_track(self, artist):
         playlist_id = "lastfm://playlist/" + artist
         url = 'http://ws.audioscrobbler.com/2.0/?method=playlist.fetch&playlistURL=' + playlist_id + '&api_key=' + audioscrobbler_api_key + '&format=json'
-        print url
+        print(url)
         sts, data = self.cm.getPage(url, {'header': HEADER})
         if not sts:
             return
         try:
             data = json_loads(data)['playlist']['trackList']['track']
-            print data
+            print(data)
             for x in range(len(data)):
                 item = data[x]
                 artist = item['creator']

@@ -1,4 +1,5 @@
-# -*- coding: iso-8859-1 -*-
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 """ crypto.keyedHash.tkip_key_mixing.py
     TKIP Temporal Key Mixing Function reference implementation
 

@@ -1,4 +1,6 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 #
 #  IPTV download manager API
 #
@@ -219,7 +221,7 @@ class WgetDownloader(BaseDownloader):
             return
 
         if self.WGET_STS.DOWNLOADING == self.wgetStatus:
-            print self.outData
+            print(self.outData)
             dataLen = len(self.outData)
             for idx in range(dataLen):
                 if idx+1 < dataLen:

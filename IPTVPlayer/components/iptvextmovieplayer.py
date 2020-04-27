@@ -1,4 +1,6 @@
-﻿# -*- coding: utf-8 -*-
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+from __future__ import print_function
 #
 #  IPTVExtMoviePlayer
 #
@@ -990,8 +992,8 @@ class IPTVExtMoviePlayer(Screen):
         if None == self.metaHandler.getSubtitleTrack() and 'handler' == self.subHandler['handler_type']: return
         
         # marker is used for optimization 
-        # we remember some kind of fingerprint for last subtitles 
-        # subtitles handler first check this fingerprint 
+        # we remember some kind of fingerprint(for last subtitles )
+        # subtitles handler first check this fingerprint()
         # if the previous one is the same as current and it will return None instead 
         # of subtitles text
         prevMarker = self.subHandler['marker']
