@@ -75,7 +75,7 @@ class buildActiveHostsHTML(threading.Thread):
 			elif title[:4] == 'http' and logo != "":
 				try:
 					hostNameWithURLandLOGO = '<a href="./usehost?activeHost=%s">%s</a><br><a href="%s" target="_blank"><font size="2" color="#58D3F7">%s</font></a>' % (hostName, logo, title, '.'.join(title.replace('://','.').replace('www.','').split('.')[1:-1]))
-				except Exception, e:
+				except Exception as e:
 					print(str(e))
 					hostNameWithURLandLOGO = '<a href="%s" target="_blank">%s</a><br><a href="%s" target="_blank"><font size="2" color="#58D3F7">%s</font></a>' % (title, logo, title, _('visit site'))
 			elif title[:4] != 'http' and logo != "":
@@ -132,7 +132,7 @@ class buildConfigsHTML(threading.Thread):
 			cfgtype = ''
 			try:
 				CFGElements = option.doException()
-			except Exception, e:
+			except Exception as e:
 				cfgtype = str(e).split("'")[1]
 			return cfgtype
 		########################################################
@@ -169,7 +169,7 @@ class buildConfigsHTML(threading.Thread):
 					else:
 						try:
 							CFGElements = confKey[1].getHTML('CFG:' + ConfName)
-						except Exception, e:
+						except Exception as e:
 							CFGElements = 'ERROR:%s' % str(e)
 					tableCFG.append([ConfName, ConfDesc, CFGElements])
 		return tableCFG
@@ -299,12 +299,12 @@ class doUseHostAction(threading.Thread):
 				settings.currItem['itemTitle'] = settings.retObj.value[myID].name
 				try:
 					links = settings.retObj.value[myID].urlItems
-				except Exception, e:
+				except Exception as e:
 					print("ListForItem>urlItems exception:", str(e))
 					links='NOVALIDURLS'
 				try:
 					settings.retObj = settings.activeHost['Obj'].getLinksForVideo(myID,settings.retObj.value[myID]) #returns "NOT_IMPLEMENTED" when host is using curlitem
-				except Exception, e:
+				except Exception as e:
 					print("ListForItem>getLinksForVideo exception:", str(e))
 					settings.retObj = RetHost(RetHost.NOT_IMPLEMENTED, value = [])
 				
@@ -373,7 +373,7 @@ class doGlobalSearch(threading.Thread):
 				continue
 			try:
 				self.host = _temp.IPTVHost()
-			except Exception, e:
+			except Exception as e:
 				print("doGlobalSearch: Exception initializing iptvhost for %s: %s" % (hostName, str(e)))
 				continue
 			#print("settings.GlobalSearchQuery=",settings.GlobalSearchQuery, 'hostName=', hostName)
@@ -383,7 +383,7 @@ class doGlobalSearch(threading.Thread):
 				self.host.getSupportedFavoritesTypes()
 				ret = self.host.getInitList()
 				searchTypes = self.host.getSearchTypes()
-			except Exception, e:
+			except Exception as e:
 				print("doGlobalSearch: Exception in getInitList for %s: %s" % (hostName, str(e)))
 				settings.hostsWithNoSearchOption.append(hostName)
 				continue

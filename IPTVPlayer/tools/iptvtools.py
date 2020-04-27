@@ -840,7 +840,7 @@ def mkdirs(newdir, raiseException=False):
             if tail:
                 os.mkdir(newdir)
         return True
-    except Exception, e:
+    except Exception as e:
         printDBG('Exception mkdirs["%s"]' % e)
         if raiseException:
             raise e

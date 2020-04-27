@@ -107,7 +107,7 @@ def isActiveHostInitiated():
 	try:
 		if len(settings.activeHost.keys()) > 0:
 			status = True
-	except Exception, e:
+	except Exception as e:
 		print('EXCEPTION in webTools:isActiveHostInitiated - ', str(e))
 	return status
 ########################################################
@@ -116,7 +116,7 @@ def isCurrentItemSelected():
 	try:
 		if len(settings.currItem.keys()) > 0:
 			status = True
-	except Exception, e:
+	except Exception as e:
 		print('EXCEPTION in webTools:isCurrentItemSelected - ', str(e))
 	return status
 ########################################################
