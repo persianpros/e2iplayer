@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from __future__ import print_function
-﻿#
+#
 # blowfish.py
 # Copyright (C) 2002 Michael Gilfix <mgilfix@eecs.tufts.edu>
 #
@@ -478,19 +478,26 @@ if __name__ == '__main__':
 	key = 'This is a test key'
 	cipher = Blowfish (key)
 
-	print("Testing encryption:")
+	print("Testing encryption:"
+)
 	xl = 123456
 	xr = 654321
-	print("\tPlain text: (%s, %s)" %(xl, xr))
+	print("\tPlain text: (%s, %s)" %(xl, xr)
+)
 	cl, cr = cipher.cipher (xl, xr, cipher.ENCRYPT)
-	print("\tCrypted is: (%s, %s)" %(cl, cr))
+	print("\tCrypted is: (%s, %s)" %(cl, cr)
+)
 	dl, dr = cipher.cipher (cl, cr, cipher.DECRYPT)
-	print("\tUnencrypted is: (%s, %s)" %(dl, dr))
+	print("\tUnencrypted is: (%s, %s)" %(dl, dr)
+)
 
-	print("Testing buffer encrypt:")
+	print("Testing buffer encrypt:"
+)
 	text = 'testtest'
-	print("\tText: %s" %text)
+	print("\tText: %s" %text
+)
 	crypted = cipher.encrypt (text)
-	print("\tEncrypted: %s" %crypted)
+	print("\tEncrypted: %s" %crypted
+)
 	decrypted = cipher.decrypt (crypted)
 	print("\tDecrypted: %s" %decrypted)
