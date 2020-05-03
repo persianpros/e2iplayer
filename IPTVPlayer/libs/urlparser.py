@@ -2256,7 +2256,7 @@ class pageParser(CaptchaHelper):
             HS = re.search('video<>(.+?)<>(.+?)<>file<>', data)
             if PL and HS > 0:
                 linkVideo = 'http://' + PL.group(1) + '.ginbig.com:' + HS.group(2) + '/d/' + HS.group(1) + '/video.mp4?start=0'
-                print(('linkVideo ' + linkVideo))
+                print('linkVideo ' + linkVideo)
                 return linkVideo
             else:
                 return False
@@ -2267,7 +2267,7 @@ class pageParser(CaptchaHelper):
         match = re.compile('"PSST",url: "(.+?)"').findall(self.cm.getPage(url)[1])
         if len(match) > 0:
             linkVideo = match[0]
-            print(('linkVideo ' + linkVideo))
+            print('linkVideo ' + linkVideo)
             return linkVideo
         else:
             return False
@@ -2353,10 +2353,10 @@ class pageParser(CaptchaHelper):
             match = re.compile("url: '(.+?)',").findall(link)
             if len(match) > 0:
                 linkVideo = match[0]
-                print(('linkVideo ' + linkVideo))
+                print('linkVideo ' + linkVideo)
                 return linkVideo
             else:
-                print(('Przepraszamy','Obecnie zbyt dużo osób ogląda film za pomocą', 'darmowego playera premium.', 'Sproboj ponownie za jakis czas'))
+                print('Przepraszamy','Obecnie zbyt dużo osób ogląda film za pomocą', 'darmowego playera premium.', 'Sproboj ponownie za jakis czas')
                 return False
         else:
             return False
