@@ -683,7 +683,7 @@ class YoutubeIE(object):
                         url_item = {'url': url_data['url']}
                     except Exception:
                         printExc()
-                        cipher = url_data['cipher']
+                        cipher = url_data.get('cipher','') + url_data.get('signatureCipher','')
                         cipher = cipher.split('&')
                         for item in cipher:
                             #sig_item = ''
