@@ -6,7 +6,7 @@
 #  $Id$
 #
 # 
-from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printExc
+from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc
 from Components.config import config
 
 def GetVirtualKeyboard(caps={}):

@@ -7,7 +7,6 @@ from Plugins.Extensions.IPTVPlayer.components.iptvplayerinit import TranslateTXT
 from Plugins.Extensions.IPTVPlayer.components.ihost import CHostBase, CBaseHostClass, CDisplayListItem
 from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, byteify
 from Plugins.Extensions.IPTVPlayer.libs.urlparserhelper import  getDirectM3U8Playlist
-from Plugins.Extensions.IPTVPlayer.libs import ph
 ###################################################
 
 ###################################################
@@ -320,10 +319,6 @@ class OurmatchNet(CBaseHostClass):
             except Exception:
                 printExc()
         elif videoUrl.startswith('http'):
-            if self.up.checkHostSupport(videoUrl) != 1:
-                video_id  = ph.search(videoUrl, r'''https?://.*([a-zA-Z0-9]{10})''')[0]
-                if video_id != '':
-                    videoUrl = 'https://viuclips.net/&force_parserVIUCLIPS[%s]' % videoUrl
             urlTab.extend(self.up.getVideoLinkExt(videoUrl))
         return urlTab
         

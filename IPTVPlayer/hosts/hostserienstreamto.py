@@ -52,7 +52,7 @@ def GetConfigList():
 ###################################################
 
 def gettytul():
-    return 'https://serienstream.to/'
+    return 'https://serienstream.sx/'
 
 class SerienStreamTo(CBaseHostClass, CaptchaHelper):
  
@@ -65,8 +65,8 @@ class SerienStreamTo(CBaseHostClass, CaptchaHelper):
         
         self.defaultParams = {'header':self.HEADER, 'use_cookie': True, 'load_cookie': True, 'save_cookie': True, 'cookiefile': self.COOKIE_FILE}
         
-        self.MAIN_URL = 'https://s.to/'
-        self.DEFAULT_ICON_URL = 'https://s.to/public/img/facebook.jpg'
+        self.MAIN_URL = 'https://serienstream.sx/'
+        self.DEFAULT_ICON_URL = 'https://serienstream.sx/public/img/facebook.jpg'
         
         
         self.MAIN_CAT_TAB = [{'category':'all_series',        'title': 'Alle Serien',                     'url':self.getFullUrl('/serien-alphabet') },
@@ -228,8 +228,9 @@ class SerienStreamTo(CBaseHostClass, CaptchaHelper):
         if not sts: return
         
         tmp  = self.cm.ph.getDataBeetwenMarkers(data, '<div class="seriesContentBox"', '<div class="series-add')[1]
-        icon = self.getFullUrl(self.cm.ph.getSearchGroups(tmp, '''src=['"]([^'^"]+?)['"]''')[0])
-        if '' == icon: icon = cItem.get('series_title', '')
+        icon = self.getFullUrl(self.cm.ph.getSearchGroups(tmp, '''data-src=['"]([^'^"]+?)['"]''')[0])
+        if '' == icon: 
+            icon = cItem.get('series_title', '')
         desc = self.cleanHtmlStr(self.cm.ph.getSearchGroups(tmp, '''description=['"]([^'^"]+?)['"]''')[0])
         
         trailerUrl = self.getFullUrl(self.cm.ph.getSearchGroups(tmp, '''href=['"]([^'^"]+?)['"][^>]+?itemprop=['"]trailer['"]''')[0])
@@ -389,19 +390,33 @@ class SerienStreamTo(CBaseHostClass, CaptchaHelper):
             printDBG(">>>>>>>>>>>>>>>>>>>>>>>>||||||||||||||||||||||||")
             if 1 != self.up.checkHostSupport(videoUrl):
                 sts, data = self.getPage(videoUrl)
-                if sts: videoUrl = self.cm.meta['url']
+                if sts: 
+                    videoUrl = self.cm.meta['url']
                 printDBG("+++++++++++")
                 printDBG(data)
                 printDBG("+++++++++++")
                 if sts and 'google.com/recaptcha/' in data and 'sitekey' in data:
-                    message = _('Link protected with google recaptcha v2.')
-                    if True != self.loggedIn:
-                        message += '\n' + _('Please fill your login and password in the host configuration (available under blue button) and try again.')
+                    token = ''
+                    
+                    sitekey = re.findall("'sitekey': '(.*?)'", data)
+                    if sitekey:
+                        (token, errorMsgTab) = CaptchaHelper.processCaptcha(self, sitekey[0], videoUrl)
+                        printDBG("Captcha Token: %s" % token)
+                    
+                    if not token:
+                        message = _('Link protected with google recaptcha v2.')
+                        if True != self.loggedIn:
+                            message += '\n' + _('Please fill your login and password in the host configuration (available under blue button) and try again.')
+                        else:
+                            message += '\n' + self.cleanHtmlStr(self.cm.ph.getDataBeetwenMarkers(data, '<small', '</small>')[1])
+                            message += '\n' + _('Please retry later.')
+                        SetIPTVPlayerLastHostError(message)
                     else:
-                        message += '\n' + self.cleanHtmlStr(self.cm.ph.getDataBeetwenMarkers(data, '<small', '</small>')[1])
-                        message += '\n' + _('Please retry later.')
-                    SetIPTVPlayerLastHostError(message)
-            
+                        videoUrl = videoUrl + '?token=' + token
+                        sts, data = self.getPage(videoUrl)
+                        if sts: 
+                            videoUrl = self.cm.meta['url']
+                        
             if 1 == self.up.checkHostSupport(videoUrl):
                 urlTab = self.up.getVideoLinkExt(videoUrl)
         return urlTab

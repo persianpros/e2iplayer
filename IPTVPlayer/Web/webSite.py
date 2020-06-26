@@ -9,7 +9,9 @@ import webThreads
 import Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget
 
 from webTools import *
+from Plugins.Extensions.IPTVPlayer.components.ihost import IHost, CDisplayListItem, RetHost, CUrlItem, ArticleContent, CFavItem
 from Plugins.Extensions.IPTVPlayer.iptvdm.iptvdh import DMHelper, DMItemBase
+from Plugins.Extensions.IPTVPlayer.iptvdm.iptvdownloadercreator import IsUrlDownloadable
 from Plugins.Extensions.IPTVPlayer.tools.iptvtools import GetPluginDir, printDBG
 from Plugins.Extensions.IPTVPlayer.iptvdm.iptvdmapi import IPTVDMApi, DMItem
 #### e2 imports

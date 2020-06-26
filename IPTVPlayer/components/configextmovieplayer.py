@@ -8,7 +8,9 @@
 ###################################################
 # LOCAL import
 ###################################################
-from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, GetE2VideoAspectChoices, GetE2VideoAspect, GetE2VideoPolicyChoices, GetE2VideoPolicy, GetE2AudioCodecMixChoices, IsExecutable
+from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, GetHostsList, IsHostEnabled, SaveHostsOrderList, SortHostsList, \
+                                                          GetE2VideoAspectChoices, GetE2VideoAspect, SetE2VideoAspect, GetE2VideoPolicyChoices, \
+                                                          GetE2VideoPolicy, SetE2VideoPolicy, GetE2AudioCodecMixChoices, GetE2AudioCodecMixOption, IsExecutable
 from Plugins.Extensions.IPTVPlayer.components.configbase import ConfigBaseWidget, ConfigIPTVFileSelection, COLORS_DEFINITONS
 from Plugins.Extensions.IPTVPlayer.components.iptvplayerinit import TranslateTXT as _
 ###################################################
@@ -17,7 +19,7 @@ from Plugins.Extensions.IPTVPlayer.components.iptvplayerinit import TranslateTXT
 # FOREIGN import
 ###################################################
 import skin
-from enigma import eLabel, getDesktop
+from enigma import gRGB, eLabel, getDesktop
 from Screens.MessageBox import MessageBox
 from Components.config import config, ConfigSelection, ConfigYesNo, Config, ConfigInteger, getConfigListEntry, configfile
 from boxbranding import getImageArch

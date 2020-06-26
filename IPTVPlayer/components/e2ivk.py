@@ -8,7 +8,7 @@
 # 
 from Screens.Screen import Screen
 from Components.ActionMap import NumberActionMap
-from enigma import ePoint, gFont, gRGB, eListboxPythonMultiContent, eListbox, gFont, RT_HALIGN_LEFT, RT_VALIGN_CENTER, getDesktop
+from enigma import ePoint, gFont, gRGB, eListboxPythonMultiContent, eListbox, gFont, RT_HALIGN_LEFT, RT_HALIGN_RIGHT, RT_VALIGN_CENTER, getDesktop
 from Tools.LoadPixmap import LoadPixmap
 from Tools.Directories import fileExists
 from Tools.BoundFunction import boundFunction
@@ -16,6 +16,7 @@ from Components.Label import Label
 from Components.Input import Input
 from Components.config import config, configfile
 from Screens.MessageBox import MessageBox
+from Screens.ChoiceBox import ChoiceBox
 
 from Plugins.Extensions.IPTVPlayer.components.cover import Cover3
 from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, mkdirs, GetDefaultLang, GetIconDir, GetE2iPlayerVKLayoutDir, GetResourcesServerUri

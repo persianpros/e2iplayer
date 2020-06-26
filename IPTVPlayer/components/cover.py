@@ -5,6 +5,7 @@
 # LOCAL import
 ###################################################
 from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, eConnectCallback
+from asynccall import AsyncMethod
 
 ###################################################
 # FOREIGN import
@@ -12,6 +13,7 @@ from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, eC
 from Tools.LoadPixmap import LoadPixmap
 from Components.Pixmap import Pixmap
 from enigma import ePicLoad, ePoint
+from Tools.BoundFunction import boundFunction
 
 import threading
 

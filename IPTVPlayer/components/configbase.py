@@ -24,7 +24,7 @@ from enigma import getDesktop
 from Screens.MessageBox import MessageBox
 from Screens.Screen import Screen
 
-from Components.ActionMap import ActionMap
+from Components.ActionMap import ActionMap, HelpableActionMap
 from Components.Label import Label
 from Components.config import config, ConfigDirectory, ConfigText, ConfigPassword, ConfigBoolean, ConfigSelection, configfile
 from Components.ConfigList import ConfigListScreen

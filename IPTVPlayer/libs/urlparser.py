@@ -6,14 +6,23 @@ from __future__ import print_function
 # LOCAL import
 ###################################################
 from pCommon import common, CParsingHelper
+<<<<<<< HEAD
 from Plugins.Extensions.IPTVPlayer.components.iptvplayerinit import TranslateTXT as _, SetIPTVPlayerLastHostError, GetIPTVSleep
 from Plugins.Extensions.IPTVPlayer.components.recaptcha_v2helper import CaptchaHelper
+=======
+from Plugins.Extensions.IPTVPlayer.components.iptvplayerinit import SetIPTVPlayerLastHostError, GetIPTVSleep
+>>>>>>> b9affe95... try to fix waaw.tv
 from Plugins.Extensions.IPTVPlayer.tools.iptvtypes import strwithmeta
 from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, CSelOneLink, GetCookieDir, byteify, formatBytes, GetPyScriptCmd, GetTmpDir, rm, \
                                                           GetDefaultLang, GetFileSize, GetPluginDir, MergeDicts, GetJSScriptFile
 from Plugins.Extensions.IPTVPlayer.libs.crypto.hash.md5Hash import MD5
 from Plugins.Extensions.IPTVPlayer.libs import ph
+
+from Plugins.Extensions.IPTVPlayer.components.captcha_helper import CaptchaHelper
+#from Plugins.Extensions.IPTVPlayer.components.recaptcha_v2helper import CaptchaHelperOld
+
 from Plugins.Extensions.IPTVPlayer.libs.recaptcha_v2 import UnCaptchaReCaptcha
+
 from Plugins.Extensions.IPTVPlayer.libs.gledajfilmDecrypter import gledajfilmDecrypter
 from Plugins.Extensions.IPTVPlayer.libs.crypto.cipher.aes  import AES
 from Plugins.Extensions.IPTVPlayer.libs.crypto.cipher.aes_cbc import AES_CBC
@@ -52,7 +61,7 @@ import math
 
 from xml.etree import cElementTree
 from random import random, randint, randrange, choice as random_choice
-from urlparse import urlparse, urlunparse, parse_qs
+from urlparse import urlparse, urlunparse, parse_qs, parse_qsl
 from binascii import hexlify, unhexlify, a2b_hex
 from hashlib import md5, sha256
 from Components.config import config
@@ -9760,6 +9769,7 @@ class pageParser(CaptchaHelper):
             return vidTab
         return False 
         
+<<<<<<< HEAD
     def parseNETUTV(self, url):
         printDBG("parseNETUTV url[%s]" % url)
         if 'hqq.none' in urlparser.getDomain(url):
@@ -9771,14 +9781,22 @@ class pageParser(CaptchaHelper):
         
         # User-Agent - is important!!!
         HTTP_HEADER = { 'User-Agent':'Mozilla/5.0 (iPad; U; CPU OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B334b Safari/531.21.10', #'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:21.0) Gecko/20100101 Firefox/21.0',
+=======
+    def parserNETUTV(self, baseUrl):
+        printDBG("parserNETUTV url[%s]" % baseUrl)
+
+        HTTP_HEADER = { 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36',
+>>>>>>> b9affe95... try to fix waaw.tv
                         'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-                        'Referer': 'http://hqq.watch/'
+                        'Referer': baseUrl
                       }
 
-        COOKIE_FILE = self.COOKIE_PATH + "netu.tv.cookie"
+        COOKIE_FILE = GetCookieDir("netu.tv.cookie")
+        
         # remove old cookie file
 #        rm(COOKIE_FILE)
         params = {'with_metadata':True, 'header':HTTP_HEADER, 'use_cookie': True, 'save_cookie': True, 'load_cookie': True, 'cookiefile': COOKIE_FILE}
+<<<<<<< HEAD
         sts, ipData = self.cm.getPage('http://hqq.watch/player/ip.php?type=json', params)
         ipData = json_loads(ipData)
 
@@ -9842,19 +9860,25 @@ class pageParser(CaptchaHelper):
             secPlayerUrl = self.cm.getFullUrl(ret['data'].strip(), self.cm.getBaseUrl(cUrl)).replace('$secured', '0') #'https://hqq.tv/'
             if 'need_captcha=1' in secPlayerUrl and ipData['need_captcha'] == 0 and gt != '':
                 secPlayerUrl = secPlayerUrl.replace('need_captcha=1', 'need_captcha=0')
+=======
+        
+        urlsTab = []
+        domain = self.cm.getBaseUrl(baseUrl)
+>>>>>>> b9affe95... try to fix waaw.tv
 
-        HTTP_HEADER['Referer'] = referer
-        sts, data = self.cm.getPage(secPlayerUrl, params)
-        cUrl = self.cm.meta['url']
+        def getNextUrl(data, domain):
+            next_url ="" 
 
-        sitekey = ph.search(data, '''['"]?sitekey['"]?\s*?:\s*?['"]([^"^']+?)['"]''')[0]
-        if sitekey != '': 
-            query = {}
-            token, errorMsgTab = self.processCaptcha(sitekey, cUrl)
-            if token == '':
-                SetIPTVPlayerLastHostError('\n'.join(errorMsgTab)) 
-                return False
+            tmp = self.cm.ph.getDataBeetwenMarkers(data, 'if(self == top){', '}', False)[1]
+            if not tmp:
+                tmp = self.cm.ph.getDataBeetwenMarkers(data, 'if(self != top){', '}', False)[1]
+            
+            next_url = self.cm.ph.getSearchGroups(data, "self.location.replace\('([^']+?)'\)")[0]
+            
+            if next_url:
+                return self.cm.getFullUrl(next_url,domain)
             else:
+<<<<<<< HEAD
                 query['g-recaptcha-response'] = token
                 tmp = ph.find(data, ('<form', '>', ), '</form>', flags=ph.I|ph.START_E)[1]
                 if tmp:
@@ -9877,6 +9901,9 @@ class pageParser(CaptchaHelper):
 #        printDBG("+++")
 #        printDBG(data)
 #        printDBG("+++")
+=======
+                return ""
+>>>>>>> b9affe95... try to fix waaw.tv
 
         def getUtf8Str(st):
             try:
@@ -9888,7 +9915,11 @@ class pageParser(CaptchaHelper):
                 return st2.decode('unicode-escape').encode('UTF-8')
             except Exception:
                 return ''
+        
+        if 'embed_player.php' in baseUrl:
+            final_url = baseUrl
 
+<<<<<<< HEAD
         linksCandidates = re.compile('''['"](#[^'^"]+?)['"]''').findall(data)
         try:
 #            jscode = [data.rsplit('//document.domain="hqq.watch";')[-1]]
@@ -10026,7 +10057,178 @@ class pageParser(CaptchaHelper):
         linksTab.extend(hlsTab)
         linksTab.extend(dashTab)
         return linksTab
+=======
+            sts, data = self.cm.getPage(final_url, params)
+            if not sts:
+                return urlsTab
+                
+            scripts = self.cm.ph.getAllItemsBeetwenMarkers(data, '<script>', '</script>', False)
+            chineseScript = ''
+            tmpScript  = ''
+            for s in scripts:
+                if 'orig_vid = "' in s:
+                    tmpScript = s
+                s_uni = unicode(s, "utf-8")
+                if re.findall(ur"[\u5000-\u9FFF]", s_uni):
+                    chineseScript = s
+                    printDBG("-----------------")
+                    printDBG(chineseScript)
+                    printDBG("-----------------")
+
+        else:
+            next_url = baseUrl
+            red_url = baseUrl
+            while next_url:
+                sts, data = self.cm.getPage(next_url, params)
+            
+                if not sts:
+                    return urlsTab
+                
+                next_url = getNextUrl(data,domain)
+                
+                if next_url:
+                    red_url = next_url
+            
+            
+            #printDBG("------------------------------")
+            #printDBG(data)
+            #printDBG("------------------------------")
+            #<a href="/player/embed_player.php?vid=Z05zUDVmc2xtNzBKQjlTekpoU3dKdz09&need_captcha=1&pop=0">    
+            final_url = self.cm.ph.getSearchGroups(data, '''href="(.*?embed_player\.php[^"]+?)"''')[0]
+            
+            scripts = self.cm.ph.getAllItemsBeetwenMarkers(data, '<script>', '</script>', False)
+            chineseScript = ''
+            tmpScript  = ''
+            for s in scripts:
+                if 'orig_vid = "' in s:
+                    tmpScript = s
+                s_uni = unicode(s, "utf-8")
+                if re.findall(ur"[\u5000-\u9FFF]", s_uni):
+                    chineseScript = s
+                    printDBG("-----------------")
+                    printDBG(chineseScript)
+                    printDBG("-----------------")
+            
+            if not final_url:
+                printDBG("Url with embed_player.php not found!!")
+                return urlsTab
+            final_url = self.cm.getFullUrl(final_url, domain)
+
+            params['header']['Referer'] = red_url
+
+        printDBG ("Final url : %s " % final_url)
+        sts, data = self.cm.getPage(final_url, params)
+            
+        #printDBG("----------------------------")
+        #printDBG(data)
+        #printDBG("----------------------------")
+            
+        # solve captcha
+        sitekey = ph.search(data, '''['"]?sitekey['"]?\s*?:\s*?['"]([^"^']+?)['"]''')[0]
+        tries = 0
+        while (not sitekey) and tries<2: 
+            if not 'need_captcha' in final_url:
+
+                final_url = final_url + "&need_captcha=1&secure=0&pop=0"
+                sts, data = self.cm.getPage(final_url, params)
+                
+                if sts:
+                    sitekey = ph.search(data, '''['"]?sitekey['"]?\s*?:\s*?['"]([^"^']+?)['"]''')[0]
+                
+                tries = tries + 1
         
+        if not sitekey:
+            printDBG("Recaptcha sitekey not found!")
+            return urlsTab
+            
+        query = {}
+        token, errorMsgTab = self.processCaptcha(sitekey, final_url)
+        if token == '':
+            SetIPTVPlayerLastHostError('\n'.join(errorMsgTab)) 
+            return False
+        else:
+            query['g-recaptcha-response'] = token
+            tmp = ph.find(data, ('<form', '>', ), '</form>', flags=ph.I|ph.START_E)[1]
+            if tmp:
+                printDBG("------------ form ---------")
+                printDBG(tmp)
+                printDBG("---------------------------")
+                action_url = ph.getattr(tmp, 'action')
+                if not action_url: 
+                    action_url = final_url.split('?', 1)[0]
+                else: 
+                    self.cm.getFullUrl(action_url, domain)
+                
+                inputs = ph.findall(tmp, '<input', '>', flags=ph.I)
+                for item in inputs:
+                    name  = ph.getattr(item, 'name')
+                    value  = ph.getattr(item, 'value')
+                    if name != '': query[name] = value
+                
+                action_url += '?' + urllib.urlencode(query)
+                
+                sts, data = self.cm.getPage(action_url, params)
+                
+                if not sts:
+                    return urlsTab
+                     
+                #printDBG("----------------------------")
+                #printDBG(data)
+                #printDBG("----------------------------")
+
+                #var link_m3u8 :  "/player/get_md5.php?sh="+shh+"&ver=4&secure=0&adb=111436&v="+encodeURIComponent(videokeyorig)+"&token="+encodeURIComponent(token)+"&gt=56e10875f4f4abf9e2da7978d6651bbf&embed_from=0&wasmcheck="+wasmcheck
+                #   videokeyorig = "Z05zUDVmc2xtNzBKQjlTekpoU3dKdz09"
+
+                videokeyorig = self.cm.ph.getSearchGroups(data, "videokeyorig\s?=\s?\"([^\"]+?)\"")[0]
+                link_m3u8_jscode = self.cm.ph.getSearchGroups(data, "var link_m3u8 =([^;]+?);")[0]
+                printDBG("var link_m3u8 : %s" % link_m3u8_jscode);
+
+                jscode = ["var document={}; document.play=true; document.createElement = function(){return document}; var navigator={}; navigator.languages='1'; var token='%s', shh='', wasmcheck='1', videokeyorig='%s'" % (token ,videokeyorig)]
+                jscode.append(chineseScript)
+                jscode.append('console.log(%s)' % link_m3u8_jscode)
+                
+                ret = js_execute( '\n'.join(jscode) )
+
+                playerUrl = self.cm.getFullUrl(ret['data'].replace('\n',''), domain)
+                
+                params['header']['Accept'] = '*/*'
+                params['header']['Referer'] = final_url
+                sts, data = self.cm.getPage(playerUrl, params)
+
+                if not sts:
+                    return urlsTab
+                    
+                printDBG("----------------------------")
+                printDBG(data)
+                printDBG("----------------------------")
+                
+                response = json_loads(data)
+                tmp = response.get('obf_link', None)
+                obf_links = []
+                if isinstance(tmp, str):
+                    obf_links.append(tmp)
+                elif isinstance(tmp, list):
+                    obf_links.extend(tmp)
+                
+                if obf_links:
+                    for l in obf_links:
+                        if l.startswith('#') and len(l)>3:
+                            # not human readable link
+                            l = getUtf8Str(l[1:])
+                        if l.startswith('//'):
+                            # readable link
+                            l = "http:" + l
+                        if self.cm.isValidUrl(l): 
+                            file_url = urlparser.decorateUrl(l, {'iptv_livestream':False, 'User-Agent':HTTP_HEADER['User-Agent'], 'Referer': final_url})
+                            if file_url.split('?')[0].endswith('.m3u8') or '/hls-' in file_url:
+                                file_url = strwithmeta(file_url, {'iptv_proto':'m3u8'})
+                                urlsTab.extend( getDirectM3U8Playlist(file_url, False, checkContent=True) )
+                            else:
+                                urlsTab.append({"name":"link", "url": file_url})
+>>>>>>> b9affe95... try to fix waaw.tv
+        
+        return urlsTab
+
     def parserVEOHCOM(self, baseUrl):
         printDBG("parserVEOHCOM url[%s]\n" % baseUrl)
         

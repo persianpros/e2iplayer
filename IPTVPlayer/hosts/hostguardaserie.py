@@ -18,39 +18,48 @@ except Exception: import simplejson as json
 ###################################################
 
 def gettytul():
-    return 'https://www.guardaserie.digital/'
+    return 'https://www.guardaserie.work/'
 
 class GuardaSerieClick(CBaseHostClass):
 
     def __init__(self):
-        CBaseHostClass.__init__(self, {'history':'guardaserie.click', 'cookie':'guardaserie.click.cookie'})
+        CBaseHostClass.__init__(self, {'history':'guardaserie.work', 'cookie':'guardaserie.work.cookie'})
         
-        self.USER_AGENT = 'Mozilla/5.0'
-        self.HEADER = {'User-Agent': self.USER_AGENT, 'Accept': 'text/html'}
+        self.USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36'
+        self.MAIN_URL = 'https://www.guardaserie.work/'
+
+        self.HEADER = {'User-Agent': self.USER_AGENT, 'Accept': 'text/html', 'Accept-Encoding': 'gzip', 'Referer': self.MAIN_URL}
         self.AJAX_HEADER = MergeDicts(self.HEADER, {'X-Requested-With':'XMLHttpRequest', 'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'})
         
-        self.MAIN_URL = 'https://www.guardaserie.digital/'
-        self.DEFAULT_ICON_URL = self.getFullIconUrl('/wp-content/themes/guardaserie/images/logogd.png')
+        self.DEFAULT_ICON_URL = self.getFullIconUrl('/wp-content/themes/guardaserie/images/logogd.png|cf')
         
         self.defaultParams = {'header':self.HEADER, 'use_cookie': True, 'load_cookie': True, 'save_cookie': True, 'cookiefile': self.COOKIE_FILE}
     
+    def getPageCF(self, baseUrl, params = {}, post_data = None):
+        if params == {}: 
+            params = self.defaultParams
+        params['cloudflare_params'] = {'domain':'guardaserie.work', 'cookie_file':self.COOKIE_FILE, 'User-Agent':self.USER_AGENT}
+        return self.cm.getPageCFProtection(baseUrl, params, post_data)
+
     def getPage(self, baseUrl, addParams = {}, post_data = None):
         if addParams == {}: addParams = dict(self.defaultParams)
-        addParams['cloudflare_params'] = {'domain': 'guardaserie.digital', 'cookie_file':self.COOKIE_FILE, 'User-Agent':self.USER_AGENT}
-        return self.cm.getPageCFProtection(baseUrl, addParams, post_data)
+        return self.cm.getPage(baseUrl, addParams, post_data)
     
     def listMainMenu(self, cItem):
         printDBG("GuardaSerieClick.listMainMenu")
-
-        sts, data = self.getPage(self.getMainUrl())
+        params = MergeDicts(self.defaultParams, {'user-agent': self.USER_AGENT, 'referer': self.MAIN_URL, "accept-encoding" : "gzip", "accept" : "text/html"})
+        
+        sts, data = self.getPageCF(self.getMainUrl(), params)
         if not sts: return
         self.setMainUrl(self.cm.meta['url'])
 
-        item = self.cm.ph.getDataBeetwenNodes(data, ('<a', '>', 'lista-serie'), ('</a', '>'))[1]
-        title = self.cleanHtmlStr(item)
-        url = self.getFullUrl(self.cm.ph.getSearchGroups(item, '''href=['"]([^"^']+?)['"]''')[0])
+        #item = self.cm.ph.getDataBeetwenNodes(data, ('<a', '>', 'lista-serie'), ('</a', '>'))[1]
+        #title = self.cleanHtmlStr(item)
+        #url = self.getFullUrl(self.cm.ph.getSearchGroups(item, '''href=['"]([^"^']+?)['"]''')[0])
         params = dict(cItem)
-        params.update({'name':'category', 'category':'sections', 'title':title, 'url':url})
+        #params.update({'name':'category', 'category':'sections', 'title':title, 'url':url})
+        params.update({'name':'category', 'category':'sections', 'title': 'LISTA SERIE', 'url': self.getFullUrl('/lista-serie-tv')})
+
         self.addDir(params)
         
         data = self.cm.ph.getDataBeetwenNodes(data, ('<a', '>', 'dropdown'), ('</ul', '>'))[1].split('<ul', 1)
@@ -77,7 +86,10 @@ class GuardaSerieClick(CBaseHostClass):
         items = []
         for item in rawItems:
             url = self.getFullUrl(self.cm.ph.getSearchGroups(item, '''href=['"]([^"^']+?)['"]''')[0])
-            icon  = self.getFullIconUrl( self.cm.ph.getSearchGroups(item, '''<img[^>]+?src=['"]([^"^']+?)['"]''')[0] )
+            icon  = self.getFullIconUrl( self.cm.ph.getSearchGroups(item, '''<img[^>]+?src=['"]([^"^']+?)['"]''')[0])  
+            if icon != '':
+                icon = icon + "|cf"
+
             title = self.cleanHtmlStr(self.cm.ph.getDataBeetwenMarkers(item, '<p', '</p>')[1])
             if title == '': continue
             desc  = []
@@ -145,7 +157,10 @@ class GuardaSerieClick(CBaseHostClass):
             for item in data:
                 title = '%s - %s' % (cItem['title'], self.cleanHtmlStr(item.split('<p', 1)[0]))
                 icon  = self.cm.ph.getSearchGroups(item, '''<img[^>]+?src=['"]([^"^']+?)['"]''')[0]
-                if icon == '': icon  = self.cm.ph.getSearchGroups(item, '''<img[^>]+?data\-original=['"]([^"^']+?)['"]''')[0]
+                if icon == '': 
+                    icon  = self.cm.ph.getSearchGroups(item, '''<img[^>]+?data\-original=['"]([^"^']+?)['"]''')[0]
+                if icon != '':
+                    icon = icon + "|cf"
                 desc  = self.cleanHtmlStr( self.cm.ph.getDataBeetwenNodes(item, ('<p', '>', 'desc'), ('</p', '>'))[1] )
                 season = self.cm.ph.getSearchGroups(item, '''meta\-stag=['"]([^"^']+?)['"]''')[0]
                 episode = self.cm.ph.getSearchGroups(item, '''meta\-ep=['"]([^"^']+?)['"]''')[0]
@@ -204,6 +219,9 @@ class GuardaSerieClick(CBaseHostClass):
 
         data = self.cm.ph.getDataBeetwenNodes(data, ('<div', '>', 'container-title-single'), ('<input', '>'), False)[1]
         icon = self.getFullUrl( self.cm.ph.getSearchGroups(data, '''<img[^>]+?src=['"]([^'^"]+?)['"]''')[0] )
+        if icon != '':
+            icon = icon + "|cf"
+
         title = self.cleanHtmlStr( self.cm.ph.getDataBeetwenNodes(data, ('<h', '>'), ('</h', '>'), False)[1] )
         desc = self.cleanHtmlStr( self.cm.ph.getDataBeetwenNodes(data, ('<span', '>', 'desc'), ('</span', '>'), False)[1] )
         
