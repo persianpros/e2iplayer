@@ -34,7 +34,7 @@ try:
     def _mask(_m, _d):
         return XorMaskerSimple(_m).process(_d)
 
-except ImportError:
+except ImportError as e:
     # wsaccel is not available, we rely on python implementations.
     def _mask(_m, _d):
         for i in range(len(_d)):

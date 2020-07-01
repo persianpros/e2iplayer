@@ -589,7 +589,7 @@ class EFilmyTv(CBaseHostClass):
                 jscode.append(item)
         
         if len(jscode) > 0:
-            jscode.insert(0, 'var document={write:function(e){print(e)}};Base64={},Base64.decode=function(e){e.length%4==3&&(e+="="),e.length%4==2&&(e+="=="),e=Duktape.dec("base64",e),decText="";for(var t=0;t<e.byteLength;t++)decText+=String.fromCharCode(e[t]);return decText};')
+            jscode.insert(0, 'var document={write:function(e){print(str(e))}};Base64={},Base64.decode=function(e){e.length%4==3&&(e+="="),e.length%4==2&&(e+="=="),e=Duktape.dec("base64",e),decText="";for(var t=0;t<e.byteLength;t++)decText+=String.fromCharCode(e[t]);return decText};')
             ret = js_execute('\n'.join(jscode))
             if ret['sts'] and 0 == ret['code']:
                 data = ret['data'].strip()

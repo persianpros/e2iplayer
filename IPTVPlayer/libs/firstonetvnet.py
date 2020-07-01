@@ -263,7 +263,7 @@ class FirstOneTvApi(CBaseHostClass):
                 while tries < 5:
                     tries += 1
                     jscode = list(self.CACHE_VARS.get(streamJs, []))
-                    jscode.append('try {print(eval("%s"));} catch (e) {print(e);}' % tmp['hiro'])
+                    jscode.append('try {print(eval("%s"));} catch (e) {print(str(e));}' % tmp['hiro'])
 
                     ret = js_execute( '\n'.join(jscode) )
                     if 'identifier' in ret['data'] and 'undefined' in ret['data']:

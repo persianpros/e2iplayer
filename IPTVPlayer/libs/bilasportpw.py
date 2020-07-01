@@ -146,7 +146,7 @@ class BilaSportPwApi(CBaseHostClass):
             sts, data = self.getPage(scriptUrl)
             if not sts: return []
             hash = '/tmp/%s' % hexlify(md5(data).digest())
-            data = 'btoa=function(t){return Duktape.enc("base64",t)},XMLHttpRequest=function(){},XMLHttpRequest.prototype.open=function(t,e,n,o,p){print(e)};' + data + 'tmp = new XMLHttpRequest();'
+            data = 'btoa=function(t){return Duktape.enc("base64",t)},XMLHttpRequest=function(){},XMLHttpRequest.prototype.open=function(t,e,n,o,p){print(str(e))};' + data + 'tmp = new XMLHttpRequest();'
             try:
                 with open(hash + '.js', 'w') as f:
                     f.write(data)

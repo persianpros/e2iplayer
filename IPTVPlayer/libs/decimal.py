@@ -385,7 +385,7 @@ _condition_map = {ConversionSyntax:InvalidOperation,
 
 try:
     import threading
-except ImportError:
+except ImportError as e:
     # Python was compiled without threads; create a mock object instead
     import sys
     class MockThreading(object):

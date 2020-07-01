@@ -24,7 +24,7 @@ import binascii
 from os import urandom as os_urandom
 try:
     from hashlib import sha1
-except ImportError:
+except ImportError as e:
     import sha
     sha1 = sha.new
 ###################################################

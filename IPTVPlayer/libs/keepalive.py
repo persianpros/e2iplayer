@@ -354,7 +354,7 @@ class HTTPSHandler(KeepAliveHandler, urllib2.HTTPSHandler):
             try:
                 import sslfactory
                 ssl_factory = sslfactory.get_factory()
-            except ImportError:
+            except ImportError as e:
                 pass
         self._ssl_factory = ssl_factory
     
