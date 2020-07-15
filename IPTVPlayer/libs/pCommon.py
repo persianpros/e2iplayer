@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division
 
 ###################################################
 # LOCAL import
@@ -1048,9 +1047,9 @@ class common:
                             params2['Accept-Encoding'] = '*'
                         printDBG("Time spent: [%s]" % (time.time() - start_time))
                         if current == 1:
-                            GetIPTVSleep().Sleep(0.2 + (decoded['timeout'] // 1000.0)-(time.time() - start_time))
+                            GetIPTVSleep().Sleep(0.2 + (decoded['timeout'] / 1000.0)-(time.time() - start_time))
                         else:
-                            GetIPTVSleep().Sleep((decoded['timeout'] // 1000.0))
+                            GetIPTVSleep().Sleep((decoded['timeout'] / 1000.0))
                         printDBG("Time spent: [%s]" % (time.time() - start_time))
                         printDBG("Timeout: [%s]" % 4000)
                         sts, data = self.getPage(verUrl, params2, postDataCF)

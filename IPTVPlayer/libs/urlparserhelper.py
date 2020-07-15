@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division
 
 ###################################################
 # LOCAL import
@@ -129,7 +128,7 @@ def SAWLIVETV_decryptPlayerParams(p, a, c, k, e, d):
         if c < a:
             ret = ''
         else:
-            ret = e(c // a)
+            ret = e(c / a)
         c = c % a
         if c > 35:
             ret += chr(c+29)
@@ -174,7 +173,7 @@ def TEAMCASTPL_decryptPlayerParams(p, a, c, k, e=None, d=None):
         if c < a:
             ret = ''
         else:
-            ret = e(c // a)
+            ret = e(c / a)
         c = c % a
         if c > 35:
             ret += chr(c+29)

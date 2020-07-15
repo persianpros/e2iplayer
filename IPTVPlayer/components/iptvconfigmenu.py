@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 #
 #  Konfigurator dla iptv 2013
 #  autorzy: j00zek, samsamsam

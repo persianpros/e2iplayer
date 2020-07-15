@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division, print_function
+from __future__ import print_function
 
 ###################################################
 # LOCAL import
@@ -3749,7 +3749,7 @@ class pageParser(CaptchaHelper):
         
     def parserTRILULILU(self, baseUrl):
         def getTrack(userid, hash):
-            hashLen = len(hash) // 2
+            hashLen = len(hash) / 2
             mixedStr = (hash[0:hashLen] + userid) + hash[hashLen:len(hash)]
             md5Obj = MD5()
             hashTab = md5Obj(mixedStr)
@@ -4279,7 +4279,7 @@ class pageParser(CaptchaHelper):
         printDBG("parseWATTV url[%s]\n" % url)
         # example video: http://www.wat.tv/video/orages-en-dordogne-festival-6xxsn_2exyh_.html
         def getTS():
-            #ts = math.floor( float(ts) // 1000 )
+            #ts = math.floor( float(ts) / 1000 )
             url = "http://www.wat.tv/servertime?%d" % int(random() * 0x3D0900)
             sts, data = self.cm.getPage(url, {'header' : HTTP_HEADER})
             ts = int(data.split('|')[0])
@@ -8877,7 +8877,7 @@ class pageParser(CaptchaHelper):
         for idx in range(len(videoUrls)):
             width   = int(videoUrls[idx].get('width', 0))
             height  = int(videoUrls[idx].get('height', 0))
-            bitrate = int(videoUrls[idx].get('bitrate', 0)) // 8
+            bitrate = int(videoUrls[idx].get('bitrate', 0)) / 8
             name = ''
             if 0 != bitrate:
                 name = 'bitrate %s' % (formatBytes(bitrate, 0).replace('.0', '')+'/s')
@@ -11686,7 +11686,7 @@ class pageParser(CaptchaHelper):
         tmp = self.cm.ph.getAllItemsBeetwenNodes(data, ('<script', '>'), ('</script', '>'), False)
         for item in tmp:
             if 'finish' in item:
-                jscode = item + '\n' +  "retObj={};for(var name in global) { if (global[name] != retObj) {retObj[name] = global[name];} } retObj['real_wait'] = Math.ceil((retObj['finish'].getTime() - Date.now()) // 1000);print(JSON.stringify(retObj));"
+                jscode = item + '\n' +  "retObj={};for(var name in global) { if (global[name] != retObj) {retObj[name] = global[name];} } retObj['real_wait'] = Math.ceil((retObj['finish'].getTime() - Date.now()) / 1000);print(JSON.stringify(retObj));"
                 ret = js_execute( jscode )
                 downloadData = json_loads(ret['data'])
         sleep_time = downloadData['real_wait']

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division, print_function
+from __future__ import print_function
 #
 #  IPTV download manager API
 #
@@ -393,9 +393,9 @@ class IPTVDMApi():
         
         # calculate downloadedProcent
         if downloadItem.fileSize > 0 and downloadItem.downloadedSize > 0:
-            downloadItem.downloadedProcent = (100 * downloadItem.downloadedSize) // downloadItem.fileSize
+            downloadItem.downloadedProcent = (100 * downloadItem.downloadedSize) / downloadItem.fileSize
         elif downloadItem.totalFileDuration > 0 and downloadItem.downloadedFileDuration > 0:
-            downloadItem.downloadedProcent = (100 * downloadItem.downloadedFileDuration) // downloadItem.totalFileDuration
+            downloadItem.downloadedProcent = (100 * downloadItem.downloadedFileDuration) / downloadItem.totalFileDuration
         return True
             
     def updateDownloadItemsStatus(self):

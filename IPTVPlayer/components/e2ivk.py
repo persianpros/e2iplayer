@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division
 #
 #  E2iPlayer On Screen Keyboard based on Windows keyboard layouts
 #
@@ -89,7 +88,7 @@ class E2iVKSelectionList(IPTVListComponentBase):
                     sel_key = 'on'
                 else:
                     sel_key = 'off'
-                y = (height - 16) // 2
+                y = (height - 16) / 2
                 res.append((eListboxPythonMultiContent.TYPE_TEXT, 20, 0, width-20, height, 1, RT_HALIGN_LEFT|RT_VALIGN_CENTER, item['val'][0])) #, item.get('color')
                 res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHABLEND, 3, y, 16, 16, self.dictPIX.get(sel_key, None)))
             else:
@@ -133,7 +132,7 @@ class E2iVirtualKeyBoard(Screen):
         inputFontSize = 33 if self.fullHD else 26
         headerFontSize = 25 if self.fullHD else 20
 
-        x = (sz_w - 15*bw) // 2
+        x = (sz_w - 15*bw) / 2
         y = sz_h - 7*bh
 
         bg_color = config.plugins.iptvplayer.osk_background_color.value
@@ -477,7 +476,7 @@ class E2iVirtualKeyBoard(Screen):
                 else:
                     break
             if maxKeyX - minKeyX > 2:
-                self.colIdx = (maxKeyX + minKeyX) // 2
+                self.colIdx = (maxKeyX + minKeyX) / 2
 
         self.currentKeyId = self.KEYIDMAP[self.rowIdx][self.colIdx]
         self.moveKeyMarker(oldKeyId, self.currentKeyId)

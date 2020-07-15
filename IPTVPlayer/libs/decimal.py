@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division, print_function
+from __future__ import print_function
 # Copyright (c) 2004 Python Software Foundation.
 # All rights reserved.
 
@@ -59,10 +59,10 @@ Decimal("2.60")
 >>> Decimal("12.34") + Decimal("3.87") - Decimal("18.41")
 Decimal("-2.20")
 >>> dig = Decimal(1)
->>> print(dig // Decimal(3))
+>>> print(dig / Decimal(3))
 0.333333333
 >>> getcontext().prec = 18
->>> print(dig // Decimal(3))
+>>> print(dig / Decimal(3))
 0.333333333333333333
 >>> print(dig.sqrt())
 1
@@ -70,25 +70,25 @@ Decimal("-2.20")
 1.73205080756887729
 >>> print(Decimal(3) ** 123)
 4.85192780976896427E+58
->>> inf = Decimal(1) // Decimal(0)
+>>> inf = Decimal(1) / Decimal(0)
 >>> print(inf)
 Infinity
->>> neginf = Decimal(-1) // Decimal(0)
+>>> neginf = Decimal(-1) / Decimal(0)
 >>> print(neginf)
 -Infinity
 >>> print(neginf + inf)
 NaN
 >>> print(neginf * inf)
 -Infinity
->>> print(dig // 0)
+>>> print(dig / 0)
 Infinity
 >>> getcontext().traps[DivisionByZero] = 1
->>> print(dig // 0)
+>>> print(dig / 0)
 Traceback (most recent call last):
   ...
   ...
   ...
-DivisionByZero: x // 0
+DivisionByZero: x / 0
 >>> c = Context()
 >>> c.traps[InvalidOperation] = 0
 >>> print(c.flags[InvalidOperation])
@@ -106,7 +106,7 @@ Traceback (most recent call last):
   ...
   ...
   ...
-InvalidOperation: 0 // 0
+InvalidOperation: 0 / 0
 >>> print(c.flags[InvalidOperation])
 1
 >>> c.flags[InvalidOperation] = 0
@@ -194,7 +194,7 @@ class InvalidOperation(DecimalException):
     Something creates a signaling NaN
     -INF + INF
     0 * (+-)INF
-    (+-)INF // (+-)INF
+    (+-)INF / (+-)INF
     x % 0
     (+-)INF % x
     x._rescale( non-integer )
@@ -1144,8 +1144,8 @@ class Decimal(object):
         # Special cases for zeroes
         if not other:
             if not self:
-                return context._raise_error(DivisionUndefined, '0 // 0')
-            return context._raise_error(DivisionByZero, 'x // 0', sign)
+                return context._raise_error(DivisionUndefined, '0 / 0')
+            return context._raise_error(DivisionByZero, 'x / 0', sign)
 
         if not self:
             exp = self._exp - other._exp
@@ -4449,7 +4449,7 @@ class Context(object):
 
     def remainder_near(self, a, b):
         """Returns to be "a - b * n", where n is the integer nearest the exact
-        value of "x // b" (if two integers are equally near then the even one
+        value of "x / b" (if two integers are equally near then the even one
         is chosen).  If the result is equal to 0 then its sign will be the
         sign of a.
 
@@ -4756,7 +4756,7 @@ def _sqrt_nearest(n, a):
 
 def _rshift_nearest(x, shift):
     """Given an integer x and a nonnegative integer shift, return closest
-    integer to x // 2**shift; use round-to-even in case of a tie.
+    integer to x / 2**shift; use round-to-even in case of a tie.
 
     """
     b, q = 1L << shift, x >> shift

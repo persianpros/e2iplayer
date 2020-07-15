@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division, print_function
+from __future__ import print_function
 ###################################################
 # LOCAL import
 ###################################################
@@ -472,7 +472,7 @@ class HDSTo(CBaseHostClass):
             if val == '' and 'determinate' in item[-1]:
                 val = self.cm.ph.getSearchGroups(item[-1], '''<div([^>]+?determinate[^>]+?)>''')[0]
                 val = self.cm.ph.getSearchGroups(val, '''width\:\s*([0-9]+)''')[0]
-                try: val = str(int(val) // 10.0)
+                try: val = str(int(val) / 10.0)
                 except Exception: continue
             if key == '' or val == '': continue
             itemsList.append((key, val))

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division, print_function
+from __future__ import print_function
 #
 #  IPTV Tools
 #
@@ -82,7 +82,7 @@ def SetGraphicsHash(value):
 
 ###################################################
 def DaysInMonth(dt):
-    return (datetime.date(dt.year+(dt.month // 12), (dt.month % 12) + 1, 1) - dt).days + dt.day - 1
+    return (datetime.date(dt.year+(dt.month / 12), (dt.month % 12) + 1, 1) - dt).days + dt.day - 1
     
 def NextMonth(dt):
     return (dt.replace(day=28) + datetime.timedelta(days=4)).replace(day=1)
@@ -766,9 +766,9 @@ def FreeSpace(katalog, requiredSpace, unitDiv=1024*1024):
     try:
         s = os.statvfs(katalog)
         freeSpace = s.f_bfree * s.f_frsize # all free space
-        if 512 > (freeSpace // (1024 * 1024)):
+        if 512 > (freeSpace / (1024 * 1024)):
             freeSpace = s.f_bavail * s.f_frsize
-        freeSpace = freeSpace // unitDiv
+        freeSpace = freeSpace / unitDiv
     except Exception:
         printExc()
         freeSpace = -1
@@ -1065,7 +1065,7 @@ def formatBytes(bytes, precision = 2):
         pow = math.log(bytes)
     else:
         pow = 0
-    pow = math.floor(pow // math.log(1024)) 
+    pow = math.floor(pow / math.log(1024)) 
     pow = min(pow, len(units) - 1) 
     bytes /= math.pow(1024, pow);
     return ("%s%s" % (str(round(bytes, precision)),units[int(pow)])) 

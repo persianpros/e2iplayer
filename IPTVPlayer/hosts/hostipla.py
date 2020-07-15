@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division
 
 ####################################################################
 # IPLA privacy policy
@@ -176,7 +175,7 @@ class Ipla(CBaseHostClass):
             currTimestamp = int(time())
             saveTimestamp = data["timestamp"]
             
-            if (currTimestamp - saveTimestamp) // 3600 < int(config.plugins.iptvplayer.iplacachexml.value):
+            if (currTimestamp - saveTimestamp) / 3600 < int(config.plugins.iptvplayer.iplacachexml.value):
                 data = data["data"]
                 printDBG("__readCategoryCache data from cache valid")
             else:

@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division
 ###################################################
 # LOCAL import
 ###################################################
@@ -164,7 +163,7 @@ class C7tvDe(CBaseHostClass):
                 subItems = []
                 for item in cData:
                     desc = [cItem['title'], item['airtime']]
-                    try: desc.append(str(timedelta(seconds=item['duration'] // 1000)))
+                    try: desc.append(str(timedelta(seconds=item['duration'] / 1000)))
                     except Exception: pass
                     if item['subType'] == "episode":
                         title = '%s: ' % (item['metadata']['tvShowTitle'])

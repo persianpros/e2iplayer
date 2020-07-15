@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division, print_function
+from __future__ import print_function
 ###################################################
 # LOCAL import
 ###################################################
@@ -89,7 +89,7 @@ class Cinemaxx(CBaseHostClass):
 
                             sleep_time -= time.time() * 1000 - timestamp
                             if  sleep_time > 0:
-                                GetIPTVSleep().Sleep(int(math.ceil(sleep_time // 1000.0)))
+                                GetIPTVSleep().Sleep(int(math.ceil(sleep_time / 1000.0)))
                             continue
                         else:
                             break

@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division
 #
 #  IPTV download helper
 #
@@ -167,7 +166,7 @@ class DMHelper:
         if 0 < len(lines):
             match = re.search("|PROGRESS|([0-9]+?)/([0-9]+?)|" , lines[1])
             if match:
-                ret = 100 * int(match.group(1)) // int(match.group(2))
+                ret = 100 * int(match.group(1)) / int(match.group(2))
         return ret
     
     @staticmethod

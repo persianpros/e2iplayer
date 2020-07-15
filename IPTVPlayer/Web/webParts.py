@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division, print_function
+from __future__ import print_function
 #### Local imports
 from __init__ import _
 import settings
@@ -124,7 +124,7 @@ class Body():
 					LogDescr = _('%s file is %d MB in size. Last %d lines are:') % (DebugFileName, os.path.getsize(DebugFileName) >> 20, settings.MaxLogLinesToShow)
 					tempText += '<td>%s</td>' % formSUBMITvalue([('cmd', 'deleteLog')], _("Delete log file"))
 				else:
-					LogDescr = _('%s file is %d KB in size. Last %d lines are:') % (DebugFileName, os.path.getsize(DebugFileName) // 1024 , settings.MaxLogLinesToShow)
+					LogDescr = _('%s file is %d KB in size. Last %d lines are:') % (DebugFileName, os.path.getsize(DebugFileName) / 1024 , settings.MaxLogLinesToShow)
 			except:
 				LogDescr = _('Last %d lines of the %s file are:') % (settings.MaxLogLinesToShow, DebugFileName)
 			tempText += '</table>\n'

@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division
 #
 #  IPTV InputBox window
 #
@@ -37,7 +36,7 @@ class IPTVInputBoxWidget(InputBox):
             </screen>""" % ( width,      height,
                              width - 20,
                              width - 20,
-                             85 + (height - 85 - icon['size'][1]) // 2,
+                             85 + (height - 85 - icon['size'][1]) / 2,
                              icon['size'][0],
                              icon['size'][1] )
         self.skin = skin

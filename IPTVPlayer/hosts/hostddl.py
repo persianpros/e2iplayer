@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division, print_function
+from __future__ import print_function
 ###################################################
 # LOCAL import
 ###################################################
@@ -537,7 +537,7 @@ class DDLMe(CBaseHostClass):
         
         rating = self.cm.ph.getSearchGroups(data, '''<span([^>]+?ratingFill[^>]+?)>''')[0]
         try: 
-            rating = int(self.cm.ph.getSearchGroups(rating, '''width\s*?:\s*?([0-9]+)\%''')[0]) // 10.0
+            rating = int(self.cm.ph.getSearchGroups(rating, '''width\s*?:\s*?([0-9]+)\%''')[0]) / 10.0
             itemsList.append((_('Rating:'), str(rating)))
         except Exception:
             printExc()
