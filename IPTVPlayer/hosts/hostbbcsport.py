@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 ###################################################
 # LOCAL import
 ###################################################
@@ -84,7 +85,7 @@ class BBCSport(CBaseHostClass):
     def _absTimeDelta(self, d1, d2, div=60):
         if d1 > d2: td = d1 - d2
         else: td = d2 - d1
-        return (td.seconds + td.days * 24 * 3600) / div
+        return (td.seconds + td.days * 24 * 3600) // div
     
     def setMainUrl(self, url):
         if self.cm.isValidUrl(url):

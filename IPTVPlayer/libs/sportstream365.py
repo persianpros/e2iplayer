@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 ###################################################
 # LOCAL import
 ###################################################
@@ -165,7 +166,7 @@ class SportStream365Api(CBaseHostClass):
                     title = ' - '.join(title)
                     if title == '': title = item['Liga']
                     desc = item['Liga']
-                    desc += '[/br]' + datetime.fromtimestamp(int(item['Start'] / 1000)).strftime('%A, %-d %B %H:%M')
+                    desc += '[/br]' + datetime.fromtimestamp(int(item['Start'] // 1000)).strftime('%A, %-d %B %H:%M')
                     if self.GMTOffset != '': desc += ' (GMT %s)' % self.GMTOffset
                     channelsList.append({'name':'sportstream365.com', 'type':'video', 'title':self.cleanHtmlStr(title), 'url':url, 'icon':icon, 'desc':self.cleanHtmlStr(desc)})
             except Exception:

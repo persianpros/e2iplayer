@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 #
 #  IPTV download manager UI
 #
@@ -59,13 +60,13 @@ class E2iPlayerBufferingWidget(Screen):
     #######################
     #     POSITIONS
     #######################  
-    start_y = (sz_h - (i_h + c_h)) / 2 
+    start_y = (sz_h - (i_h + c_h)) // 2 
     # icon
-    i_x = (sz_w - i_w) / 2
+    i_x = (sz_w - i_w) // 2
     i_y = start_y
     # percentage
-    p_x = (sz_w - p_w) / 2
-    p_y = start_y + (i_h - p_h) / 2
+    p_x = (sz_w - p_w) // 2
+    p_y = start_y + (i_h - p_h) // 2
     # console
     c_x = 0
     c_y = i_y + i_h
@@ -489,13 +490,13 @@ class E2iPlayerBufferingWidget(Screen):
                     self.moovAtomStatus = self.MOOV_STS.DOWNLOADING
                 remoteSize = self.moovAtomOffset + self.moovAtomSize
                 if localSize > remoteSize: percentage = 100
-                else: percentage = (100 * localSize) / remoteSize
+                else: percentage = (100 * localSize) // remoteSize
             else:
                 requestedBuffSize = self.requestedBuffSize
                 if self.lastSize > moovAtomDataSize: tmpBuffSize = localSize - self.lastSize
                 else: tmpBuffSize = localSize - moovAtomDataSize
                 if tmpBuffSize > requestedBuffSize: percentage = 100
-                else: percentage = (100 * tmpBuffSize) / requestedBuffSize
+                else: percentage = (100 * tmpBuffSize) // requestedBuffSize
                 if self.moovAtomStatus != self.MOOV_STS.DOWNLOADED:
                     self["addinfo"].setText("")
                     self.moovAtomStatus = self.MOOV_STS.DOWNLOADED
@@ -517,7 +518,7 @@ class E2iPlayerBufferingWidget(Screen):
                 if status == DMHelper.STS.DOWNLOADING:
                     if moovLocalSize > 0 and self.moovAtomSize > 0:
                         if moovLocalSize > self.moovAtomSize: percentage = 100
-                        else: percentage = (100 * moovLocalSize) / self.moovAtomSize
+                        else: percentage = (100 * moovLocalSize) // self.moovAtomSize
                 elif status == DMHelper.STS.DOWNLOADED or (status == DMHelper.STS.INTERRUPTED and moovLocalSize == self.moovAtomSize):
                     self.moovAtomStatus = self.MOOV_STS.DOWNLOADED
                     self["addinfo"].setText("")
@@ -539,12 +540,12 @@ class E2iPlayerBufferingWidget(Screen):
             if self.downloader.getPlayableFileSize() > 0:
                 requestedBuffSize = self.requestedBuffSize
                 if tmpBuffSize > requestedBuffSize: percentage = 100
-                else: percentage = (100 * tmpBuffSize) / requestedBuffSize
+                else: percentage = (100 * tmpBuffSize) // requestedBuffSize
                 handled = True
         
         if not handled and localSize > 0 and remoteSize > 0:
             if localSize > remoteSize: percentage = 100
-            else: percentage = (100 * localSize) / remoteSize
+            else: percentage = (100 * localSize) // remoteSize
         
         self["percentage"].setText(str(percentage))
         self["icon"].nextFrame()

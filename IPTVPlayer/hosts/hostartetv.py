@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 ###################################################
 # LOCAL import
 ###################################################
@@ -283,7 +284,7 @@ class ArteTV(CBaseHostClass):
                 if type == 'zone': icon = self.getFullIconUrl(item['images']['landscape']['resolutions'][0]['url'])
                 else: icon = self.getFullIconUrl(item['images'][0]['url'])
                 
-                if item.get('duration', 0) > 0: desc = ['%s min' % int(round(item['duration'] / divider))]
+                if item.get('duration', 0) > 0: desc = ['%s min' % int(round(item['duration'] // divider))]
                 else: desc = []
                 
                 if None != item.get('description', None): desc.append(self.cleanHtmlStr(str(item['description'])))
@@ -338,7 +339,7 @@ class ArteTV(CBaseHostClass):
                 icon = self.getFullIconUrl(item['mainImage']['url'])
                 
                 desc = [self.cleanHtmlStr(item.get('originalTitle', ''))]
-                desc.append('%s min' % int(round(item['durationSeconds'] / 60.0)))
+                desc.append('%s min' % int(round(item['durationSeconds'] // 60.0)))
                 params = dict(cItem)
                 params.update({'good_for_fav':True, 'title':title, 'url':url, 'icon':icon, 'desc':' | '.join(desc)})
                 self.addVideo(params)

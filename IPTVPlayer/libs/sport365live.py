@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 
 ###################################################
 # LOCAL import
@@ -193,7 +194,7 @@ class Sport365LiveApi:
         printDBG("Sport365LiveApi.getMainCategories")
         channelsTab = []
         dt = datetime.now() - datetime.utcnow()
-        OFFSET = (dt.microseconds + (dt.seconds + dt.days * 24 * 3600) * 10**6) / 10**6
+        OFFSET = (dt.microseconds + (dt.seconds + dt.days * 24 * 3600) * 10**6) // 10**6
         OFFSET /= 60
         if OFFSET % 10 == 9:
             OFFSET += 1

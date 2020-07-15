@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 #
 #  IPTV IMAGE SELECTOR
 #
@@ -57,8 +58,8 @@ class IPTVImagesSelectionList(IPTVListComponentBase):
         try:
             printDBG('--- buildEntry ---')
             printDBG('%s: ' % (item['id']) )
-            x = (width - item['width']) / 2
-            y = (height - item['height']) / 2
+            x = (width - item['width']) // 2
+            y = (height - item['height']) // 2
             res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHABLEND, x, y, item['width'], item['height'], item['pixmap']))
             if item['id'] != None:
                 if item['selected']: sel_key = 'on'
@@ -75,8 +76,8 @@ class IPTVMultipleImageSelectorWidget(Screen):
         if None == self.iptv_height: self.iptv_height = getDesktop(0).size().height()
         if self.iptv_title == None: self.iptv_title = _('Select pictures')
         
-        if self.iptv_message != None and self.iptv_message_height == None: self.iptv_message_height = self.iptv_height / 10
-        if self.iptv_accep_label != None and self.iptv_accep_height == None: self.iptv_accep_height = self.iptv_height / 20
+        if self.iptv_message != None and self.iptv_message_height == None: self.iptv_message_height = self.iptv_height // 10
+        if self.iptv_accep_label != None and self.iptv_accep_height == None: self.iptv_accep_height = self.iptv_height // 20
         
         y = 0
         skin = ['<screen position="center,center" title="%s" size="%d,%d">' % (self.iptv_title, self.iptv_width, self.iptv_height)]
@@ -88,7 +89,7 @@ class IPTVMultipleImageSelectorWidget(Screen):
         list_height = (self.iptv_height - y) - 20
         if self.iptv_accep_label != None: list_height -= self.iptv_accep_height + 10 
         
-        x = (self.iptv_width - (10 * (self.iptv_col_num + 1) + list_width * self.iptv_col_num )) / 2
+        x = (self.iptv_width - (10 * (self.iptv_col_num + 1) + list_width * self.iptv_col_num )) // 2
         for idx in range(self.iptv_col_num):
             if idx != self.iptv_col_num - 1: 
                 scrollbar_mode = 'showNever'
@@ -119,7 +120,7 @@ class IPTVMultipleImageSelectorWidget(Screen):
         self.iptv_accep_height = accep_height
         
         self.iptv_col_num = col_num
-        self.iptv_row_num = len(images) / col_num
+        self.iptv_row_num = len(images) // col_num
         if len(images) % col_num > 0:
             self.iptv_row_num += 1
         

@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 ###################################################
 # LOCAL import
 ###################################################
@@ -281,7 +282,7 @@ class FilmixCO(CBaseHostClass):
             titleOrg = self.cleanHtmlStr( self.cm.ph.getDataBeetwenNodes(item, ('<div', '>', 'origin-name'), ('</div', '>'))[1] )
             if titleOrg != '':
                 if title == '': title = titleOrg
-                else: title += ' / %s' % titleOrg
+                else: title += ' // %s' % titleOrg
 
             desc = []
             tmp = self.cm.ph.getAllItemsBeetwenNodes(item, ('<div', '>', '"item'), ('</div', '>'))

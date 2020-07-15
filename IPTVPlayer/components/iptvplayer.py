@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 from Screens.Screen import Screen
 from Screens.InfoBarGenerics import InfoBarSeek, InfoBarAudioSelection, InfoBarNotifications, InfoBarSubtitleSupport, InfoBarShowHide
    
@@ -48,7 +49,7 @@ class customMoviePlayer(InfoBarShowHide, InfoBarSeek, InfoBarAudioSelection, Inf
         self.bugEOFworkaround = bugEOFworkaround
         
         self.session.nav.playService(service)
-        if lastPosition != None and (lastPosition / 90000) > 10:
+        if lastPosition != None and (lastPosition // 90000) > 10:
             self.position = 0
             self.lastPosition = lastPosition
             self.doSeekToLastPosition = True
@@ -74,7 +75,7 @@ class customMoviePlayer(InfoBarShowHide, InfoBarSeek, InfoBarAudioSelection, Inf
                 length = r[1]
             r = seek.getPlayPosition()
             if not r[0]:
-                time = r[1] #float(float(r[1]) / float(90000))
+                time = r[1] #float(float(r[1]) // float(90000))
         return time, length
         
     def doSeekRelative(self, pts):

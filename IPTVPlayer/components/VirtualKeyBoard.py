@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 ###################################################
 # LOCAL import
 ###################################################
@@ -218,7 +219,7 @@ class IPTVVirtualKeyBoardWithCaptcha(Screen):
             self.list[self.previousSelectedKey /12] = self.list[self.previousSelectedKey /12][:-1]
         width = self.key_sel.size().width()
         x = self.list[self.selectedKey/12][self.selectedKey % 12 + 1][1]
-        self.list[self.selectedKey / 12].append(MultiContentEntryPixmapAlphaTest(pos=(x, 0), size=(width, 45), png=self.key_sel))
+        self.list[self.selectedKey // 12].append(MultiContentEntryPixmapAlphaTest(pos=(x, 0), size=(width, 45), png=self.key_sel))
         self.previousSelectedKey = self.selectedKey
         self["list"].setList(self.list)
 
@@ -235,7 +236,7 @@ class IPTVVirtualKeyBoardWithCaptcha(Screen):
 
     def okClicked(self):
         self.smsChar = None
-        text = (self.shiftMode and self.shiftkeys_list or self.keys_list)[self.selectedKey / 12][self.selectedKey % 12].encode("UTF-8")
+        text = (self.shiftMode and self.shiftkeys_list or self.keys_list)[self.selectedKey // 12][self.selectedKey % 12].encode("UTF-8")
 
         if text == "EXIT":
             self.close(None)
@@ -286,23 +287,23 @@ class IPTVVirtualKeyBoardWithCaptcha(Screen):
 
     def left(self):
         self.smsChar = None
-        self.selectedKey = self.selectedKey / 12 * 12 + (self.selectedKey + 11) % 12
+        self.selectedKey = self.selectedKey // 12 * 12 + (self.selectedKey + 11) % 12
         if self.selectedKey > self.max_key:
             self.selectedKey = self.max_key
         self.markSelectedKey()
 
     def right(self):
         self.smsChar = None
-        self.selectedKey = self.selectedKey / 12 * 12 + (self.selectedKey + 1) % 12
+        self.selectedKey = self.selectedKey // 12 * 12 + (self.selectedKey + 1) % 12
         if self.selectedKey > self.max_key:
-            self.selectedKey = self.selectedKey / 12 * 12
+            self.selectedKey = self.selectedKey // 12 * 12
         self.markSelectedKey()
 
     def up(self):
         self.smsChar = None
         self.selectedKey -= 12
         if self.selectedKey < 0:
-            self.selectedKey = self.max_key / 12 * 12 + self.selectedKey % 12
+            self.selectedKey = self.max_key // 12 * 12 + self.selectedKey % 12
             if self.selectedKey > self.max_key:
                 self.selectedKey -= 12
         self.markSelectedKey()

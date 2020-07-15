@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 
 ###################################################
 # LOCAL import
@@ -158,7 +158,7 @@ class Spryciarze(CBaseHostClass):
             self.currList = []
             itemNum = int(item['ilosc'])
             
-            pageNum = itemNum / self.NUM_PER_PAGE
+            pageNum = itemNum // self.NUM_PER_PAGE
             
             if itemNum % self.NUM_PER_PAGE > 0:
                 pageNum += 1
@@ -193,7 +193,7 @@ class Spryciarze(CBaseHostClass):
         if 0 == len(match): return
         
         itemNum = int(match[0])
-        pageNum = itemNum / self.SEARCH_RES_PER_PAGE
+        pageNum = itemNum // self.SEARCH_RES_PER_PAGE
         
         if itemNum % self.SEARCH_RES_PER_PAGE > 0:
             pageNum += 1

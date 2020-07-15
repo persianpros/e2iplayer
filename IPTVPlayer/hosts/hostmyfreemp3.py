@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 ###################################################
 # LOCAL import
 ###################################################
@@ -148,7 +149,7 @@ class MyFreeMp3(CBaseHostClass):
                 encoded += "-"
             while input > 0:
                 val = input % length
-                input = input / length
+                input = input // length
                 encoded += map[val]
             return encoded
         

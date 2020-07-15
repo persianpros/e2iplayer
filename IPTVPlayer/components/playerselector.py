@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 #
 #  Player Selector
 #
@@ -71,8 +72,8 @@ class PlayerSelectorWidget(Screen):
         coverHeight = iconSize
         
         # space/distance between images
-        disWidth = int(coverWidth / 3 )
-        disHeight = int(coverHeight / 4)
+        disWidth = int(coverWidth // 3 )
+        disHeight = int(coverHeight // 4)
         
         # marker size should be larger than img
         markerWidth = 45 + coverWidth
@@ -124,7 +125,7 @@ class PlayerSelectorWidget(Screen):
         
         # pagination 
         self.pageItemSize = 16
-        self.pageItemStartX = (offsetCoverX + tmpX * numOfCol + offsetCoverX - disWidth - self.numOfPages * self.pageItemSize) / 2
+        self.pageItemStartX = (offsetCoverX + tmpX * numOfCol + offsetCoverX - disWidth - self.numOfPages * self.pageItemSize) // 2
         if screenwidth and screenwidth == 1920:
             self.pageItemStartY = 60
         else:
@@ -259,7 +260,7 @@ class PlayerSelectorWidget(Screen):
             self.currLine = (self.numOfLines - 1)
         
         # calculate new page number 
-        newPage = self.currLine / self.numOfRow
+        newPage = self.currLine // self.numOfRow
         if newPage != self.currPage:
             self.currPage = newPage
             self.updateIcons()
@@ -320,12 +321,12 @@ class PlayerSelectorWidget(Screen):
             self.lastSelection = self.numOfItems - 1
         
         # numbers of lines
-        self.numOfLines = self.numOfItems / self.numOfCol
+        self.numOfLines = self.numOfItems // self.numOfCol
         if self.numOfItems % self.numOfCol > 0:
             self.numOfLines += 1
 
         # numbers of pages
-        self.numOfPages = self.numOfLines / self.numOfRow
+        self.numOfPages = self.numOfLines // self.numOfRow
         if self.numOfLines % self.numOfRow > 0:
             self.numOfPages += 1
 
@@ -367,7 +368,7 @@ class PlayerSelectorWidget(Screen):
             selIdx = self.numOfItems
     
         self.dispX = selIdx % self.numOfCol
-        self.currLine = selIdx / self.numOfCol
+        self.currLine = selIdx // self.numOfCol
         
         self.calcMarkerPosX()
         self.calcMarkerPosY()

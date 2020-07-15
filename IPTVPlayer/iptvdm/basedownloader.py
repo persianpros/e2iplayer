@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 #
 #  IPTV download manager API
 #
@@ -146,7 +147,7 @@ class BaseDownloader:
             deltaSize = self.localFileSize - self.prevLocalFileSize
             deltaTime = (newTime - prevUpdateTime).seconds
             if deltaTime > 0:
-                self.downloadSpeed = deltaSize / deltaTime
+                self.downloadSpeed = deltaSize // deltaTime
                 self.lastUpadateTime = newTime
                 self.prevLocalFileSize = self.localFileSize
         else:

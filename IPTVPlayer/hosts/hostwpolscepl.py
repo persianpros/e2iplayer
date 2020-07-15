@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 ###################################################
 # LOCAL import
 ###################################################
@@ -82,8 +83,8 @@ class WPolscePL(CBaseHostClass):
     def delta2str(self, td):
         ret = []
         days = td.days
-        hours = td.seconds / 3600
-        minutes = (td.seconds / 60) % 60
+        hours = td.seconds // 3600
+        minutes = (td.seconds // 60) % 60
         
         if days > 0: ret.append('%s d.' % days)
         if hours > 0: ret.append('%s godz.' % hours)

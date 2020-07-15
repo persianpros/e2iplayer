@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 #
 #  IplaPlayer based on SHOUTcast
 #
@@ -1777,7 +1778,7 @@ class E2iPlayerWidget(Screen):
         
         if 'favourites' == self.hostName and lastPosition != None and clipLength != None:
             try:
-                if config.plugins.iptvplayer.favourites_use_watched_flag.value and (lastPosition*100 / clipLength) > 80:
+                if config.plugins.iptvplayer.favourites_use_watched_flag.value and (lastPosition*100 // clipLength) > 80:
                     currSelIndex = self["list"].getCurrentIndex()
                     self.requestListFromHost('MarkItemAsViewed', currSelIndex)
                     return

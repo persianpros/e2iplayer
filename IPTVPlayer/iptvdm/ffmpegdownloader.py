@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 #
 #  IPTV download manager API
 #
@@ -167,7 +168,7 @@ class FFMPEGDownloader(BaseDownloader):
         
     def _getDownloadSpeed(self, data):
         try:
-            return int(float(self.parseReObj['bitrate'].search(data).group(1)) * float(self.parseReObj['speed'].search(data).group(1)) * 1024 / 8)
+            return int(float(self.parseReObj['bitrate'].search(data).group(1)) * float(self.parseReObj['speed'].search(data).group(1)) * 1024 // 8)
         except Exception:
             printExc()
         return 0

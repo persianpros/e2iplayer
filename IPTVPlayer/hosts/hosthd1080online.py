@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 ###################################################
 # LOCAL import
 ###################################################
@@ -97,7 +98,7 @@ class HD1080Online(CBaseHostClass):
             # rating
             desc.append(ph.clean_html(ph.rfind(item, ('<div', '>', 'ratig-layer'), ('<b', '>'), flags=0)[1]))
             t = ph.clean_html(ph.find(item, ('<li', '>', 'current-rating'), '</li>', flags=0)[1])
-            if t.isdigit(): desc[-1] += ' %s/10' % str(int(t) / 10.0)
+            if t.isdigit(): desc[-1] += ' %s/10' % str(int(t) // 10.0)
 
             desc.append(ph.clean_html(ph.find(item, ('<div', '>', 'desc'), '</div>', flags=0)[1]))
             self.addDir(MergeDicts(cItem, {'good_for_fav':True, 'category':nextCategory, 'title':title, 'url':url, 'icon':icon, 'desc':'[/br]'.join(desc)}))

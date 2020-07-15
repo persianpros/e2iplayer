@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 #
 #  IPTVExtMoviePlayer
 #
@@ -68,7 +68,7 @@ class ExtPlayerCommandsDispatcher():
         #SEEK_SPEED_MAP = [0.125, 0.25, 0.5, 0, 2, 4, 8, 16, 32, 64, 128]
         self.SEEK_SPEED_MAP = []
         for item in reversed(config.seek.speeds_slowmotion.value):
-            self.SEEK_SPEED_MAP.append(1.0 / float(item))
+            self.SEEK_SPEED_MAP.append(1.0 // float(item))
         self.SEEK_SPEED_MAP.append(0)
         for item in config.seek.speeds_forward.value:
             self.SEEK_SPEED_MAP.append( item )
@@ -139,7 +139,7 @@ class ExtPlayerCommandsDispatcher():
         elif 1 < val:
             if 'eplayer' == self.owner.player: val -= 1
             self.doSeekFwd(str(val))
-        else: self.doSlowMotion(str(int(1.0 / val)))
+        else: self.doSlowMotion(str(int(1.0 // val)))
     
     def extPlayerSendCommand(self, cmd, arg='', getStatus=True):
         ret = False
@@ -1070,16 +1070,16 @@ class IPTVExtMoviePlayer(Screen):
                     printDBG("lines [%d] width[%d] worlds[%d]" % (len(text), textSize[0], lnText.count(' ')))
                     if breakToLongLine and len(text) == 1 and textSize[0] >= dW and lnText.count(' ') > 4:
                         lnText = lnText.split(' ')
-                        splitWord = len(lnText) / 2 + 1
+                        splitWord = len(lnText) // 2 + 1
                         lnText = '%s\n%s' % (' '.join(lnText[:splitWord]), ' '.join(lnText[splitWord:]))
                         self.setSubtitlesText(lnText, False, False)
                         return
                     
-                    lW = textSize[0] + self.subConfig['font_size'] / 2
-                    lH = lineHeight #textSize[1] + self.subConfig['font_size'] / 2
+                    lW = textSize[0] + self.subConfig['font_size'] // 2
+                    lH = lineHeight #textSize[1] + self.subConfig['font_size'] // 2
                     self[subLabel].instance.resize(eSize(lW, lH))
-                    if not subOnTopHack: self[subLabel].instance.move( ePoint((desktopW-lW) / 2, desktopH - y - lH) )
-                    else: self[subLabel].instance.move( ePoint((desktopW-lW) / 2, y) )
+                    if not subOnTopHack: self[subLabel].instance.move( ePoint((desktopW-lW) // 2, desktopH - y - lH) )
+                    else: self[subLabel].instance.move( ePoint((desktopW-lW) // 2, y) )
                     y += lH + self.subConfig['line_spacing']
                     self[subLabel].show()
                 except Exception:
@@ -1095,7 +1095,7 @@ class IPTVExtMoviePlayer(Screen):
                 totalDuration = self.downloader.getTotalFileDuration()
                 downloadDuration = self.downloader.getDownloadedFileDuration()
                 if 0 < totalDuration and 0 < downloadDuration:
-                    self.playback['BufferFill'] = (downloadDuration * 100000) / totalDuration
+                    self.playback['BufferFill'] = (downloadDuration * 100000) // totalDuration
                     self['bufferingBar'].value = self.playback['BufferFill']
                     if self.playback['Length'] < totalDuration:
                         self.setPlaybackLength(totalDuration)
@@ -1106,7 +1106,7 @@ class IPTVExtMoviePlayer(Screen):
             if 0 < remoteFileSize:
                 localFileSize = self.downloader.getLocalFileSize(True) - self.availableDataSizeCorrection
                 if 0 < localFileSize:
-                    self.playback['BufferFill'] = (localFileSize * 100000) / remoteFileSize
+                    self.playback['BufferFill'] = (localFileSize * 100000) // remoteFileSize
                     self['bufferingBar'].value = self.playback['BufferFill']
         
     def showMessage(self, message, type, callback=None):
@@ -1162,7 +1162,7 @@ class IPTVExtMoviePlayer(Screen):
                     if 10 < self.lastPosition and self.lastPosition < (self.playback['Length'] - 10):
                         self.updateBufferFill()
                         if self.playback['BufferFill'] > 0:
-                            max = self.playback['Length'] * self.playback['BufferFill'] / 100000
+                            max = self.playback['Length'] * self.playback['BufferFill'] // 100000
                             if max > self.playback['Length']:
                                 max = self.playback['Length']
                         else:
@@ -1256,7 +1256,7 @@ class IPTVExtMoviePlayer(Screen):
         
         # update data
         if self.playback['BufferFill'] > 0:
-            max = self.playback['Length'] * self.playback['BufferFill'] / 100000
+            max = self.playback['Length'] * self.playback['BufferFill'] // 100000
             if max > self.playback['Length']:
                 max = self.playback['Length']
             if max < self.playback['BufferCTime']:
@@ -1273,7 +1273,7 @@ class IPTVExtMoviePlayer(Screen):
         
         # update position
         # convert time to width
-        relativeX = self["progressBar"].instance.size().width() * self.playback['GoToSeekTime'] / self.playback['Length']
+        relativeX = self["progressBar"].instance.size().width() * self.playback['GoToSeekTime'] // self.playback['Length']
         x = self['progressBar'].position[0] - self["goToSeekPointer"].getWidth()/2 + relativeX
 
         self['goToSeekPointer'].setPosition(x, self['goToSeekPointer'].position[1])
@@ -1387,7 +1387,7 @@ class IPTVExtMoviePlayer(Screen):
         if currentDelay > 0:
             textDelay = '+'
         else: textDelay = '' 
-        textDelay += "%.1fs" % (currentDelay / 1000.0)
+        textDelay += "%.1fs" % (currentDelay // 1000.0)
         self['subSynchroLabel'].setText(textDelay)
         if -1 != self.subHandler['current_sub_time_ms']:
             self.updateSubtitles(self.subHandler['current_sub_time_ms'])
@@ -1403,8 +1403,8 @@ class IPTVExtMoviePlayer(Screen):
             self.goToSeekRepeatCount += 1
         
         # not allow faster than (0.1 * playback length)
-        if self.goToSeekStep > (self.playback['Length'] / 10):
-            self.goToSeekStep = self.playback['Length'] / 10
+        if self.goToSeekStep > (self.playback['Length'] // 10):
+            self.goToSeekStep = self.playback['Length'] // 10
         if 0 >= self.goToSeekStep:
             self.goToSeekStep = 1
         
@@ -1482,7 +1482,7 @@ class IPTVExtMoviePlayer(Screen):
                 except Exception: 
                     printExc()
                 try:
-                    DAR = float(obj.get('an', 1) * params['width']) / float(obj.get('ad', 1) * params['height'])
+                    DAR = float(obj.get('an', 1) * params['width']) // float(obj.get('ad', 1) * params['height'])
                     aTab = []
                     for item in [(16,9,'16_9'), (4,3,'4_3'), (16,10,'16_10'), (3,2,'3_2'), (5,4,'5_4'), (1.85,1,'1.85'), (2.35,1,'2.35')]:
                         diff = fabs(float(item[0])/item[1] - DAR)
@@ -2033,7 +2033,7 @@ class IPTVExtMoviePlayer(Screen):
     def initGuiComponentsPos(self):
         # info bar gui elements
         # calculate offset
-        offset_x = (getDesktop(0).size().width() - self['playbackInfoBaner'].instance.size().width()) / 2
+        offset_x = (getDesktop(0).size().width() - self['playbackInfoBaner'].instance.size().width()) // 2
         offset_y = (getDesktop(0).size().height() - self['playbackInfoBaner'].instance.size().height()) - self.Y_CROPPING_GUARD
         if offset_x < 0: offset_x = 0
         if offset_y < 0: offset_y = 0
@@ -2048,8 +2048,8 @@ class IPTVExtMoviePlayer(Screen):
             
         # sub synchro elements
         # calculate offset
-        offset_x = (getDesktop(0).size().width() - self['subSynchroIcon'].instance.size().width()) / 2
-        offset_y = (getDesktop(0).size().height() - self['subSynchroIcon'].instance.size().height()) / 2
+        offset_x = (getDesktop(0).size().width() - self['subSynchroIcon'].instance.size().width()) // 2
+        offset_y = (getDesktop(0).size().height() - self['subSynchroIcon'].instance.size().height()) // 2
         if offset_x < 0: offset_x = 0
         if offset_y < 0: offset_y = 0
 

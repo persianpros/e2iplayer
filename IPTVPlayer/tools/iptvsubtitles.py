@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 ###################################################
 # LOCAL import
 ###################################################
@@ -139,7 +139,7 @@ class IPTVSubtitlesHandler:
         #printDBG("OpenSubOrg.getSubtitles [%s]" % currTimeMS)
         #time1 = time.time()
         subsText = []
-        tmp = currTimeMS / self.CAPACITY
+        tmp = currTimeMS // self.CAPACITY
         tmp = self.pailsOfAtoms.get(tmp, [])
         
         ret    = None
@@ -201,13 +201,13 @@ class IPTVSubtitlesHandler:
     def _fillPailsOfAtoms(self):
         self.pailsOfAtoms = {}
         for idx in range(len(self.subAtoms)):
-            tmp = self.subAtoms[idx]['start'] / self.CAPACITY
+            tmp = self.subAtoms[idx]['start'] // self.CAPACITY
             if tmp not in self.pailsOfAtoms:
                 self.pailsOfAtoms[tmp] = [idx]
             elif idx not in self.pailsOfAtoms[tmp]:
                 self.pailsOfAtoms[tmp].append( idx )
             
-            tmp = self.subAtoms[idx]['end'] / self.CAPACITY
+            tmp = self.subAtoms[idx]['end'] // self.CAPACITY
             if tmp not in self.pailsOfAtoms:
                 self.pailsOfAtoms[tmp] = [idx]
             elif idx not in self.pailsOfAtoms[tmp]:
@@ -231,9 +231,9 @@ class IPTVSubtitlesHandler:
                     subText = fp.read().encode('utf-8')
                 # if in subtitles will be line {1}{1}f_fps
                 # for example {1}{1}23.976 and we set microsecperframe = 0
-                # then microsecperframe will be calculated as follow: llroundf(1000000.f / f_fps)
+                # then microsecperframe will be calculated as follow: llroundf(1000000.f // f_fps)
                 if fps > 0:
-                    microsecperframe = int(1000000.0 / fps)
+                    microsecperframe = int(1000000.0 // fps)
                 else:
                     microsecperframe = 0
                 # calc end time if needed - optional, default True
@@ -326,13 +326,13 @@ class IPTVEmbeddedSubtitlesHandler:
                     idx = len(self.subAtoms)
                     self.subAtoms.append( { 'start':inAtom['start'], 'end':inAtom['end'], 'text':text} )
                     
-                    tmp = self.subAtoms[idx]['start'] / self.CAPACITY
+                    tmp = self.subAtoms[idx]['start'] // self.CAPACITY
                     if tmp not in self.pailsOfAtoms:
                         self.pailsOfAtoms[tmp] = [idx]
                     elif idx not in self.pailsOfAtoms[tmp]:
                         self.pailsOfAtoms[tmp].append( idx )
                     
-                    tmp = self.subAtoms[idx]['end'] / self.CAPACITY
+                    tmp = self.subAtoms[idx]['end'] // self.CAPACITY
                     if tmp not in self.pailsOfAtoms:
                         self.pailsOfAtoms[tmp] = [idx]
                     elif idx not in self.pailsOfAtoms[tmp]:
@@ -342,7 +342,7 @@ class IPTVEmbeddedSubtitlesHandler:
             
     def getSubtitles(self, currTimeMS, prevMarker):
         subsText = []
-        tmp = currTimeMS / self.CAPACITY
+        tmp = currTimeMS // self.CAPACITY
         tmp = self.pailsOfAtoms.get(tmp, [])
         
         ret = None

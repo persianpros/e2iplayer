@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 ###################################################
 # LOCAL import
 ###################################################
@@ -206,7 +206,7 @@ class TantiFilmOrg(CBaseHostClass):
             desc  = self.cleanHtmlStr(item.replace('</p>', '[/br]'))
             
             try:
-                raiting = str(int(((float(self.cm.ph.getSearchGroups(item, '''data\-rateit\-value=['"]([^'^"]+?)['"]''')[0]) * 5) / 3)*10)/10.0) + '/5'
+                raiting = str(int(((float(self.cm.ph.getSearchGroups(item, '''data\-rateit\-value=['"]([^'^"]+?)['"]''')[0]) * 5) // 3)*10)/10.0) + '/5'
                 desc = raiting + ' | ' + desc
             except Exception:
                 pass

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 
 import urllib2
 import sys
@@ -131,8 +131,8 @@ def getPageCF(url, params={}):
                 params2 = dict(params)
                 params2.update({'Referer':cUrl, 'Accept-Encoding':'text', 'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'})
                 printDBG("Time spent: [%s]" % (time.time() - start_time))
-                if current == 1: time.sleep(1 + (decoded['timeout'] / 1000.0)-(time.time() - start_time))
-                else: time.sleep((decoded['timeout'] / 1000.0))
+                if current == 1: time.sleep(1 + (decoded['timeout'] // 1000.0)-(time.time() - start_time))
+                else: time.sleep((decoded['timeout'] // 1000.0))
                 printDBG("Time spent: [%s]" % (time.time() - start_time))
                 printDBG("Timeout: [%s]" % decoded['timeout'])
                 sts, data = getPage(verUrl, params2)

@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 #
 #  IPTV download manager UI
 #
@@ -119,12 +120,12 @@ class IPTVPicturePlayerWidget(Screen):
     #######################
     #     POSITIONS
     #######################  
-    start_y = (sz_h - (i_h + c_h)) / 2 
+    start_y = (sz_h - (i_h + c_h)) // 2 
     # percentage
-    s_x = (sz_w - s_w) / 2
-    s_y = start_y + (i_h - s_h) / 2
+    s_x = (sz_w - s_w) // 2
+    s_y = start_y + (i_h - s_h) // 2
     # icon
-    i_x = (sz_w - i_w) / 2
+    i_x = (sz_w - i_w) // 2
     i_y = start_y
     # console
     c_x = 0

@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 #
 #  IPTVMultipleInputBox
 #
@@ -70,7 +71,7 @@ class IPTVMultipleInputBox(Screen):
                 self["input_%d"%idx].setUseableChars(item['useable_chars'])
             
             if 'icon_path' in item:
-                skinItems +=  '<widget name="cover_%d" position="%d,%d" size="%d,%d" zPosition="8" />' % (idx, (maxWidth - item['label_size'][0]) / 2, pY, item['label_size'][0], item['label_size'][1])
+                skinItems +=  '<widget name="cover_%d" position="%d,%d" size="%d,%d" zPosition="8" />' % (idx, (maxWidth - item['label_size'][0]) // 2, pY, item['label_size'][0], item['label_size'][1])
             else:
                 skinItems +=  '<widget name="text_%d" position="%d,%d" size="%d,%d" font="%s" zPosition="2" />' % (idx, 10, pY, item['label_size'][0], item['label_size'][1], item['label_font'])
             
@@ -79,8 +80,8 @@ class IPTVMultipleInputBox(Screen):
             skinItems +=  '<widget name="border_%d" position="%d,%d" size="%d,%d" font="%s" zPosition="1" transparent="0" backgroundColor="#331F93B9" />' % (idx, pX-5, pY-5, item['input_size'][0]+10, item['input_size'][1]+10, item['input_font'])
             if 0 == idx: 
                 self['marker'] = Cover3()
-                skinItems +=  '<widget name="marker" zPosition="2" position="10,%d" size="16,16" transparent="1" alphatest="blend" />' % (pY + (item['input_size'][1]-16) / 2)
-            skinItems +=  '<widget name="marker_%d" zPosition="1" position="10,%d" size="16,16" transparent="1" alphatest="blend" />' % (idx, pY + (item['input_size'][1]-16) / 2)
+                skinItems +=  '<widget name="marker" zPosition="2" position="10,%d" size="16,16" transparent="1" alphatest="blend" />' % (pY + (item['input_size'][1]-16) // 2)
+            skinItems +=  '<widget name="marker_%d" zPosition="1" position="10,%d" size="16,16" transparent="1" alphatest="blend" />' % (idx, pY + (item['input_size'][1]-16) // 2)
             self['marker_%d'%idx] = Cover3()
             pY += dY*2 + item['input_size'][1]
             
