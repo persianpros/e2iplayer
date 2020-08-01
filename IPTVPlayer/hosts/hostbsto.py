@@ -5,7 +5,9 @@
 ###################################################
 from Plugins.Extensions.IPTVPlayer.components.iptvplayerinit import TranslateTXT as _, SetIPTVPlayerLastHostError
 from Plugins.Extensions.IPTVPlayer.components.ihost import CHostBase, CBaseHostClass
-from Plugins.Extensions.IPTVPlayer.components.recaptcha_v2helper import CaptchaHelper
+#from Plugins.Extensions.IPTVPlayer.components.recaptcha_v2helper import CaptchaHelper
+from Plugins.Extensions.IPTVPlayer.components.captcha_helper import CaptchaHelper
+
 from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, byteify, rm, GetPluginDir, GetCacheSubDir, ReadTextFile, WriteTextFile
 from Plugins.Extensions.IPTVPlayer.tools.iptvtypes import strwithmeta
 from Plugins.Extensions.IPTVPlayer.libs.crypto.cipher.aes_cbc import AES_CBC
@@ -29,9 +31,9 @@ from Components.config import config, ConfigSelection, ConfigYesNo, ConfigText, 
 config.plugins.iptvplayer.api_key_9kweu = ConfigText(default = "", fixed_size = False)
 config.plugins.iptvplayer.api_key_2captcha = ConfigText(default = "", fixed_size = False)
 config.plugins.iptvplayer.bsto_linkcache = ConfigYesNo(default = True)
-config.plugins.iptvplayer.bsto_bypassrecaptcha = ConfigSelection(default = "None", choices = [("None",        _("None")),
-                                                                                              ("9kw.eu",       "https://9kw.eu/"),
-                                                                                              ("2captcha.com", "http://2captcha.com/")])
+config.plugins.iptvplayer.bsto_bypassrecaptcha = ConfigSelection(default = "", choices = [("",        _("None")),
+                                                                                          ("9kw.eu",       "https://9kw.eu/"),
+                                                                                          ("2captcha.com", "http://2captcha.com/")])
 
 def GetConfigList():
     optionList = []
