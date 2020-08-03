@@ -5,11 +5,14 @@ from __future__ import print_function
 ###################################################
 # LOCAL import
 ###################################################
-from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG
+from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, DownloadFile, eConnectCallback
 ###################################################
 # FOREIGN import
 ###################################################
-from Tools.Directories import resolveFilename, SCOPE_PLUGINS
+from Tools.BoundFunction import boundFunction
+from enigma import eConsoleAppContainer
+from Tools.Directories import resolveFilename, fileExists, SCOPE_PLUGINS
+from Components.config import config, configfile
 from Components.Language import language
 import gettext
 import os
