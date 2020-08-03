@@ -353,13 +353,13 @@ class MusicBox(CBaseHostClass):
 
         playlist_id = "lastfm://playlist/" + artist
         url = 'http://ws.audioscrobbler.com/2.0/?method=playlist.fetch&playlistURL=' + playlist_id + '&api_key=' + audioscrobbler_api_key + '&format=json'
-        print url
+        print(url)
         sts, data = self.cm.getPage(url, {'header': HEADER})
         if not sts:
             return
         try:
             data = json_loads(data)['playlist']['trackList']['track']
-            print data
+            print(data)
             for x in range(len(data)):
                 item = data[x]
                 artist = item['creator']
