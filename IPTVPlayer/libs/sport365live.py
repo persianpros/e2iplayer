@@ -83,7 +83,7 @@ class Sport365LiveApi:
         
     def cryptoJS_AES_decrypt(self, encrypted, password, salt):
         printDBG("cryptoJS_AES_decrypt")
-
+        
         def derive_key_and_iv(password, salt, key_length, iv_length):
             d = d_i = ''
             while len(d) < key_length + iv_length:
@@ -108,7 +108,7 @@ class Sport365LiveApi:
                 printDBG("player Url -->  %s " % str(playerUrl))
             except Exception:
                 printExc()
-
+        
         return playerUrl
 
     def getMarketCookie(self, url, referer, num=1):
@@ -321,13 +321,13 @@ class Sport365LiveApi:
         num = 0
         deObfuscatedData = ''
         aes_password=[]
-
+        
         for commonUrl in data:
             num += 1
             printDBG("common url n. %s : %s " % (str(num), commonUrl) )
 
             sts, tmpData = self.getPage(commonUrl, self.http_params)
-            if not sts:
+            if not sts: 
                 continue
             aes = ''
             try:
@@ -339,7 +339,7 @@ class Sport365LiveApi:
                         for decFun in [VIDEOWEED_decryptPlayerParams, VIDEOWEED_decryptPlayerParams2, SAWLIVETV_decryptPlayerParams]:
                             if not (item.startswith('function(w,i,s,e){for') and decFun == VIDEOWEED_decryptPlayerParams):
                                 tmpData = unpackJSPlayerParams('eval(' + item, decFun, 0)
-                                if '' != tmpData:
+                                if '' != tmpData:   
                                     printDBG ('**********************************')
                                     printDBG (tmpData)
                                     printDBG ('**********************************')
@@ -387,33 +387,33 @@ class Sport365LiveApi:
             else:
                 aes_password = self.getAesPassword(cItem)
 
-            if not aes_password:
+            if not aes_password: 
                 return []
-
+            
             printDBG("aes -----> %s" % str(aes_password))
             for aes in aes_password:
                 try:
                     printDBG("link_data -----> " + str(cItem['link_data']))
-
+                    
                     playerUrl = self.decryptUrl(cItem['link_data'], aes)
 
-                    if not playerUrl.startswith('http'):
+                    if not playerUrl.startswith('http'): 
                         continue
-
+                    
                     sts, data = self.getPage(playerUrl, self.http_params)
-                    if not sts:
+                    if not sts: 
                         return []
-
+                    
                     links = re.compile('(http://www.[^\.]+.pw/(?!&#)[^"]+)', re.IGNORECASE + re.DOTALL + re.MULTILINE + re.UNICODE).findall(data)
                     link = [x for x in links if '&#' in x]
                     if link:
                         link = re.sub(r'&#(\d+);', lambda x: chr(int(x.group(1))), link[0])
                         printDBG("Found *.pw link ------> %s " % link)
 
-                        h = self.http_params
+                        h = self.http_params 
                         h['header']['Referer'] = playerUrl
                         sts, data = self.getPage(link, h)
-
+                        
                         if sts:
                             #printDBG("*****************")
                             #printDBG(data)
@@ -431,7 +431,7 @@ class Sport365LiveApi:
                             if f and r and d and action:
                                 postData = {'r': r[0], 'd': d[0], 'f': f[0]}
                                 h['header']['Referer'] = link
-                                sts, data = self.getPage(action[0], h, postData)
+                                sts, data = self.getPage(action[0], h, postData)    
                                 if sts:
                                     #printDBG("*****************")
                                     #printDBG(data)
@@ -440,7 +440,7 @@ class Sport365LiveApi:
                                     try:
                                         #######ads banners#########
                                         # simulate ads viewing
-                                        bheaders = h
+                                        bheaders = h 
                                         bheaders['header']['Referer'] = action[0]
                                         banner = re.findall(r'<script\s*src=[\'"](.+?)[\'"]', data)[-1]
                                         sts, bsrc = self.getPage(banner, bheaders)
@@ -453,21 +453,22 @@ class Sport365LiveApi:
                                         ###########################
                                     except BaseException:
                                         pass
-
+                                    
+                                    
                                     link2 = re.compile('\([\'"][^"\']+[\'"], [\'"][^"\']+[\'"], [\'"]([^"\']+)[\'"], 1\)').findall(data)
                                     if link2:
-                                        printDBG(link2[0])
+                                        printDBG(link2[0])           
                                         playerUrl = self.decryptUrl(link2[0], aes).replace("/i","/master.m3u8")
                                         printDBG("Final player Url ----------->  %s " % str(playerUrl))
-
+                                        
                                         playerUrl = strwithmeta(playerUrl, {'User-Agent' : h['header']['User-Agent'], 'Referer': action[0] })
-
+                                        
                                         COOKIE_FILE_M3U8 = GetCookieDir('sport365live.cookie')
-                                        params = {'cookiefile':COOKIE_FILE_M3U8, 'use_cookie': True, 'load_cookie':False, 'save_cookie':True}
+                                        params = {'cookiefile':COOKIE_FILE_M3U8, 'use_cookie': True, 'load_cookie':False, 'save_cookie':True} 
 
-                                        urlsTab.extend(getDirectM3U8Playlist(playerUrl, checkExt=False, variantCheck=True, cookieParams=params, checkContent=True, sortWithMaxBitrate=99999999))
+                                        urlsTab.extend(getDirectM3U8Playlist(playerUrl, checkExt=False, variantCheck=True, cookieParams=params, checkContent=True, sortWithMaxBitrate=99999999))  
 
-                    else:
+                    else:    
                         # old system
                         playerUrl = self.cm.ph.getSearchGroups(data, '''location\.replace\(\s*?['"]([^'^"]+?)['"]''', 1, True)[0]
                         if playerUrl:
