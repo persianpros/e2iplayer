@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 import os
-from Plugins.Extensions.WebInterface.WebChilds.Toplevel import addExternalChild
+from Plugins.Extensions.OpenWebif.WebChilds.Toplevel import addExternalChild
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 
 from webSite import StartPage, redirectionPage, hostsPage, useHostPage, downloaderPage, settingsPage, logsPage, searchPage
@@ -57,7 +57,7 @@ if os.path.exists(resolveFilename(SCOPE_PLUGINS,'Extensions/OpenWebif/pluginshoo
 	else: #user still can use IPTV web interface, but would need to mark URL manually depending on the openWebIf version
 		try:
 			addExternalChild( ("iptvplayer", IPTVwebRoot, "E2iPlayer", settings.WebInterfaceVersion) )
-                        addExternalChild( ("e2iplayer", IPTVwebRoot, "E2iPlayer", settings.WebInterfaceVersion) )
+			addExternalChild( ("e2iplayer", IPTVwebRoot, "E2iPlayer", settings.WebInterfaceVersion) )
 		except Exception:
 			print("[E2iPlayer] exception registering Web interface in NATIVE mode")
 else:
