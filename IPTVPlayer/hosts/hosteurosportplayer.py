@@ -43,7 +43,7 @@ class EuroSportPlayer(CBaseHostClass):
     
     def __init__(self):
         CBaseHostClass.__init__(self, {'history':'eurosportplayer.com', 'cookie':'eurosportplayer.com.cookie'})
-        self.USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36'
+        self.USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36'
         self.MAIN_URL = 'https://www.eurosportplayer.com/'
         self.LOGIN_URL = 'https://auth.eurosportplayer.com/login?flow=login'
         
@@ -58,7 +58,8 @@ class EuroSportPlayer(CBaseHostClass):
         
         self.DEFAULT_ICON_URL = 'http://mirrors.kodi.tv/addons/leia/plugin.video.eurosportplayer/resources/icon.png'
         
-        self.HTTP_HEADER = {'User-Agent': self.USER_AGENT, 'Referer':self.getMainUrl(), 'Origin':self.getMainUrl(), 'X-disco-client': 'WEB:UNKNOWN:esp-web:prod'}
+        self.HTTP_HEADER = {'User-Agent': self.USER_AGENT, 'Referer':self.getMainUrl(), 'Origin':self.getMainUrl(), 'X-disco-client': 'WEB:UNKNOWN:esplayer:prod', 'x-disco-params': 'realm=eurosport,,'}
+
         self.defaultParams = {'header': {'User-Agent': self.USER_AGENT} , 'use_cookie': True, 'load_cookie': True, 'save_cookie': True, 'cookiefile': self.COOKIE_FILE}
         
         self.recaptcha_sitekey = "6LfvErIUAAAAABlpqACnxRiUhqhX4p14sPxx_sKf"
@@ -200,13 +201,14 @@ class EuroSportPlayer(CBaseHostClass):
         params = {}
         video_id = videoData['id']
         item_data = videoData['attributes']
+        printDBG("Eurosport.addVideoFromData - video_id: %s" % video_id)
         printDBG(json_dumps(item_data))
         
         if 'broadcastType' in item_data:
-            #printDBG(" %s, %s , %s" % (item_data['name'], item_data['videoType'], item_data['broadcastType'] ))
+            printDBG("broadcast: %s, %s , %s" % (item_data['name'], item_data['videoType'], item_data['broadcastType'] ))
             bt = item_data['broadcastType']
         else:
-            #printDBG(" %s, %s , %s" % (item_data['name'], item_data['videoType'], '' ))
+            printDBG("video: %s, %s " % (item_data['name'], item_data['videoType']))
             bt = item_data['videoType']
 
         if (not OnlyLive) or (item_data['videoType'] == 'LIVE'):
@@ -215,9 +217,9 @@ class EuroSportPlayer(CBaseHostClass):
             else:
                 start = item_data['earliestPlayableStart']
             
-            #printDBG("start: %s" % start)
+            printDBG("start: %s" % start)
             scheduleDate = self._gmt2local(start)
-            #printDBG("local time: %s" % str(scheduleDate))
+            printDBG("local time: %s" % str(scheduleDate))
             
             if scheduleDate < datetime.now() or future:
             
@@ -276,6 +278,7 @@ class EuroSportPlayer(CBaseHostClass):
                 params = {'title': title, 'desc': desc, 'url': url, 'icon': icon, 'video_id': video_id, 'schedule_date': scheduleDate, 'route_id': route_id}
                 printDBG(str(params))
 
+        printDBG("-----------------------------------")
         return params
         
     def listSportFilters(self, cItem, nextCategory):
@@ -328,7 +331,20 @@ class EuroSportPlayer(CBaseHostClass):
         printDBG("EuroSportPlayer.listVodTypesFilters [%s]" % cItem)
         try:
             url = cItem['url'] + '?include=default'
-            sts, data = self.getPage(url)
+
+            httpHeader = {
+                'User-Agent': self.USER_AGENT,
+                'accept' : '*/*',
+                'accept-encoding':'gzip',
+                'origin': 'https://www.eurosportplayer.com',
+                'Referer': 'https://www.eurosportplayer.com',
+                'x-disco-client': 'WEB:UNKNOWN:esplayer:prod',
+                'x-disco-params': 'realm=eurosport,,'
+            }
+
+            
+            sts, data = self.getPage(url, {'header' : httpHeader , 'use_cookie': True, 'load_cookie': True, 'save_cookie': True, 'cookiefile': self.COOKIE_FILE })
+
             if not sts: 
                 return
 
@@ -362,7 +378,20 @@ class EuroSportPlayer(CBaseHostClass):
         try:
             
             url = "https://eu3-prod-direct.eurosportplayer.com/cms/routes/home?include=default"
-            sts, data = self.getPage(url, {'header' : {'User-Agent': self.USER_AGENT}, 'use_cookie': True, 'load_cookie': True, 'save_cookie': True, 'cookiefile': self.COOKIE_FILE })
+            
+            httpHeader = {
+                'User-Agent': self.USER_AGENT,
+                'accept' : '*/*',
+                'accept-encoding':'gzip',
+                'origin': 'https://www.eurosportplayer.com',
+                'Referer': 'https://www.eurosportplayer.com',
+                'x-disco-client': 'WEB:UNKNOWN:esplayer:prod',
+                'x-disco-params': 'realm=eurosport,,'
+            }
+            
+            sts, data = self.getPage(url, {'header' : httpHeader , 'use_cookie': True, 'load_cookie': True, 'save_cookie': True, 'cookiefile': self.COOKIE_FILE })
+            
+            
             if not sts: 
                 return
             
@@ -430,7 +459,19 @@ class EuroSportPlayer(CBaseHostClass):
         
         try:
             url = self.SCHEDULE_COLLECTION_URL.replace('{%id%}', cItem['schedule_id']).replace('{%filter%}', cItem['filter'])
-            sts, data = self.getPage(url)
+            
+            httpHeader = {
+                'User-Agent': self.USER_AGENT,
+                'accept' : '*/*',
+                'accept-encoding':'gzip',
+                'origin': 'https://www.eurosportplayer.com',
+                'Referer': 'https://www.eurosportplayer.com',
+                'x-disco-client': 'WEB:UNKNOWN:esplayer:prod',
+                'x-disco-params': 'realm=eurosport,,'
+            }
+
+            
+            sts, data = self.getPage(url, {'header' : httpHeader , 'use_cookie': True, 'load_cookie': True, 'save_cookie': True, 'cookiefile': self.COOKIE_FILE })
             if not sts:
                 return
             
