@@ -263,6 +263,7 @@ class urlparser:
                        'gdriveplayer.me':       self.pp.parserGDRIVEPLAYER  ,
                        'gdriveplayer.us':       self.pp.parserGDRIVEPLAYER  ,
                        'ginbig.com':            self.pp.parserGINBIG        ,
+                       'gloria.tv':             self.pp.parserGLORIATV      ,
                        'gogoanime.to':          self.pp.parserGOGOANIMETO   ,
                        'goldvod.tv':            self.pp.parserGOLDVODTV     ,
                        'goodcast.co':           self.pp.parserGOODCASTCO    ,
@@ -14296,23 +14297,28 @@ class pageParser(CaptchaHelper):
         urlsTab = []
         
         sts, data = self.cm.getPage(baseUrl, httpParams)
-
-        if "eval(function(p,a,c,k,e,d)" in data:
-            printDBG( 'Host resolveUrl packed' )
-            packed = re.compile('>eval\(function\(p,a,c,k,e,d\)(.+?)</script>', re.DOTALL).findall(data)
-            if packed:
-                data2 = packed[-1]
-            else:
-                return ''
-            printDBG( 'Host pack: [%s]' % data2)
-            try:
-                data = unpackJSPlayerParams(data2, TEAMCASTPL_decryptPlayerParams, 0, True, True)
-                printDBG( 'OK unpack: [%s]' % data)
-            except Exception: pass
-
+        
         if sts:
-            sitekey = ph.search(data, '''grecaptcha.execute\(['"]([^"^']+?)['"]''')[0]
-            action = ph.search(data, '''grecaptcha.execute.*?action:\s['"]([^"^']+?)['"]''')[0]
+        
+            '''
+            grecaptcha.ready(function() {
+
+                grecaptcha.execute('6LcOeuUUAAAAANS5Gb3oKwWkBjOdMXxqbj_2cPCy', {action: 'homepage'}).then(function(token) {
+                    
+                    jQuery.get("/dl?op=video_src&file_code=q9za1xe42hef&g-recaptcha-response="+token, function(data){
+                            
+                            data = JSON.parse(data);
+                            console.log( 'dataaaaaaa');
+                            console.log( data );
+                            load_jw_player( data );
+
+                            
+                    });     
+                });     
+            });
+            '''
+        
+            sitekey = self.cm.ph.getSearchGroups(data, "grecaptcha.execute\('([^']+?)'")[0]
             if not sitekey:
                 printDBG("-----------------------")
                 printDBG(data)
@@ -14323,10 +14329,8 @@ class pageParser(CaptchaHelper):
                 printDBG("parserABCVideo.sitekey: % s" % sitekey)
                 query_url = self.cm.ph.getSearchGroups(data, "jQuery.get\(([^,]+?),")[0]
                 printDBG("parserABCVideo.query url: % s" % query_url)
-				
-                from Plugins.Extensions.IPTVPlayer.libs.recaptcha_v3_2captcha import UnCaptchaReCaptcha
-                recaptcha = UnCaptchaReCaptcha(lang=GetDefaultLang())
-                token = recaptcha.processCaptcha(sitekey, baseUrl, action)
+                
+                token, errorMsgTab = self.processCaptcha(sitekey, baseUrl, captchaType="v3")
                 if token == '':
                     SetIPTVPlayerLastHostError('\n'.join(errorMsgTab)) 
                     return False
@@ -14594,3 +14598,31 @@ class pageParser(CaptchaHelper):
                 
                 
         return urlsTab
+
+    def parserGLORIATV(self, baseUrl):
+        printDBG("parserGLORIATV baseUrl[%r]" % baseUrl)
+        baseUrl = strwithmeta(baseUrl)
+        HTTP_HEADER = self.cm.getDefaultHeader(browser='firefox')
+        referer = baseUrl.meta.get('Referer')
+        if referer: HTTP_HEADER['Referer'] = referer
+        urlParams = {'header': HTTP_HEADER}
+        sts, data = self.cm.getPage(baseUrl, urlParams)
+        if not sts: return False
+        cUrl = self.cm.meta['url']
+        retTab = []
+        data = ph.find(data, ('<video', '>'), '</video>', flags=0)[1]
+        data = ph.findall(data, '<source', '>', flags=0)
+        for item in data:
+            url = self.cm.getFullUrl(ph.getattr(item, 'src').replace('&amp;', '&'), cUrl)
+            type = ph.clean_html(ph.getattr(item, 'type').lower())
+            if 'video' not in type and 'x-mpeg' not in type: continue
+            url = strwithmeta(url, {'Referer': cUrl, 'User-Agent': HTTP_HEADER['User-Agent']})
+            if 'video' in type:
+                width = ph.getattr(item, 'width')
+                height = ph.getattr(item, 'height')
+                bitrate = ph.getattr(item, 'bitrate')
+                retTab.append({'name': '[%s] %sx%s %s' % (type, width, height, bitrate), 'url': url})
+            elif 'x-mpeg' in type:
+                retTab.extend(getDirectM3U8Playlist(url, checkContent=True, sortWithMaxBitrate=999999999))
+
+        return retTab
