@@ -47,7 +47,7 @@ class Favourites(CBaseHostClass):
         self.host = None
         self.hostName = ''
         self.guestMode = False # main or guest
-        self.DEFAULT_ICON_URL = 'http://sarah-bauer.weebly.com/uploads/4/2/2/3/42234635/1922500_orig.png'
+        self.DEFAULT_ICON_URL = 'https://www.iconninja.com/files/637/891/649/512-favorites-icon.png'
         
     def _setHost(self, hostName):
         if hostName == self.hostName: return True
