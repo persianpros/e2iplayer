@@ -156,6 +156,7 @@ class IPTVHostsGroups:
         'ipla' : [ 'polish'] ,
         'iptvplayerinfo' : [ 'others'] ,
         'itvcom' : [ 'english'] ,
+        'joemonsterorg' : [ 'polish'] ,
         'kabarety' : [ 'others', 'polish'] ,
         'kijknl' : [ 'others'] ,
         'kinogo' : [ 'moviesandseries', 'russian'] ,
