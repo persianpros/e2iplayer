@@ -3,7 +3,7 @@
 
 WebInterfaceVersion = '0.9'
 MaxLogLinesToShow = 1000
-excludedCFGs = ['fakeUpdate','fakeHostsList','fakExtMoviePlayerList']
+excludedCFGs = ['fakeUpdate', 'fakeHostsList', 'fakExtMoviePlayerList']
 activeHost = {}
 activeHostsHTML = {}
 currItem = {}

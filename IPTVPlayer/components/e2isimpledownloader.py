@@ -69,8 +69,8 @@ class SingleFileDownloaderWidget(Screen):
         self["actions"] = ActionMap(["ColorActions", "SetupActions", "WizardActions", "ListboxActions"],
             {
                 "cancel": self.keyExit,
-                "red"   : self.keyRed,
-                "green" : self.keyGreen,
+                "red": self.keyRed,
+                "green": self.keyGreen,
             }, -2)
 
         self.iconPixmap = {}

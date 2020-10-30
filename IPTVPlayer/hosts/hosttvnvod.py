@@ -35,7 +35,7 @@ except ImportError as e:
 ###################################################
 config.plugins.iptvplayer.TVNDefaultformat = ConfigSelection(default = "9999", choices = [("0", "Najgorsza"), ("1", "Bardzo niska"), ("2", "Niska"),  ("3", "Średnia"), ("4", "Standard"), ("5", "Wysoka"), ("6", "Bardzo wysoka"), ("7", "HD"), ("9999", "Najlepsza")])
 config.plugins.iptvplayer.TVNUseDF = ConfigYesNo(default = False)
-config.plugins.iptvplayer.TVNdevice = ConfigSelection(default = "_mobile_", choices = [("_mobile_", "Mobile"),("_tv_", "TV")])
+config.plugins.iptvplayer.TVNdevice = ConfigSelection(default = "_mobile_", choices = [("_mobile_", "Mobile"), ("_tv_", "TV")])
 config.plugins.iptvplayer.proxyenable = ConfigYesNo(default = False)
    
 def GetConfigList():
@@ -56,13 +56,13 @@ class TvnVod(CBaseHostClass):
     ICON_URL     = 'http://redir.atmcdn.pl/scale/o2/tvn/web-content/m/%s?quality=50&dstw=290&dsth=287&type=1'
     
     QUALITIES_TABLE = { 
-        'HD'            : 7,
-        'Bardzo wysoka' : 6,
-        'Wysoka'        : 5,
-        'Standard'      : 4,
-        'Średnia'       : 3,
-        'Niska'         : 2,
-        'Bardzo niska'  : 1,
+        'HD': 7,
+        'Bardzo wysoka': 6,
+        'Wysoka': 5,
+        'Standard': 4,
+        'Średnia': 3,
+        'Niska': 2,
+        'Bardzo niska': 1,
     }
         
     SERVICE_MENU_TABLE = [
@@ -78,52 +78,52 @@ class TvnVod(CBaseHostClass):
         self.DEFAULT_ICON_URL = 'http://www.programosy.pl/download/screens/13711/android-player-1_s.png' 
         self.platforms = {
             'Panasonic': {
-                'platform' : 'ConnectedTV',
-                'terminal' : 'Panasonic',
-                'authKey' : '064fda5ab26dc1dd936f5c6e84b7d3c2',
-                'base_url' : 'http://api.tvnplayer.pl/api2',
-                'header' : {'User-Agent':'Mozilla/5.0 (SmartHub; SMART-TV; U; Linux/SmartTV; Maple2012) AppleWebKit/534.7 (KHTML, like Gecko) SmartTV Safari/534.7', 'X-Api-Version':'3.1', 'Accept-Encoding':'gzip'},
-                'api' : '3.1',
+                'platform': 'ConnectedTV',
+                'terminal': 'Panasonic',
+                'authKey': '064fda5ab26dc1dd936f5c6e84b7d3c2',
+                'base_url': 'http://api.tvnplayer.pl/api2',
+                'header': {'User-Agent':'Mozilla/5.0 (SmartHub; SMART-TV; U; Linux/SmartTV; Maple2012) AppleWebKit/534.7 (KHTML, like Gecko) SmartTV Safari/534.7', 'X-Api-Version':'3.1', 'Accept-Encoding':'gzip'},
+                'api': '3.1',
             },
             'Samsung': {
-                'platform' : 'ConnectedTV',
-                'terminal' : 'Samsung2',
-                'authKey' : '453198a80ccc99e8485794789292f061',
-                'base_url' : 'http://api.tvnplayer.pl/api2',
-                'header' : {'User-Agent':'Mozilla/5.0 (SmartHub; SMART-TV; U; Linux/SmartTV; Maple2012) AppleWebKit/534.7 (KHTML, like Gecko) SmartTV Safari/534.7', 'X-Api-Version':'3.6', 'Accept-Encoding':'gzip'},
-                'api' : '3.6',
+                'platform': 'ConnectedTV',
+                'terminal': 'Samsung2',
+                'authKey': '453198a80ccc99e8485794789292f061',
+                'base_url': 'http://api.tvnplayer.pl/api2',
+                'header': {'User-Agent':'Mozilla/5.0 (SmartHub; SMART-TV; U; Linux/SmartTV; Maple2012) AppleWebKit/534.7 (KHTML, like Gecko) SmartTV Safari/534.7', 'X-Api-Version':'3.6', 'Accept-Encoding':'gzip'},
+                'api': '3.6',
             },
             'Android': {
-                'platform' : 'Mobile',
-                'terminal' : 'Android',
-                'authKey' : 'b4bc971840de63d105b3166403aa1bea',
-                'base_url' : 'http://api.tvnplayer.pl/api',
-                'header' : {'User-Agent':'Apache-HttpClient/UNAVAILABLE (java 1.4)'},
-                'api' : '3.0',
+                'platform': 'Mobile',
+                'terminal': 'Android',
+                'authKey': 'b4bc971840de63d105b3166403aa1bea',
+                'base_url': 'http://api.tvnplayer.pl/api',
+                'header': {'User-Agent':'Apache-HttpClient/UNAVAILABLE (java 1.4)'},
+                'api': '3.0',
             },
             'Android2': {
-                'platform' : 'Mobile',
-                'terminal' : 'Android',
-                'authKey' : 'b4bc971840de63d105b3166403aa1bea',
-                'header' : {'User-Agent':'Apache-HttpClient/UNAVAILABLE (java 1.4)'},
-                'base_url' : 'http://api.tvnplayer.pl/api',
-                'api' : '2.0',
+                'platform': 'Mobile',
+                'terminal': 'Android',
+                'authKey': 'b4bc971840de63d105b3166403aa1bea',
+                'header': {'User-Agent':'Apache-HttpClient/UNAVAILABLE (java 1.4)'},
+                'base_url': 'http://api.tvnplayer.pl/api',
+                'api': '2.0',
             },
             'Android3': {
-                'platform' : 'Mobile',
-                'terminal' : 'Android',
-                'authKey' : '4dc7b4f711fb9f3d53919ef94c23890c',
-                'base_url' : 'http://api.tvnplayer.pl/api',
-                'header' : {'User-Agent':'Apache-HttpClient/UNAVAILABLE (java 1.4)'},
-                'api' : '3.1',
+                'platform': 'Mobile',
+                'terminal': 'Android',
+                'authKey': '4dc7b4f711fb9f3d53919ef94c23890c',
+                'base_url': 'http://api.tvnplayer.pl/api',
+                'header': {'User-Agent':'Apache-HttpClient/UNAVAILABLE (java 1.4)'},
+                'api': '3.1',
             },
             'Android4': {
-                'platform' : 'Mobile',
-                'terminal' : 'Android',
-                'authKey' : '4dc7b4f711fb9f3d53919ef94c23890c',
-                'base_url' : 'http://api.tvnplayer.pl/api2',
-                'header' : {'User-Agent':'Player/3.3.4 tablet Android/4.1.1 net/wifi', 'X-Api-Version':'3.7', 'Accept-Encoding':'gzip'},
-                'api' : '3.7',
+                'platform': 'Mobile',
+                'terminal': 'Android',
+                'authKey': '4dc7b4f711fb9f3d53919ef94c23890c',
+                'base_url': 'http://api.tvnplayer.pl/api2',
+                'header': {'User-Agent':'Player/3.3.4 tablet Android/4.1.1 net/wifi', 'X-Api-Version':'3.7', 'Accept-Encoding':'gzip'},
+                'api': '3.7',
             },
         }
         
@@ -182,7 +182,7 @@ class TvnVod(CBaseHostClass):
         return iconUrl
         
     def _generateToken(self, url):
-        url = url.replace('http://redir.atmcdn.pl/http/','')
+        url = url.replace('http://redir.atmcdn.pl/http/', '')
         SecretKey = 'AB9843DSAIUDHW87Y3874Q903409QEWA'
         iv = 'ab5ef983454a21bd'
         KeyStr = '0f12f35aa0c542e45926c43a39ee2a7b38ec2f26975c00a30e1292f7e137e120e5ae9d1cfe10dd682834e3754efc1733'
@@ -301,13 +301,13 @@ class TvnVod(CBaseHostClass):
                     # get icon
                     icon = self._getIconUrl(item)
                 
-                    params = { 'id'          : id,
-                               'previd'      : cItem.get('id', ''),
-                               'title'       : title,
-                               'desc'        : desc,
-                               'icon'        : icon,
-                               'category'    : category,
-                               'season'      : 0,
+                    params = { 'id': id,
+                               'previd': cItem.get('id', ''),
+                               'title': title,
+                               'desc': desc,
+                               'icon': icon,
+                               'category': category,
+                               'season': 0,
                                'good_for_fav': True, }
                     if 'episode' == category:
                         if cItem.get('search_category', False):
@@ -322,13 +322,13 @@ class TvnVod(CBaseHostClass):
             
             if showSeasons:
                 for season in seasons:
-                    params = { 'id'          : cItem['id'],
-                               'previd'      : cItem.get('id', ''),
-                               'title'       : self._getJItemStr(season, 'name', ''),
-                               'desc'        : '',
-                               'icon'        : self._getIconUrl(season),
-                               'category'    : cItem['category'], #self._getJItemStr(season, 'type', ''),
-                               'season'      : self._getJItemNum(season, 'id', 0),
+                    params = { 'id': cItem['id'],
+                               'previd': cItem.get('id', ''),
+                               'title': self._getJItemStr(season, 'name', ''),
+                               'desc': '',
+                               'icon': self._getIconUrl(season),
+                               'category': cItem['category'], #self._getJItemStr(season, 'type', ''),
+                               'season': self._getJItemNum(season, 'id', 0),
                                'good_for_fav': True, }
                     self.addDir(params)
             if showNextPage:
@@ -342,13 +342,13 @@ class TvnVod(CBaseHostClass):
     def listSearchResult(self, cItem, pattern, searchType):
         printDBG("TvnVod.listSearchResult pattern[%s], searchType[%s]" % (pattern, searchType))
         params = dict(cItem)
-        params.update({ 'id'       : 0,
-                       'title'    : '',
-                       'desc'     : '',
-                       'icon'     : '',
-                       'category' : 'search',
-                       'pattern'  : pattern,
-                       'season'   : 0,
+        params.update({ 'id': 0,
+                       'title': '',
+                       'desc': '',
+                       'icon': '',
+                       'category': 'search',
+                       'pattern': pattern,
+                       'season': 0,
                      })
         params2 = dict(params)
         params2['search_category'] = True

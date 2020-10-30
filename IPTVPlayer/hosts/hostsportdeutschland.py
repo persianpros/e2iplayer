@@ -24,7 +24,7 @@ except Exception: import json
 ###################################################
 # Config options for HOST
 ###################################################
-config.plugins.iptvplayer.sportdeutschland_streamprotocol = ConfigSelection(default = "hls", choices = [("rtmp", "rtmp"),("hls", "HLS - m3u8")]) 
+config.plugins.iptvplayer.sportdeutschland_streamprotocol = ConfigSelection(default = "hls", choices = [("rtmp", "rtmp"), ("hls", "HLS - m3u8")]) 
 
 
 def GetConfigList():
@@ -53,9 +53,9 @@ class SportDeutschland(CBaseHostClass):
                                   'Origin'    : self.MAINURL
                                  }
         self.cm.HEADER = dict(self.HTTP_JSON_HEADER)
-        self.MAIN_CAT_TAB = [{'category':'categories',        'title': _('Categories'),},
-                             {'category':'search',            'title': _('Search'), 'search_item':True,},
-                             {'category':'search_history',    'title': _('Search history'),            }]
+        self.MAIN_CAT_TAB = [{'category': 'categories',        'title': _('Categories'),},
+                             {'category': 'search',            'title': _('Search'), 'search_item': True,},
+                             {'category': 'search_history',    'title': _('Search history'),            }]
                  
             
     def _getJItemStr(self, item, key, default=''):
@@ -77,7 +77,7 @@ class SportDeutschland(CBaseHostClass):
         return default
         
     def _getItemsListFromJson(self, url):
-        sts,data = self.cm.getPage(url)    
+        sts, data = self.cm.getPage(url)    
         if sts:
             try:
                 data = json.loads(data)
@@ -170,7 +170,7 @@ class SportDeutschland(CBaseHostClass):
         videoUrls =[]
         
         if self.cm.isValidUrl(cItem['url']):
-            sts,data = self.cm.getPage(cItem['url'])
+            sts, data = self.cm.getPage(cItem['url'])
             if sts:
                 try:
                     data = byteify(json.loads(data))
@@ -181,7 +181,7 @@ class SportDeutschland(CBaseHostClass):
                         if item.get('livestream', False):
                             if '.smil?' in videoUrl:
                                 if 'rtmp' == config.plugins.iptvplayer.sportdeutschland_streamprotocol.value:
-                                    sts,data = self.cm.getPage(videoUrl)
+                                    sts, data = self.cm.getPage(videoUrl)
                                     if sts:
                                         #printDBG("+++++++++++++++++++++++++++++++++\n%s\n+++++++++++++++++++++++++++++++++" % data)
                                         videoUrl = self.cm.ph.getSearchGroups(data, 'meta base="(rtmp[^"]+?)"')[0]

@@ -72,7 +72,7 @@ class DDLMe(CBaseHostClass):
         lang  = config.plugins.iptvplayer.ddlme_lang.value
         if lang == '': 
             lang = GetDefaultLang()
-        if lang not in ['en','de']:
+        if lang not in ['en', 'de']:
             lang = 'en'
         return 'http://%s.ddl.me/' % lang
     
@@ -140,7 +140,7 @@ class DDLMe(CBaseHostClass):
             self.addDir(params)
         
         MAIN_CAT_TAB = [{'category':'search',         'title': _('Search'),       'search_item':True       },
-                        {'category':'search_history', 'title': _('Search history'),                        }]
+                        {'category': 'search_history', 'title': _('Search history'),                        }]
         self.listsTab(MAIN_CAT_TAB, cItem)
         
     def searchUrl(self, data):

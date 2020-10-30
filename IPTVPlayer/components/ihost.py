@@ -648,7 +648,7 @@ class CBaseHostClass:
             return
         try:
             data = json_loads(data)
-            mycountry = data.get('country','')
+            mycountry = data.get('country', '')
             if mycountry != country:
                 if not mycountry:
                     mycountry = '?'

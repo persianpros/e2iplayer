@@ -54,19 +54,19 @@ class SerialeNet(CBaseHostClass):
         try:
             if len(s) > 0:
                js = 'unpack' + s[s.find('}(')+1:-1]
-               js = js.replace("unpack('",'''unpack("''').replace(");'",''');"''').replace("\\","/")
-               js = js.replace("//","/").replace("/'","'")
+               js = js.replace("unpack('", '''unpack("''').replace(");'", ''');"''').replace("\\", "/")
+               js = js.replace("//", "/").replace("/'", "'")
                js = "self." + js
                match = re.compile("\('(.+?)'").findall(eval(js))
                if len(match) > 0:
-                  ret = base64.b64decode(binascii.unhexlify(match[0].replace("/x","")))
+                  ret = base64.b64decode(binascii.unhexlify(match[0].replace("/x", "")))
         except Exception: printExc()
         return ret
 
     def unpack(self, p, a, c, k, e=None, d=None):
-        for i in xrange(c-1,-1,-1):
+        for i in xrange(c-1, -1, -1):
             if k[i]:
-               p = re.sub('\\b'+self.int2base(i,a)+'\\b', k[i], p)
+               p = re.sub('\\b'+self.int2base(i, a)+'\\b', k[i], p)
         return p
         
     def int2base(self, x, base):
@@ -122,13 +122,13 @@ class SerialeNet(CBaseHostClass):
                     match = True
                 elif len(t2) and letter == self.cm.ph.getNormalizeStr(t2, 0).upper():
                     match = True
-                    t1,t2 = t2,t1
+                    t1, t2 = t2, t1
             else:
                 if not self.cm.ph.isalpha(t1, 0):
                     match = True
                 elif len(t2) and not self.cm.ph.isalpha(t2, 0):
                     match = True
-                    t1,t2 = t2,t1
+                    t1, t2 = t2, t1
             if match:
                 params = dict(cItem)
                 if len(t2): t1 += ' (%s)' % t2

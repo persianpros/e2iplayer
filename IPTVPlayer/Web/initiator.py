@@ -23,8 +23,8 @@ IPTVwebRoot.putChild("search", searchPage())
 
 def checkForFC():
 	ret = False
-	if os.path.exists(resolveFilename(SCOPE_PLUGINS,'Extensions/OpenWebif/controllers/base.pyo')):
-		myfileName = resolveFilename(SCOPE_PLUGINS,'Extensions/OpenWebif/controllers/base.pyo')
+	if os.path.exists(resolveFilename(SCOPE_PLUGINS, 'Extensions/OpenWebif/controllers/base.pyo')):
+		myfileName = resolveFilename(SCOPE_PLUGINS, 'Extensions/OpenWebif/controllers/base.pyo')
 	else:
 		return False
 	
@@ -42,11 +42,11 @@ def checkForFC():
 	return ret
 
 # registration for openwebif
-if os.path.exists(resolveFilename(SCOPE_PLUGINS,'Extensions/OpenWebif/pluginshook.src')):
+if os.path.exists(resolveFilename(SCOPE_PLUGINS, 'Extensions/OpenWebif/pluginshook.src')):
 	# Old openwebif version (prior July the 14th 2017) has a bug and does not populate links to all properly registered web addons except fancontrol
 	# see: https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/pull/629
 	#  A HACK: we will canibalize fancontrol entry point (if not installed) to present IPTVplayer option on the web
-	if checkForFC() == True and not os.path.exists(resolveFilename(SCOPE_PLUGINS,'Extensions/FanControl2/FC2webSite.pyo')):
+	if checkForFC() == True and not os.path.exists(resolveFilename(SCOPE_PLUGINS, 'Extensions/FanControl2/FC2webSite.pyo')):
 		fcRoot = static.File(GetPluginDir('Web/'))
 		fcRoot.putChild("", redirectionPage())
 		try:

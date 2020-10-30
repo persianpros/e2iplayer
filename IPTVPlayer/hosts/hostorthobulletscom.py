@@ -144,20 +144,20 @@ class OrthoBullets(CBaseHostClass):
         nextPage = self.cm.ph.getSearchGroups(nextPage, '''<a[^>]+?href=['"]([^'^"]+?)['"][^>]*?>%s</a>''' % (page + 1))[0]
         nextPage = ph.clean_html(nextPage)   
                      
-        block = self.cm.ph.getAllItemsBeetwenNodes(data, '<div class="videos ">', '<div class="group-items-list__bottom-paging"',False)[0]  
+        block = self.cm.ph.getAllItemsBeetwenNodes(data, '<div class="videos ">', '<div class="group-items-list__bottom-paging"', False)[0]  
         block = self.cm.ph.getAllItemsBeetwenNodes(block, '<a class="dashboard-item__link"', '</a>')     
 
         for videos in block:
-            title = self.cm.ph.getAllItemsBeetwenNodes(videos, '<div class="dashboard-item__title">', '</div>',False)
+            title = self.cm.ph.getAllItemsBeetwenNodes(videos, '<div class="dashboard-item__title">', '</div>', False)
             title = map(lambda cleanTitle: cleanTitle.replace('\r\n                    ', ''), title)
             title = map(lambda cleanTitle: cleanTitle.replace('\r\n                ', ''), title)
             title = title[0]
             title  = ph.clean_html(title)
             videourl = self.MAIN_URL + self.cm.ph.getSearchGroups(videos, 'href="([^"]+?)"')[0]
-            imageurl = self.cm.ph.getAllItemsBeetwenNodes(videos,'style="background-image: url(\'', ('\');">'),False)[1]
-            viddate = self.cm.ph.getAllItemsBeetwenNodes(videos, '<div class="dashboard-item__date">', '</div>',False)[0]
+            imageurl = self.cm.ph.getAllItemsBeetwenNodes(videos, 'style="background-image: url(\'', ('\');">'), False)[1]
+            viddate = self.cm.ph.getAllItemsBeetwenNodes(videos, '<div class="dashboard-item__date">', '</div>', False)[0]
             viddate = viddate.strip()
-            vidviews = self.cm.ph.getAllItemsBeetwenNodes(videos, '<div class="dashboard-item__views">', '</div>',False)[0]
+            vidviews = self.cm.ph.getAllItemsBeetwenNodes(videos, '<div class="dashboard-item__views">', '</div>', False)[0]
             vidviews = vidviews.strip()
             desc = '\c00????00 Title: \c00??????%s\\n \c00????00Date: \c00??????%s\\n \c00????00Views: \c00??????%s\\n' %(title, viddate, vidviews)
             params = dict(cItem)

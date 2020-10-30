@@ -43,7 +43,7 @@ class ArteTV(CBaseHostClass):
         
         lang = GetDefaultLang()
         url = self.getMainUrl()
-        if lang in ['en','fr','de','es','pl']:
+        if lang in ['en', 'fr', 'de', 'es', 'pl']:
             url += lang
         
         sts, data = self.getPage(url)
@@ -430,7 +430,7 @@ class ArteTV(CBaseHostClass):
             token = dataJson['apiplayer']['token']
             printDBG("Api Token: %s" % token)
             
-            currentCode = self.cm.ph.getSearchGroups(data, "\"currentCode\":\"([^{}\"]+?)\{\}\"", 1 , True)[0]
+            currentCode = self.cm.ph.getSearchGroups(data, "\"currentCode\":\"([^{}\"]+?)\{\}\"", 1, True)[0]
             if not currentCode:
                 printDBG("Not found video code")
                 return

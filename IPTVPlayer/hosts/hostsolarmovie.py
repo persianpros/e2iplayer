@@ -118,8 +118,8 @@ class SolarMovie(CBaseHostClass):
                              {'category':'list_filters',    'title': 'Movies',              'url':self.MAIN_URL+'filter',    'f_type[]':'movie'  },
                              {'category':'list_filters',    'title': 'TV-Series',           'url':self.MAIN_URL+'filter',    'f_type[]':'series' },
                              
-                             {'category':'search',          'title': _('Search'), 'search_item':True, },
-                             {'category':'search_history',  'title': _('Search history'),             } 
+                             {'category': 'search',          'title': _('Search'), 'search_item': True, },
+                             {'category': 'search_history',  'title': _('Search history'),             } 
                             ]
         
     def fillCacheFilters(self, cItem):
@@ -305,12 +305,12 @@ class SolarMovie(CBaseHostClass):
             for s in servers:
                 serverTitle = self.cleanHtmlStr(self.cm.ph.getDataBeetwenNodes(s, '<strong>', '</strong>')[1])
 
-                eps = self.cm.ph.getAllItemsBeetwenMarkers(s,'<a','</a>')
+                eps = self.cm.ph.getAllItemsBeetwenMarkers(s, '<a', '</a>')
                 for ep in eps:
                     printDBG(ep)
                     #<a title="Episode 18" data-server="30" data-id="37772" data-file="https://vidnode.net/streaming.php?id=MjkyNDUy&title=The Larry Sanders Show - Season 2" href="javascript:void(0)" class="btn-eps first-ep last-ep">Episode 18</a>
                     item = self.cleanHtmlStr(ep)
-                    title = "%s - %s" % (serverTitle,item)
+                    title = "%s - %s" % (serverTitle, item)
                     url = self.cm.ph.getSearchGroups(ep, "data-file=['\"]([^'^\"]+?)['\"]")[0]
                     if title not in titlesTab:
                         titlesTab.append(title)
