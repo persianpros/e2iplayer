@@ -407,8 +407,10 @@ class YouTubeParser():
             if sts:
                 self.checkSessionToken(data)
 
-                data2 = self.cm.ph.getDataBeetwenMarkers(data, "window[\"ytInitialData\"] =", "};", False)[1]
-                
+                data2 = self.cm.ph.getDataBeetwenMarkers(data,"window[\"ytInitialData\"] =", "};", False)[1]
+                if len(data2) == 0:
+                    data2 = self.cm.ph.getDataBeetwenMarkers(data,"var ytInitialData =", "};", False)[1]
+
                 try:
                     response = json_loads(data2 + "}")
                 
@@ -516,7 +518,9 @@ class YouTubeParser():
             if sts:
                 self.checkSessionToken(data)
 
-                data2 = self.cm.ph.getDataBeetwenMarkers(data, "window[\"ytInitialData\"] =", "};", False)[1]
+                data2 = self.cm.ph.getDataBeetwenMarkers(data,"window[\"ytInitialData\"] =", "};", False)[1]
+                if len(data2) == 0:
+                    data2 = self.cm.ph.getDataBeetwenMarkers(data,"var ytInitialData =", "};", False)[1]
                 
                 response = json_loads(data2 + "}")
                 
@@ -581,7 +585,9 @@ class YouTubeParser():
                 else:
                     # first page of videos
                     self.checkSessionToken(data)
-                    data2 = self.cm.ph.getDataBeetwenMarkers(data, "window[\"ytInitialData\"] =", "};", False)[1]
+                    data2 = self.cm.ph.getDataBeetwenMarkers(data,"window[\"ytInitialData\"] =", "};", False)[1]
+                    if len(data2) == 0:
+                        data2 = self.cm.ph.getDataBeetwenMarkers(data,"var ytInitialData =", "};", False)[1]
 
                     response = json_loads(data2 + "}")
 
