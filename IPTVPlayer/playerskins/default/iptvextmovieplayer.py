@@ -1,6 +1,4 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-from __future__ import print_function
+﻿# -*- coding: utf-8 -*-
 #
 #  IPTVExtMoviePlayer
 #
@@ -14,11 +12,11 @@ from __future__ import print_function
 from Plugins.Extensions.IPTVPlayer.iptvdm.iptvdh import DMHelper
 from Plugins.Extensions.IPTVPlayer.tools.iptvtypes import strwithmeta
 from Plugins.Extensions.IPTVPlayer.components.cover import Cover3
-from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, GetIPTVDMImgDir, GetSubtitlesDir, eConnectCallback, \
+from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, GetIPTVDMImgDir, GetBinDir, GetSubtitlesDir, eConnectCallback, \
                                                           GetE2VideoAspectChoices, GetE2VideoAspect, SetE2VideoAspect, GetE2VideoPolicyChoices, \
                                                           GetE2VideoPolicy, SetE2VideoPolicy, GetDefaultLang, GetPolishSubEncoding, E2PrioFix, iptv_system, \
                                                           GetE2AudioCodecMixOption, SetE2AudioCodecMixOption, CreateTmpFile, GetTmpDir, IsExecutable, MapUcharEncoding, \
-                                                          GetE2VideoModeChoices, GetE2VideoMode, SetE2VideoMode, GetPlayerSkinDir
+                                                          GetE2VideoModeChoices, GetE2VideoMode, SetE2VideoMode
 from Plugins.Extensions.IPTVPlayer.tools.iptvsubtitles import IPTVSubtitlesHandler, IPTVEmbeddedSubtitlesHandler
 from Plugins.Extensions.IPTVPlayer.tools.iptvmoviemetadata import IPTVMovieMetaDataHandler
 from Plugins.Extensions.IPTVPlayer.components.iptvplayerinit import TranslateTXT as _
@@ -34,10 +32,12 @@ from Plugins.Extensions.IPTVPlayer.libs.urlparser import urlparser
 ###################################################
 # FOREIGN import
 ###################################################
-from enigma import eConsoleAppContainer, getDesktop, eTimer, eLabel, gFont, ePoint, eSize, gRGB
+from enigma import eServiceReference, eConsoleAppContainer, getDesktop, eTimer, eLabel, gFont, ePoint, eSize, gRGB
 from Screens.Screen import Screen
 from Screens.ChoiceBox import ChoiceBox
+from Components.AVSwitch import AVSwitch
 from Components.ActionMap import ActionMap
+from Components.config import config
 from Components.Label import Label
 from Components.ProgressBar import ProgressBar
 
@@ -46,7 +46,7 @@ from Screens.MessageBox import MessageBox
 from Tools.LoadPixmap import LoadPixmap
 from Tools.BoundFunction import boundFunction
 from Tools.Directories import fileExists
-from skin import parseColor
+from skin import parseColor, parseFont
 
 from datetime import timedelta
 try:
@@ -55,7 +55,7 @@ try:
     except Exception: import simplejson as json
 except Exception:
     printExc()
-from os import path as os_path
+from os import chmod as os_chmod, path as os_path
 import re
 import time
 import socket
@@ -181,33 +181,38 @@ class IPTVExtMoviePlayer(Screen):
         for idx in range(self.subLinesNum):
             subSkin += subSkinPart.format(idx+1)
         
-        self.playbackBannerFile = "playback_banner.png"
-        
+        # skin for SD
         if getDesktop(0).size().width() < 800:
-            # skin for SD
-            self.playerSkinFolder = GetPlayerSkinDir('sd')
+            playbackBannerFile = "playback_banner_sd.png"
+            skin = """
+            <screen name="IPTVExtMoviePlayer"    position="center,center" size="%d,%d" flags="wfNoBorder" backgroundColor="#FFFFFFFF" >
+                    <widget name="pleaseWait"         noWrap="1" position="30,30"        size="500,30"    zPosition="3" transparent="1" foregroundColor="#999999"   backgroundColor="transparent" font="Regular;24" halign="left"  valign="top"/>
+                    
+                    <widget name="logoIcon"           position="0,0"           size="160,40"    zPosition="4" transparent="1" alphatest="blend" />
+                    <widget name="playbackInfoBaner"  position="0,30"          size="650,112"   zPosition="2" pixmap="%s" />
+                    <widget name="progressBar"        position="94,54"         size="544,7"     zPosition="5" pixmap="%s" transparent="1" borderWidth="1" borderColor="#888888" />
+                    <widget name="bufferingCBar"      position="94,54"         size="544,7"     zPosition="4" pixmap="%s" transparent="1" borderWidth="1" borderColor="#888888" />
+                    <widget name="bufferingBar"       position="94,54"         size="544,7"     zPosition="3" pixmap="%s" borderWidth="1" borderColor="#888888" />
+                    <widget name="statusIcon"         position="20,45"         size="40,40"     zPosition="4"             transparent="1" alphatest="blend" />
+                    <widget name="loopIcon"           position="43,30"         size="40,40"     zPosition="4"             transparent="1" alphatest="blend" />
+                    
+                    <widget name="goToSeekPointer"    position="94,0"                     size="150,60"   zPosition="8" pixmap="%s" transparent="1" alphatest="blend" />
+                    <widget name="goToSeekLabel"      noWrap="1" position="94,0"          size="150,40"   zPosition="9" transparent="1" foregroundColor="white"     backgroundColor="#251f1f1f" font="Regular;24" halign="center" valign="center"/>
+                    <widget name="infoBarTitle"       noWrap="1" position="82,30"         size="568,23"   zPosition="3" transparent="1" foregroundColor="white"     backgroundColor="#251f1f1f" font="Regular;18" halign="center" valign="center"/>
+                    <widget name="currTimeLabel"      noWrap="1" position="94,62"         size="568,23"   zPosition="3" transparent="1" foregroundColor="#66ccff"   backgroundColor="#251f1f1f" font="Regular;24" halign="left"   valign="top"/>
+                    <widget name="lengthTimeLabel"    noWrap="1" position="307,62"        size="120,30"   zPosition="3" transparent="1" foregroundColor="#999999"   backgroundColor="#251f1f1f" font="Regular;24" halign="center" valign="top"/>
+                    <widget name="remainedLabel"      noWrap="1" position="518,62"        size="120,30"   zPosition="3" transparent="1" foregroundColor="#66ccff"   backgroundColor="#251f1f1f" font="Regular;24" halign="right"  valign="top"/>
+                    <widget name="videoInfo"          noWrap="1" position="0,0"           size="650,30"   zPosition="3" transparent="1" foregroundColor="#999999"   backgroundColor="#251f1f1f" font="Regular;24" halign="right"  valign="top"/>
+                    
+                    %s
+                    
+                    <widget name="subSynchroIcon"     position="0,0"           size="180,66"  zPosition="4" transparent="1" alphatest="blend" />
+                    <widget name="subSynchroLabel"    position="1,3"           size="135,50"  zPosition="5" transparent="1" foregroundColor="white"      backgroundColor="transparent" font="Regular;24" halign="center"  valign="center"/>
+                    
+                    %s
+            </screen>""" 
         else:
-            self.playerSkinFolder = GetPlayerSkinDir(ConfigExtMoviePlayerBase().getPlayerSkinFolder())
-
-        self.playerSkinPath = self.playerSkinFolder + "/playerskin.xml"
-
-        printDBG("Player skin folder:" + self.playerSkinFolder)
-        printDBG("Player skin file path:" + self.playerSkinPath)
-            
-        if os_path.exists(self.playerSkinPath):
-            #read player skin xml file
-            skinFile = open(self.playerSkinPath, 'r')
-            skin = skinFile.read()            
-            skinFile.close()            
-            
-            printDBG("---------------------------------------")
-            printDBG(skin)
-            printDBG("---------------------------------------")
-        else:
-            skin = ""
-            
-        if len(skin) == 0:
-            # use default skin in code
+            playbackBannerFile = "playback_banner.png"
             skin = """
             <screen name="IPTVExtMoviePlayer"    position="center,center" size="%d,%d" flags="wfNoBorder" backgroundColor="#FFFFFFFF" >
                     <widget name="pleaseWait"         noWrap="1" position="30,30"        size="500,30"    zPosition="3" transparent="1" foregroundColor="#999999"   backgroundColor="transparent" font="Regular;24" halign="left"  valign="top"/>
@@ -238,33 +243,17 @@ class IPTVExtMoviePlayer(Screen):
 
         if self.clockFormat:
             clockFontSize = 30 if getDesktop(0).size().width() == 1920 else 24
-            self.playerClockPath = self.playerSkinFolder + "/playerclock.xml"
-
-            printDBG("Player clock file path:" + self.playerClockPath)
-            
-            if os_path.exists(self.playerClockPath):
-                #read player skin xml file
-                clockFile = open(self.playerClockPath, 'r')
-                clockWidget = clockFile.read()            
-                clockFile.close()            
-                
-                printDBG("---------------------------------------")
-                printDBG(clockWidget)
-                printDBG("---------------------------------------")
-            
-                clockWidget = clockWidget % clockFontSize
-            else:
-                clockWidget = ""
+            clockWidget = '<widget name="clockTime" noWrap="1" position="37,69" size="100,40" zPosition="3" transparent="1" foregroundColor="white" backgroundColor="#251f1f1f" font="Regular;%d" halign="center" valign="center" />' % clockFontSize
         else:
             clockWidget = ''
         
         skin =  skin % ( getDesktop(0).size().width(), 
                          getDesktop(0).size().height(),
-                         self.playerSkinFolder + "/playback_banner.png",
-                         self.playerSkinFolder + "/playback_progress.png",
-                         self.playerSkinFolder + "/playback_cbuff_progress.png",
-                         self.playerSkinFolder + "/playback_buff_progress.png",
-                         self.playerSkinFolder + '/playback_pointer.png',
+                         GetIPTVDMImgDir(playbackBannerFile),
+                         GetIPTVDMImgDir("playback_progress.png"),
+                         GetIPTVDMImgDir("playback_cbuff_progress.png"),
+                         GetIPTVDMImgDir("playback_buff_progress.png"),
+                         GetIPTVDMImgDir('playback_pointer.png'),
                          clockWidget,
                          subSkin
                          ) ##00000000 bottom
@@ -424,7 +413,7 @@ class IPTVExtMoviePlayer(Screen):
         self.subHandler['pos_y_offset'] = 0
         self['subSynchroLabel']        = Label("0.0s")
         self['subSynchroIcon']         = Cover3() 
-        try: self.subHandler['synchro']['icon'] = LoadPixmap( self.playerSkinFolder + "/sub_synchro.png")
+        try: self.subHandler['synchro']['icon'] = LoadPixmap( GetIPTVDMImgDir("sub_synchro.png") )
         except Exception: printExc()
         self.hideSubSynchroControl()
         
@@ -465,15 +454,15 @@ class IPTVExtMoviePlayer(Screen):
         self.playback['loopIcons'] = {'On':None, 'Off':None}
         self.playback['statusIcons'] = {'Play':None, 'Pause':None, 'FastForward':None, 'SlowMotion':None}
         try:
-            self.playback['statusIcons']['Play']        = LoadPixmap( self.playerSkinFolder + "/playback_a_play.png" )
-            self.playback['statusIcons']['Pause']       = LoadPixmap( self.playerSkinFolder + "/playback_a_pause.png" )
-            self.playback['statusIcons']['FastForward'] = LoadPixmap( self.playerSkinFolder + "/playback_a_ff.png" )
+            self.playback['statusIcons']['Play']        = LoadPixmap( GetIPTVDMImgDir("playback_a_play.png") )
+            self.playback['statusIcons']['Pause']       = LoadPixmap( GetIPTVDMImgDir("playback_a_pause.png") )
+            self.playback['statusIcons']['FastForward'] = LoadPixmap( GetIPTVDMImgDir("playback_a_ff.png") )
             self.playback['statusIcons']['SlowMotion']  = self.playback['statusIcons']['FastForward']
             if 'gstplayer' == self.player: 
-                self.playback['logoIcon']               = LoadPixmap( self.playerSkinFolder + "/playback_gstreamer_logo.png")
-            else: self.playback['logoIcon']             = LoadPixmap( self.playerSkinFolder + "/playback_ffmpeg_logo.png" )
-            self.playback['loopIcons']['On']  = LoadPixmap( self.playerSkinFolder + "/playback_loop_on.png")
-            self.playback['loopIcons']['Off'] = LoadPixmap( self.playerSkinFolder + "/playback_loop_off.png")
+                self.playback['logoIcon']               = LoadPixmap( GetIPTVDMImgDir("playback_gstreamer_logo.png") )
+            else: self.playback['logoIcon']             = LoadPixmap( GetIPTVDMImgDir("playback_ffmpeg_logo.png") )
+            self.playback['loopIcons']['On']  = LoadPixmap( GetIPTVDMImgDir("playback_loop_on.png") )
+            self.playback['loopIcons']['Off'] = LoadPixmap( GetIPTVDMImgDir("playback_loop_off.png") )
         except Exception:
             printExc()
         
@@ -879,7 +868,7 @@ class IPTVExtMoviePlayer(Screen):
         printDBG("openSubtitlesFromFileCallback filePath[%s]" % filePath)
         if None != filePath:
             self.subHandler['handler'].removeCacheFile(filePath)
-            cmd = '/usr/bin/uchardet "%s"' % (filePath)
+            cmd = '%s "%s"' % (config.plugins.iptvplayer.uchardetpath.value, filePath) 
             self.workconsole = iptv_system(cmd, boundFunction(self.enableSubtitlesFromFile, filePath))
         
     def enableSubtitlesFromFile(self, filePath, code=127, encoding=""):
@@ -1003,8 +992,8 @@ class IPTVExtMoviePlayer(Screen):
         if None == self.metaHandler.getSubtitleTrack() and 'handler' == self.subHandler['handler_type']: return
         
         # marker is used for optimization 
-        # we remember some kind of fingerprint(for last subtitles )
-        # subtitles handler first check this fingerprint()
+        # we remember some kind of fingerprint for last subtitles 
+        # subtitles handler first check this fingerprint 
         # if the previous one is the same as current and it will return None instead 
         # of subtitles text
         prevMarker = self.subHandler['marker']
@@ -1295,13 +1284,13 @@ class IPTVExtMoviePlayer(Screen):
         
     def saveLastPlaybackTime(self):
         lastPosition = self.playback.get('ConfirmedCTime', 0)
-        if config.plugins.iptvplayer.remember_last_position.value and lastPosition > 0 and self.playback['Length'] > (config.plugins.iptvplayer.remember_last_position_time.value * 60):
-                self.metaHandler.setLastPosition( lastPosition )
-
+        if config.plugins.iptvplayer.remember_last_position.value and lastPosition > 0:
+            self.metaHandler.setLastPosition( lastPosition )
+    
     def loadLastPlaybackTime(self):
         if config.plugins.iptvplayer.remember_last_position.value and self.lastPosition < 1:
             self.lastPosition = self.metaHandler.getLastPosition()
-
+    
     # handling of RCU keys
     def key_stop(self, requestedByUser="key_stop"):
         self['pleaseWait'].setText(_("Closing. Please wait..."))
@@ -1868,8 +1857,9 @@ class IPTVExtMoviePlayer(Screen):
                 msg = _("Link is not supported by the gstplayer. Please use the extelayer3 if available.")
                 self.showMessage(msg, MessageBox.TYPE_ERROR)
             
+            gstplayerPath = config.plugins.iptvplayer.gstplayerpath.value
             #'export GST_DEBUG="*:6" &&' + 
-            cmd = '/usr/bin/gstplayer'  + ' "%s"' % self.fileSRC
+            cmd = gstplayerPath  + ' "%s"' % self.fileSRC
             
             # active audio track 
             audioTrackIdx = self.metaHandler.getAudioTrackIdx()
@@ -1900,7 +1890,8 @@ class IPTVExtMoviePlayer(Screen):
                         else: cmd += (' "proxy=%s" ' % tmp)
             cmd += " > /dev/null"
         else:
-            cmd = '/usr/bin/exteplayer3'
+            exteplayer3path = config.plugins.iptvplayer.exteplayer3path.value
+            cmd = exteplayer3path
             tmpUri = strwithmeta(self.fileSRC)
             
             audioUri = ''
@@ -1948,20 +1939,21 @@ class IPTVExtMoviePlayer(Screen):
             if config.plugins.iptvplayer.dts_software_decode.value:
                 cmd += ' -d '
                 
-            if config.plugins.iptvplayer.wma_software_decode.value:
-                cmd += ' -w '
-            if config.plugins.iptvplayer.mp3_software_decode.value:
-                cmd += ' -m '
-            if config.plugins.iptvplayer.eac3_software_decode.value:
-                cmd += ' -e '
-            if config.plugins.iptvplayer.ac3_software_decode.value:
-                cmd += ' -3 '
+            if config.plugins.iptvplayer.plarform.value in ('sh4', 'mipsel', 'armv7', 'armv5t'):
+                if config.plugins.iptvplayer.wma_software_decode.value:
+                    cmd += ' -w '
+                if config.plugins.iptvplayer.mp3_software_decode.value:
+                    cmd += ' -m '
+                if config.plugins.iptvplayer.eac3_software_decode.value:
+                    cmd += ' -e '
+                if config.plugins.iptvplayer.ac3_software_decode.value:
+                    cmd += ' -3 '
             if 'lpcm' == config.plugins.iptvplayer.software_decode_as.value: 
                 cmd += ' -l '
             
             if config.plugins.iptvplayer.aac_software_decode.value:
                 cmd += ' -a 3 -p 10'
-            else:
+            elif config.plugins.iptvplayer.plarform.value in ('sh4', 'mipsel', 'armv7', 'armv5t'):
                 cmd += ' -p 2'
                 if None != self.downloader:
                     cmd += ' -o 1 '
@@ -1971,10 +1963,11 @@ class IPTVExtMoviePlayer(Screen):
             if audioTrackIdx >= 0:
                 cmd += ' -t %d ' % audioTrackIdx
                 
-            subtitleTrackIdx = self.metaHandler.getEmbeddedSubtileTrackIdx()
-            printDBG(">>>>>>>>>>>>>>>>>>>>>>>> subtitleTrackIdx[%d]" % subtitleTrackIdx)
-            if subtitleTrackIdx >= 0:
-                cmd += ' -9 %d ' % subtitleTrackIdx
+            if config.plugins.iptvplayer.plarform.value in ('sh4', 'mipsel', 'armv7', 'armv5t'):
+                subtitleTrackIdx = self.metaHandler.getEmbeddedSubtileTrackIdx()
+                printDBG(">>>>>>>>>>>>>>>>>>>>>>>> subtitleTrackIdx[%d]" % subtitleTrackIdx)
+                if subtitleTrackIdx >= 0:
+                    cmd += ' -9 %d ' % subtitleTrackIdx
                 
             if audioUri != '':
                 cmd += ' -x "%s" ' % audioUri
@@ -2247,7 +2240,7 @@ class IPTVExtMoviePlayer(Screen):
         if create:
             return IPTVExtMoviePlayerSummary
         return None
-    
+
 class IPTVExtMoviePlayerSummary(Screen):
     try:
         summary_screenwidth = getDesktop(1).size().width()
