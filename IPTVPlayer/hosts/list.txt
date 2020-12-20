@@ -53,6 +53,7 @@ hostfenixsite
 hostfightvideo
 hostfilma24hdcom
 hostfilma24io
+hostfilman
 hostfilmaoncom
 hostfilmativa
 hostfilmehdnet
