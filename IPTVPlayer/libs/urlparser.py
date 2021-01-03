@@ -557,50 +557,51 @@ class urlparser:
                        'veuclips.com':         self.pp.parserVEUCLIPS, 
 #                       'verystream.com':       self.pp.parserVERYSTREAM     ,
 #                       'woof.tube':            self.pp.parserVERYSTREAM     ,
-                       'rapidstream.co':       self.pp.parserRAPIDSTREAMCO,
-                       'videohouse.me':        self.pp.parserVIDEOHOUSE,
-                       'justupload.io':        self.pp.parserJUSTUPLOAD,
-                       'vidspace.io':          self.pp.parserVIDEOSPACE,
-                       'veuclips.com':         self.pp.parserVIUCLIPS,
-                       'viuclips.net':         self.pp.parserVIUCLIPS,
-                       'vidstreamup.com':      self.pp.parserVIUCLIPS,
-                       'upclips.online':       self.pp.parserVIUCLIPS,
-                       'toclipit.com':         self.pp.parserVIUCLIPS,
-                       'forstreams.com':       self.pp.parserVIUCLIPS,
-                       'veuclipstoday.tk':     self.pp.parserVIUCLIPS,
-                       'streamatus.tk':        self.pp.parserVIUCLIPS,
-                       'onlystream.tv':        self.pp.parserONLYSTREAMTV,
-                       'tunestream.net':       self.pp.parserONLYSTREAMTV,
-                       'vidia.tv':             self.pp.parserONLYSTREAMTV,
-                       'youdbox.com':          self.pp.parserONLYSTREAMTV,
-                       'upstream.to':          self.pp.parserONLYSTREAMTV,
-                       'supervideo.tv':        self.pp.parserONLYSTREAMTV,
-                       'streamwire.net':       self.pp.parserONLYSTREAMTV,
-                       'vidoo.tv':             self.pp.parserONLYSTREAMTV,
-                       'vup.to':               self.pp.parserONLYSTREAMTV,
-                       'upvideo.cc':           self.pp.parserONLYSTREAMTV,
-                       'playtube.ws':          self.pp.parserONLYSTREAMTV,
-                       'vkprime.com':          self.pp.parserONLYSTREAMTV,
-                       'jetload.net':          self.pp.parserJETLOADNET,
-                       'mixdrop.co':           self.pp.parserMIXDROP,
-                       'mixdrop.club':         self.pp.parserMIXDROP,
-                       'vidload.net':          self.pp.parserVIDLOADNET,
-                       'vidcloud9.com':        self.pp.parserVIDCLOUD9,
-                       'abcvideo.cc':          self.pp.parserABCVIDEO,
-                       'easyload.io':          self.pp.parserEASYLOAD,
-                       'videobin.co':          self.pp.parserVIDEOBIN,
-                       'mirrorace.com':        self.pp.parserMIRRORACE,
-                       'mstream.fun':          self.pp.parserMSTREAMICU,
-                       'mstream.icu':          self.pp.parserMSTREAMICU,
-                       'mstream.xyz':          self.pp.parserMSTREAMICU,
-                       'mstream.press':        self.pp.parserMSTREAMICU,
-                       'premiumserver.club':   self.pp.parserMSTREAMICU,
-                       'mystream.streamango.to': self.pp.parserMSTREAMICU,
-                       'embed.mystream.to':    self.pp.parserMSTREAMICU,
-                       'dood.to':              self.pp.parserDOOD,
-                       'dood.watch':           self.pp.parserDOOD,
-                       'doodstream.com':       self.pp.parserDOOD,
-                       'govod.tv':             self.pp.parserWIIZTV,
+                       'rapidstream.co':       self.pp.parserRAPIDSTREAMCO  ,
+                       'videohouse.me':        self.pp.parserVIDEOHOUSE     ,
+                       'justupload.io':        self.pp.parserJUSTUPLOAD     ,
+                       'vidspace.io':          self.pp.parserVIDEOSPACE     ,
+                       'veuclips.com':         self.pp.parserVIUCLIPS       ,
+                       'viuclips.net':         self.pp.parserVIUCLIPS       ,
+                       'vidstreamup.com':      self.pp.parserVIUCLIPS       ,
+                       'upclips.online':       self.pp.parserVIUCLIPS       ,
+                       'toclipit.com':         self.pp.parserVIUCLIPS       ,
+                       'forstreams.com':       self.pp.parserVIUCLIPS       ,
+                       'veuclipstoday.tk':     self.pp.parserVIUCLIPS       ,
+                       'streamatus.tk':        self.pp.parserVIUCLIPS       ,
+                       'onlystream.tv':        self.pp.parserONLYSTREAMTV   ,
+                       'tunestream.net':       self.pp.parserONLYSTREAMTV   ,
+                       'vidia.tv':             self.pp.parserONLYSTREAMTV   ,
+                       'youdbox.com':          self.pp.parserONLYSTREAMTV   ,
+                       'upstream.to':          self.pp.parserONLYSTREAMTV   ,
+                       'supervideo.tv':        self.pp.parserONLYSTREAMTV   ,
+                       'streamwire.net':       self.pp.parserONLYSTREAMTV   ,
+                       'vidoo.tv':             self.pp.parserONLYSTREAMTV   ,
+                       'vup.to':               self.pp.parserONLYSTREAMTV   ,
+                       'upvideo.cc':           self.pp.parserONLYSTREAMTV   ,
+                       'playtube.ws':          self.pp.parserONLYSTREAMTV   ,
+                       'vkprime.com':          self.pp.parserONLYSTREAMTV   ,
+                       'jetload.net':          self.pp.parserJETLOADNET     ,
+                       'mixdrop.co':           self.pp.parserMIXDROP        ,
+                       'mixdrop.club':         self.pp.parserMIXDROP        ,
+                       'vidload.net':          self.pp.parserVIDLOADNET     ,
+                       'vidcloud9.com':        self.pp.parserVIDCLOUD9      ,
+                       'abcvideo.cc':          self.pp.parserABCVIDEO       ,
+                       'easyload.io':          self.pp.parserEASYLOAD       ,
+                       'videobin.co':          self.pp.parserVIDEOBIN       ,
+                       'mirrorace.com':        self.pp.parserMIRRORACE      ,
+                       'mstream.fun':          self.pp.parserMSTREAMICU     ,
+                       'mstream.icu':          self.pp.parserMSTREAMICU     ,
+                       'mstream.xyz':          self.pp.parserMSTREAMICU     ,
+                       'mstream.press':        self.pp.parserMSTREAMICU     ,
+                       'premiumserver.club':   self.pp.parserMSTREAMICU     ,
+                       'mystream.streamango.to': self.pp.parserMSTREAMICU   ,
+                       'embed.mystream.to':    self.pp.parserMSTREAMICU     ,
+                       'dood.to':              self.pp.parserDOOD           ,
+                       'dood.watch':           self.pp.parserDOOD           ,
+                       'doodstream.com':       self.pp.parserDOOD           ,
+                       'govod.tv':             self.pp.parserWIIZTV         ,
+                       'streamtape.com':       self.pp.parserSTREAMTAPE     ,
                     }
         return
     
@@ -12923,3 +12924,27 @@ class pageParser(CaptchaHelper):
                     urlsTab.append(params)
         
         return urlsTab
+
+    def parserSTREAMTAPE(self, baseUrl):
+        printDBG("parserSTREAMTAPE baseUrl[%s]" % baseUrl)
+        
+        sts, data = self.cm.getPage(baseUrl)
+
+        urlTabs=[]
+        
+        if sts:
+#            printDBG("---------")
+#            printDBG(data)
+#            printDBG("---------")
+            
+            #search url in tag like <div id="videolink" style="display:none;">//streamtape.com/get_video?id=27Lbk7KlQBCZg02&expires=1589450415&ip=DxWsE0qnDS9X&token=Og-Vxdpku4x8</div>
+            t = eval(self.cm.ph.getSearchGroups(data, '''innerHTML = ([^;]+?);''')[0])
+            printDBG("parserSTREAMTAPE t[%s]" % t)
+            if t.startswith('//'): t = "https:" + t
+            if self.cm.isValidUrl(t):
+                t = urlparser.decorateUrl(t, {'Referer': baseUrl})
+                params = {'name': 'link' , 'url': t}
+                printDBG(params)
+                urlTabs.append(params)
+                
+        return urlTabs
