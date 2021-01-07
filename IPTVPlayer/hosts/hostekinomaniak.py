@@ -198,6 +198,7 @@ class eKinomaniak(CBaseHostClass):
             icon = self.getFullIconUrl(self.cm.ph.getSearchGroups(item, '''data-src=['"]([^"^']+?)['"]''')[0])
             if icon == '':
                 icon = self.getFullIconUrl(self.cm.ph.getSearchGroups(item, '''src=['"]([^"^']+?)['"]''')[0])
+            icon = icon.replace('/thumbnails', '')
             title = self.cleanHtmlStr(self.cm.ph.getDataBeetwenNodes(item, ('</a', '>'), ('</a', '>'), False)[1])
             desc = self.cleanHtmlStr(item)
             if 'watch-tv-shows' in url:
@@ -303,7 +304,7 @@ class eKinomaniak(CBaseHostClass):
         printDBG("eKinomaniak.getArticleContent [%s]" % cItem)
         itemsList = []
 
-        sts, data = self.cm.getPage(cItem['url'])
+        sts, data = self.getPage(cItem['url'])
         if not sts: return []
 
         title = cItem['title']
